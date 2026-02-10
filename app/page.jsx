@@ -1,16 +1,18 @@
-import ContactForm from "../components/ContactForm";
-import "./globals.css";
-
 export default function Home() {
   return (
     <main className="landing">
-      <section className="hero">
+      <section className="hero fade-up">
         <div className="hero-left">
-          <div className="eqb-wordmark">EQB</div>
-          <p className="hero-approach">
-            Il nostro approccio si basa su tre principi chiave
-          </p>
-          <div className="hero-year">2026</div>
+          <div className="hero-top">
+            <div className="eqb-wordmark">EQB</div>
+            <div className="hero-line" aria-hidden="true"></div>
+            <div className="hero-year">2026</div>
+          </div>
+          <div className="hero-center">
+            <p className="hero-approach">
+              Il nostro approccio si basa su tre principi chiave
+            </p>
+          </div>
         </div>
         <div className="hero-right">
           <img src="/assets/hero.jpg" alt="Spazio EQB" className="hero-image" />
@@ -40,7 +42,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="manifesto">
+      <section className="manifesto fade-up">
         <div className="manifesto-inner">
           <div className="manifesto-label">About</div>
           <div className="manifesto-copy">
@@ -55,12 +57,12 @@ export default function Home() {
         <div className="coming-soon">COMING SOON</div>
       </section>
 
-      <section className="contacts">
+      <section className="contacts fade-up">
         <div className="contacts-top">
-          <div className="contacts-left">
-            <h4>Contatti</h4>
+          <div className="contacts-left">Contatti</div>
+          <div className="contacts-center">
             <a href="mailto:info@eqbmilano.it">info@eqbmilano.it</a>
-            <a href="tel:+393751845590">+39 375 184 5590</a>
+            <span>39 3751845590</span>
           </div>
           <div className="contacts-right">
             <div className="socials">
@@ -94,8 +96,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        <ContactForm />
 
         <div className="gallery">
           <img src="/assets/grid-1.jpg" alt="Pilates" />

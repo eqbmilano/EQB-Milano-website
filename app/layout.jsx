@@ -1,3 +1,5 @@
+import "./globals.css";
+
 export const metadata = {
   title: "EQB Milano",
   description: "EQB coworking dedicato al benessere e al movimento"

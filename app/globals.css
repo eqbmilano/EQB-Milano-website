@@ -5,10 +5,10 @@
 }
 
 :root {
-  --sand: #efe7de;
+  --sand: #f1ece5;
   --sand-dark: #e6dbd0;
-  --ink: #2e231f;
-  --ink-soft: #4f3f38;
+  --ink: #2f231f;
+  --ink-soft: #6a5a52;
   --warm: #b08b74;
   --card: rgba(120, 92, 82, 0.55);
   --card-border: rgba(255, 255, 255, 0.2);
@@ -38,36 +38,75 @@ a {
   min-height: 100vh;
 }
 
+.fade-up {
+  animation: fadeUp 0.8s ease both;
+}
+
+.fade-up:nth-of-type(2) {
+  animation-delay: 0.1s;
+}
+
+.fade-up:nth-of-type(3) {
+  animation-delay: 0.2s;
+}
+
 /* Hero */
 .hero {
   display: grid;
-  grid-template-columns: 32% 68%;
-  min-height: 72vh;
+  grid-template-columns: 28% 72%;
+  min-height: calc(78vh - 40px);
 }
 
 .hero-left {
   background: var(--sand);
-  padding: 60px 50px 60px 60px;
+  padding: 60px 40px 60px 70px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 40px;
+  gap: 0;
+  position: relative;
+}
+
+.hero-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
 }
 
 .eqb-wordmark {
   font-family: "Cormorant Garamond", serif;
-  font-size: 26px;
-  letter-spacing: 2px;
+  font-size: clamp(30px, 2.6vw, 38px);
+  letter-spacing: 3px;
+  margin-bottom: 0;
+}
+
+.hero-line {
+  width: 80%;
+  height: 1px;
+  background: rgba(47, 35, 31, 0.2);
+  margin-top: 0;
+}
+
+.hero-center {
+  margin-top: auto;
+  margin-bottom: auto;
+  align-self: flex-start;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transform: translateY(90px);
 }
 
 .hero-approach {
-  font-size: 14px;
+  font-size: clamp(16px, 1.45vw, 20px);
   max-width: 240px;
   color: var(--ink-soft);
 }
 
 .hero-year {
-  font-size: 12px;
+  font-size: clamp(15px, 1.25vw, 18px);
   letter-spacing: 2px;
   color: var(--ink-soft);
 }
@@ -75,78 +114,82 @@ a {
 .hero-right {
   position: relative;
   background: var(--sand-dark);
+  min-height: calc(78vh - 40px);
 }
 
 .hero-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 35%;
 }
 
 .principles-card {
   position: absolute;
-  left: 7%;
-  bottom: 10%;
-  right: 7%;
+  left: 50%;
+  width: 90%;
+  bottom: 12%;
+  transform: translateX(-50%) translateY(90px);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  padding: 26px 30px;
+  gap: 26px;
+  padding: 22px 28px;
   background: var(--card);
   border: 1px solid var(--card-border);
-  border-radius: 10px;
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  color: #f6ede6;
+  border-radius: 8px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #f7efe8;
 }
 
 .principle h3 {
   font-family: "Cormorant Garamond", serif;
-  font-size: 16px;
+  font-size: clamp(18px, 1.55vw, 22px);
   margin-bottom: 6px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
 .principle p {
-  font-size: 12px;
+  font-size: clamp(13px, 1.2vw, 15px);
   color: rgba(246, 237, 230, 0.9);
 }
 
 /* Manifesto */
 .manifesto {
   position: relative;
-  background: #3b2b26;
+  background: #3a2a25;
   color: #f0e7df;
-  padding: 70px 60px 140px;
-  min-height: 55vh;
+  padding: 90px 0 200px;
+  min-height: 58vh;
   overflow: hidden;
 }
 
 .manifesto-inner {
   display: grid;
   grid-template-columns: 20% 80%;
-  gap: 40px;
+  gap: 56px;
+  padding: 0 90px;
   position: relative;
   z-index: 2;
 }
 
 .manifesto-label {
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 12px;
+  letter-spacing: 2.5px;
+  font-size: 14px;
   color: rgba(240, 231, 223, 0.7);
 }
 
 .manifesto-quote {
   font-family: "Cormorant Garamond", serif;
-  font-size: 22px;
+  font-size: clamp(26px, 2vw, 32px);
   line-height: 1.7;
   max-width: 720px;
 }
 
 .manifesto-signature {
   margin-top: 18px;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: rgba(240, 231, 223, 0.7);
@@ -154,12 +197,13 @@ a {
 
 .coming-soon {
   position: absolute;
-  left: 6%;
-  bottom: 20px;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
   font-family: "Cormorant Garamond", serif;
-  font-size: 96px;
-  letter-spacing: 6px;
-  color: rgba(240, 231, 223, 0.08);
+  font-size: 132px;
+  letter-spacing: 8px;
+  color: rgba(240, 231, 223, 0.07);
   z-index: 1;
   white-space: nowrap;
 }
@@ -167,47 +211,44 @@ a {
 /* Contacts + Gallery */
 .contacts {
   background: var(--sand);
-  padding: 60px 60px 40px;
+  padding: 90px 0 50px;
 }
 
 .contacts-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: center;
   gap: 40px;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
+  padding: 0 90px;
 }
 
 .contacts-left {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--ink-soft);
+}
+
+.contacts-center {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  color: var(--ink-soft);
-}
-
-.contacts-left h4 {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-  color: var(--ink-soft);
-}
-
-.contacts-left a {
-  font-size: 14px;
+  gap: 6px;
+  font-size: clamp(15px, 1.2vw, 17px);
   color: var(--ink-soft);
 }
 
 .socials {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .social {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  border: 1px solid rgba(46, 35, 31, 0.4);
+  border: 1px solid rgba(46, 35, 31, 0.35);
   color: var(--ink);
   font-size: 11px;
   display: flex;
@@ -222,72 +263,6 @@ a {
   border-color: var(--ink);
 }
 
-.contact-form {
-  max-width: 520px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-bottom: 36px;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--ink-soft);
-}
-
-.form-input,
-.form-textarea {
-  border: 1px solid rgba(46, 35, 31, 0.2);
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 14px;
-  font-family: "Manrope", sans-serif;
-  background: #f8f2ea;
-  color: var(--ink);
-}
-
-.form-textarea {
-  resize: vertical;
-}
-
-.form-button {
-  align-self: flex-start;
-  padding: 10px 26px;
-  border-radius: 999px;
-  border: 1px solid var(--ink);
-  background: transparent;
-  color: var(--ink);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.form-button:hover {
-  background: var(--ink);
-  color: var(--sand);
-}
-
-.form-button:disabled {
-  opacity: 0.6;
-  cursor: wait;
-}
-
-.form-status {
-  font-size: 12px;
-  color: var(--ink-soft);
-}
-
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -296,22 +271,35 @@ a {
 
 .gallery img {
   width: 100%;
-  height: 220px;
+  height: 260px;
   object-fit: cover;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
   .hero {
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 38% 62%;
   }
 
   .principles-card {
     grid-template-columns: 1fr;
+    left: 6%;
+    right: 6%;
   }
 
   .coming-soon {
-    font-size: 72px;
+    font-size: 96px;
   }
 }
 
@@ -334,36 +322,35 @@ a {
   }
 
   .manifesto {
-    padding: 60px 30px 100px;
+    padding: 60px 0 110px;
   }
 
   .manifesto-inner {
     grid-template-columns: 1fr;
+    padding: 0 30px;
   }
 
   .coming-soon {
-    font-size: 54px;
+    font-size: 64px;
   }
 
   .contacts {
-    padding: 50px 30px 30px;
+    padding: 60px 0 30px;
   }
 
   .contacts-top {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .contact-form {
-    max-width: 100%;
-  }
-
-  .form-row {
     grid-template-columns: 1fr;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0 30px;
   }
 
   .gallery {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .socials {
+    flex-direction: row;
   }
 }
 
@@ -378,11 +365,11 @@ a {
   }
 
   .manifesto-quote {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .coming-soon {
-    font-size: 40px;
+    font-size: 44px;
   }
 
   .gallery {
