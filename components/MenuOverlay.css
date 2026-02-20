@@ -1,10 +1,14 @@
-/* Menu Overlay - Fullscreen */
+/* Menu Overlay - Fullscreen mit Background */
 .menu-overlay {
   position: fixed;
   inset: 0;
   z-index: 999;
   animation: slideDownMenu 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   overflow-y: auto;
+  background-color: #342622;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 @keyframes slideDownMenu {
@@ -18,23 +22,11 @@
   }
 }
 
-/* Background */
-.menu-background {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.bg-image {
-  object-fit: cover;
-  object-position: center;
-}
-
 /* Dark Overlay */
 .menu-dark-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(52, 38, 34, 0.92);
+  background: rgba(52, 38, 34, 0.95);
   z-index: 1;
 }
 

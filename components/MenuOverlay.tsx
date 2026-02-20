@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import "./MenuOverlay.css";
 
 interface MenuOverlayProps {
@@ -28,20 +27,15 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="menu-overlay">
-      {/* Background Image */}
-      <div className="menu-background">
-        <Image
-          src="/assets/Sfondo-Menù.jpg"
-          alt="Menu Background"
-          fill
-          className="bg-image"
-          priority
-        />
-      </div>
+      <div className="menu-overlay" style={{
+        backgroundImage: 'url(/assets/Sfondo-Menù.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}>
 
-      {/* Dark Overlay */}
-      <div className="menu-dark-overlay"></div>
+      {/* Dark Overlay - Super opaco */}
+        <div className="menu-dark-overlay"></div>
 
       {/* Content */}
       <div className="menu-content">
