@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { CTAButton } from "./CTAButton";
-import { LanguageSelector } from "./LanguageSelector";
 import { MenuOverlay } from "./MenuOverlay";
+import { LanguageSelector } from "./LanguageSelector";
 import "./Navbar.css";
 
 export const Navbar: React.FC = () => {
@@ -33,8 +33,8 @@ export const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Language Selector */}
-          <div className="navbar-lang">
+          {/* Language Selector - Center */}
+          <div className="navbar-center">
             <LanguageSelector />
           </div>
 

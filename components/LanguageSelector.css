@@ -3,75 +3,58 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 50px;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: var(--transition-smooth);
+  padding: 0.5rem;
 }
 
 .lang-button {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem 0.75rem;
+  padding: 0.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 40px;
   transition: var(--transition-smooth);
+  border-radius: 4px;
   position: relative;
+}
+
+.lang-flag {
   font-size: 1.25rem;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.flag {
-  display: inline-block;
-  transition: var(--transition-smooth);
-  transform: scale(1);
-}
-
-/* Hover State */
-.lang-button:hover .flag {
-  transform: scale(1.2) rotate(5deg);
-}
-
+/* Hover Effect - Scale + Shadow */
 .lang-button:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
+  transform: scale(1.2);
+  filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.3));
 }
 
 /* Active State */
-.lang-button.active {
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  animation: softPulse 2s ease-in-out infinite;
+.lang-button.active .lang-flag {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
 }
 
-.lang-button.active .flag {
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
-}
-
-/* Animations */
-@keyframes softPulse {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-  }
+.lang-separator {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.875rem;
+  user-select: none;
+  pointer-events: none;
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .language-selector {
     gap: 0.5rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.3rem;
   }
 
-  .lang-button {
-    padding: 0.4rem 0.6rem;
-    font-size: 1.1rem;
+  .lang-flag {
+    font-size: 1rem;
+  }
+
+  .lang-button:hover {
+    transform: scale(1.15);
   }
 }
