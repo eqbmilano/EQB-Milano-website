@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { CTAButton } from "./CTAButton";
+import { LanguageSelector } from "./LanguageSelector";
 import { MenuOverlay } from "./MenuOverlay";
 import "./Navbar.css";
 
@@ -30,6 +31,11 @@ export const Navbar: React.FC = () => {
             <Link href="/">
               <span className="text-white font-bold text-xl">EQB</span>
             </Link>
+          </div>
+
+          {/* Language Selector */}
+          <div className="navbar-lang">
+            <LanguageSelector />
           </div>
 
           {/* Right Section */}
