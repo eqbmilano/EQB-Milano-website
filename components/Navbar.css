@@ -22,7 +22,7 @@
 }
 
 .navbar-logo {
-  flex: 0 0 auto;
+  flex: 1;
 }
 
 .navbar-logo a {
@@ -32,16 +32,10 @@
   transition: var(--transition-smooth);
 }
 
-.navbar-center {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   flex: 0 0 auto;
 }
 
@@ -113,14 +107,11 @@
     font-size: 1rem;
   }
 
-  .navbar-center {
-    order: 3;
-    flex: 0 0 100%;
-    padding: 0.5rem 0;
-    justify-content: flex-start;
+  .navbar-right {
+    gap: 0.75rem;
   }
 
-  .navbar-right {
-    gap: 1rem;
+  .navbar-cta {
+    display: none !important;
   }
 }

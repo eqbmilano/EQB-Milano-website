@@ -43,6 +43,13 @@
   pointer-events: none;
 }
 
+/* Desktop */
+@media (min-width: 1024px) {
+  .language-selector {
+    gap: 0.9rem;
+  }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .language-selector {

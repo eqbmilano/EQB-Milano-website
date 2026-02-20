@@ -33,13 +33,12 @@ export const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Language Selector - Center */}
-          <div className="navbar-center">
-            <LanguageSelector />
-          </div>
-
           {/* Right Section */}
           <div className="navbar-right">
+            {/* Language Selector */}
+            <LanguageSelector />
+
+            {/* CTA Button */}
             <CTAButton variant="light" className="navbar-cta">
               JOIN US
             </CTAButton>
