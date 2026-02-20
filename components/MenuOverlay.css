@@ -1,0 +1,169 @@
+/* Menu Overlay - Fullscreen */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-brown-primary);
+  z-index: 999;
+  animation: slideIn 0.4s ease-out;
+  overflow-y: auto;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.menu-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  gap: 4rem;
+}
+
+/* Left Section */
+.menu-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-logo {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-white);
+  margin-bottom: 3rem;
+}
+
+.menu-contact {
+  margin-bottom: 2rem;
+}
+
+.contact-item {
+  margin-bottom: 2rem;
+}
+
+.contact-label {
+  font-family: var(--font-manrope);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.08em;
+}
+
+.contact-item a,
+.contact-item p {
+  font-family: var(--font-helvetica);
+  font-weight: 300;
+  color: var(--color-white);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.contact-item a {
+  transition: var(--transition-smooth);
+}
+
+.contact-item a:hover {
+  opacity: 0.7;
+}
+
+/* Social Links */
+.menu-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-brown-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: var(--transition-smooth);
+}
+
+.social-circle:hover {
+  background-color: var(--color-white);
+  color: var(--color-brown-primary);
+}
+
+/* Right Section - Navigation */
+.menu-right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.menu-item {
+  font-family: var(--font-helvetica);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 400;
+  color: var(--color-white);
+  transition: var(--transition-smooth);
+  text-align: left;
+}
+
+.menu-item:hover {
+  opacity: 0.7;
+}
+
+/* Decorative Arc */
+.menu-arc {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  border: 2px solid var(--color-brown-secondary);
+  border-radius: 0 0 0 100%;
+  opacity: 0.3;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .menu-container {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+
+  .menu-left {
+    order: 2;
+  }
+
+  .menu-right {
+    order: 1;
+  }
+
+  .menu-item {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+  }
+
+  .menu-nav {
+    gap: 1.5rem;
+  }
+
+  .menu-arc {
+    display: none;
+  }
+}

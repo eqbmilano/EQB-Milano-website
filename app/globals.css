@@ -1,26 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue"), local("Helvetica"), local("Arial"), sans-serif;
+}
+
+/* CSS Variables - Palette EQB */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colori */
+  --color-brown-primary: #342622;
+  --color-brown-secondary: #4b3631;
+  --color-bg-light: #EDEBE5;
+  --color-muted: #A09890;
+  --color-separator: #D4CFC9;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Typography */
+  --font-manrope: "Manrope", sans-serif;
+  --font-helvetica: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "Chopard", Georgia, serif;
+
+  /* Spacing */
+  --spacing-unit: 1rem;
+
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s ease-out;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-brown-primary);
+  font-family: var(--font-helvetica);
+  line-height: 1.6;
+}
+
+/* Tipografia Heading */
+h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h2 {
+  font-family: var(--font-helvetica);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h3 {
+  font-family: var(--font-helvetica);
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+p {
+  font-family: var(--font-helvetica);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* Utility Glassmorphism */
+.glassmorphic {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+}
+
+/* Link styles */
+a {
+  color: var(--color-brown-primary);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
