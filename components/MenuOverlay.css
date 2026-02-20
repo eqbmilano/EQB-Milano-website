@@ -3,15 +3,17 @@
   position: fixed;
   inset: 0;
   z-index: 999;
-  animation: slideIn 0.4s ease-out;
+  animation: slideDownMenu 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   overflow-y: auto;
 }
 
-@keyframes slideIn {
+@keyframes slideDownMenu {
   from {
+    transform: translateY(-100%);
     opacity: 0;
   }
   to {
+    transform: translateY(0);
     opacity: 1;
   }
 }
