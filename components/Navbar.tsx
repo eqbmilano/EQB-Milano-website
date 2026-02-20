@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { CTAButton } from "./CTAButton";
 import { MenuOverlay } from "./MenuOverlay";
 import "./Navbar.css";
@@ -26,9 +27,9 @@ export const Navbar: React.FC = () => {
         <div className="navbar-container">
           {/* Logo */}
           <div className="navbar-logo">
-            <a href="/">
+            <Link href="/">
               <span className="text-white font-bold text-xl">EQB</span>
-            </a>
+            </Link>
           </div>
 
           {/* Right Section */}

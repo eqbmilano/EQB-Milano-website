@@ -139,6 +139,19 @@
   opacity: 0.3;
 }
 
+/* Desktop */
+@media (min-width: 769px) {
+  .menu-right {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 4rem;
+  }
+
+  .menu-nav {
+    gap: 2.5rem;
+  }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .menu-container {

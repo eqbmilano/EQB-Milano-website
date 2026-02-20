@@ -74,8 +74,8 @@
     display: inline-flex !important;
   }
 
-  .navbar-hamburger {
-    display: none;
+  .navbar-right {
+    gap: 3rem;
   }
 }
 
