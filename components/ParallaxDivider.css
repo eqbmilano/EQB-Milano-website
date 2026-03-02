@@ -1,0 +1,17 @@
+/* Parallax Divider */
+.parallax-divider {
+  height: 65vh;
+  background-image: url("/assets/Massaggio-viso.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Mobile: fixed attachment non funziona bene su iOS */
+@media (max-width: 767px) {
+  .parallax-divider {
+    background-attachment: scroll;
+    height: 50vh;
+  }
+}

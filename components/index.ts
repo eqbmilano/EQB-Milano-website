@@ -1,12 +1,11 @@
-// Export all components
+export { CTAButton } from "./CTAButton";
 export { Navbar } from "./Navbar";
 export { MenuOverlay } from "./MenuOverlay";
-export { LanguageSelector } from "./LanguageSelector";
 export { Hero } from "./Hero";
-export { Essenza } from "./Essenza";
-export { Spazio } from "./Spazio";
-export { Coworking } from "./Coworking";
-export { Benessere } from "./Benessere";
-export { Visione } from "./Visione";
-export { Contatti } from "./Contatti";
-export { CTAButton } from "./CTAButton";
+export { SectionSpazio } from "./SectionSpazio";
+export { ParallaxDivider } from "./ParallaxDivider";
+export { SectionPercheScegliere } from "./SectionPercheScegliere";
+export { SectionInterno } from "./SectionInterno";
+export { SectionBenessere } from "./SectionBenessere";
+export { SectionContatti } from "./SectionContatti";
+export { Footer } from "./Footer";

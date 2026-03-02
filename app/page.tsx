@@ -1,14 +1,13 @@
-"use client";
-
 import {
   Navbar,
   Hero,
-  Essenza,
-  Spazio,
-  Coworking,
-  Benessere,
-  Visione,
-  Contatti,
+  SectionSpazio,
+  ParallaxDivider,
+  SectionPercheScegliere,
+  SectionInterno,
+  SectionBenessere,
+  SectionContatti,
+  Footer,
 } from "@/components";
 
 export default function Home() {
@@ -16,13 +15,13 @@ export default function Home() {
     <main className="w-full overflow-hidden">
       <Navbar />
       <Hero />
-      <Essenza />
-      <Spazio />
-      <Coworking />
-      <Benessere />
-      <Visione />
-      <Contatti />
+      <SectionSpazio />
+      <ParallaxDivider />
+      <SectionPercheScegliere />
+      <SectionInterno />
+      <SectionBenessere />
+      <SectionContatti />
+      <Footer />
     </main>
   );
 }
-

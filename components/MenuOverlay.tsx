@@ -1,181 +1,89 @@
 "use client";
-
 import React from "react";
+import Image from "next/image";
 import "./MenuOverlay.css";
 
 interface MenuOverlayProps {
+  isOpen: boolean;
   onClose: () => void;
 }
 
-const menuItems = [
-  { label: "Home", href: "/" },
+const navItems = [
+  { label: "Home", href: "#" },
   { label: "Spazio", href: "#spazio" },
   { label: "Benessere", href: "#benessere" },
   { label: "Visione", href: "#visione" },
   { label: "Contatti", href: "#contatti" },
 ];
 
-const socialLinks = [
-  { name: "LinkedIn", icon: "Icona-LinkedIn.svg", href: "#linkedin" },
-  { name: "Instagram", icon: "Icona-Instagram.svg", href: "#instagram" },
-  { name: "WhatsApp", icon: "Icona-Whatsapp.svg", href: "#whatsapp" },
-];
-
-export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose }) => {
-  const handleLinkClick = () => {
-    onClose();
-  };
-
+export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => {
   return (
-      <div className="menu-overlay" style={{
-        backgroundImage: 'url(/assets/Sfondo-Menù.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}>
-
-      {/* Dark Overlay - Super opaco */}
-        <div className="menu-dark-overlay"></div>
-
-      {/* Content */}
-      <div className="menu-content">
-        {/* Left Section */}
-        <div className="menu-left">
-          {/* Logo */}
-          <div className="menu-logo">
-            <svg
-              viewBox="0 0 1920 771.78"
-              xmlns="http://www.w3.org/2000/svg"
-              className="logo-svg"
-            >
-              <defs>
-                <style>{`.cls-1 { fill: #fff; }`}</style>
-              </defs>
-              <g id="EQB">
-                <path
-                  className="cls-1"
-                  d="M10.72,354.6C10.72,241.6,7.14,123.4,0,0h458.84v43.84c-109.76-18.18-227.64-27.28-353.63-27.28-5.84,103.26-8.77,206.86-8.77,310.76,51.95,0,94.98-.97,129.08-2.92,34.1-1.95,66.73-7.46,97.91-16.56v55.53c-31.17-8.43-64.46-13.79-99.85-16.07-35.41-2.27-77.78-3.41-127.13-3.41v43.84c0,101.97,2.92,203.6,8.77,304.92,131.83,0,250.03-9.09,354.6-27.28v43.84H0c7.14-124.69,10.72-242.89,10.72-354.6Z"
-                />
-                <path
-                  className="cls-1"
-                  d="M1075.15,665.59c-54.37,29.08-112.83,43.61-175.41,43.61-66.37,0-127.05-15.96-182.04-47.88-54.99-31.91-98.61-75.05-130.84-129.42-32.24-54.35-48.36-113.78-48.36-178.25s15.79-123.73,47.41-177.78c31.6-54.04,75.05-96.86,130.37-128.47C771.59,15.81,832.74,0,899.75,0s127.2,15.81,182.52,47.41c55.3,31.61,98.92,74.43,130.84,128.47,31.91,54.04,47.88,113.3,47.88,177.78s-15.17,122.47-45.51,175.88c-30.34,53.42-71.75,95.92-124.21,127.52,31.6,37.3,67.63,75.53,108.09,114.72h-39.82c-25.93-36.03-54.04-71.44-84.38-106.19ZM1060.93,649.47c-25.93-28.44-53.73-57.2-83.44-86.28h37.93c13.89,18.34,34.44,44.25,61.63,77.75,32.86-20.22,57.98-48.35,75.38-84.38,17.38-36.03,26.08-75.85,26.08-119.47,0-61.94-14.7-124.04-44.09-186.31-29.39-62.25-69.54-113.45-120.42-153.6-50.89-40.13-106.66-60.21-167.35-60.21-48.04,0-89.12,10.59-123.26,31.76-34.13,21.18-59.89,49.47-77.27,84.86-17.39,35.41-26.07,74.59-26.07,117.57,0,61.95,14.7,124.21,44.09,186.78,29.39,62.58,69.53,114.1,120.41,154.55,50.87,40.46,106.98,60.68,168.29,60.68,40.44,0,76.47-7.9,108.09-23.7Z"
-                />
-                <path
-                  className="cls-1"
-                  d="M1396.86,354.6c0-113-3.58-231.2-10.72-354.6h218.21C1658.26,0,1703.07,7.79,1738.8,23.38c35.71,15.59,61.86,36.21,78.42,61.86,16.56,25.66,24.84,54.07,24.84,85.24s-11.21,62.83-33.61,91.08c-22.41,28.25-55.38,49.2-98.88,62.83,70.14,5.84,122.75,26.47,157.82,61.86,35.07,35.41,52.61,79.4,52.61,132-.65,34.43-9.74,66.09-27.28,94.98-17.54,28.91-44.66,52.12-81.35,69.65-36.7,17.53-82.32,26.3-136.87,26.3h-288.36c7.14-124.69,10.72-242.89,10.72-354.6ZM1566.37,322.45c64.3,0,110.89-13.64,139.79-40.92,28.89-27.28,43.35-64.3,43.35-111.06,0-50.66-15.27-88.97-45.79-114.95-30.54-25.97-78.91-38.97-145.15-38.97h-67.22c-5.84,101.97-8.77,203.94-8.77,305.89h83.78ZM1633.59,692.64c62.99,0,110.08-15.91,141.26-47.73,31.18-31.81,46.76-74.04,46.76-126.64,0-57.8-16.07-102.12-48.22-132.98-32.15-30.84-80.71-46.27-145.64-46.27h-145.15v43.84c0,103.26,2.92,206.53,8.77,309.79h142.23Z"
-                />
-              </g>
-            </svg>
-          </div>
-
-          {/* Social Icons */}
-          <div className="menu-social">
-            {socialLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="social-icon"
-                title={link.name}
-                aria-label={link.name}
-              >
-                <svg
-                  viewBox="0 0 1000 1000"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon-svg"
-                >
-                  {link.name === "LinkedIn" && (
-                    <>
-                      <circle cx="500.18" cy="499.54" r="500" fill="#4b3631" />
-                      <path
-                        d="M299.85,382.45h85.96v276.14h-85.96v-276.14ZM342.85,245.23c27.49,0,49.76,22.3,49.76,49.73s-22.27,49.8-49.76,49.8-49.83-22.34-49.83-49.8,22.27-49.73,49.83-49.73"
-                        fill="#fff"
-                      />
-                      <path
-                        d="M439.67,382.45h82.33v37.77h1.13c11.48-21.73,39.48-44.61,81.28-44.61,86.9,0,102.93,57.15,102.93,131.52v151.45h-85.77v-134.25c0-32.05-.63-73.23-44.61-73.23s-51.49,34.88-51.49,70.89v136.59h-85.79v-276.14Z"
-                        fill="#fff"
-                      />
-                    </>
-                  )}
-                  {link.name === "Instagram" && (
-                    <>
-                      <circle cx="500.18" cy="500" r="499.82" fill="#4b3631" />
-                      <path
-                        d="M637.9,332.78c-16.84,0-30.5,13.66-30.5,30.5s13.66,30.5,30.5,30.5,30.5-13.66,30.5-30.5-13.66-30.5-30.5-30.5Z"
-                        fill="#fff"
-                      />
-                      <path
-                        d="M502.31,371.89c-70.64,0-128.11,57.47-128.11,128.11s57.47,128.11,128.11,128.11,128.11-57.47,128.11-128.11-57.47-128.11-128.11-128.11ZM502.31,582.06c-45.25,0-82.07-36.81-82.07-82.06s36.81-82.06,82.07-82.06,82.06,36.81,82.06,82.06-36.81,82.06-82.06,82.06Z"
-                        fill="#fff"
-                      />
-                      <path
-                        d="M604.02,760.11h-207.69c-86.16,0-156.26-70.1-156.26-156.26v-207.7c0-86.16,70.1-156.26,156.26-156.26h207.69c86.16,0,156.27,70.09,156.27,156.26v207.7c0,86.16-70.1,156.26-156.27,156.26ZM396.33,288.84c-59.18,0-107.32,48.14-107.32,107.31v207.7c0,59.18,48.14,107.32,107.32,107.32h207.69c59.18,0,107.32-48.14,107.32-107.32v-207.7c0-59.18-48.14-107.31-107.32-107.31h-207.69Z"
-                        fill="#fff"
-                      />
-                    </>
-                  )}
-                  {link.name === "WhatsApp" && (
-                    <>
-                      <circle cx="500" cy="500" r="500" fill="#4b3631" />
-                      <path
-                        d="M242.55,758.08l37.01-138.07c-20.95-37.8-31.98-80.16-31.98-123.16,0-140.57,114.37-254.94,254.94-254.94s254.94,114.37,254.94,254.94-114.37,254.94-254.94,254.94c-42.2,0-83.88-10.65-121.18-30.89l-138.78,37.18ZM388.23,669.16l8.74,5.21c32.09,19.12,68.58,29.23,105.54,29.23,114,0,206.75-92.74,206.75-206.75s-92.75-206.75-206.75-206.75-206.75,92.74-206.75,206.75c0,37.64,10.46,74.71,30.24,107.19l5.36,8.8-20.66,77.09,77.52-20.78Z"
-                        fill="#fff"
-                      />
-                      <path
-                        d="M597.35,532.31c-10.49-6.28-24.14-13.28-36.51-8.23-9.48,3.88-15.54,18.73-21.68,26.31-3.15,3.89-6.92,4.5-11.76,2.55-35.6-14.18-62.88-37.95-82.52-70.69-3.33-5.09-2.73-9.1,1.28-13.82,5.94-6.98,13.39-14.92,14.99-24.34,1.61-9.41-2.81-20.42-6.7-28.81-4.98-10.72-10.54-25.99-21.27-32.06-9.87-5.57-22.86-2.45-31.65,4.71-15.17,12.35-22.49,31.71-22.27,50.9.06,5.45.73,10.89,2,16.15,3.06,12.66,8.91,24.47,15.5,35.71,4.96,8.47,10.36,16.69,16.18,24.6,19.04,25.87,42.73,48.34,70.16,65.15,13.71,8.39,28.47,15.75,43.75,20.81,17.14,5.66,32.42,11.56,50.93,8.04,19.38-3.68,38.49-15.68,46.19-34.35,2.28-5.53,3.41-11.69,2.14-17.53-2.63-12.08-18.98-19.25-28.75-25.09Z"
-                        fill="#fff"
-                      />
-                    </>
-                  )}
-                </svg>
-              </a>
-            ))}
-          </div>
-
-          {/* Contact Info */}
-          <div className="menu-contact">
-            <div className="contact-item">
-              <a href="tel:+393755153273" className="contact-link">
-                +39 375 515 3273
-              </a>
-            </div>
-            <div className="contact-item">
-              <a href="mailto:info@eqbmilano.it" className="contact-link">
-                info@eqbmilano.it
-              </a>
-            </div>
-            <div className="contact-item">
-              <p className="contact-text">
-                Viale Regina Margherita 43, 20122, Milano
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Section - Navigation */}
-        <div className="menu-right">
-          <nav className="menu-nav">
-            {menuItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="menu-item"
-                onClick={handleLinkClick}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Decorative Arc */}
-          <svg className="menu-arc" viewBox="0 0 300 300">
-            <path
-              d="M 0 300 Q 150 150 300 0"
-              fill="none"
-              stroke="rgba(75, 54, 49, 0.2)"
-              strokeWidth="3"
+    <div className={`menu-overlay${isOpen ? " menu-overlay--open" : ""}`}>
+      <div className="menu-overlay__grid">
+        {/* Colonna sinistra */}
+        <div className="menu-overlay__left">
+          <div className="menu-overlay__logo">
+            <Image
+              src="/assets/Logo-Bianco.svg"
+              alt="EQB Milano"
+              width={80}
+              height={40}
             />
-          </svg>
+          </div>
+
+          <div className="menu-overlay__socials">
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="menu-overlay__social-icon"
+              aria-label="LinkedIn"
+            >
+              <Image src="/assets/Icona-LinkedIn.svg" alt="LinkedIn" width={20} height={20} />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="menu-overlay__social-icon"
+              aria-label="Instagram"
+            >
+              <Image src="/assets/Icona-Instagram.svg" alt="Instagram" width={20} height={20} />
+            </a>
+            <a
+              href="https://wa.me/393755153273"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="menu-overlay__social-icon"
+              aria-label="WhatsApp"
+            >
+              <Image src="/assets/Icona-Whatsapp.svg" alt="WhatsApp" width={20} height={20} />
+            </a>
+          </div>
+
+          <div className="menu-overlay__contacts">
+            <p>+39 375 515 3273</p>
+            <p>info@eqbmilano.it</p>
+            <p>Milano, Italia</p>
+          </div>
         </div>
+
+        {/* Colonna destra — voci menu */}
+        <nav className="menu-overlay__right">
+          <ul className="menu-overlay__nav-list">
+            {navItems.map((item, i) => (
+              <li
+                key={item.label}
+                className="menu-overlay__nav-item"
+                style={{ animationDelay: `${0.25 + i * 0.08}s` }}
+              >
+                <a href={item.href} onClick={onClose}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </div>
   );

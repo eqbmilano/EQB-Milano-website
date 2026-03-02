@@ -1,63 +1,47 @@
 "use client";
-
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import React, { useState } from "react";
+import Image from "next/image";
 import { CTAButton } from "./CTAButton";
 import { MenuOverlay } from "./MenuOverlay";
-import { LanguageSelector } from "./LanguageSelector";
 import "./Navbar.css";
 
 export const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isMenuOpen]);
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
     <>
-      <nav className="navbar">
-        <div className="navbar-container">
-          {/* Logo */}
-          <div className="navbar-logo">
-            <Link href="/">
-              <span className="text-white font-bold text-xl">EQB</span>
-            </Link>
-          </div>
+      <nav className={`navbar${menuOpen ? " menu-open" : ""}`}>
+        <div className={`navbar__logo${menuOpen ? " navbar__logo--hidden" : ""}`}>
+          <Image
+            src="/assets/Logo-Bianco.svg"
+            alt="EQB Milano"
+            width={80}
+            height={40}
+            priority
+          />
+        </div>
 
-          {/* Right Section */}
-          <div className="navbar-right">
-            {/* Language Selector */}
-            <LanguageSelector />
-
-            {/* CTA Button */}
-            <CTAButton variant="light" className="navbar-cta">
+        <div className={`navbar__right${menuOpen ? " navbar__right--hidden" : ""}`}>
+          <div className="navbar__cta-desktop">
+            <CTAButton href="#contatti" variant="light">
               JOIN US
             </CTAButton>
-
-            {/* Hamburger Menu */}
-            <button
-              className={`navbar-hamburger ${isMenuOpen ? "active" : ""}`}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <span className="hamburger-line"></span>
-              <span className="hamburger-line"></span>
-            </button>
           </div>
         </div>
+
+        <button
+          className={`navbar__hamburger${menuOpen ? " navbar__hamburger--open" : ""}`}
+          onClick={toggleMenu}
+          aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
+        >
+          <span className="navbar__hamburger-line" />
+          <span className="navbar__hamburger-line" />
+        </button>
       </nav>
 
-      {/* Menu Overlay */}
-      {isMenuOpen && <MenuOverlay onClose={() => setIsMenuOpen(false)} />}
+      <MenuOverlay isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );
 };

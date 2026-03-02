@@ -1,0 +1,81 @@
+/* Section Perché Scegliere */
+.section-perche {
+  background-color: var(--color-white);
+  padding: 7rem 5rem;
+}
+
+.section-perche__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 4rem;
+}
+
+.section-perche__label {
+  font-family: var(--font-manrope);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.section-perche__title {
+  font-family: var(--font-helvetica);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  color: var(--color-brown-primary);
+}
+
+/* Grid 4 card */
+.section-perche__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.section-perche__card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  border-top: 1px solid var(--color-separator);
+}
+
+.section-perche__number {
+  font-family: var(--font-manrope);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  letter-spacing: 0.1em;
+}
+
+.section-perche__card-title {
+  font-family: var(--font-helvetica);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-brown-primary);
+}
+
+.section-perche__card-body {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-brown-secondary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .section-perche__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .section-perche {
+    padding: 5rem 1.5rem;
+  }
+
+  .section-perche__grid {
+    grid-template-columns: 1fr;
+  }
+}
