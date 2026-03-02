@@ -1,17 +1,14 @@
-/* Parallax Divider */
+/* Parallax Divider - Finestra Trasparente */
 .parallax-divider {
   height: 65vh;
-  background-image: url("/assets/Massaggio-viso.jpg");
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  position: relative;
+  /* Background rimosso per permettere di vedere l'immagine fissa sottostante */
+  background-color: transparent; 
 }
 
-/* Mobile: fixed attachment non funziona bene su iOS */
+/* Mobile */
 @media (max-width: 767px) {
   .parallax-divider {
-    background-attachment: scroll;
     height: 50vh;
   }
 }

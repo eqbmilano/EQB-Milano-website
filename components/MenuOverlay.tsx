@@ -19,6 +19,19 @@ const navItems = [
 export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => {
   return (
     <div className={`menu-overlay${isOpen ? " menu-overlay--open" : ""}`}>
+      {/* Background Image ottimizzata con Next.js */}
+      <div className="menu-overlay__bg">
+        <Image
+          src="/assets/Sfondo-Menu-Hamburger.jpg"
+          alt="Sfondo Menu"
+          fill
+          priority
+          quality={85}
+          style={{ objectFit: "cover" }}
+        />
+        <div className="menu-overlay__bg-overlay" />
+      </div>
+
       <div className="menu-overlay__grid">
         {/* Colonna sinistra */}
         <div className="menu-overlay__left">

@@ -11,6 +11,8 @@ export const Hero: React.FC = () => {
         loop
         muted
         playsInline
+        preload="auto"
+        poster="/assets/Sfondo-Menu-Hamburger.jpg" // Placeholder leggero o meglio nulla se background nero
       >
         <source src="/assets/Video-Home.mp4" type="video/mp4" />
       </video>

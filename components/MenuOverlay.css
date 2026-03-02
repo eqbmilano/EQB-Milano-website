@@ -3,15 +3,30 @@
   position: fixed;
   inset: 0;
   z-index: 1001;
-  background-image: url("/assets/Sfondo-Menu-Hamburger.jpg");
-  background-size: cover;
-  background-position: center;
-  /* Overlay scuro sopra l'immagine */
-  box-shadow: inset 0 0 0 100vmax rgba(52, 38, 34, 0.92);
+  /* Background gestito via next/image */
   transform: translateY(-100%);
   opacity: 0;
   pointer-events: none;
   transition: none;
+}
+
+/* Container per background image e overlay scuro */
+.menu-overlay__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+/* Overlay scuro sopra l'immagine */
+.menu-overlay__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(52, 38, 34, 0.92); /* Colore originale convertito in bg color con opacità */
+  /* O manteniamo box-shadow se l'effetto era specifico, ma bg-color è più performante */
+  /* Originale: box-shadow: inset 0 0 0 100vmax rgba(52, 38, 34, 0.92); */
+  /* box-shadow su inset grande può essere pesante. Proviamo background-color */
 }
 
 .menu-overlay--open {
