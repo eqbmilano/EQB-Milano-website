@@ -22,19 +22,11 @@ export const Hero: React.FC = () => {
       <div className="hero__content">
         <span className="hero__label hero__anim hero__anim--1">MILANO</span>
         <h1 className="hero__title hero__anim hero__anim--2">
-          WELLNESS &amp; FITNESS COWORKING
+          Wellness &amp; Fitness Coworking
         </h1>
-        <p className="hero__tagline hero__anim hero__anim--3">
-          EQB ridefinisce il modo di lavorare nel benessere psicofisico
+        <p className="hero__vision hero__anim hero__anim--3">
+          Spazio &rarr; Relazioni &rarr; Crescita
         </p>
-        <p className="hero__vision hero__anim hero__anim--4">
-          Spazio · Relazioni · Crescita
-        </p>
-        <div className="hero__cta hero__anim hero__anim--5">
-          <CTAButton href="#spazio" variant="light">
-            SCOPRI →
-          </CTAButton>
-        </div>
       </div>
     </section>
   );

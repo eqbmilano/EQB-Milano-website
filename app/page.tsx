@@ -1,6 +1,7 @@
 import {
   Navbar,
   Hero,
+  SectionEcosistema,
   SectionSpazio,
   ParallaxDivider,
   SectionPercheScegliere,
@@ -18,6 +19,7 @@ export default function Home() {
       <main className="w-full overflow-hidden relative">
         <Navbar />
         <Hero />
+        <SectionEcosistema />
         <SectionSpazio />
         <ParallaxDivider />
         <SectionPercheScegliere />

@@ -106,7 +106,7 @@
 }
 
 .footer__bottom p {
-  font-family: var(--font-manrope);
+  font-family: var(--font-poppins);
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.3);
   line-height: 1.5;

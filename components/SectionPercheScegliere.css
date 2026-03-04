@@ -21,9 +21,9 @@
 }
 
 .section-perche__title {
-  font-family: var(--font-helvetica);
+  font-family: var(--font-manrope);
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 300;
+  font-weight: 600;
   color: var(--color-brown-primary);
 }
 
@@ -51,13 +51,14 @@
 }
 
 .section-perche__card-title {
-  font-family: var(--font-helvetica);
+  font-family: var(--font-manrope);
   font-size: 1.1rem;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--color-brown-primary);
 }
 
 .section-perche__card-body {
+  font-family: var(--font-poppins);
   font-size: 0.875rem;
   line-height: 1.7;
   color: var(--color-brown-secondary);

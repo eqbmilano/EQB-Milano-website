@@ -1,5 +1,6 @@
 export * from "./Navbar";
 export * from "./Hero";
+export * from "./SectionEcosistema";
 export * from "./CTAButton";
 export * from "./SectionSpazio";
 export * from "./ParallaxDivider";

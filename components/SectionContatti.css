@@ -25,14 +25,15 @@
 }
 
 .section-contatti__title {
-  font-family: var(--font-serif);
+  font-family: var(--font-manrope);
   font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 400;
+  font-weight: 600;
   color: var(--color-brown-primary);
   line-height: 1.15;
 }
 
 .section-contatti__subtitle {
+  font-family: var(--font-poppins);
   color: var(--color-brown-secondary);
   font-size: 0.95rem;
   line-height: 1.8;

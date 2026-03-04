@@ -23,22 +23,22 @@ export const Navbar: React.FC = () => {
           />
         </div>
 
-        <div className={`navbar__right${menuOpen ? " navbar__right--hidden" : ""}`}>
-          <div className="navbar__cta-desktop">
+        <div className="navbar__right">
+          <div className={`navbar__cta-desktop${menuOpen ? " navbar__cta-desktop--hidden" : ""}`}>
             <CTAButton href="#contatti" variant="light">
-              JOIN US
+              Join Us
             </CTAButton>
           </div>
-        </div>
 
-        <button
-          className={`navbar__hamburger${menuOpen ? " navbar__hamburger--open" : ""}`}
-          onClick={toggleMenu}
-          aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
-        >
-          <span className="navbar__hamburger-line" />
-          <span className="navbar__hamburger-line" />
-        </button>
+          <button
+            className={`navbar__hamburger${menuOpen ? " navbar__hamburger--open" : ""}`}
+            onClick={toggleMenu}
+            aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
+          >
+            <span className="navbar__hamburger-line" />
+            <span className="navbar__hamburger-line" />
+          </button>
+        </div>
       </nav>
 
       <MenuOverlay isOpen={menuOpen} onClose={() => setMenuOpen(false)} />

@@ -27,18 +27,18 @@
 .navbar__right {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  opacity: 1;
-  transition: opacity 0.4s ease;
-}
-
-.navbar__right--hidden {
-  opacity: 0;
-  pointer-events: none;
+  gap: 2rem;
 }
 
 .navbar__cta-desktop {
   display: none;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.navbar__cta-desktop--hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 @media (min-width: 768px) {

@@ -23,14 +23,15 @@
 }
 
 .section-interno__title {
-  font-family: var(--font-helvetica);
+  font-family: var(--font-manrope);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 300;
+  font-weight: 600;
   color: var(--color-white);
   line-height: 1.25;
 }
 
 .section-interno__body {
+  font-family: var(--font-poppins);
   color: rgba(255, 255, 255, 0.65);
   font-size: 0.9rem;
   line-height: 1.8;
