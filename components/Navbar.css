@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 1002;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -70,8 +70,23 @@
   background-color: var(--color-white);
   border-radius: 2px;
   transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1),
-              opacity 0.3s ease;
+              opacity 0.3s ease,
+              background-color 0.4s ease;
   transform-origin: center;
+}
+
+/* Dark mode (sezioni chiare) */
+.navbar--dark .navbar__hamburger-line {
+  background-color: var(--color-brown-primary);
+}
+
+/* Transizione logo: filtro CSS converte il bianco verso il marrone brand (#342622).
+   Quando hai Logo-Marrone.svg posso fare lo swap diretto. */
+.navbar__logo img {
+  transition: filter 0.4s ease;
+}
+.navbar--dark .navbar__logo img {
+  filter: sepia(1) saturate(3) hue-rotate(330deg) brightness(0.35);
 }
 
 /* X state */
@@ -81,6 +96,17 @@
 
 .navbar__hamburger--open .navbar__hamburger-line:last-child {
   transform: translateY(-3.75px) rotate(-45deg);
+}
+
+/* La X scompare mentre il menu scende, poi ricompare */
+@keyframes xAppear {
+  0%   { opacity: 0; }
+  55%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.navbar__hamburger--open .navbar__hamburger-line {
+  animation: xAppear 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards;
 }
 
 /* Mobile padding */

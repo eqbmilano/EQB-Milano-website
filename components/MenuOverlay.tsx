@@ -52,7 +52,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
               className="menu-overlay__social-icon"
               aria-label="LinkedIn"
             >
-              <Image src="/assets/Icona-LinkedIn.svg" alt="LinkedIn" width={20} height={20} />
+              <Image src="/assets/Icona-LinkedIn.svg" alt="LinkedIn" width={36} height={36} />
             </a>
             <a
               href="https://instagram.com"
@@ -61,7 +61,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
               className="menu-overlay__social-icon"
               aria-label="Instagram"
             >
-              <Image src="/assets/Icona-Instagram.svg" alt="Instagram" width={20} height={20} />
+              <Image src="/assets/Icona-Instagram.svg" alt="Instagram" width={36} height={36} />
             </a>
             <a
               href="https://wa.me/393755153273"
@@ -70,14 +70,14 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
               className="menu-overlay__social-icon"
               aria-label="WhatsApp"
             >
-              <Image src="/assets/Icona-Whatsapp.svg" alt="WhatsApp" width={20} height={20} />
+              <Image src="/assets/Icona-Whatsapp.svg" alt="WhatsApp" width={36} height={36} />
             </a>
           </div>
 
           <div className="menu-overlay__contacts">
-            <p>+39 375 515 3273</p>
-            <p>info@eqbmilano.it</p>
-            <p>Milano, Italia</p>
+            <p><a href="tel:+393755153273">+39 375 515 3273</a></p>
+            <p><a href="mailto:info@eqbmilano.it">info@eqbmilano.it</a></p>
+            <p><a href="https://maps.google.com/?q=EQB+Milano" target="_blank" rel="noopener noreferrer">Milano, Italia</a></p>
           </div>
         </div>
 
