@@ -1,82 +1,238 @@
-/* Section Perché Scegliere */
+/* =============================================
+   Section Perché Scegliere — Bento Grid Layout
+   ============================================= */
+
 .section-perche {
-  background-color: var(--color-white);
-  padding: 7rem 5rem;
+  background-color: var(--color-bg-light);
+  padding: 7rem 2rem;
 }
 
+/* Header */
 .section-perche__header {
+  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.75rem;
-  margin-bottom: 4rem;
-}
-
-.section-perche__label {
-  font-family: var(--font-manrope);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--color-muted);
+  margin-bottom: 3rem;
 }
 
 .section-perche__title {
   font-family: var(--font-manrope);
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
   color: var(--color-brown-primary);
+  line-height: 1.2;
 }
 
-/* Grid 4 card */
-.section-perche__grid {
+.section-perche__subtitle {
+  font-family: var(--font-manrope);
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+/* ---- Bento Grid ---- */
+.section-perche__bento {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "autonomia  clienti"
+    "ecosistema clienti"
+    "bottom-row crescita";
+  gap: 0.875rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.section-perche__card {
+/* Grid area assignments */
+.card--autonomia  { grid-area: autonomia; }
+.card--clienti    { grid-area: clienti; align-self: stretch; }
+.card--ecosistema { grid-area: ecosistema; }
+.card--bottom-row {
+  grid-area: bottom-row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem;
+}
+.card--crescita   { grid-area: crescita; }
+
+/* ---- Base card ---- */
+.perche-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.75rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
-  border-top: 1px solid var(--color-separator);
+  gap: 0.6rem;
 }
 
-.section-perche__number {
+/* ---- Card typography ---- */
+.perche-card__title {
   font-family: var(--font-manrope);
-  font-size: 0.75rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  color: var(--color-muted);
-  letter-spacing: 0.1em;
+  color: var(--color-brown-primary);
+  line-height: 1.35;
+  margin: 0;
 }
 
-.section-perche__card-title {
+.perche-card__body {
   font-family: var(--font-manrope);
-  font-size: 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #777;
+  margin: 0;
+}
+
+.perche-card__label {
+  font-family: var(--font-manrope);
+  font-size: 1rem;
   font-weight: 600;
   color: var(--color-brown-primary);
 }
 
-.section-perche__card-body {
-  font-family: var(--font-poppins);
+/* ---- Slider decoration (Autonomia card) ---- */
+.perche-card__slider {
+  margin-top: auto;
+  padding-top: 1.75rem;
+}
+
+.slider-track {
+  position: relative;
+  height: 2px;
+  background: #e5e0dc;
+  border-radius: 2px;
+}
+
+.slider-thumb {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: var(--color-brown-primary);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 2px 8px rgba(50, 37, 35, 0.25);
+}
+
+.slider-thumb--a { left: 28%; }
+.slider-thumb--b { left: 65%; }
+
+/* ---- Clienti card placeholder ---- */
+.perche-card__placeholder {
+  margin-top: auto;
+  height: 160px;
+  background: var(--color-bg-light);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+/* ---- Award card ---- */
+.card--award {
+  justify-content: space-between;
+  min-height: 140px;
+}
+
+.card__trophy {
+  font-size: 2.75rem;
+  margin-top: auto;
+  line-height: 1;
+}
+
+/* ---- Professionisti card ---- */
+.card--professionisti {
+  justify-content: flex-start;
+  gap: 0.3rem;
+}
+
+.card__stars {
+  color: #D4A843;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+.card__number {
+  font-family: var(--font-manrope);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-brown-primary);
+  line-height: 1.1;
+}
+
+.card__number-label {
+  font-family: var(--font-manrope);
   font-size: 0.875rem;
-  line-height: 1.7;
-  color: var(--color-brown-secondary);
+  color: var(--color-muted);
+  margin: 0;
+  line-height: 1.4;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .section-perche__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* ---- Crescita card ---- */
+.card--crescita {
+  justify-content: space-between;
 }
 
-@media (max-width: 767px) {
+.card__arcs {
+  width: 100%;
+  max-width: 130px;
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+/* ---- CTA ---- */
+.section-perche__cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.section-perche__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-brown-primary);
+  color: #ffffff;
+  font-family: var(--font-manrope);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.9rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.section-perche__cta:hover {
+  opacity: 0.82;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
   .section-perche {
-    padding: 5rem 1.5rem;
+    padding: 5rem 1.25rem;
   }
 
-  .section-perche__grid {
+  .section-perche__bento {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "autonomia"
+      "clienti"
+      "ecosistema"
+      "bottom-row"
+      "crescita";
+  }
+
+  .card--clienti {
+    align-self: auto;
+  }
+
+  .perche-card__placeholder {
+    height: 120px;
+  }
+
+  .card--bottom-row {
+    grid-template-columns: 1fr 1fr;
   }
 }
