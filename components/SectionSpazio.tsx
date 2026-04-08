@@ -21,7 +21,7 @@ export const SectionSpazio: React.FC = () => {
         </div>
         <div className="section-spazio__image-wrapper">
           <Image
-            src="/assets/Osteopatia.jpg"
+            src="/assets/Stanza Terra.jpg"
             alt="Spazio professionale EQB"
             fill
             className="section-spazio__image"
