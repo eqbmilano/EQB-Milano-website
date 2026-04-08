@@ -10,9 +10,9 @@ const config: Config = {
       colors: {
         // Palette principale
         eqb: {
-          brown: "#342622",      // Marrone principale
-          "brown-secondary": "#4b3631", // Marrone secondario
-          "bg-light": "#EDEBE5", // Background chiaro
+          brown: "#322523",      // Marrone principale
+          "brown-secondary": "#4B3531", // Marrone secondario
+          "bg-light": "#F8F7F4", // Background chiaro (bianco sporco)
           muted: "#A09890",      // Testo muted / label
           separator: "#D4CFC9",  // Separatori
         },
