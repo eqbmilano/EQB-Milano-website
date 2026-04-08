@@ -48,7 +48,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-brown-primary);
+    background-color: var(--color-brown-secondary);
     color: #ffffff;
     font-family: var(--font-manrope);
     font-size: 1.125rem;
