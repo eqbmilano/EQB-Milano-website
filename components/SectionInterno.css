@@ -1,16 +1,27 @@
-/* Section Interno */
+/* =============================================
+   Section Interno — Carousel spazi
+   ============================================= */
+
 .section-interno {
   background-color: var(--color-brown-primary);
-  padding: 7rem 0 0;
+  padding: 7rem 0 5rem;
   overflow: hidden;
 }
 
-.section-interno__content {
+/* ---- Header ---- */
+.section-interno__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 5rem;
+  margin-bottom: 3rem;
+}
+
+.section-interno__header-text {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  padding: 0 5rem 4rem;
-  max-width: 600px;
+  gap: 1rem;
+  max-width: 560px;
 }
 
 .section-interno__label {
@@ -26,8 +37,9 @@
   font-family: var(--font-manrope);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   font-weight: 600;
-  color: var(--color-white);
+  color: #ffffff;
   line-height: 1.25;
+  margin: 0;
 }
 
 .section-interno__body {
@@ -35,33 +47,130 @@
   color: rgba(255, 255, 255, 0.65);
   font-size: 0.9rem;
   line-height: 1.8;
+  margin: 0;
 }
 
-/* Carousel */
-.section-interno__carousel {
-  padding-left: 5rem;
-  padding-bottom: 5rem;
+/* ---- Navigation arrows ---- */
+.section-interno__nav {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
 
-.section-interno__slide {
+.interno-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.interno-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+}
+
+.interno-nav-btn:disabled,
+.interno-nav-btn.swiper-button-disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* ---- Carousel wrapper ---- */
+.section-interno__carousel-wrap {
   position: relative;
-  height: 480px;
-  border-radius: 4px;
+  padding-left: 5rem;
+  cursor: none;
+}
+
+.interno-swiper {
+  overflow: visible !important;
+}
+
+/* ---- Slide ---- */
+.interno-slide {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+/* Portrait ratio 4:5 */
+.interno-slide__image-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 125%;
+  border-radius: 8px;
   overflow: hidden;
 }
 
-/* Mobile */
-@media (max-width: 767px) {
-  .section-interno__content {
-    padding: 0 1.5rem 3rem;
+.interno-slide__image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.interno-slide:hover .interno-slide__image {
+  transform: scale(1.05);
+}
+
+/* ---- Label ---- */
+.interno-slide__label {
+  font-family: var(--font-manrope);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ---- Custom drag cursor ---- */
+.interno-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  color: var(--color-brown-primary);
+  font-family: var(--font-manrope);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.875rem;
+  border-radius: 9999px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 9999;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .section-interno {
+    padding: 5rem 0 3.5rem;
   }
 
-  .section-interno__carousel {
+  .section-interno__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+
+  .section-interno__carousel-wrap {
     padding-left: 1.5rem;
-    padding-bottom: 4rem;
   }
 
-  .section-interno__slide {
-    height: 320px;
+  .interno-cursor {
+    display: none;
   }
 }
