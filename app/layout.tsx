@@ -31,6 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="it">
+      <head>
+        <meta name="color-scheme" content="light" />
+      </head>
       <body className={`${manrope.variable} ${poppins.variable} antialiased`}>
         {children}
       </body>

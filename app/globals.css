@@ -8,6 +8,7 @@
 
 /* CSS Variables - Palette EQB */
 :root {
+  color-scheme: light;
   /* Colori */
   --color-brown-primary: #322523;
   --color-brown-secondary: #4B3531;
@@ -42,7 +43,7 @@ html {
 }
 
 body {
-  background-color: var(--color-white);
+  background-color: var(--color-bg-light);
   color: var(--color-brown-primary);
   font-family: var(--font-poppins);
   line-height: 1.6;

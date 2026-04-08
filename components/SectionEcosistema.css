@@ -1,6 +1,6 @@
 /* Section Ecosistema */
 .section-ecosistema {
-    background-color: #ffffff;
+    background-color: var(--color-bg-light);
     padding: 8.75rem 2.5rem;
     /* Reduced by 30% from 12.5rem */
     display: flex;
@@ -48,7 +48,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #4F2A1A;
+    background-color: var(--color-brown-primary);
     color: #ffffff;
     font-family: var(--font-manrope);
     font-size: 1.125rem;

@@ -1,6 +1,6 @@
 /* Section Spazio */
 .section-spazio {
-  background-color: #2C2422; /* Very dark brown */
+  background-color: var(--color-brown-primary);
   padding: 8rem 2rem;
   display: flex;
   justify-content: center;
@@ -51,7 +51,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #443632; /* Lighter brown/taupe */
+  background-color: var(--color-brown-secondary);
   color: #ffffff;
   padding: 0.875rem 1.75rem;
   border-radius: 9999px;
@@ -65,7 +65,8 @@
 }
 
 .section-spazio__cta:hover {
-  background-color: #55443F;
+  background-color: var(--color-brown-secondary);
+  opacity: 0.85;
   transform: translateY(-2px);
 }
 
