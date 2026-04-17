@@ -6,9 +6,10 @@ export const SectionPercheScegliere: React.FC = () => {
   return (
     <section id="visione" className="section-perche">
       <div className="section-perche__header">
+        <span className="section-perche__label">COWORKING</span>
         <h2 className="section-perche__title">Perché scegliere EQB</h2>
         <p className="section-perche__subtitle">
-          Un sistema progettato per far crescere professionisti del benessere.
+          Non è solo uno studio in affitto. È una comunità di professionisti che condividono spazio, visione e l&rsquo;ambizione di fare davvero la differenza nel benessere delle persone.
         </p>
       </div>
 

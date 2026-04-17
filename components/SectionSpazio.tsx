@@ -7,6 +7,7 @@ export const SectionSpazio: React.FC = () => {
     <section id="spazio" className="section-spazio">
       <div className="section-spazio__container">
         <div className="section-spazio__content">
+          <span className="section-spazio__label">LO SPAZIO</span>
           <h2 className="section-spazio__title">
             Il tuo spazio,<br />
             già pronto.

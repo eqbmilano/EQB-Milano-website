@@ -7,7 +7,6 @@ import {
   SectionPercheScegliere,
   SectionInterno,
   SectionBenessere,
-  SectionContatti,
   Footer,
   FixedBackground,
 } from "@/components";
@@ -25,7 +24,6 @@ export default function Home() {
         <SectionPercheScegliere />
         <SectionInterno />
         <SectionBenessere />
-        <SectionContatti />
         <Footer />
       </main>
     </>

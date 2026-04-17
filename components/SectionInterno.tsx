@@ -1,17 +1,41 @@
 "use client";
 import React, { useRef, useCallback } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Mousewheel } from "swiper/modules";
 import "swiper/css";
 import "./SectionInterno.css";
 
 const slides = [
-  { src: "/assets/Stanza Terra.jpg",         label: "Stanza Terapia" },
-  { src: "/assets/Osteopatia.jpg",            label: "Osteopatia" },
-  { src: "/assets/Pilates.jpg",               label: "Pilates" },
-  { src: "/assets/Sala-Allenamento.jpg",      label: "Sala Allenamento" },
-  { src: "/assets/Reception-Sala-Attesa.jpg", label: "Reception" },
-  { src: "/assets/Massaggio-viso.jpg",        label: "Massaggio" },
+  {
+    src: "/assets/01_Terapia_Manuale.jpeg",
+    label: "Terapia Manuale",
+    href: "#terapia-manuale",
+    items: ["OSTEOPATIA", "FISIOTERAPIA", "MASSOTERAPIA"],
+  },
+  {
+    src: "/assets/02_Pilates_e_Yoga.jpeg",
+    label: "Pilates e Yoga",
+    href: "#pilates-yoga",
+    items: ["INDIVIDUALI", "DUETTI", "GRUPPI"],
+  },
+  {
+    src: "/assets/03_Personal_Training.jpeg",
+    label: "Personal Training",
+    href: "#personal-training",
+    items: ["ALL. POSTURALE", "ALL. FUNZIONALE", "CALISTHENICS"],
+  },
+  {
+    src: "/assets/04_Relax.jpeg",
+    label: "Relax",
+    href: "#relax",
+    items: ["MASSAGGI", "RIFLESSOLOGIA", "AROMATOUCH"],
+  },
+  {
+    src: "/assets/05_Consulenza.jpeg",
+    label: "Consulenza",
+    href: "#consulenza",
+    items: ["NUTRIZIONE", "PSICOTERAPIA", "MENTAL COACH"],
+  },
 ];
 
 export const SectionInterno: React.FC = () => {
@@ -40,17 +64,16 @@ export const SectionInterno: React.FC = () => {
       {/* Header */}
       <div className="section-interno__header">
         <div className="section-interno__header-text">
-          <span className="section-interno__label">GLI SPAZI</span>
+          <span className="section-interno__label">BENESSERE</span>
           <h2 className="section-interno__title">
-            Ambienti curati per il tuo lavoro quotidiano
+            All&rsquo;interno di EQB
           </h2>
           <p className="section-interno__body">
-            Ogni spazio di EQB è progettato con attenzione ai dettagli: materiali naturali,
-            luce calibrata, acustica pensata per garantire concentrazione e benessere.
+            Un unico luogo dove trattamento, movimento e recupero non si alternano,
+            ma si incontrano — perché il benessere vero nasce quando tutto lavora insieme.
           </p>
         </div>
 
-        {/* Frecce navigazione */}
         <div className="section-interno__nav">
           <button ref={prevRef} className="interno-nav-btn interno-nav-btn--prev" aria-label="Slide precedente">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -73,7 +96,7 @@ export const SectionInterno: React.FC = () => {
         onMouseMove={handleMouseMove}
       >
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation, Mousewheel]}
           navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
           onBeforeInit={(swiper) => {
             if (typeof swiper.params.navigation === "object" && swiper.params.navigation) {
@@ -82,22 +105,65 @@ export const SectionInterno: React.FC = () => {
             }
           }}
           slidesPerView={1.1}
-          spaceBetween={12}
+          spaceBetween={1}
           breakpoints={{
-            640:  { slidesPerView: 2.1, spaceBetween: 12 },
-            1024: { slidesPerView: 3.1, spaceBetween: 16 },
+            640:  { slidesPerView: 2.1, spaceBetween: 1 },
+            1024: { slidesPerView: 3.1, spaceBetween: 1 },
           }}
+          mousewheel={{ forceToAxis: true }}
           grabCursor
           className="interno-swiper"
         >
-          {slides.map((slide) => (
+          {slides.map((slide, i) => (
             <SwiperSlide key={slide.src} className="interno-slide">
+              <span className="interno-slide__number">{String(i + 1).padStart(2, "0")}</span>
+
               <div className="interno-slide__image-wrap">
                 <div
                   className="interno-slide__image"
-                  style={{ backgroundImage: `url(${slide.src})` }}
+                  style={{ backgroundImage: `url('${slide.src}')` }}
+                />
+
+                {/* Overlay: blur pieno + voci centrate + ESPLORA */}
+                <div className="interno-overlay">
+                  <div className="interno-overlay__content">
+                    <ul className="interno-overlay__list">
+                      {slide.items.map((item) => (
+                        <li key={item} className="interno-overlay__item">{item}</li>
+                      ))}
+                    </ul>
+                    <div className="interno-overlay__esplora">
+                      <div className="interno-overlay__esplora-btn">
+                        {/*
+                          ViewBox 128×36 — corrisponde esattamente al button (8rem×2.25rem a 16px base)
+                          rx=18 (height/2) → pill perfetto
+                          Due path speculari che partono dal basso-centro (64,36)
+                          e si incontrano al top-centro (64,0)
+                          Perimetro di ciascun path: 46 + π*18 + 46 = 148.55 ≈ 149
+                        */}
+                        <svg
+                          className="interno-overlay__esplora-svg"
+                          viewBox="0 0 128 36"
+                          xmlns="http://www.w3.org/2000/svg"
+                          aria-hidden="true"
+                        >
+                          <path className="esplora-path" d="M 64 36 L 18 36 A 18 18 0 0 1 18 0 L 64 0" />
+                          <path className="esplora-path" d="M 64 36 L 110 36 A 18 18 0 0 0 110 0 L 64 0" />
+                        </svg>
+                        <span className="interno-overlay__esplora-text">ESPLORA</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Link invisibile sull'intera card */}
+                <a
+                  href={slide.href}
+                  className="interno-slide__link-full"
+                  aria-label={`Scopri ${slide.label}`}
                 />
               </div>
+
               <span className="interno-slide__label">{slide.label}</span>
             </SwiperSlide>
           ))}

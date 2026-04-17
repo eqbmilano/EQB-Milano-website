@@ -43,44 +43,65 @@ export const Footer: React.FC = () => {
         <div className="footer__col">
           <span className="footer__col-label">Contatti</span>
           <div className="footer__contacts">
-            <p>+39 375 515 3273</p>
-            <p>info@eqbmilano.it</p>
-            <p>Milano, Italia</p>
+            <p>
+              <a href="tel:+393755153273">
+                +39 375 515 3273
+                <svg className="footer-contact-arrow" width="10" height="10" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 10L10 1M10 1H3M10 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </p>
+            <p>
+              <a href="mailto:info@eqbmilano.it">
+                info@eqbmilano.it
+                <svg className="footer-contact-arrow" width="10" height="10" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 10L10 1M10 1H3M10 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </p>
+            <p>
+              <a href="https://share.google/bu1nHJ6pAM3LBYwkU" target="_blank" rel="noopener noreferrer">
+                Viale Regina Margherita 43, 20122, Milano
+                <svg className="footer-contact-arrow" width="10" height="10" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 10L10 1M10 1H3M10 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </p>
           </div>
           <div className="footer__socials">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/eqbmilano"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__social-icon"
               aria-label="LinkedIn"
             >
-              <Image src="/assets/Icona-LinkedIn.svg" alt="LinkedIn" width={18} height={18} />
+              <Image src="/assets/Icona-LinkedIn.svg" alt="LinkedIn" width={40} height={40} />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/eqbmilano/"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__social-icon"
               aria-label="Instagram"
             >
-              <Image src="/assets/Icona-Instagram.svg" alt="Instagram" width={18} height={18} />
+              <Image src="/assets/Icona-Instagram.svg" alt="Instagram" width={40} height={40} />
             </a>
             <a
-              href="https://wa.me/393755153273"
+              href="https://wa.me/message/ZDLNL4HKLOF6H1"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__social-icon"
               aria-label="WhatsApp"
             >
-              <Image src="/assets/Icona-Whatsapp.svg" alt="WhatsApp" width={18} height={18} />
+              <Image src="/assets/Icona-Whatsapp.svg" alt="WhatsApp" width={40} height={40} />
             </a>
           </div>
         </div>
       </div>
 
       <div className="footer__bottom">
-        <p>© 2025 EQB Milano · Tutti i diritti riservati</p>
+        <p>© 2026 EQB Milano · Tutti i diritti riservati</p>
       </div>
     </footer>
   );

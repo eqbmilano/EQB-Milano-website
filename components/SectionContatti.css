@@ -1,72 +1,165 @@
-/* Section Contatti */
-.section-contatti {
-  background-color: var(--color-white);
-  padding: 8rem 5rem;
+/* =============================================
+   Section Split — Join Us (CTA duale)
+   ============================================= */
+
+.section-split {
   display: flex;
-  justify-content: center;
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
 }
 
-.section-contatti__inner {
-  max-width: 680px;
-  text-align: center;
+/* Divisore verticale sottile */
+.split-divider {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.18);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ---- Pannello ---- */
+.split-panel {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Foto — scala su hover */
+.split-panel__photo {
+  position: absolute;
+  inset: 0;
+  transform: scale(1);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.split-panel:hover .split-panel__photo {
+  transform: scale(1.04);
+}
+
+/* Gradiente scuro dal basso */
+.split-panel__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(18, 8, 6, 0.82) 0%,
+    rgba(18, 8, 6, 0.25) 45%,
+    transparent 75%
+  );
+  z-index: 1;
+}
+
+/* ---- Card glassmorphism ---- */
+.split-panel__card {
+  position: absolute;
+  bottom: 3rem;
+  left: 3rem;
+  max-width: 310px;
+  z-index: 3;
+  background: rgba(244, 241, 236, 0.1);
+  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  padding: 2rem 2.25rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
+  gap: 1.1rem;
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
-.section-contatti__label {
+.split-panel:hover .split-panel__card {
+  background: rgba(244, 241, 236, 0.16);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+/* Eyebrow */
+.split-card__eyebrow {
   font-family: var(--font-manrope);
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 600;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.45);
 }
 
-.section-contatti__title {
+/* Titolo */
+.split-card__title {
   font-family: var(--font-manrope);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 600;
-  color: var(--color-brown-primary);
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+  font-weight: 300;
+  color: #ffffff;
   line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
 }
 
-.section-contatti__subtitle {
-  font-family: var(--font-poppins);
-  color: var(--color-brown-secondary);
-  font-size: 0.95rem;
-  line-height: 1.8;
-  max-width: 520px;
-}
-
-.section-contatti__actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 0.5rem;
-}
-
-.section-contatti__info {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
+/* Corpo */
+.split-card__body {
   font-family: var(--font-manrope);
   font-size: 0.8rem;
-  color: var(--color-muted);
-  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.75;
+  margin: 0;
 }
 
-/* Mobile */
+/* CTA pill */
+.split-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--color-brown-primary);
+  font-family: var(--font-manrope);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.25s ease;
+}
+
+.split-card__cta:hover {
+  background: #ffffff;
+  opacity: 1;
+  color: var(--color-brown-primary);
+}
+
+/* ---- Mobile: stack verticale ---- */
 @media (max-width: 767px) {
-  .section-contatti {
-    padding: 5rem 1.5rem;
+  .section-split {
+    flex-direction: column;
+    height: auto;
   }
 
-  .section-contatti__info span:not(:first-child):not(:last-child) {
-    /* Nascondo i separatori su mobile molto stretto */
+  .split-panel {
+    height: 70vh;
+  }
+
+  .split-divider {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 70vh;
+    bottom: auto;
+    width: 100%;
+    height: 1px;
+  }
+
+  .split-panel__card {
+    bottom: 2rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    max-width: none;
+  }
+
+  .split-card__title {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
   }
 }

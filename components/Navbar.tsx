@@ -3,10 +3,12 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { CTAButton } from "./CTAButton";
 import { MenuOverlay } from "./MenuOverlay";
+import { JoinUsOverlay } from "./JoinUsOverlay";
 import "./Navbar.css";
 
 export const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [joinUsOpen, setJoinUsOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
@@ -36,7 +38,7 @@ export const Navbar: React.FC = () => {
 
         <div className="navbar__right">
           <div className={`navbar__cta-desktop${menuOpen ? " navbar__cta-desktop--hidden" : ""}`}>
-            <CTAButton href="#contatti" variant={darkMode ? "dark" : "light"}>
+            <CTAButton onClick={() => setJoinUsOpen(true)} variant={darkMode ? "dark" : "light"}>
               Join Us
             </CTAButton>
           </div>
@@ -53,6 +55,7 @@ export const Navbar: React.FC = () => {
       </nav>
 
       <MenuOverlay isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+      <JoinUsOverlay isOpen={joinUsOpen} onClose={() => setJoinUsOpen(false)} />
     </>
   );
 };

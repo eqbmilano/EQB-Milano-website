@@ -17,9 +17,19 @@
   margin-bottom: 3rem;
 }
 
+.section-perche__label {
+  font-family: var(--font-manrope);
+  font-size: 0.77rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  display: block;
+}
+
 .section-perche__title {
   font-family: var(--font-manrope);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.2rem, 4.4vw, 3.3rem);
   font-weight: 700;
   color: var(--color-brown-primary);
   line-height: 1.2;
@@ -27,7 +37,7 @@
 
 .section-perche__subtitle {
   font-family: var(--font-manrope);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--color-muted);
   max-width: 480px;
   line-height: 1.6;

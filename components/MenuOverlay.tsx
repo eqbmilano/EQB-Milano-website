@@ -9,17 +9,18 @@ interface MenuOverlayProps {
 }
 
 const navItems = [
-  { label: "Home", href: "#" },
-  { label: "Spazio", href: "#spazio" },
+  { label: "Home",      href: "#" },
+  { label: "Spazio",    href: "#spazio" },
   { label: "Benessere", href: "#benessere" },
-  { label: "Visione", href: "#visione" },
-  { label: "Contatti", href: "#contatti" },
+  { label: "Visione",   href: "#visione" },
+  { label: "Contatti",  href: "#contatti" },
 ];
 
 export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => {
   return (
     <div className={`menu-overlay${isOpen ? " menu-overlay--open" : ""}`}>
-      {/* Background Image ottimizzata con Next.js */}
+
+      {/* Sfondo */}
       <div className="menu-overlay__bg">
         <Image
           src="/assets/Sfondo-Menu-Hamburger.jpg"
@@ -33,8 +34,10 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
       </div>
 
       <div className="menu-overlay__grid">
-        {/* Colonna sinistra */}
+
+        {/* Colonna sinistra: logo → social → contatti */}
         <div className="menu-overlay__left">
+
           <div className="menu-overlay__logo">
             <Image
               src="/assets/Logo-Bianco.svg"
@@ -45,50 +48,57 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
           </div>
 
           <div className="menu-overlay__socials">
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="menu-overlay__social-icon"
-              aria-label="LinkedIn"
-            >
-              <Image src="/assets/Icona-LinkedIn.svg" alt="LinkedIn" width={36} height={36} />
+            <a href="https://www.linkedin.com/company/eqbmilano" target="_blank" rel="noopener noreferrer"
+              className="menu-overlay__social-icon" aria-label="LinkedIn">
+              <Image src="/assets/Icona-LinkedIn.svg" alt="LinkedIn" width={52} height={52} />
             </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="menu-overlay__social-icon"
-              aria-label="Instagram"
-            >
-              <Image src="/assets/Icona-Instagram.svg" alt="Instagram" width={36} height={36} />
+            <a href="https://www.instagram.com/eqbmilano/" target="_blank" rel="noopener noreferrer"
+              className="menu-overlay__social-icon" aria-label="Instagram">
+              <Image src="/assets/Icona-Instagram.svg" alt="Instagram" width={52} height={52} />
             </a>
-            <a
-              href="https://wa.me/393755153273"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="menu-overlay__social-icon"
-              aria-label="WhatsApp"
-            >
-              <Image src="/assets/Icona-Whatsapp.svg" alt="WhatsApp" width={36} height={36} />
+            <a href="https://wa.me/message/ZDLNL4HKLOF6H1" target="_blank" rel="noopener noreferrer"
+              className="menu-overlay__social-icon" aria-label="WhatsApp">
+              <Image src="/assets/Icona-Whatsapp.svg" alt="WhatsApp" width={52} height={52} />
             </a>
           </div>
 
           <div className="menu-overlay__contacts">
-            <p><a href="tel:+393755153273">+39 375 515 3273</a></p>
-            <p><a href="mailto:info@eqbmilano.it">info@eqbmilano.it</a></p>
-            <p><a href="https://maps.google.com/?q=EQB+Milano" target="_blank" rel="noopener noreferrer">Milano, Italia</a></p>
+            <p>
+              <a href="tel:+393755153273">
+                +39 375 515 3273
+                <svg className="menu-contact-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 10L10 1M10 1H3M10 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </p>
+            <p>
+              <a href="mailto:info@eqbmilano.it">
+                info@eqbmilano.it
+                <svg className="menu-contact-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 10L10 1M10 1H3M10 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </p>
+            <p>
+              <a href="https://share.google/bu1nHJ6pAM3LBYwkU" target="_blank" rel="noopener noreferrer">
+                Viale Regina Margherita 43, 20122, Milano
+                <svg className="menu-contact-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 10L10 1M10 1H3M10 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </p>
           </div>
+
         </div>
 
-        {/* Colonna destra — voci menu */}
+        {/* Colonna destra: voci di navigazione */}
         <nav className="menu-overlay__right">
           <ul className="menu-overlay__nav-list">
             {navItems.map((item, i) => (
               <li
                 key={item.label}
                 className="menu-overlay__nav-item"
-                style={{ animationDelay: `${0.25 + i * 0.08}s` }}
+                style={{ animationDelay: `${0.2 + i * 0.07}s` }}
               >
                 <a href={item.href} onClick={onClose}>
                   {item.label}
@@ -97,6 +107,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
             ))}
           </ul>
         </nav>
+
       </div>
     </div>
   );
