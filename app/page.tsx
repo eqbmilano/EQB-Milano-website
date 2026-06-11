@@ -1,31 +1,17 @@
-import {
-  Navbar,
-  Hero,
-  SectionEcosistema,
-  SectionSpazio,
-  ParallaxDivider,
-  SectionPercheScegliere,
-  SectionInterno,
-  SectionBenessere,
-  Footer,
-  FixedBackground,
-} from "@/components";
+// Sito in preparazione — non rimuovere questo file.
+// Il sito EQB completo sarà attivato da Marco quando pronto.
+// Le pagine /Federico-Mondin, /Roberta-Boara etc. sono già operative.
 
 export default function Home() {
   return (
-    <>
-      <FixedBackground />
-      <main className="w-full overflow-hidden relative">
-        <Navbar />
-        <Hero />
-        <SectionEcosistema />
-        <SectionSpazio />
-        <ParallaxDivider />
-        <SectionPercheScegliere />
-        <SectionInterno />
-        <SectionBenessere />
-        <Footer />
-      </main>
-    </>
+    <main
+      style={{
+        minHeight: "100vh",
+        background: "#322523",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    />
   );
 }
