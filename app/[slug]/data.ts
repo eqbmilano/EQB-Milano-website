@@ -21,10 +21,29 @@ export type Professionista = {
   };
 };
 
-const EQB_WHATSAPP = "https://wa.me/393755153273";
 export const EQB_MAPS = "https://www.google.com/maps/search/EQB+Milano+Wellness+Coworking";
 
 export const professionisti: Professionista[] = [
+  {
+    slug: "Cristiana-Curioni",
+    nome: "Cristiana",
+    cognome: "Curioni",
+    specializzazione: "Specialista in ChinesioPilates",
+    bio: "Percorsi di riequilibrio posturale per donne che vogliono tornare a muoversi bene — davvero, non solo in palestra.",
+    foto: "/assets/professionisti/cristiana-curioni.jpg",
+    promo: {
+      label: "Valutazione Posturale",
+      descrizione: "Prima sessione in studio: 30 minuti per analizzare il tuo corpo e capire da dove partire.",
+      link: "https://eqbstudiocoworking.as.me/?calendarID=11601280",
+    },
+    prenotaLink: "https://eqbstudiocoworking.as.me/?calendarID=11601280",
+    sitoWeb: undefined,
+    social: {
+      instagram: undefined,
+      whatsapp: undefined,
+      linkedin: undefined,
+    },
+  },
   {
     slug: "Federico-Mondin",
     nome: "Federico",
@@ -35,13 +54,14 @@ export const professionisti: Professionista[] = [
     promo: {
       label: "Prima Visita Gratuita",
       descrizione: "Scopri il tuo percorso con una visita esplorativa gratuita, senza impegno.",
-      link: `${EQB_WHATSAPP}?text=Ciao%20Federico%2C%20vorrei%20prenotare%20la%20visita%20gratuita!`,
+      link: "https://wa.me/393755153273?text=Ciao%20Federico%2C%20vorrei%20prenotare%20la%20visita%20gratuita!",
     },
-    prenotaLink: `${EQB_WHATSAPP}?text=Ciao%20Federico%2C%20vorrei%20prenotare%20una%20seduta!`,
+    prenotaLink: "https://wa.me/393755153273?text=Ciao%20Federico%2C%20vorrei%20prenotare%20una%20seduta!",
     sitoWeb: "https://federicomondin.eqbmilano.it",
     social: {
       instagram: "https://instagram.com/dottorfede32",
-      whatsapp: `${EQB_WHATSAPP}?text=Ciao%20Federico!`,
+      whatsapp: "https://wa.me/393755153273?text=Ciao%20Federico!",
+      linkedin: undefined,
     },
   },
   {
@@ -54,26 +74,14 @@ export const professionisti: Professionista[] = [
     promo: {
       label: "Prima Visita Gratuita",
       descrizione: "Scopri la riflessologia plantare con una sessione esplorativa gratuita.",
-      link: `${EQB_WHATSAPP}?text=Ciao%20Roberta%2C%20vorrei%20prenotare%20la%20visita%20gratuita!`,
+      link: "https://wa.me/393755153273?text=Ciao%20Roberta%2C%20vorrei%20prenotare%20la%20visita%20gratuita!",
     },
-    prenotaLink: `${EQB_WHATSAPP}?text=Ciao%20Roberta%2C%20vorrei%20prenotare%20una%20seduta!`,
+    prenotaLink: "https://wa.me/393755153273?text=Ciao%20Roberta%2C%20vorrei%20prenotare%20una%20seduta!",
+    sitoWeb: undefined,
     social: {
       instagram: undefined,
-      whatsapp: `${EQB_WHATSAPP}?text=Ciao%20Roberta!`,
-    },
-  },
-  {
-    slug: "Cristiana-Cognome", // da aggiornare con cognome reale
-    nome: "Cristiana",
-    cognome: "Cognome",
-    specializzazione: "Specializzazione",
-    bio: "Descrizione professionale da aggiornare.",
-    foto: undefined,
-    promo: undefined,
-    prenotaLink: `${EQB_WHATSAPP}?text=Ciao%20Cristiana%2C%20vorrei%20prenotare%20una%20seduta!`,
-    social: {
-      instagram: undefined,
-      whatsapp: `${EQB_WHATSAPP}?text=Ciao%20Cristiana!`,
+      whatsapp: undefined,
+      linkedin: undefined,
     },
   },
 ];
