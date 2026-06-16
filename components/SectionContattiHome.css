@@ -1,0 +1,94 @@
+/* [project]/components/SectionContattiHome.css [app-client] (css) */
+.section-contatti-home {
+  background-color: #080503;
+  height: 70vh;
+  min-height: 480px;
+  display: flex;
+}
+
+.sch__text {
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 4rem 4rem 4rem 5rem;
+  display: flex;
+}
+
+.sch__eyebrow {
+  font-family: var(--font-manrope);
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: #ffffff59;
+  font-size: .6rem;
+  font-weight: 600;
+}
+
+.sch__title {
+  font-family: var(--font-manrope);
+  color: #fff;
+  letter-spacing: -.02em;
+  margin: 0;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.sch__body {
+  font-family: var(--font-manrope);
+  color: #ffffff73;
+  margin: 0;
+  font-size: .82rem;
+  line-height: 1.8;
+}
+
+.sch__links {
+  flex-direction: column;
+  gap: .6rem;
+  margin-top: .5rem;
+  display: flex;
+}
+
+.sch__link {
+  font-family: var(--font-manrope);
+  color: #ffffff8c;
+  letter-spacing: .02em;
+  align-items: center;
+  gap: .38rem;
+  width: fit-content;
+  font-size: .8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .22s;
+  display: inline-flex;
+}
+
+.sch__link:hover {
+  color: #fff;
+}
+
+.sch__photo {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .section-contatti-home {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sch__text {
+    gap: 1rem;
+    padding: 3.5rem 1.75rem;
+  }
+
+  .sch__photo {
+    flex: none;
+    height: 45vw;
+    min-height: 220px;
+  }
+}
+
+/*# sourceMappingURL=components_SectionContattiHome_css_bad6b30c._.single.css.map*/

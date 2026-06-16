@@ -1,0 +1,172 @@
+/* [project]/components/VeroVariantPreview.css [app-client] (css) */
+.vero-section {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 7rem 2rem;
+  display: flex;
+}
+
+.vero-section--light {
+  background-color: var(--color-bg-light);
+}
+
+.vero-section--dark {
+  background-color: var(--color-brown-primary);
+}
+
+.vero-section--warm {
+  background-color: #f5ede4;
+}
+
+.vero-variant-label {
+  font-family: var(--font-manrope);
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0;
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.vero-variant-label--light {
+  color: #ffffff73;
+}
+
+.vero-title {
+  font-family: var(--font-playfair);
+  letter-spacing: -.02em;
+  color: var(--color-brown-primary);
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.vero-title--light {
+  color: #fff;
+}
+
+.vero-subtitle {
+  font-family: var(--font-manrope);
+  color: #8a7f78;
+  max-width: 520px;
+  margin: 0;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  line-height: 1.7;
+}
+
+.vero-section--dark .vero-subtitle {
+  color: #ffffff8c;
+}
+
+.vero-a {
+  color: var(--color-brown-primary);
+  font-weight: 700;
+  display: inline-block;
+  position: relative;
+}
+
+.vero-a__line {
+  width: calc(100% + 8px);
+  height: 8px;
+  color: var(--color-brown-primary);
+  stroke-dasharray: 75;
+  stroke-dashoffset: 75px;
+  transition: stroke-dashoffset;
+  position: absolute;
+  bottom: -6px;
+  left: -4px;
+  overflow: visible;
+}
+
+.vero-a--on .vero-a__line {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset .7s cubic-bezier(.4, 0, .2, 1) .15s;
+}
+
+.vero-b {
+  color: #fff;
+  isolation: isolate;
+  padding: 0 .2em;
+  font-weight: 700;
+  display: inline-block;
+  position: relative;
+}
+
+.vero-b:before {
+  content: "";
+  transform-origin: 0;
+  z-index: -1;
+  background: #ffffff38;
+  border-radius: 3px;
+  transition: transform;
+  position: absolute;
+  inset: -1px -3px;
+  transform: scaleX(0);
+}
+
+.vero-b--on:before {
+  transition: transform .55s cubic-bezier(.4, 0, .2, 1) .1s;
+  transform: scaleX(1);
+}
+
+.vero-section--light .vero-b {
+  color: var(--color-brown-primary);
+}
+
+.vero-section--light .vero-b:before {
+  background: #8c644624;
+}
+
+.vero-c {
+  color: var(--color-brown-primary);
+  opacity: 0;
+  font-style: italic;
+  font-weight: 700;
+  transition: opacity, transform, color;
+  transform: skewX(-4deg);
+}
+
+.vero-c--on {
+  opacity: 1;
+  font-size: 1.08em;
+  transition: opacity .5s .1s, color .5s .1s;
+  transform: skewX(-4deg);
+}
+
+.vero-d {
+  color: var(--color-brown-primary);
+  padding-bottom: 3px;
+  font-weight: 700;
+  display: inline-block;
+  position: relative;
+}
+
+.vero-d:after {
+  content: "";
+  background: var(--color-brown-primary);
+  transform-origin: 0;
+  border-radius: 2px;
+  width: 100%;
+  height: 3px;
+  transition: transform;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+}
+
+.vero-d--on:after {
+  transition: transform .5s cubic-bezier(.4, 0, .2, 1) .12s;
+  transform: scaleX(1);
+}
+
+@media (max-width: 640px) {
+  .vero-section {
+    padding: 5rem 1.25rem;
+  }
+}
+
+/*# sourceMappingURL=components_VeroVariantPreview_css_bad6b30c._.single.css.map*/

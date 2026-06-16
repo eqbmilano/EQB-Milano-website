@@ -1,0 +1,36 @@
+/* [project]/components/PageHero.css [app-client] (css) */
+.page-hero {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero__image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.page-hero__overlay {
+  z-index: 1;
+  background: #140a0880;
+  position: absolute;
+  inset: 0;
+}
+
+.page-hero__title {
+  z-index: 2;
+  font-family: var(--font-manrope);
+  color: #fff;
+  letter-spacing: -.03em;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-weight: 700;
+  line-height: 1;
+  position: relative;
+}
+
+/*# sourceMappingURL=components_PageHero_css_bad6b30c._.single.css.map*/

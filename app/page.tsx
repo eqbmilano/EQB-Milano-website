@@ -1,7 +1,33 @@
-import { notFound } from "next/navigation";
+import {
+  Navbar,
+  Hero,
+  SectionEcosistema,
+  SectionSpazio,
+  ParallaxDivider,
+  SectionPercheScegliere,
+  SectionInterno,
+  SectionVisione,
+  SectionRecensioni,
+  Footer,
+  FixedBackground,
+} from "@/components";
 
-// Homepage non disponibile fino al lancio ufficiale del sito.
-// Le pagine /Federico-Mondin, /Roberta-Boara etc. sono operative.
 export default function Home() {
-  notFound();
+  return (
+    <>
+      <FixedBackground />
+      <main className="w-full relative">
+        <Navbar />
+        <Hero />
+        <SectionEcosistema />
+        <SectionSpazio />
+        <ParallaxDivider />
+        <SectionPercheScegliere />
+        <SectionInterno />
+        <SectionRecensioni />
+        <SectionVisione />
+        <Footer />
+      </main>
+    </>
+  );
 }

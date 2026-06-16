@@ -1,3 +1,6 @@
+export * from "./Reveal";
+export * from "./SpazioPage";
+export * from "./PageHero";
 export * from "./Navbar";
 export * from "./Hero";
 export * from "./SectionEcosistema";
@@ -7,6 +10,8 @@ export * from "./ParallaxDivider";
 export * from "./SectionPercheScegliere";
 export * from "./SectionInterno";
 export * from "./SectionBenessere";
+export * from "./SectionVisione";
+export * from "./SectionRecensioni";
 export * from "./SectionContatti";
 export * from "./Footer";
 export * from "./MenuOverlay";

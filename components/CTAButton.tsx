@@ -5,7 +5,7 @@ interface CTAButtonProps {
   children: React.ReactNode;
   href?: string;
   onClick?: () => void;
-  variant?: "dark" | "light";
+  variant?: "dark" | "light" | "filled";
   className?: string;
 }
 

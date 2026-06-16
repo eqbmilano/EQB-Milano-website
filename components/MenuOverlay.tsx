@@ -9,11 +9,12 @@ interface MenuOverlayProps {
 }
 
 const navItems = [
-  { label: "Home",      href: "#" },
-  { label: "Spazio",    href: "#spazio" },
-  { label: "Benessere", href: "#benessere" },
-  { label: "Visione",   href: "#visione" },
-  { label: "Contatti",  href: "#contatti" },
+  { label: "Home",       href: "/" },
+  { label: "Spazio",     href: "/spazio" },
+  { label: "Coworking",  href: "/coworking" },
+  { label: "Benessere",  href: "/benessere" },
+  { label: "Visione",    href: "/visione" },
+  { label: "Contatti",   href: "/contatti" },
 ];
 
 export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => {

@@ -1,248 +1,482 @@
-/* =============================================
-   Section Perché Scegliere — Bento Grid Layout
-   ============================================= */
-
 .section-perche {
   background-color: var(--color-bg-light);
-  padding: 7rem 2rem;
+  padding: 9.5rem 2rem;
 }
 
-/* Header */
-.section-perche__header {
-  text-align: center;
-  display: flex;
+.perche__inner {
   flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 3rem;
+  gap: 5rem;
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
 }
 
-.section-perche__label {
+.perche__header {
+  flex-direction: column;
+  gap: 1rem;
+  display: flex;
+}
+
+.perche__label {
   font-family: var(--font-manrope);
-  font-size: 0.77rem;
-  font-weight: 600;
-  letter-spacing: 0.25em;
+  letter-spacing: .28em;
   text-transform: uppercase;
   color: var(--color-muted);
-  display: block;
-}
-
-.section-perche__title {
-  font-family: var(--font-manrope);
-  font-size: clamp(2.2rem, 4.4vw, 3.3rem);
+  font-size: .73rem;
   font-weight: 700;
-  color: var(--color-brown-primary);
-  line-height: 1.2;
 }
 
-.section-perche__subtitle {
+.perche__title {
   font-family: var(--font-manrope);
-  font-size: 1.05rem;
-  color: var(--color-muted);
-  max-width: 480px;
-  line-height: 1.6;
-}
-
-/* ---- Bento Grid ---- */
-.section-perche__bento {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "autonomia  clienti"
-    "ecosistema clienti"
-    "bottom-row crescita";
-  gap: 0.875rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-/* Grid area assignments */
-.card--autonomia  { grid-area: autonomia; }
-.card--clienti    { grid-area: clienti; align-self: stretch; }
-.card--ecosistema { grid-area: ecosistema; }
-.card--bottom-row {
-  grid-area: bottom-row;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.875rem;
-}
-.card--crescita   { grid-area: crescita; }
-
-/* ---- Base card ---- */
-.perche-card {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-/* ---- Card typography ---- */
-.perche-card__title {
-  font-family: var(--font-manrope);
-  font-size: 1.2rem;
-  font-weight: 600;
   color: var(--color-brown-primary);
-  line-height: 1.35;
+  letter-spacing: -.03em;
   margin: 0;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
 }
 
-.perche-card__body {
+.perche__subtitle {
   font-family: var(--font-manrope);
-  font-size: 0.85rem;
-  line-height: 1.65;
-  color: #777;
+  color: #555;
+  max-width: 520px;
   margin: 0;
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1.55;
 }
 
-.perche-card__label {
-  font-family: var(--font-manrope);
-  font-size: 1rem;
-  font-weight: 600;
+.perche__vero {
   color: var(--color-brown-primary);
-}
-
-/* ---- Slider decoration (Autonomia card) ---- */
-.perche-card__slider {
-  margin-top: auto;
-  padding-top: 1.75rem;
-}
-
-.slider-track {
+  font-weight: 600;
+  display: inline-block;
   position: relative;
-  height: 2px;
-  background: #e5e0dc;
-  border-radius: 2px;
 }
 
-.slider-thumb {
+.perche__vero-line {
+  width: calc(100% + 6px);
+  height: 8px;
+  color: var(--color-brown-primary);
+  stroke-dasharray: 75;
+  stroke-dashoffset: 75px;
+  transition: stroke-dashoffset;
   position: absolute;
-  width: 22px;
-  height: 22px;
-  background: var(--color-brown-primary);
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  box-shadow: 0 2px 8px rgba(50, 37, 35, 0.25);
+  bottom: -7px;
+  left: -3px;
+  overflow: visible;
 }
 
-.slider-thumb--a { left: 28%; }
-.slider-thumb--b { left: 65%; }
-
-/* ---- Clienti card placeholder ---- */
-.perche-card__placeholder {
-  margin-top: auto;
-  height: 160px;
-  background: var(--color-bg-light);
-  border-radius: 12px;
-  flex-shrink: 0;
+.perche__vero--on .perche__vero-line {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset .7s cubic-bezier(.4, 0, .2, 1) 1.1s;
 }
 
-/* ---- Award card ---- */
-.card--award {
-  justify-content: space-between;
-  min-height: 140px;
+.perche__grid-2x2 {
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  display: grid;
 }
 
-.card__trophy {
-  font-size: 2.75rem;
-  margin-top: auto;
+.pcard {
+  cursor: default;
+  will-change: transform;
+  background: #fff;
+  border-radius: 24px;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 240px;
+  padding: 2.75rem;
+  display: flex;
+  box-shadow: 0 2px 16px #3225230f;
+}
+
+.pcard__value {
+  font-family: var(--font-manrope);
+  color: var(--color-brown-primary);
+  letter-spacing: -.04em;
+  font-size: clamp(3rem, 5vw, 4.25rem);
+  font-weight: 800;
   line-height: 1;
 }
 
-/* ---- Professionisti card ---- */
-.card--professionisti {
-  justify-content: flex-start;
-  gap: 0.3rem;
-}
-
-.card__stars {
-  color: #D4A843;
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-}
-
-.card__number {
+.pcard__title {
   font-family: var(--font-manrope);
-  font-size: 2.5rem;
-  font-weight: 700;
   color: var(--color-brown-primary);
-  line-height: 1.1;
-}
-
-.card__number-label {
-  font-family: var(--font-manrope);
-  font-size: 0.875rem;
-  color: var(--color-muted);
+  letter-spacing: -.01em;
   margin: 0;
-  line-height: 1.4;
+  font-size: 1.15rem;
+  font-weight: 700;
 }
 
-/* ---- Crescita card ---- */
-.card--crescita {
-  justify-content: space-between;
-}
-
-.card__arcs {
-  width: 100%;
-  max-width: 130px;
-  margin-top: auto;
-  align-self: flex-end;
-}
-
-/* ---- CTA ---- */
-.section-perche__cta-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 2.5rem;
-}
-
-.section-perche__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--color-brown-primary);
-  color: #ffffff;
+.pcard__desc {
   font-family: var(--font-manrope);
-  font-size: 0.95rem;
+  color: #777;
+  margin: 0;
+  font-size: .95rem;
+  line-height: 1.7;
+}
+
+.perche__statement {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  display: flex;
+}
+
+.statement__lines {
+  flex-direction: column;
+  gap: .35rem;
+  display: flex;
+}
+
+.statement__line {
+  font-family: var(--font-manrope);
+  color: #888;
+  letter-spacing: .01em;
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.statement__divider {
+  background: var(--color-brown-primary);
+  opacity: .25;
+  width: 40px;
+  height: 1px;
+  margin: 0 auto;
+}
+
+.statement__coda {
+  font-family: var(--font-manrope);
+  color: var(--color-brown-primary);
+  letter-spacing: -.04em;
+  margin: 0;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.perche-anim {
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity .85s cubic-bezier(.22, 1, .36, 1), filter .85s cubic-bezier(.22, 1, .36, 1), transform .85s cubic-bezier(.22, 1, .36, 1);
+  transform: translateY(28px);
+}
+
+.is-visible .perche-anim--1 {
+  opacity: 1;
+  filter: blur();
+  transition-delay: 0s;
+  transform: translateY(0);
+}
+
+.is-visible .perche-anim--2 {
+  opacity: 1;
+  filter: blur();
+  transition-delay: .15s;
+  transform: translateY(0);
+}
+
+.is-visible .perche-anim--3 {
+  opacity: 1;
+  filter: blur();
+  transition-delay: .3s;
+  transform: translateY(0);
+}
+
+.is-visible .perche-anim--4 {
+  opacity: 1;
+  filter: blur();
+  transition-delay: .5s;
+  transform: translateY(0);
+}
+
+.is-visible .perche-anim--5 {
+  opacity: 1;
+  filter: blur();
+  transition-delay: .7s;
+  transform: translateY(0);
+}
+
+.statement__cta {
+  font-family: var(--font-manrope);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-brown-primary);
+  opacity: .6;
+  border-bottom: 1px solid;
+  align-items: center;
+  gap: .4rem;
+  margin-top: 2rem;
+  padding-bottom: 3px;
+  font-size: .9rem;
   font-weight: 600;
-  padding: 0.9rem 2rem;
-  border-radius: 9999px;
   text-decoration: none;
-  transition: opacity 0.2s ease;
+  transition: opacity .25s;
+  display: inline-flex;
 }
 
-.section-perche__cta:hover {
-  opacity: 0.82;
+.statement__cta:hover {
+  opacity: 1;
 }
 
-/* ---- Responsive ---- */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .section-perche {
     padding: 5rem 1.25rem;
   }
 
-  .section-perche__bento {
+  .perche__inner {
+    gap: 3.5rem;
+  }
+
+  .perche__grid-2x2 {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "autonomia"
-      "clienti"
-      "ecosistema"
-      "bottom-row"
-      "crescita";
   }
 
-  .card--clienti {
-    align-self: auto;
+  .perche__statement {
+    padding: 2.5rem 1rem;
+  }
+}
+
+:root {
+  --swiper-theme-color: #007aff;
+}
+
+:host {
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  position: relative;
+}
+
+.swiper {
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  list-style: none;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.swiper-vertical > .swiper-wrapper {
+  flex-direction: column;
+}
+
+.swiper-wrapper {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  transition-property: transform;
+  transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+  box-sizing: content-box;
+  display: flex;
+  position: relative;
+}
+
+.swiper-android .swiper-slide, .swiper-ios .swiper-slide, .swiper-wrapper {
+  transform: translate3d(0, 0, 0);
+}
+
+.swiper-horizontal {
+  touch-action: pan-y;
+}
+
+.swiper-vertical {
+  touch-action: pan-x;
+}
+
+.swiper-slide {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  transition-property: transform;
+  display: block;
+  position: relative;
+}
+
+.swiper-slide-invisible-blank {
+  visibility: hidden;
+}
+
+.swiper-autoheight, .swiper-autoheight .swiper-slide {
+  height: auto;
+}
+
+.swiper-autoheight .swiper-wrapper {
+  align-items: flex-start;
+  transition-property: transform, height;
+}
+
+.swiper-backface-hidden .swiper-slide {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.swiper-3d.swiper-css-mode .swiper-wrapper {
+  perspective: 1200px;
+}
+
+.swiper-3d .swiper-wrapper {
+  transform-style: preserve-3d;
+}
+
+.swiper-3d {
+  perspective: 1200px;
+}
+
+.swiper-3d .swiper-slide, .swiper-3d .swiper-cube-shadow {
+  transform-style: preserve-3d;
+}
+
+.swiper-css-mode > .swiper-wrapper {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: auto;
+}
+
+.swiper-css-mode > .swiper-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.swiper-css-mode > .swiper-wrapper > .swiper-slide {
+  scroll-snap-align: start start;
+}
+
+.swiper-css-mode.swiper-horizontal > .swiper-wrapper {
+  scroll-snap-type: x mandatory;
+}
+
+.swiper-css-mode.swiper-horizontal > .swiper-wrapper > .swiper-slide:first-child {
+  margin-inline-start: var(--swiper-slides-offset-before);
+  scroll-margin-inline-start: var(--swiper-slides-offset-before);
+}
+
+.swiper-css-mode.swiper-horizontal > .swiper-wrapper > .swiper-slide:last-child {
+  margin-inline-end: var(--swiper-slides-offset-after);
+}
+
+.swiper-css-mode.swiper-vertical > .swiper-wrapper {
+  scroll-snap-type: y mandatory;
+}
+
+.swiper-css-mode.swiper-vertical > .swiper-wrapper > .swiper-slide:first-child {
+  margin-block-start: var(--swiper-slides-offset-before);
+  scroll-margin-block-start: var(--swiper-slides-offset-before);
+}
+
+.swiper-css-mode.swiper-vertical > .swiper-wrapper > .swiper-slide:last-child {
+  margin-block-end: var(--swiper-slides-offset-after);
+}
+
+.swiper-css-mode.swiper-free-mode > .swiper-wrapper {
+  scroll-snap-type: none;
+}
+
+.swiper-css-mode.swiper-free-mode > .swiper-wrapper > .swiper-slide {
+  scroll-snap-align: none;
+}
+
+.swiper-css-mode.swiper-centered > .swiper-wrapper:before {
+  content: "";
+  flex-shrink: 0;
+  order: 9999;
+}
+
+.swiper-css-mode.swiper-centered > .swiper-wrapper > .swiper-slide {
+  scroll-snap-align: center center;
+  scroll-snap-stop: always;
+}
+
+.swiper-css-mode.swiper-centered.swiper-horizontal > .swiper-wrapper > .swiper-slide:first-child {
+  margin-inline-start: var(--swiper-centered-offset-before);
+}
+
+.swiper-css-mode.swiper-centered.swiper-horizontal > .swiper-wrapper:before {
+  height: 100%;
+  min-height: 1px;
+  width: var(--swiper-centered-offset-after);
+}
+
+.swiper-css-mode.swiper-centered.swiper-vertical > .swiper-wrapper > .swiper-slide:first-child {
+  margin-block-start: var(--swiper-centered-offset-before);
+}
+
+.swiper-css-mode.swiper-centered.swiper-vertical > .swiper-wrapper:before {
+  width: 100%;
+  min-width: 1px;
+  height: var(--swiper-centered-offset-after);
+}
+
+.swiper-3d .swiper-slide-shadow, .swiper-3d .swiper-slide-shadow-left, .swiper-3d .swiper-slide-shadow-right, .swiper-3d .swiper-slide-shadow-top, .swiper-3d .swiper-slide-shadow-bottom, .swiper-3d .swiper-slide-shadow, .swiper-3d .swiper-slide-shadow-left, .swiper-3d .swiper-slide-shadow-right, .swiper-3d .swiper-slide-shadow-top, .swiper-3d .swiper-slide-shadow-bottom {
+  pointer-events: none;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.swiper-3d .swiper-slide-shadow {
+  background: #00000026;
+}
+
+.swiper-3d .swiper-slide-shadow-left {
+  background-image: linear-gradient(to left, #00000080, #0000);
+}
+
+.swiper-3d .swiper-slide-shadow-right {
+  background-image: linear-gradient(to right, #00000080, #0000);
+}
+
+.swiper-3d .swiper-slide-shadow-top {
+  background-image: linear-gradient(to top, #00000080, #0000);
+}
+
+.swiper-3d .swiper-slide-shadow-bottom {
+  background-image: linear-gradient(#00000080, #0000);
+}
+
+.swiper-lazy-preloader {
+  z-index: 10;
+  transform-origin: 50%;
+  box-sizing: border-box;
+  border: 4px solid var(--swiper-preloader-color, var(--swiper-theme-color));
+  border-top-color: #0000;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  margin-top: -21px;
+  margin-left: -21px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+:is(.swiper:not(.swiper-watch-progress), .swiper-watch-progress .swiper-slide-visible) .swiper-lazy-preloader {
+  animation: 1s linear infinite swiper-preloader-spin;
+}
+
+.swiper-lazy-preloader-white {
+  --swiper-preloader-color: #fff;
+}
+
+.swiper-lazy-preloader-black {
+  --swiper-preloader-color: #000;
+}
+
+@keyframes swiper-preloader-spin {
+  0% {
+    transform: rotate(0);
   }
 
-  .perche-card__placeholder {
-    height: 120px;
-  }
-
-  .card--bottom-row {
-    grid-template-columns: 1fr 1fr;
+  100% {
+    transform: rotate(360deg);
   }
 }

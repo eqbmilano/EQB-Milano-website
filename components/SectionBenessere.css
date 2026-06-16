@@ -1,91 +1,90 @@
-/* Section Benessere */
+/* [project]/components/SectionBenessere.css [app-client] (css) */
 .section-benessere {
   background-color: var(--color-bg-light);
-  padding: 7rem 5rem;
+  padding: 11rem 5rem;
 }
 
 .section-benessere__header {
-  display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: .75rem;
   margin-bottom: 3.5rem;
+  display: flex;
 }
 
 .section-benessere__label {
   font-family: var(--font-manrope);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.25em;
+  letter-spacing: .25em;
   text-transform: uppercase;
   color: var(--color-muted);
+  font-size: .7rem;
+  font-weight: 600;
 }
 
 .section-benessere__title {
   font-family: var(--font-manrope);
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 600;
+  letter-spacing: -.02em;
   color: var(--color-brown-primary);
+  font-size: clamp(2.75rem, 5.5vw, 3.85rem);
+  font-weight: 600;
+  line-height: 1.1;
 }
 
-/* Grid 2 colonne */
 .section-benessere__grid {
-  display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
+  display: grid;
 }
 
 .section-benessere__col {
-  display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  display: flex;
 }
 
-/* Immagine */
 .section-benessere__image-wrap {
-  position: relative;
-  height: 420px;
   border-radius: 4px;
+  height: 420px;
+  position: relative;
   overflow: hidden;
 }
 
 .section-benessere__tag {
+  font-family: var(--font-manrope);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  z-index: 2;
+  background: #322523bf;
+  border-radius: 50px;
+  padding: .4rem .85rem;
+  font-size: .7rem;
+  font-weight: 600;
   position: absolute;
   bottom: 1.25rem;
   left: 1.25rem;
-  font-family: var(--font-manrope);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-white);
-  background: rgba(50, 37, 35, 0.75);
-  padding: 0.4rem 0.85rem;
-  border-radius: 50px;
-  z-index: 2;
 }
 
-/* Testo colonna */
 .section-benessere__col-text {
-  display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: .75rem;
+  display: flex;
 }
 
 .section-benessere__col-text h3 {
   font-family: var(--font-manrope);
+  color: var(--color-brown-primary);
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--color-brown-primary);
 }
 
 .section-benessere__col-text p {
-  font-family: var(--font-poppins);
-  font-size: 0.875rem;
-  line-height: 1.7;
+  font-family: var(--font-manrope);
   color: var(--color-brown-secondary);
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
-/* Mobile */
 @media (max-width: 767px) {
   .section-benessere {
     padding: 5rem 1.5rem;
@@ -100,3 +99,5 @@
     height: 300px;
   }
 }
+
+/*# sourceMappingURL=components_SectionBenessere_css_bad6b30c._.single.css.map*/

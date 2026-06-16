@@ -2,6 +2,7 @@
 import React, { useRef, useCallback } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Mousewheel } from "swiper/modules";
+import { Reveal } from "./Reveal";
 import "swiper/css";
 import "./SectionInterno.css";
 
@@ -64,27 +65,38 @@ export const SectionInterno: React.FC = () => {
       {/* Header */}
       <div className="section-interno__header">
         <div className="section-interno__header-text">
-          <span className="section-interno__label">BENESSERE</span>
-          <h2 className="section-interno__title">
-            All&rsquo;interno di EQB
-          </h2>
-          <p className="section-interno__body">
-            Un unico luogo dove trattamento, movimento e recupero non si alternano,
-            ma si incontrano — perché il benessere vero nasce quando tutto lavora insieme.
-          </p>
+          <Reveal>
+            <span className="section-interno__label">BENESSERE</span>
+          </Reveal>
+          <Reveal delay={80}>
+            <h2 className="section-interno__title">
+              All&rsquo;interno di EQB
+            </h2>
+          </Reveal>
+          <Reveal delay={160}>
+            <p className="section-interno__body">
+              Un unico luogo dove trattamento, movimento e recupero non si alternano,
+              ma si incontrano — perché il benessere vero nasce quando tutto lavora insieme.
+            </p>
+          </Reveal>
+          <Reveal delay={240}>
+            <a href="/benessere" className="interno-cta">Scopri i nostri servizi</a>
+          </Reveal>
         </div>
 
         <div className="section-interno__nav">
-          <button ref={prevRef} className="interno-nav-btn interno-nav-btn--prev" aria-label="Slide precedente">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M2.19571 8.57143L8.81543 15.1911L8 16L0 8L8 0L8.81543 0.808857L2.19571 7.42857L16 7.42857V8.57143L2.19571 8.57143Z" fill="currentColor"/>
-            </svg>
-          </button>
-          <button ref={nextRef} className="interno-nav-btn interno-nav-btn--next" aria-label="Slide successiva">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M13.8043 7.42857L7.18457 0.808857L8 0L16 8L8 16L7.18457 15.1911L13.8043 8.57143H0V7.42857L13.8043 7.42857Z" fill="currentColor"/>
-            </svg>
-          </button>
+          <div className="interno-nav-arrows">
+            <button ref={prevRef} className="interno-nav-btn interno-nav-btn--prev" aria-label="Slide precedente">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M2.19571 8.57143L8.81543 15.1911L8 16L0 8L8 0L8.81543 0.808857L2.19571 7.42857L16 7.42857V8.57143L2.19571 8.57143Z" fill="currentColor"/>
+              </svg>
+            </button>
+            <button ref={nextRef} className="interno-nav-btn interno-nav-btn--next" aria-label="Slide successiva">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M13.8043 7.42857L7.18457 0.808857L8 0L16 8L8 16L7.18457 15.1911L13.8043 8.57143H0V7.42857L13.8043 7.42857Z" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 

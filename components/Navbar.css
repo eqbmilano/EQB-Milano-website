@@ -1,21 +1,20 @@
-/* Navbar */
+/* [project]/components/Navbar.css [app-client] (css) */
 .navbar {
+  z-index: 1002;
+  background: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2.5rem;
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1002;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 2.5rem;
-  background: transparent;
 }
 
-/* Logo */
 .navbar__logo {
   opacity: 1;
-  transition: opacity 0.4s ease;
+  transition: opacity .4s;
 }
 
 .navbar__logo--hidden {
@@ -23,17 +22,16 @@
   pointer-events: none;
 }
 
-/* Right side (CTA) */
 .navbar__right {
-  display: flex;
   align-items: center;
   gap: 2rem;
+  display: flex;
 }
 
 .navbar__cta-desktop {
-  display: none;
   opacity: 1;
-  transition: opacity 0.4s ease;
+  transition: opacity .4s;
+  display: none;
 }
 
 .navbar__cta-desktop--hidden {
@@ -47,71 +45,69 @@
   }
 }
 
-/* Hamburger */
 .navbar__hamburger {
-  position: relative;
   z-index: 1002;
-  display: flex;
+  cursor: pointer;
+  background: none;
+  border: none;
   flex-direction: column;
   justify-content: center;
   gap: 6px;
   width: 36px;
   height: 36px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
   padding: 4px;
+  display: flex;
+  position: relative;
 }
 
 .navbar__hamburger-line {
-  display: block;
+  background-color: var(--color-white);
+  transform-origin: center;
+  border-radius: 2px;
   width: 100%;
   height: 1.5px;
-  background-color: var(--color-white);
-  border-radius: 2px;
-  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1),
-              opacity 0.3s ease,
-              background-color 0.4s ease;
-  transform-origin: center;
+  transition: transform .4s cubic-bezier(.76, 0, .24, 1), opacity .3s, background-color .4s;
+  display: block;
 }
 
-/* Dark mode (sezioni chiare) */
 .navbar--dark .navbar__hamburger-line {
   background-color: var(--color-brown-primary);
 }
 
-/* Transizione logo: filtro CSS converte il bianco verso il marrone brand (#342622).
-   Quando hai Logo-Marrone.svg posso fare lo swap diretto. */
 .navbar__logo img {
-  transition: filter 0.4s ease;
-}
-.navbar--dark .navbar__logo img {
-  filter: sepia(1) saturate(3) hue-rotate(330deg) brightness(0.35);
+  transition: opacity .3s;
 }
 
-/* X state */
 .navbar__hamburger--open .navbar__hamburger-line:first-child {
-  transform: translateY(3.75px) rotate(45deg);
+  transform: translateY(3.75px)rotate(45deg);
 }
 
 .navbar__hamburger--open .navbar__hamburger-line:last-child {
-  transform: translateY(-3.75px) rotate(-45deg);
+  transform: translateY(-3.75px)rotate(-45deg);
 }
 
-/* La X scompare mentre il menu scende, poi ricompare */
 @keyframes xAppear {
-  0%   { opacity: 0; }
-  55%  { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+
+  55% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .navbar__hamburger--open .navbar__hamburger-line {
-  animation: xAppear 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation: .9s cubic-bezier(.76, 0, .24, 1) forwards xAppear;
 }
 
-/* Mobile padding */
 @media (max-width: 767px) {
   .navbar {
-    padding: 1.25rem 1.25rem;
+    padding: 1.25rem;
   }
 }
+
+/*# sourceMappingURL=components_Navbar_css_bad6b30c._.single.css.map*/

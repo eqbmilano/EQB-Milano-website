@@ -1,14 +1,48 @@
-/* Parallax Divider - Finestra Trasparente */
 .parallax-divider {
+  background-color: #0000;
   height: 65vh;
   position: relative;
-  /* Background rimosso per permettere di vedere l'immagine fissa sottostante */
-  background-color: transparent; 
 }
 
-/* Mobile */
+.parallax-divider--own {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax-divider__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 14, 12, 0.52);
+}
+
+.parallax-divider__content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  padding: 0 3rem;
+  text-align: center;
+}
+
+.parallax-divider__text {
+  font-family: var(--font-manrope);
+  color: #fff;
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
 @media (max-width: 767px) {
   .parallax-divider {
     height: 50vh;
+  }
+
+  .parallax-divider__text {
+    font-size: 1.1rem;
   }
 }

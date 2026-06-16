@@ -1,46 +1,49 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Reveal } from "./Reveal";
+import { SocialLinks } from "./SocialIcons";
 import "./Footer.css";
 
-const navItems = [
-  { label: "Home", href: "#" },
-  { label: "Spazio", href: "#spazio" },
-  { label: "Benessere", href: "#benessere" },
-  { label: "Visione", href: "#visione" },
-  { label: "Contatti", href: "#contatti" },
+const ALL_PAGES = [
+  { label: "Home",      href: "/" },
+  { label: "Spazio",    href: "/spazio" },
+  { label: "Coworking", href: "/coworking" },
+  { label: "Benessere", href: "/benessere" },
+  { label: "Visione",   href: "/visione" },
+  { label: "Contatti",  href: "/contatti" },
 ];
 
 export const Footer: React.FC = () => {
+  const pathname = usePathname();
+  const navItems = ALL_PAGES.filter((p) => p.href !== pathname);
+
   return (
-    <footer className="footer">
+    <footer className={`footer${pathname === "/" ? " footer--dark" : ""}`}>
       <div className="footer__grid">
-        {/* Col 1: Logo + tagline */}
-        <div className="footer__col footer__col--brand">
-          <Image
-            src="/assets/Logo-Bianco.svg"
-            alt="EQB Milano"
-            width={70}
-            height={35}
-          />
+        <Reveal className="footer__col footer__col--brand" delay={0}>
+          <Link href="/">
+            <Image src="/assets/Logo-Bianco.svg" alt="EQB Milano" width={70} height={35} />
+          </Link>
           <p className="footer__tagline">
             Wellness &amp; Fitness Coworking<br />Milano
           </p>
-        </div>
+        </Reveal>
 
-        {/* Col 2: Navigazione */}
-        <div className="footer__col">
+        <Reveal className="footer__col" delay={80}>
           <span className="footer__col-label">Navigazione</span>
           <ul className="footer__nav">
             {navItems.map((item) => (
-              <li key={item.label}>
-                <a href={item.href}>{item.label}</a>
+              <li key={item.href}>
+                <Link href={item.href}>{item.label}</Link>
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
 
-        {/* Col 3: Contatti + social */}
-        <div className="footer__col">
+        <Reveal className="footer__col" delay={160}>
           <span className="footer__col-label">Contatti</span>
           <div className="footer__contacts">
             <p>
@@ -69,35 +72,9 @@ export const Footer: React.FC = () => {
             </p>
           </div>
           <div className="footer__socials">
-            <a
-              href="https://www.linkedin.com/company/eqbmilano"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer__social-icon"
-              aria-label="LinkedIn"
-            >
-              <Image src="/assets/Icona-LinkedIn.svg" alt="LinkedIn" width={40} height={40} />
-            </a>
-            <a
-              href="https://www.instagram.com/eqbmilano/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer__social-icon"
-              aria-label="Instagram"
-            >
-              <Image src="/assets/Icona-Instagram.svg" alt="Instagram" width={40} height={40} />
-            </a>
-            <a
-              href="https://wa.me/message/ZDLNL4HKLOF6H1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer__social-icon"
-              aria-label="WhatsApp"
-            >
-              <Image src="/assets/Icona-Whatsapp.svg" alt="WhatsApp" width={40} height={40} />
-            </a>
+            <SocialLinks variant="light" size={20} direction="row" />
           </div>
-        </div>
+        </Reveal>
       </div>
 
       <div className="footer__bottom">
