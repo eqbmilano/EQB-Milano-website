@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import "./MenuOverlay.css";
 
 interface MenuOverlayProps {
@@ -18,6 +19,9 @@ const navItems = [
 ];
 
 export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => {
+  const pathname = usePathname();
+  const visibleItems = navItems.filter((item) => item.href !== pathname);
+
   return (
     <div className={`menu-overlay${isOpen ? " menu-overlay--open" : ""}`}>
 
@@ -95,17 +99,20 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
         {/* Colonna destra: voci di navigazione */}
         <nav className="menu-overlay__right">
           <ul className="menu-overlay__nav-list">
-            {navItems.map((item, i) => (
-              <li
-                key={item.label}
-                className="menu-overlay__nav-item"
-                style={{ animationDelay: `${0.2 + i * 0.07}s` }}
-              >
-                <a href={item.href} onClick={onClose}>
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            {visibleItems.map((item, i) => {
+              const isPrimary = item.href === "/coworking" || item.href === "/benessere";
+              return (
+                <li
+                  key={item.label}
+                  className={`menu-overlay__nav-item${isPrimary ? " menu-overlay__nav-item--primary" : ""}`}
+                  style={{ animationDelay: `${0.2 + i * 0.07}s` }}
+                >
+                  <a href={item.href} onClick={onClose}>
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 

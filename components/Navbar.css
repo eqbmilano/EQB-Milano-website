@@ -45,6 +45,73 @@
   }
 }
 
+/* Porta cliente — domanda "Cerchi benessere?" + pill "Scopri i nostri servizi" */
+.navbar__cliente {
+  display: none;
+  align-items: center;
+  gap: .85rem;
+  transition: opacity .4s;
+}
+
+@media (min-width: 768px) {
+  .navbar__cliente {
+    display: inline-flex;
+  }
+}
+
+.navbar__cliente--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.navbar__cliente-q {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: var(--font-manrope);
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--color-white);
+  white-space: nowrap;
+  transition: color .4s;
+}
+
+.navbar--dark .navbar__cliente-q {
+  color: var(--color-brown-primary);
+}
+
+.navbar__cliente-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-family: var(--font-manrope);
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--color-white);
+  white-space: nowrap;
+  padding: .55rem 1.15rem;
+  border: 1px solid rgba(255, 255, 255, .45);
+  border-radius: 100px;
+  transition: color .4s, background-color .3s, border-color .3s;
+}
+
+.navbar__cliente-pill:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, .12);
+  border-color: rgba(255, 255, 255, .8);
+}
+
+.navbar--dark .navbar__cliente-pill {
+  color: var(--color-brown-primary);
+  border-color: rgba(50, 37, 35, .4);
+}
+
+.navbar--dark .navbar__cliente-pill:hover {
+  background-color: rgba(50, 37, 35, .08);
+  border-color: var(--color-brown-primary);
+}
+
 .navbar__hamburger {
   z-index: 1002;
   cursor: pointer;

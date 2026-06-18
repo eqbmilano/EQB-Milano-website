@@ -47,23 +47,23 @@ function useVisible(rootMargin = "-100px") {
 const pains = [
   {
     n: "01",
-    title: "Paghi anche quando non lavori.",
-    body: "L'affitto fisso corre ogni mese, indipendentemente dal tuo carico di clienti. Nei periodi vuoti, perdi. In quelli pieni, rischi comunque.",
+    title: "I clienti non sono mai davvero tuoi.",
+    body: "Lavori nello studio di qualcun altro, e i suoi clienti restano suoi. Il giorno che cambi, riparti da zero. Stai costruendo il pacchetto di un altro, non il tuo.",
   },
   {
     n: "02",
-    title: "Gestisci uno studio invece di fare il tuo lavoro.",
-    body: "Pulizie, manutenzione, utenze, reception. Ogni ora che dai alla logistica è un'ora sottratta ai tuoi clienti — e alla tua crescita.",
+    title: "Lavori tanto, ti resta poco.",
+    body: "Percentuali sullo studio, trattenute su ogni seduta, condizioni decise da qualcun altro. Più clienti porti, più grande è la fetta che lasci sul tavolo.",
   },
   {
     n: "03",
-    title: "Lavori isolato.",
-    body: "Nessun collega con cui confrontarti, nessun referral spontaneo, nessuna rete. Il professionista migliore del mondo, da solo, resta invisibile.",
+    title: "Rincorri spazi, non costruisci una base.",
+    body: "Un po' a domicilio, un po' in una stanzina, un po' in un centro freddo. Nessun posto che senti tuo, nessuna identità professionale stabile.",
   },
   {
     n: "04",
-    title: "I tuoi clienti migliori vengono da chi li incontra nel posto giusto.",
-    body: "La posizione conta. L'ambiente conta. Un cliente che entra in uno spazio curato ha già deciso di affidarsi a te prima ancora di iniziare.",
+    title: "Da solo, resti invisibile.",
+    body: "Niente colleghi con cui confrontarti, niente referral spontanei, niente collaborazioni. Il professionista più bravo, isolato, non cresce.",
   },
 ];
 
@@ -123,7 +123,7 @@ export const CoworkingFunnel: React.FC = () => {
         <div className="cw-opening__inner">
           <h2 className="cw-opening__title cw-anim cw-anim--1">
             Hai costruito la tua<br />professionalità per anni.
-            <em>Non sprecarla in logistica.</em>
+            <em>Non sprecarla nella gestione.</em>
           </h2>
         </div>
         <div className="cw-opening__scroll" aria-hidden="true">
@@ -152,7 +152,7 @@ export const CoworkingFunnel: React.FC = () => {
             ))}
           </div>
           <p className="cw-pain__close cw-anim cw-anim--6">
-            Non è colpa tua. È il modello che non funziona.
+            Non è colpa tua. È un sistema che ti tiene dipendente.
           </p>
         </div>
       </section>

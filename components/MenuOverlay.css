@@ -152,18 +152,24 @@
 
 .menu-overlay__nav-item a {
   font-family: var(--font-manrope);
-  color: var(--color-white);
+  color: rgba(255, 255, 255, .4);
   letter-spacing: -.02em;
   font-size: clamp(3.15rem, 5.8vw, 4.75rem);
   font-weight: 300;
   line-height: 1.5;
   text-decoration: none;
-  transition: opacity .25s;
+  transition: color .25s, opacity .25s;
   display: block;
 }
 
+/* Coworking e Benessere — i due mondi principali, bianco pieno */
+.menu-overlay__nav-item--primary a {
+  color: var(--color-white);
+}
+
 .menu-overlay__nav-item a:hover {
-  opacity: .45;
+  color: var(--color-white);
+  opacity: 1;
 }
 
 @media (max-width: 767px) {

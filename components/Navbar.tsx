@@ -3,14 +3,11 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CTAButton } from "./CTAButton";
 import { MenuOverlay } from "./MenuOverlay";
-import { JoinUsOverlay } from "./JoinUsOverlay";
 import "./Navbar.css";
 
 export const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [joinUsOpen, setJoinUsOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const pathname = usePathname();
 
@@ -76,11 +73,19 @@ export const Navbar: React.FC = () => {
         </div>
 
         <div className="navbar__right">
-          <div className={`navbar__cta-desktop${menuOpen ? " navbar__cta-desktop--hidden" : ""}`}>
-            <CTAButton onClick={() => setJoinUsOpen(true)} variant={darkMode ? "dark" : "light"}>
-              Join Us
-            </CTAButton>
-          </div>
+          {pathname !== "/benessere" && (
+            <div className={`navbar__cliente${menuOpen ? " navbar__cliente--hidden" : ""}`}>
+              <span className="navbar__cliente-q">
+                Cerchi benessere?
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+              <Link href="/benessere" className="navbar__cliente-pill">
+                Scopri i nostri servizi
+              </Link>
+            </div>
+          )}
 
           <button
             className={`navbar__hamburger${menuOpen ? " navbar__hamburger--open" : ""}`}
@@ -94,7 +99,6 @@ export const Navbar: React.FC = () => {
       </nav>
 
       <MenuOverlay isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
-      <JoinUsOverlay isOpen={joinUsOpen} onClose={() => setJoinUsOpen(false)} />
     </>
   );
 };
