@@ -67,6 +67,29 @@ const pains = [
   },
 ];
 
+const pillars = [
+  {
+    n: "01",
+    title: "I clienti sono tuoi. Punto.",
+    body: "Costruisci il tuo pacchetto, sotto il tuo nome. Ti diamo spazio e strumenti per farlo crescere — non ci prendiamo i tuoi clienti.",
+  },
+  {
+    n: "02",
+    title: "Quello che guadagni, resta tuo.",
+    body: "Niente percentuali sulle tue sedute: ogni cliente vale per intero, per te. E il modello premia chi lavora — più ore fai, meno paghi l'ora.",
+  },
+  {
+    n: "03",
+    title: "Una base, finalmente tua.",
+    body: "Spazio professionale e curato, sempre pronto: reception che accoglie i tuoi clienti, zero utenze, zero pulizie. Un indirizzo vero, non una stanza a ore.",
+  },
+  {
+    n: "04",
+    title: "Visibile, dal primo giorno.",
+    body: "Uno spazio riconoscibile nel cuore di Milano e un nome che ti dà credibilità prima ancora di parlare. Chi entra qui si fida di te dal primo istante.",
+  },
+];
+
 const steps = [
   {
     n: "01",
@@ -81,49 +104,117 @@ const steps = [
   {
     n: "03",
     title: "Paghi",
-    body: "Solo le ore che hai usato. Nessun contratto. Nessuna sorpresa a fine mese.",
+    body: "A fine mese, solo le ore che hai usato. Nessun anticipo: prima lavori e incassi, poi paghi.",
   },
 ];
 
-const numbers = [
-  { value: "0€",   label: "Costi fissi",    sub: "Paghi solo le ore che usi" },
-  { value: "20+",  label: "Professionisti", sub: "Una rete attiva di colleghi" },
-  { value: "500m", label: "Dal Duomo",      sub: "Piazza Cinque Giornate, Milano" },
-  { value: "1°",   label: "In Italia",      sub: "Il modello che non esisteva" },
+// NOTA: le citazioni sono BOZZE — da sostituire con le frasi reali dei professionisti.
+const testimonials = [
+  {
+    name: "Cristiana Curioni",
+    role: "Istruttrice di Pilates e ChinesioPilates",
+    img: "/assets/testi-cristiana.jpg",
+    quote: "Qui non affitto una stanza: ho costruito il mio nome. I clienti sono miei, e per la prima volta lo sento davvero.",
+  },
+  {
+    name: "Roberta Boara",
+    role: "Riflessologa Plantare",
+    img: "/assets/testi-roberta.jpg",
+    quote: "Sono entrata che lavoravo da sola. Oggi collaboro, ricevo referral, e il mio lavoro è cresciuto insieme allo spazio.",
+  },
+  {
+    name: "Sebastian Parolini",
+    role: "Massoterapista sportivo",
+    img: "/assets/testi-sebastian.png",
+    quote: "Pago solo le ore che lavoro e tutto il resto è mio. Non tornerei mai a un modello tradizionale.",
+  },
 ];
 
 const objections = [
   {
-    q: "«Non ho abbastanza clienti per giustificarlo.»",
-    a: "È esattamente per questo che funziona. Paghi in proporzione a quello che lavori. Se hai pochi clienti, spendi poco. Se cresci, sei già nel posto giusto.",
+    q: "«E se non riesco a portarmi i clienti?»",
+    a: "È proprio qui che ti aiutiamo: personal brand, contenuti e campagne per farti trovare. E intanto sei in uno spazio dove i clienti già girano, tra colleghi che si scambiano referral.",
   },
   {
-    q: "«Preferisco avere il mio studio fisso.»",
-    a: "Lo capiamo. Ma hai mai calcolato il costo reale — affitto, utenze, gestione, tempo — diviso per le ore di lavoro effettivo? Il conto tende a sorprendere.",
+    q: "«Ho paura a lasciare lo studio dove lavoro ora.»",
+    a: "Non devi lasciare tutto di colpo. Paghi solo le ore che usi: inizi con poche, tieni il resto, e sposti il tuo lavoro qui con il tuo ritmo.",
   },
   {
-    q: "«Non conosco nessuno lì.»",
-    a: "Ancora per poco. In EQB si entra da soli e si scopre di non esserlo.",
+    q: "«Adesso non ho il budget per un altro spazio.»",
+    a: "Non è un altro costo fisso: paghi solo quando lavori, e più cresci meno paghi l'ora. Si parte piccoli — l'investimento segue i tuoi clienti, non li precede.",
   },
 ];
 
+function PracticeTimeline() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const el = ref.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const seen = vh - r.top;
+      setP(Math.max(0, Math.min(1, seen / (r.height + vh * 0.6))));
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+  return (
+    <div ref={ref} className="cw-timeline">
+      <div className="cw-timeline__track" aria-hidden="true">
+        <span className="cw-timeline__fill" style={{ transform: `scaleX(${p})` }} />
+      </div>
+      <div className="cw-timeline__steps">
+        {steps.map((s, i) => (
+          <div key={s.n} className={`cw-tstep${s.n === "03" ? " cw-tstep--climax" : ""}${p >= i / 3 + 0.04 ? " is-active" : ""}`}>
+            <div className="cw-tstep__node">{s.n}</div>
+            <h4 className="cw-tstep__title">{s.title}</h4>
+            <p className="cw-tstep__body">{s.body}</p>
+            {s.n === "03" && (
+              <span className="cw-tstep__price">
+                <small>Si parte da</small>
+                <em><strong>19€</strong>/ora</em>
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export const CoworkingFunnel: React.FC = () => {
-  const s1 = useVisible("-40px");
-  const s2 = useVisible("-80px");
-  const s3 = useVisible("-80px");
-  const s4 = useVisible("-60px");
-  const s5 = useVisible("-80px");
-  const s6 = useVisible("-80px");
-  const s7 = useVisible("-60px");
+  const sOpen  = useVisible("-40px");
+  const sPain  = useVisible("-80px");
+  const sSol   = useVisible("-80px");
+  const sDiff  = useVisible("-80px");
+  const sTesti = useVisible("-80px");
+  const sComm  = useVisible("-80px");
+  const sObj   = useVisible("-80px");
+  const sCta   = useVisible("-60px");
+
+  const [showSticky, setShowSticky] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowSticky(window.scrollY > window.innerHeight * 0.9);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
       {/* ── 1. Opening ── */}
-      <section ref={s1.ref as React.RefObject<HTMLElement>} className={`cw-opening${s1.visible ? " is-on" : ""}`}>
+      <section ref={sOpen.ref as React.RefObject<HTMLElement>} className={`cw-opening${sOpen.visible ? " is-on" : ""}`}>
         <div className="cw-opening__inner">
           <h2 className="cw-opening__title cw-anim cw-anim--1">
             Hai costruito la tua<br />professionalità per anni.
-            <em>Non sprecarla nella gestione.</em>
+            <em>Ma non è ancora davvero tua.</em>
           </h2>
         </div>
         <div className="cw-opening__scroll" aria-hidden="true">
@@ -132,14 +223,14 @@ export const CoworkingFunnel: React.FC = () => {
       </section>
 
       {/* ── 2. Pain points ── */}
-      <section ref={s2.ref as React.RefObject<HTMLElement>} className={`cw-pain${s2.visible ? " is-on" : ""}`}>
+      <section ref={sPain.ref as React.RefObject<HTMLElement>} className={`cw-pain${sPain.visible ? " is-on" : ""}`}>
         <div className="cw-pain__inner">
           <div className="cw-pain__header cw-anim cw-anim--1">
             <span className="cw-label cw-label--dark">Il problema</span>
             <h2 className="cw-pain__title">Lo sai già.</h2>
             <p className="cw-pain__intro">
-              Ogni professionista del benessere che lavora in modo tradizionale
-              affronta le stesse quattro frizioni. Ogni giorno.
+              Chi vuole lavorare in proprio, nel benessere, finisce sempre
+              nelle stesse quattro trappole. Ogni giorno.
             </p>
           </div>
           <div className="cw-pain__grid">
@@ -157,28 +248,69 @@ export const CoworkingFunnel: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 3. Solution ── */}
-      <section ref={s3.ref as React.RefObject<HTMLElement>} className={`cw-solution${s3.visible ? " is-on" : ""}`}>
-        <div className="cw-solution__inner">
-          <div className="cw-solution__text">
+      {/* ── 3. Solution — 4 pilastri specchio dei pain ── */}
+      <section ref={sSol.ref as React.RefObject<HTMLElement>} className={`cw-solution${sSol.visible ? " is-on" : ""}`}>
+        <div className="cw-sol__inner">
+          <div className="cw-sol__header">
             <span className="cw-label cw-anim cw-anim--1">La soluzione</span>
-            <h2 className="cw-solution__title cw-anim cw-anim--2">
-              Abbiamo costruito<br />qualcosa di diverso.
-            </h2>
-            <p className="cw-solution__body cw-anim cw-anim--3">
-              EQB non è un coworking generico adattato al benessere.
-              È un modello costruito da zero, per chi fa questo lavoro.
-              Spazi attrezzati, prenotazione flessibile, community reale.
-              Paghi solo le ore che lavori. Nient'altro.
+            <h2 className="cw-sol__title cw-anim cw-anim--2">C&apos;è un altro modo.</h2>
+            <p className="cw-sol__intro cw-anim cw-anim--3">
+              EQB è un ecosistema pensato per renderti autonomo, non per ospitarti.
+              Una risposta precisa per ognuno dei tuoi problemi.
             </p>
           </div>
-          <div className="cw-solution__steps">
-            {steps.map((s, i) => (
-              <div key={s.n} className={`cw-step cw-anim--right cw-anim--${i + 4}`}>
-                <span className="cw-step__n">{s.n}</span>
-                <div className="cw-step__content">
-                  <h3 className="cw-step__title">{s.title}</h3>
-                  <p className="cw-step__body">{s.body}</p>
+          <div className="cw-sol__pillars">
+            {pillars.map((p, i) => (
+              <TiltCard key={p.n} className={`cw-pillar cw-anim cw-anim--${Math.min(i + 2, 6)}`}>
+                <span className="cw-pillar__n">{p.n}</span>
+                <h3 className="cw-pillar__title">{p.title}</h3>
+                <p className="cw-pillar__body">{p.body}</p>
+              </TiltCard>
+            ))}
+          </div>
+          <div className="cw-practice">
+            <span className="cw-practice__label cw-anim cw-anim--1">E in pratica funziona così</span>
+            <PracticeTimeline />
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. Il differenziatore (climax) ── */}
+      <section ref={sDiff.ref as React.RefObject<HTMLElement>} className={`cw-diff${sDiff.visible ? " is-on" : ""}`}>
+        <div className="cw-diff__glow" aria-hidden="true" />
+        <div className="cw-diff__inner">
+          <span className="cw-label cw-anim cw-anim--1">Il nostro tratto distintivo</span>
+          <h2 className="cw-diff__title cw-anim cw-anim--2">
+            Non ti diamo solo uno spazio.<br />Ti aiutiamo a riempirlo.
+          </h2>
+          <p className="cw-diff__body cw-anim cw-anim--3">
+            Personal brand, contenuti, campagne: mettiamo le nostre competenze
+            di marketing al servizio della tua crescita, per farti trovare dai
+            clienti giusti. Tu porti il talento, noi l&apos;amplificatore.
+          </p>
+          <p className="cw-diff__proof cw-anim cw-anim--4">
+            Chi è entrato in questo percorso è cresciuto. È così che nasce un nome.
+          </p>
+        </div>
+      </section>
+
+      {/* ── 5. Testimonianze ── */}
+      <section ref={sTesti.ref as React.RefObject<HTMLElement>} className={`cw-testi${sTesti.visible ? " is-on" : ""}`}>
+        <div className="cw-testi__inner">
+          <div className="cw-testi__header cw-anim cw-anim--1">
+            <span className="cw-label">Chi è già dentro</span>
+            <h2 className="cw-testi__title">Nomi, non numeri.</h2>
+          </div>
+          <div className="cw-testi__grid">
+            {testimonials.map((t, i) => (
+              <div key={t.name} className={`cw-testi__card cw-anim cw-anim--${i + 2}`}>
+                <div className="cw-testi__photo">
+                  <Image src={t.img} alt={t.name} fill sizes="(max-width: 768px) 100vw, 320px" style={{ objectFit: "cover" }} />
+                </div>
+                <p className="cw-testi__quote">&ldquo;{t.quote}&rdquo;</p>
+                <div className="cw-testi__person">
+                  <span className="cw-testi__name">{t.name}</span>
+                  <span className="cw-testi__role">{t.role}</span>
                 </div>
               </div>
             ))}
@@ -186,21 +318,8 @@ export const CoworkingFunnel: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 4. Numbers ── */}
-      <section ref={s4.ref as React.RefObject<HTMLElement>} className={`cw-numbers${s4.visible ? " is-on" : ""}`}>
-        <div className="cw-numbers__inner">
-          {numbers.map((n, i) => (
-            <div key={n.value} className={`cw-num cw-anim--scale cw-anim--${i + 1}`}>
-              <span className="cw-num__value">{n.value}</span>
-              <span className="cw-num__label">{n.label}</span>
-              <span className="cw-num__sub">{n.sub}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── 5. Community ── */}
-      <section ref={s5.ref as React.RefObject<HTMLElement>} className={`cw-community${s5.visible ? " is-on" : ""}`}>
+      {/* ── 6. Community — la vita dello spazio ── */}
+      <section ref={sComm.ref as React.RefObject<HTMLElement>} className={`cw-community${sComm.visible ? " is-on" : ""}`}>
         <div className="cw-community__inner">
           <div className="cw-community__text">
             <span className="cw-label cw-label--dark cw-anim cw-anim--1">La rete</span>
@@ -221,7 +340,7 @@ export const CoworkingFunnel: React.FC = () => {
           <div className="cw-community__image">
             <Image
               src="/assets/Workshop-Rinascere.jpg"
-              alt="Workshop Rinascere EQB Milano"
+              alt="Workshop EQB Milano"
               fill
               sizes="(max-width: 900px) 100vw, 45vw"
               style={{ objectFit: "cover", objectPosition: "center" }}
@@ -230,8 +349,8 @@ export const CoworkingFunnel: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 6. Objections ── */}
-      <section ref={s6.ref as React.RefObject<HTMLElement>} className={`cw-obj${s6.visible ? " is-on" : ""}`}>
+      {/* ── 7. Objections ── */}
+      <section ref={sObj.ref as React.RefObject<HTMLElement>} className={`cw-obj${sObj.visible ? " is-on" : ""}`}>
         <div className="cw-obj__inner">
           <h2 className="cw-obj__title cw-anim cw-anim--1">
             Ci siamo già sentiti dire:
@@ -247,8 +366,8 @@ export const CoworkingFunnel: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 7. Final CTA ── */}
-      <section ref={s7.ref as React.RefObject<HTMLElement>} className={`cw-cta${s7.visible ? " is-on" : ""}`}>
+      {/* ── 8. Final CTA ── */}
+      <section ref={sCta.ref as React.RefObject<HTMLElement>} className={`cw-cta${sCta.visible ? " is-on" : ""}`}>
         <div className="cw-cta__inner">
           <span className="cw-label cw-anim cw-anim--1">Il prossimo passo</span>
           <h2 className="cw-cta__title cw-anim cw-anim--2">
@@ -258,7 +377,10 @@ export const CoworkingFunnel: React.FC = () => {
             Trenta minuti. Zero presentazioni. Lo spazio parla da solo.
             <br />Nessun impegno — solo una visita.
           </p>
-          <div className="cw-cta__actions cw-anim cw-anim--4">
+          <p className="cw-cta__urgency cw-anim cw-anim--4">
+            Lo spazio è fisico: i posti non sono infiniti.
+          </p>
+          <div className="cw-cta__actions cw-anim cw-anim--5">
             <CTAButton href="tel:+393755153273" variant="filled">
               Chiama ora — +39 375 515 3273
             </CTAButton>
@@ -266,11 +388,17 @@ export const CoworkingFunnel: React.FC = () => {
               Scrivi per prenotare una visita
             </CTAButton>
           </div>
-          <p className="cw-cta__note cw-anim cw-anim--5">
+          <p className="cw-cta__note cw-anim cw-anim--6">
             Rispondiamo entro poche ore. Di persona, non con un bot.
           </p>
         </div>
       </section>
+
+      {/* ── Sticky CTA ── */}
+      <div className={`cw-sticky${showSticky ? " is-shown" : ""}`}>
+        <span className="cw-sticky__text">Pronto a renderlo tuo?</span>
+        <a href="/contatti" className="cw-sticky__btn">Prenota una visita →</a>
+      </div>
     </>
   );
 };
