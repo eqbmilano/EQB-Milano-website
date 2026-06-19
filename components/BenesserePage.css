@@ -59,6 +59,11 @@
   transform: none;
 }
 
+/* il sottotitolo della hero resta volutamente attenuato a fine animazione */
+.ben-opening.is-on .ben-opening__sub {
+  opacity: .75;
+}
+
 .ben-up {
   opacity: 0;
   transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .7s cubic-bezier(.22, 1, .36, 1);
@@ -135,7 +140,6 @@
 
 .ben-opening__sub {
   font-family: var(--font-manrope);
-  opacity: .75;
   margin: 0;
   font-size: clamp(.9rem, 1.3vw, 1.05rem);
   line-height: 1.65;

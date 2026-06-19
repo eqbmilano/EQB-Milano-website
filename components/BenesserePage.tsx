@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { ParallaxDivider } from "./ParallaxDivider";
 import "./BenesserePage.css";
+import "./BenPilastri.css";
 
 const WA = "https://wa.me/393755153273?text=";
 
@@ -185,6 +186,33 @@ function useVisible(rootMargin = "-60px") {
   return { ref, visible };
 }
 
+function BenPilastro({ eyebrow, line1, accent, body }: {
+  eyebrow: string; line1: string; accent: string; body: string;
+}) {
+  const { ref, visible } = useVisible("-12%");
+  return (
+    <div ref={ref as React.RefObject<HTMLDivElement>} className={`ben-pil${visible ? " is-on" : ""}`}>
+      <span className="ben-pil__eyebrow ben-pil-rise ben-pil-rise--0">{eyebrow}</span>
+      <h2 className="ben-pil__claim">
+        <span className="ben-pil__line ben-pil-rise ben-pil-rise--1">{line1}</span>
+        <span className="ben-pil__line ben-pil__accent ben-pil-rise ben-pil-rise--2">
+          <span className="ben-pil__accent-txt">{accent}</span>
+        </span>
+      </h2>
+      <p className="ben-pil__body ben-pil-rise ben-pil-rise--3">{body}</p>
+    </div>
+  );
+}
+
+function BenFilo() {
+  const { ref, visible } = useVisible("-20%");
+  return (
+    <div ref={ref as React.RefObject<HTMLDivElement>} className={`ben-pil-filo${visible ? " is-on" : ""}`}>
+      <span />
+    </div>
+  );
+}
+
 export const BenesserePage: React.FC = () => {
   const s0   = useVisible("-20px");
   const s7   = useVisible("-60px");
@@ -221,6 +249,23 @@ export const BenesserePage: React.FC = () => {
         <div className="ben-opening__scroll" aria-hidden="true">
           <div className="ben-opening__scroll-line" />
         </div>
+      </section>
+
+      {/* ── 1b. I due pilastri: visione + garanzia ── */}
+      <section className="ben-pilastri">
+        <BenPilastro
+          eyebrow="La visione"
+          line1="Non è un centro benessere."
+          accent="È un ecosistema."
+          body="Qui i professionisti non sono di passaggio: hanno scelto di restare, di crescere insieme, di prendersi cura delle persone allo stesso modo. Non un posto dove passi — un posto a cui torni."
+        />
+        <BenFilo />
+        <BenPilastro
+          eyebrow="La garanzia"
+          line1="Chiunque incontri, qui,"
+          accent="è stato scelto."
+          body="Ognuno è qui perché è bravo davvero, e perché ci tiene sul serio. Così, chiunque tu incontri, sei in buone mani — senza doverci pensare."
+        />
       </section>
 
       {/* ── 2. Valutazione Posturale — Federico ── */}
