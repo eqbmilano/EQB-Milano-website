@@ -186,8 +186,19 @@ function useVisible(rootMargin = "-60px") {
   return { ref, visible };
 }
 
+function BenWavy({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="ben-pil__wavy">
+      {children}
+      <svg className="ben-pil__wavy-line" viewBox="0 0 60 8" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M1 5 Q10 1 20 5 Q30 9 40 5 Q50 1 59 5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    </span>
+  );
+}
+
 function BenPilastro({ eyebrow, line1, accent, body }: {
-  eyebrow: string; line1: string; accent: string; body: string;
+  eyebrow: string; line1: string; accent: string; body: React.ReactNode;
 }) {
   const { ref, visible } = useVisible("-12%");
   return (
@@ -257,7 +268,7 @@ export const BenesserePage: React.FC = () => {
           eyebrow="La visione"
           line1="Non è un centro benessere."
           accent="È un ecosistema."
-          body="Qui i professionisti non sono di passaggio: hanno scelto di restare, di crescere insieme, di prendersi cura delle persone allo stesso modo. Non un posto dove passi — un posto a cui torni."
+          body={<>Qui i professionisti non sono di passaggio: hanno scelto di restare, di crescere insieme, di prendersi cura delle persone allo stesso modo. Non un posto dove passi, un posto <BenWavy>in cui torni</BenWavy>.</>}
         />
         <BenFilo />
         <BenPilastro
