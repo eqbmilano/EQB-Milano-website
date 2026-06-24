@@ -10,7 +10,7 @@ const groups = [
   {
     label: "Trattamenti",
     services: [
-      { name: "Osteopatia",            img: "/assets/Osteopatia-v2.jpg",               desc: "Per ritrovare equilibrio, libertà di movimento e affrontare la causa del problema, non solo il sintomo.",          msg: "Ciao! Vorrei info sull'osteopatia" },
+      { name: "Osteopatia",            img: "/assets/Osteopatia-v2.jpg",               desc: "Un approccio globale per migliorare movimento, funzionalità ed equilibrio nella vita quotidiana.",          msg: "Ciao! Vorrei info sull'osteopatia" },
       { name: "Osteopatia Pediatrica", img: "/assets/Osteopatia-pediatrica-v2.jpg",      desc: "Un approccio delicato dedicato a neonati e bambini, per accompagnarne la crescita in modo armonioso.",            msg: "Ciao! Vorrei info sull'osteopatia pediatrica" },
       { name: "Fisioterapia",          img: "/assets/Fisioterapia-v4.jpg",              desc: "Un percorso personalizzato per recuperare funzionalità e tornare alle attività quotidiane con serenità.",          msg: "Ciao! Vorrei info sulla fisioterapia" },
       { name: "Massoterapia Sportiva", img: "/assets/Massaggio-Decontratturante-Sportivo-v2.jpg",   desc: "Per favorire il recupero muscolare, sciogliere le tensioni e ritrovare energia e libertà di movimento.",          msg: "Ciao! Vorrei info sulla massoterapia sportiva" },
@@ -35,7 +35,7 @@ const groups = [
   {
     label: "Consulenza",
     services: [
-      { name: "Nutrizione e Analisi BIA",   img: "/assets/Nutrizione-BIA-v3.jpg",   desc: "Analisi della composizione corporea con BIA e un percorso personalizzato per costruire abitudini sostenibili e obiettivi concreti.",      msg: "Ciao! Vorrei info su Nutrizione e Analisi BIA" },
+      { name: "Nutrizione e Analisi BIA",   img: "/assets/Nutrizione-BIA-v3.jpg",   desc: "Analisi della composizione corporea con BIA e un percorso personalizzato per costruire abitudini sostenibili nel tempo.",      msg: "Ciao! Vorrei info su Nutrizione e Analisi BIA" },
       { name: "Mental Coach", img: "/assets/Mental-Coach-v2.jpg",           desc: "Per acquisire maggiore consapevolezza, definire obiettivi e sviluppare nuove risorse personali.",        msg: "Ciao! Vorrei info sul mental coaching" },
     ],
   },
@@ -182,9 +182,9 @@ function useVisible(rootMargin = "-60px") {
 }
 
 const ACC_PILLARS = [
-  { k: "01", t: "Comprendere", d: "Capire le tue esigenze e individuare il punto di partenza." },
-  { k: "02", t: "Accompagnare", d: "Costruire un percorso personalizzato intorno a te." },
-  { k: "03", t: "Evolvere", d: "Aiutarti a trasformare il benessere in una parte della tua quotidianità." },
+  { k: "01", t: "Ascoltare", d: "Ascoltare le tue esigenze e individuare il punto di partenza." },
+  { k: "02", t: "Accompagnare", d: "Disegnare un percorso personalizzato intorno a te." },
+  { k: "03", t: "Evolvere", d: "Rendere la cura di sé una parte della tua quotidianità." },
 ];
 
 function AccIcon({ i }: { i: number }) {
@@ -207,7 +207,7 @@ function BenAccompagna() {
         <span className="ben-acc__eyebrow ben-acc-rise ben-acc-rise--0">Il nostro modo di accompagnarti</span>
         <h2 className="ben-acc__title ben-acc-rise ben-acc-rise--1">Non esiste un percorso uguale per tutti.</h2>
         <p className="ben-acc__intro ben-acc-rise ben-acc-rise--2">
-          In EQB trovi professionisti, percorsi e attività che lavorano insieme per aiutarti a prenderti cura di te nel modo più adatto alle tue esigenze. Che tu abbia un obiettivo preciso o non sappia ancora da dove partire, ti aiutiamo a trovare la soluzione più adatta a te.
+          In EQB trovi professionisti, percorsi e attività che lavorano insieme per accompagnarti nel modo più adatto alle tue esigenze. Che tu abbia un obiettivo preciso o non sappia ancora da dove partire, troviamo insieme la direzione giusta.
         </p>
       </div>
       <div className="ben-acc__row">
@@ -282,7 +282,7 @@ export const BenesserePageV2: React.FC = () => {
             </h2>
             <div className="ben-ad-section__body ben-up ben-up--3">
               <p>Un primo incontro per capire <strong>da dove nasce il tuo problema</strong> — non solo dove fa male.</p>
-              <p>Se il dolore continua a tornare, di solito <strong>non è sfortuna</strong>: finora si è agito sul sintomo, <strong>non sulla causa</strong>. Insieme leggiamo la tua situazione e ne usciamo con <strong>una direzione chiara su cosa fare</strong> — non con l&apos;ennesimo trattamento da provare.</p>
+              <p>Se il dolore continua a tornare, spesso <strong>non è sfortuna</strong>: finora si è agito sul sintomo, <strong>non sulla causa</strong>. Insieme leggiamo la tua situazione e ne usciamo con <strong>una direzione chiara su cosa fare</strong> — non con l&apos;ennesimo trattamento da provare.</p>
             </div>
             <p className="ben-ad-section__firma ben-up ben-up--4">
               Federico Mondin<br />
@@ -343,7 +343,7 @@ export const BenesserePageV2: React.FC = () => {
               Pilates<br />Reformer
             </h2>
             <p className="ben-feature__micro ben-up ben-up--3">
-              Per chi cerca un modo più consapevole, personalizzato e sostenibile di muoversi.
+              Per chi vuole migliorare forza, mobilità e controllo del movimento con un percorso costruito intorno a sé.
             </p>
             <div className="ben-feature__tags ben-up ben-up--4">
               <span className="ben-feature__tag">One to One</span>
@@ -377,14 +377,14 @@ export const BenesserePageV2: React.FC = () => {
             <span className="ben-feature__num">03</span>
             <span className="ben-label ben-up ben-up--1">Recuperare</span>
             <h2 className="ben-feature__title ben-up ben-up--2">
-              Recovery<br />&amp; Relax
+              Recupero<br />&amp; Benessere
             </h2>
             <p className="ben-feature__micro ben-up ben-up--3">
               Per chi si allena, lavora intensamente o sente il bisogno di rallentare e ritrovare energie.
             </p>
             <div className="ben-feature__tags ben-up ben-up--4">
               <span className="ben-feature__tag">Massoterapia</span>
-              <span className="ben-feature__tag">Massaggi</span>
+              <span className="ben-feature__tag">Linfodrenante</span>
               <span className="ben-feature__tag">Riflessologia</span>
             </div>
             <a
@@ -411,7 +411,7 @@ export const BenesserePageV2: React.FC = () => {
               Nutrizione<br />&amp; Forma
             </h2>
             <p className="ben-feature__micro ben-up ben-up--3">
-              Per chi vuole costruire nuove abitudini e rimettersi in forma con una direzione chiara.
+              Per chi vuole costruire abitudini sostenibili e rimettersi in forma con una direzione chiara.
             </p>
             <div className="ben-feature__tags ben-up ben-up--4">
               <span className="ben-feature__tag">Nutrizione</span>
@@ -440,7 +440,7 @@ export const BenesserePageV2: React.FC = () => {
       {/* ── Parallax Divider ── */}
       <ParallaxDivider
         src="/assets/Osteopatia-cranio.jpg"
-        text="Tutti i percorsi sono personalizzati e seguiti da professionisti certificati, per accompagnarti nel modo più adatto alle tue esigenze."
+        text="Ogni percorso nasce dall'incontro tra le tue esigenze e le competenze del professionista più adatto a te."
       />
 
       {/* ── 7. La nostra offerta ── */}
@@ -479,7 +479,7 @@ export const BenesserePageV2: React.FC = () => {
             Il tuo percorso<br />inizia con una<br />conversazione.
           </h2>
           <p className="ben-closing__body">
-            Raccontaci di cosa hai bisogno<br />e ti aiuteremo a capire da dove partire.
+            Raccontaci di cosa hai bisogno<br />e troviamo insieme da dove partire.
           </p>
           <a
             href={`${WA}${encodeURIComponent("Ciao! Vorrei sapere di più su EQB Milano")}`}
