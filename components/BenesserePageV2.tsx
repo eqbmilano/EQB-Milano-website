@@ -11,9 +11,9 @@ const groups = [
     label: "Trattamenti",
     services: [
       { name: "Osteopatia",            img: "/assets/Osteopatia-v2.jpg",               desc: "Per ritrovare equilibrio, libertà di movimento e affrontare la causa del problema, non solo il sintomo.",          msg: "Ciao! Vorrei info sull'osteopatia" },
-      { name: "Fisioterapia",          img: "/assets/Federico-lavoro-2.jpg",            desc: "Un percorso personalizzato per recuperare funzionalità e tornare alle attività quotidiane con serenità.",          msg: "Ciao! Vorrei info sulla fisioterapia" },
-      { name: "Massaggio Decontratturante Sportivo", img: "/assets/Massaggio-Decontratturante-Sportivo-v2.jpg",   desc: "Per favorire il recupero muscolare, sciogliere le tensioni e ritrovare energia e libertà di movimento.",          msg: "Ciao! Vorrei info sul massaggio decontratturante sportivo" },
       { name: "Osteopatia Pediatrica", img: "/assets/Osteopatia-pediatrica-v2.jpg",      desc: "Un approccio delicato dedicato a neonati e bambini, per accompagnarne la crescita in modo armonioso.",            msg: "Ciao! Vorrei info sull'osteopatia pediatrica" },
+      { name: "Fisioterapia",          img: "/assets/Fisioterapia-v2.jpg",              desc: "Un percorso personalizzato per recuperare funzionalità e tornare alle attività quotidiane con serenità.",          msg: "Ciao! Vorrei info sulla fisioterapia" },
+      { name: "Massaggio Decontratturante Sportivo", img: "/assets/Massaggio-Decontratturante-Sportivo-v2.jpg",   desc: "Per favorire il recupero muscolare, sciogliere le tensioni e ritrovare energia e libertà di movimento.",          msg: "Ciao! Vorrei info sul massaggio decontratturante sportivo" },
     ],
   },
   {
@@ -27,7 +27,7 @@ const groups = [
     label: "Recupero & Benessere",
     services: [
       { name: "Linfodrenante",          img: "/assets/Linfodrenante-v2.jpg",     desc: "Per alleggerire il corpo, ridurre gonfiore e favorire una piacevole sensazione di leggerezza.",          msg: "Ciao! Vorrei info sul linfodrenante" },
-      { name: "Riflessologia Plantare", img: "/assets/Riflessologia.jpg",  desc: "Una pratica che favorisce il rilassamento profondo e aiuta il corpo a ritrovare equilibrio.",            msg: "Ciao! Vorrei info sulla riflessologia plantare" },
+      { name: "Riflessologia Plantare", img: "/assets/Riflessologia-v2.jpg",  desc: "Una pratica che favorisce il rilassamento profondo e aiuta il corpo a ritrovare equilibrio.",            msg: "Ciao! Vorrei info sulla riflessologia plantare" },
       { name: "Coppettazione",          img: "/assets/Coppettazione-v2.jpg",     desc: "Per sciogliere le tensioni, migliorare la circolazione e favorire il recupero dei tessuti.",            msg: "Ciao! Vorrei info sulla coppettazione" },
       { name: "Massaggi Rilassanti",    img: "/assets/Massaggi-Rilassanti-v2.jpg",        desc: "Un momento dedicato a rallentare, recuperare energie e concedersi uno spazio per sé.",                  msg: "Ciao! Vorrei prenotare un massaggio rilassante" },
     ],
@@ -35,9 +35,8 @@ const groups = [
   {
     label: "Consulenza",
     services: [
-      { name: "Nutrizione",   img: "/assets/Nutrizionista.jpg",   desc: "Un percorso personalizzato per costruire abitudini sostenibili e raggiungere obiettivi concreti.",      msg: "Ciao! Vorrei prenotare una consulenza nutrizionale" },
+      { name: "Nutrizione e Analisi BIA",   img: "/assets/Nutrizione-BIA-v2.jpg",   desc: "Analisi della composizione corporea con BIA e un percorso personalizzato per costruire abitudini sostenibili e obiettivi concreti.",      msg: "Ciao! Vorrei info su Nutrizione e Analisi BIA" },
       { name: "Mental Coach", img: "/assets/Noemi.jpg",           desc: "Per acquisire maggiore consapevolezza, definire obiettivi e sviluppare nuove risorse personali.",        msg: "Ciao! Vorrei info sul mental coaching" },
-      { name: "Counselor",    img: "/assets/Roberta-Boara.jpg",   desc: "Uno spazio di ascolto e supporto per affrontare momenti di cambiamento o difficoltà.",                  msg: "Ciao! Vorrei info sul counseling" },
     ],
   },
 ];
@@ -383,8 +382,8 @@ export const BenesserePageV2: React.FC = () => {
           </div>
           <div className="ben-feature__image ben-up ben-up--1">
             <Image
-              src="/assets/Nutrizionista-dettaglio.jpg"
-              alt="Nutrizione EQB Milano"
+              src="/assets/Nutrizione-Forma-v2.jpg"
+              alt="Nutrizione e forma — EQB Milano"
               fill sizes="50vw"
               style={{ objectFit: "cover" }}
             />
