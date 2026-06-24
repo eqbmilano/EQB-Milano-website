@@ -22,7 +22,7 @@ Pipeline: **originale → ritaglio → asset web**.
 |---|---|---|---|---|
 | Osteopatia | `Osteopatia.jpg` | = originale | `Osteopatia-v2.jpg` | `…/04 - Gestione Social/Federico/Instagram/Caroselli/1 - Federico/EQB - Post 4 Osteopatia-04.jpg` |
 | Osteopatia Pediatrica | `Osteopatia-Pediatrica.jpg` | = originale | `Osteopatia-pediatrica-v2.jpg` | `…/03 - Shooting/01 - Shooting Originali/Altre foto per sito/baby-massage-close-up-hands-baby-back-top-view.jpg` |
-| Fisioterapia | `Fisioterapia.jpg` | `Fisioterapia.jpg` (**zoom leggero, meno pavimento**) | `Fisioterapia-v3.jpg` | `~/Downloads/ChatGPT Image 24 giu 2026, 17_02_36.png` |
+| Fisioterapia | `Fisioterapia.jpg` | `Fisioterapia.jpg` (**zoom leggero, meno pavimento**) | `Fisioterapia-v4.jpg` | `~/Downloads/ChatGPT Image 24 giu 2026, 17_02_36.png` |
 | Massaggio Decontratturante Sportivo | `Massaggio-Decontratturante-Sportivo.jpg` | = originale | `Massaggio-Decontratturante-Sportivo-v2.jpg` | `~/Downloads/ChatGPT Image 24 giu 2026, 15_58_28.png` |
 | Rinforzo Posturale | `Rinforzo-Posturale.jpg` | = originale | `Rinforzo-Posturale-v2.jpg` | `…/03 - Attività/Training/Kinesioterapia.jpg` |
 | Functional Training | `Functional-Training.jpg` | = originale | `Functional-Training-v3.jpg` | `…/03 - Attività/Training/Allenamento funzionale.jpg` |

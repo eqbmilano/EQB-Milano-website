@@ -12,8 +12,8 @@ const groups = [
     services: [
       { name: "Osteopatia",            img: "/assets/Osteopatia-v2.jpg",               desc: "Per ritrovare equilibrio, libertà di movimento e affrontare la causa del problema, non solo il sintomo.",          msg: "Ciao! Vorrei info sull'osteopatia" },
       { name: "Osteopatia Pediatrica", img: "/assets/Osteopatia-pediatrica-v2.jpg",      desc: "Un approccio delicato dedicato a neonati e bambini, per accompagnarne la crescita in modo armonioso.",            msg: "Ciao! Vorrei info sull'osteopatia pediatrica" },
-      { name: "Fisioterapia",          img: "/assets/Fisioterapia-v3.jpg",              desc: "Un percorso personalizzato per recuperare funzionalità e tornare alle attività quotidiane con serenità.",          msg: "Ciao! Vorrei info sulla fisioterapia" },
-      { name: "Massaggio Decontratturante Sportivo", img: "/assets/Massaggio-Decontratturante-Sportivo-v2.jpg",   desc: "Per favorire il recupero muscolare, sciogliere le tensioni e ritrovare energia e libertà di movimento.",          msg: "Ciao! Vorrei info sul massaggio decontratturante sportivo" },
+      { name: "Fisioterapia",          img: "/assets/Fisioterapia-v4.jpg",              desc: "Un percorso personalizzato per recuperare funzionalità e tornare alle attività quotidiane con serenità.",          msg: "Ciao! Vorrei info sulla fisioterapia" },
+      { name: "Massoterapia Sportiva", img: "/assets/Massaggio-Decontratturante-Sportivo-v2.jpg",   desc: "Per favorire il recupero muscolare, sciogliere le tensioni e ritrovare energia e libertà di movimento.",          msg: "Ciao! Vorrei info sulla massoterapia sportiva" },
     ],
   },
   {
@@ -26,10 +26,10 @@ const groups = [
   {
     label: "Recupero & Benessere",
     services: [
-      { name: "Linfodrenante",          img: "/assets/Linfodrenante-v2.jpg",     desc: "Per alleggerire il corpo, ridurre gonfiore e favorire una piacevole sensazione di leggerezza.",          msg: "Ciao! Vorrei info sul linfodrenante" },
+      { name: "Massaggio Rilassante",    img: "/assets/Massaggi-Rilassanti-v2.jpg",        desc: "Un momento dedicato a rallentare, recuperare energie e concedersi uno spazio per sé.",                  msg: "Ciao! Vorrei prenotare un massaggio rilassante" },
+      { name: "Massaggio Linfodrenante", img: "/assets/Linfodrenante-v2.jpg",     desc: "Per alleggerire il corpo, ridurre gonfiore e favorire una piacevole sensazione di leggerezza.",          msg: "Ciao! Vorrei info sul linfodrenante" },
       { name: "Riflessologia Plantare", img: "/assets/Riflessologia-v2.jpg",  desc: "Una pratica che favorisce il rilassamento profondo e aiuta il corpo a ritrovare equilibrio.",            msg: "Ciao! Vorrei info sulla riflessologia plantare" },
       { name: "Coppettazione",          img: "/assets/Coppettazione-v2.jpg",     desc: "Per sciogliere le tensioni, migliorare la circolazione e favorire il recupero dei tessuti.",            msg: "Ciao! Vorrei info sulla coppettazione" },
-      { name: "Massaggi Rilassanti",    img: "/assets/Massaggi-Rilassanti-v2.jpg",        desc: "Un momento dedicato a rallentare, recuperare energie e concedersi uno spazio per sé.",                  msg: "Ciao! Vorrei prenotare un massaggio rilassante" },
     ],
   },
   {
@@ -55,7 +55,6 @@ function HoverCard({ name, img, desc, cat, msg }: {
           <Image src={img} alt={name} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: "cover" }} />
         </div>
         <div className="hc-front__overlay" />
-        <span className="hc-front__cat">{cat}</span>
         <div className="hc-front__body">
           <span className="hc-front__name">{name}</span>
           <span className="hc-front__btn">Prenota →</span>
