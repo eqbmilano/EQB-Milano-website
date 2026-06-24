@@ -290,7 +290,7 @@ export const BenesserePageV2: React.FC = () => {
             </h2>
             <div className="ben-ad-section__body ben-up ben-up--3">
               <p>Un primo incontro per capire <strong>da dove nasce il tuo problema</strong> — non solo dove fa male.</p>
-              <p>Se il dolore continua a tornare, spesso <strong>non è sfortuna</strong>: finora si è agito sul sintomo, <strong>non sulla causa</strong>. Insieme leggiamo la tua situazione e ne usciamo con <strong>una direzione chiara su cosa fare</strong> — non con l&apos;ennesimo trattamento da provare.</p>
+              <p>Se il dolore continua a tornare, spesso <strong>non è sfortuna</strong>: finora si è agito sul sintomo, <strong>non sulla causa</strong>. Insieme analizziamo la tua situazione e ne usciamo con <strong>una direzione chiara su cosa fare</strong> — non con l&apos;ennesimo trattamento da provare.</p>
             </div>
             <p className="ben-ad-section__firma ben-up ben-up--4">
               Federico Mondin<br />
