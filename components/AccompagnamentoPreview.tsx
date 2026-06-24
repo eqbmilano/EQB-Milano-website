@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./AccompagnamentoPreview.css";
 
 const EYEBROW = "Il nostro modo di accompagnarti";
@@ -175,11 +175,53 @@ function Variant4() {
   );
 }
 
+/* ── Variante 5 — Nativa EQB: blur→fuoco sullo scroll (come i pilastri) + hover leggero ── */
+function useVisible(rootMargin = "-15%") {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { rootMargin, threshold: 0.04 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [rootMargin]);
+  return { ref, visible };
+}
+
+function Variant5() {
+  const { ref, visible } = useVisible("-15%");
+  return (
+    <div ref={ref} className={`acc acc5${visible ? " is-on" : ""}`}>
+      <div className="acc__head acc__head--center">
+        <span className="acc__eyebrow acc5-rise acc5-rise--0">{EYEBROW}</span>
+        <h2 className="acc__title acc5-rise acc5-rise--1">{TITLE}</h2>
+        <p className="acc__intro acc5-rise acc5-rise--2">{INTRO}</p>
+      </div>
+      <div className="acc5__row">
+        {PILLARS.map((p, i) => (
+          <div key={p.k} className={`acc5__pill acc5-rise acc5-rise--${3 + i}`}>
+            <span className="acc5__k">{p.k}</span>
+            <span className="acc5__icon"><Icon i={i} /></span>
+            <h3 className="acc5__t">{p.t}</h3>
+            <p className="acc5__d">{p.d}</p>
+            <span className="acc5__underline" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const VARIANTS = [
   { n: 1, label: "Stepper connesso — auto-avanza + hover", C: Variant1 },
   { n: 2, label: "Tab interattivi — click per cambiare", C: Variant2 },
   { n: 3, label: "Card con sweep + icona animata (hover)", C: Variant3 },
   { n: 4, label: "Timeline auto-play — barra di progresso, pausa su hover", C: Variant4 },
+  { n: 5, label: "Nativa EQB — blur→fuoco sullo scroll (come i pilastri) + hover leggero", C: Variant5 },
 ];
 
 export const AccompagnamentoPreview: React.FC = () => {
