@@ -12,26 +12,24 @@ const groups = [
     services: [
       { name: "Osteopatia",            img: "/assets/Osteopatia-v2.jpg",               desc: "Per ritrovare equilibrio, libertà di movimento e affrontare la causa del problema, non solo il sintomo.",          msg: "Ciao! Vorrei info sull'osteopatia" },
       { name: "Fisioterapia",          img: "/assets/Federico-lavoro-2.jpg",            desc: "Un percorso personalizzato per recuperare funzionalità e tornare alle attività quotidiane con serenità.",          msg: "Ciao! Vorrei info sulla fisioterapia" },
-      { name: "Massoterapia",          img: "/assets/Massaggio-decontratturante.jpg",   desc: "Per favorire il recupero muscolare, sciogliere le tensioni e ritrovare energia e libertà di movimento.",          msg: "Ciao! Vorrei info sulla massoterapia" },
+      { name: "Massaggio Decontratturante Sportivo", img: "/assets/Massaggio-Decontratturante-Sportivo-v2.jpg",   desc: "Per favorire il recupero muscolare, sciogliere le tensioni e ritrovare energia e libertà di movimento.",          msg: "Ciao! Vorrei info sul massaggio decontratturante sportivo" },
       { name: "Osteopatia Pediatrica", img: "/assets/Osteopatia-pediatrica-v2.jpg",      desc: "Un approccio delicato dedicato a neonati e bambini, per accompagnarne la crescita in modo armonioso.",            msg: "Ciao! Vorrei info sull'osteopatia pediatrica" },
     ],
   },
   {
     label: "Movimento",
     services: [
-      { name: "Pilates",    img: "/assets/Pilates.jpg",             desc: "Un metodo che migliora forza, mobilità e controllo del movimento, con un approccio personalizzato.",     msg: "Ciao! Vorrei info sul Pilates" },
-      { name: "Yoga",       img: "/assets/02_Pilates_e_Yoga.jpeg",  desc: "Una pratica che unisce respiro, movimento e presenza per ritrovare equilibrio e benessere.",            msg: "Ciao! Vorrei info sullo Yoga" },
-      { name: "Posturale",  img: "/assets/Federico-lavoro-1.jpg",   desc: "Esercizi mirati per migliorare la postura, ridurre i compensi e muoversi con più libertà.",             msg: "Ciao! Vorrei info sul percorso posturale" },
+      { name: "Pilates",    img: "/assets/Pilates.jpg",             desc: "Un metodo che migliora forza, mobilità e controllo del movimento, con un approccio personalizzato.",     msg: "Ciao! Vorrei info sul Pilates" },      { name: "Rinforzo Posturale",  img: "/assets/Rinforzo-Posturale-v2.jpg",   desc: "Esercizi mirati per migliorare la postura, ridurre i compensi e muoversi con più libertà.",             msg: "Ciao! Vorrei info sul rinforzo posturale" },
       { name: "Functional Training", img: "/assets/Functional-Training-v2.jpg",    desc: "Un allenamento costruito intorno a te per sviluppare forza, mobilità e resistenza.",                    msg: "Ciao! Vorrei info sul Functional Training" },
     ],
   },
   {
     label: "Recupero & Benessere",
     services: [
-      { name: "Linfodrenante",          img: "/assets/Massaggi-7.jpg",     desc: "Per alleggerire il corpo, ridurre gonfiore e favorire una piacevole sensazione di leggerezza.",          msg: "Ciao! Vorrei info sul linfodrenante" },
+      { name: "Linfodrenante",          img: "/assets/Linfodrenante-v2.jpg",     desc: "Per alleggerire il corpo, ridurre gonfiore e favorire una piacevole sensazione di leggerezza.",          msg: "Ciao! Vorrei info sul linfodrenante" },
       { name: "Riflessologia Plantare", img: "/assets/Riflessologia.jpg",  desc: "Una pratica che favorisce il rilassamento profondo e aiuta il corpo a ritrovare equilibrio.",            msg: "Ciao! Vorrei info sulla riflessologia plantare" },
-      { name: "Coppettazione",          img: "/assets/Conchiglie.jpg",     desc: "Per sciogliere le tensioni, migliorare la circolazione e favorire il recupero dei tessuti.",            msg: "Ciao! Vorrei info sulla coppettazione" },
-      { name: "Massaggi Rilassanti",    img: "/assets/Bambu-1.jpg",        desc: "Un momento dedicato a rallentare, recuperare energie e concedersi uno spazio per sé.",                  msg: "Ciao! Vorrei prenotare un massaggio rilassante" },
+      { name: "Coppettazione",          img: "/assets/Coppettazione-v2.jpg",     desc: "Per sciogliere le tensioni, migliorare la circolazione e favorire il recupero dei tessuti.",            msg: "Ciao! Vorrei info sulla coppettazione" },
+      { name: "Massaggi Rilassanti",    img: "/assets/Massaggi-Rilassanti-v2.jpg",        desc: "Un momento dedicato a rallentare, recuperare energie e concedersi uno spazio per sé.",                  msg: "Ciao! Vorrei prenotare un massaggio rilassante" },
     ],
   },
   {
