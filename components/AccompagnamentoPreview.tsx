@@ -6,9 +6,6 @@ const EYEBROW = "Il nostro modo di accompagnarti";
 const TITLE = "Non esiste un percorso uguale per tutti.";
 const INTRO =
   "In EQB trovi professionisti, percorsi e attività che lavorano insieme per aiutarti a prenderti cura di te nel modo più adatto alle tue esigenze. Che tu abbia un obiettivo preciso o non sappia ancora da dove partire, ti aiutiamo a trovare la soluzione più adatta a te.";
-const PHRASE =
-  "Non sei tu a dover capire cosa ti serve. Ti aiutiamo a trovare il professionista, il percorso o l'attività più adatta alle tue esigenze.";
-
 const PILLARS = [
   { k: "01", t: "Comprendere", d: "Capire le tue esigenze e individuare il punto di partenza." },
   { k: "02", t: "Accompagnare", d: "Costruire un percorso personalizzato intorno a te." },
@@ -81,7 +78,6 @@ function Variant1() {
           </button>
         ))}
       </div>
-      <p className="acc__phrase">{PHRASE}</p>
     </div>
   );
 }
@@ -95,7 +91,6 @@ function Variant2() {
         <span className="acc__eyebrow">{EYEBROW}</span>
         <h2 className="acc__title">{TITLE}</h2>
         <p className="acc__intro">{INTRO}</p>
-        <p className="acc__phrase acc__phrase--left">{PHRASE}</p>
       </div>
       <div className="acc2__right">
         <div className="acc2__tabs" style={{ ["--active" as string]: active } as React.CSSProperties}>
@@ -140,7 +135,6 @@ function Variant3() {
           </div>
         ))}
       </div>
-      <p className="acc__phrase">{PHRASE}</p>
     </div>
   );
 }
@@ -160,7 +154,6 @@ function Variant4() {
         <span className="acc__eyebrow">{EYEBROW}</span>
         <h2 className="acc__title">{TITLE}</h2>
         <p className="acc__intro">{INTRO}</p>
-        <p className="acc__phrase acc__phrase--left">{PHRASE}</p>
       </div>
       <div className="acc4__right">
         {PILLARS.map((p, i) => (
