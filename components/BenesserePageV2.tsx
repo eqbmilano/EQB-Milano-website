@@ -36,7 +36,7 @@ const groups = [
     label: "Consulenza",
     services: [
       { name: "Nutrizione e Analisi BIA",   img: "/assets/Nutrizione-BIA-v2.jpg",   desc: "Analisi della composizione corporea con BIA e un percorso personalizzato per costruire abitudini sostenibili e obiettivi concreti.",      msg: "Ciao! Vorrei info su Nutrizione e Analisi BIA" },
-      { name: "Mental Coach", img: "/assets/Noemi.jpg",           desc: "Per acquisire maggiore consapevolezza, definire obiettivi e sviluppare nuove risorse personali.",        msg: "Ciao! Vorrei info sul mental coaching" },
+      { name: "Mental Coach", img: "/assets/Mental-Coach-v2.jpg",           desc: "Per acquisire maggiore consapevolezza, definire obiettivi e sviluppare nuove risorse personali.",        msg: "Ciao! Vorrei info sul mental coaching" },
     ],
   },
 ];
