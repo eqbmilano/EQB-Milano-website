@@ -195,7 +195,7 @@ export const BenesserePageV2: React.FC = () => {
   const ssec = useVisible("-40px");
 
   return (
-    <div className="ben-page">
+    <div className="ben-page ben-page--v2">
 
       {/* ── 1. Opening ── */}
       <section
@@ -238,8 +238,8 @@ export const BenesserePageV2: React.FC = () => {
               Valutazione<br />Posturale
             </h2>
             <div className="ben-ad-section__body ben-up ben-up--3">
-              <p>Un primo incontro per capire le tue esigenze e individuare il percorso più adatto a te.</p>
-              <p>Mettiamo a fuoco insieme cosa senti e da dove nasce, così esci con una direzione chiara — non con l&apos;ennesimo trattamento da provare.</p>
+              <p>Un primo incontro per capire da dove nasce il tuo problema — non solo dove fa male.</p>
+              <p>Se il dolore continua a tornare, di solito non è sfortuna: finora si è agito sul sintomo, non sulla causa. Insieme leggiamo la tua situazione e ne usciamo con una direzione chiara su cosa fare — non con l&apos;ennesimo trattamento da provare.</p>
             </div>
             <p className="ben-ad-section__firma ben-up ben-up--4">
               Federico Mondin<br />
@@ -265,12 +265,12 @@ export const BenesserePageV2: React.FC = () => {
           <div className="ben-feature__content">
             <span className="ben-feature__num">01</span>
             <span className="ben-label ben-up ben-up--1">Comprendere</span>
-            <p className="ben-feature__micro ben-up ben-up--2">
-              Per chi vuole capire l&apos;origine di un dolore, una rigidità o una limitazione che si ripresenta nel tempo.
-            </p>
-            <h2 className="ben-feature__title ben-up ben-up--3">
+            <h2 className="ben-feature__title ben-up ben-up--2">
               Percorso<br />Posturale
             </h2>
+            <p className="ben-feature__micro ben-up ben-up--3">
+              Per chi è stanco di ripartire da capo ogni volta. Andiamo alla causa del dolore che torna — non al sintomo — fino a renderti autonomo nel gestirlo.
+            </p>
             <div className="ben-feature__tags ben-up ben-up--4">
               <span className="ben-feature__tag">Osteopatia</span>
               <span className="ben-feature__tag">Fisioterapia</span>
@@ -296,12 +296,12 @@ export const BenesserePageV2: React.FC = () => {
           <div className="ben-feature__content">
             <span className="ben-feature__num">02</span>
             <span className="ben-label ben-up ben-up--1">Muoversi</span>
-            <p className="ben-feature__micro ben-up ben-up--2">
-              Per chi cerca un modo più consapevole, personalizzato e sostenibile di muoversi.
-            </p>
-            <h2 className="ben-feature__title ben-up ben-up--3">
+            <h2 className="ben-feature__title ben-up ben-up--2">
               Pilates<br />Reformer
             </h2>
+            <p className="ben-feature__micro ben-up ben-up--3">
+              Per chi cerca un modo più consapevole, personalizzato e sostenibile di muoversi.
+            </p>
             <div className="ben-feature__tags ben-up ben-up--4">
               <span className="ben-feature__tag">One to One</span>
               <span className="ben-feature__tag">Duetto</span>
@@ -333,12 +333,12 @@ export const BenesserePageV2: React.FC = () => {
           <div className="ben-feature__content">
             <span className="ben-feature__num">03</span>
             <span className="ben-label ben-up ben-up--1">Recupero & Benessere</span>
-            <p className="ben-feature__micro ben-up ben-up--2">
-              Per chi si allena, lavora intensamente o sente il bisogno di rallentare e ritrovare energie.
-            </p>
-            <h2 className="ben-feature__title ben-up ben-up--3">
+            <h2 className="ben-feature__title ben-up ben-up--2">
               Recuperare<br />è parte<br />della cura.
             </h2>
+            <p className="ben-feature__micro ben-up ben-up--3">
+              Per chi si allena, lavora intensamente o sente il bisogno di rallentare e ritrovare energie.
+            </p>
             <div className="ben-feature__tags ben-up ben-up--4">
               <span className="ben-feature__tag">Massoterapia</span>
               <span className="ben-feature__tag">Massaggi</span>
@@ -364,12 +364,12 @@ export const BenesserePageV2: React.FC = () => {
           <div className="ben-feature__content">
             <span className="ben-feature__num">04</span>
             <span className="ben-label ben-up ben-up--1">Costruire</span>
-            <p className="ben-feature__micro ben-up ben-up--2">
-              Per chi vuole costruire nuove abitudini e rimettersi in forma con una direzione chiara.
-            </p>
-            <h2 className="ben-feature__title ben-up ben-up--3">
+            <h2 className="ben-feature__title ben-up ben-up--2">
               Nutrizione<br />&amp; Forma
             </h2>
+            <p className="ben-feature__micro ben-up ben-up--3">
+              Per chi vuole costruire nuove abitudini e rimettersi in forma con una direzione chiara.
+            </p>
             <div className="ben-feature__tags ben-up ben-up--4">
               <span className="ben-feature__tag">Nutrizione</span>
               <span className="ben-feature__tag">Allenamento Funzionale</span>

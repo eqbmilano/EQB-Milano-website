@@ -544,6 +544,12 @@
   line-height: 1.65;
 }
 
+/* V2 — riquadro del parallax leggermente più largo (la frase sta in 3 righe).
+   Scoped a .ben-page--v2 per non toccare V1 / home, che condividono ParallaxDivider.css */
+.ben-page--v2 .parallax-divider__content {
+  max-width: 880px;
+}
+
 .ben-feature__tags {
   flex-wrap: wrap;
   gap: .5rem;
