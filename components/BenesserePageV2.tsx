@@ -234,6 +234,14 @@ export const BenesserePageV2: React.FC = () => {
   const sf4  = useVisible("-60px");
   const ssec = useVisible("-40px");
 
+  const [showSticky, setShowSticky] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowSticky(window.scrollY > window.innerHeight * 0.9);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div className="ben-page ben-page--v2">
 
@@ -299,7 +307,7 @@ export const BenesserePageV2: React.FC = () => {
       {/* ── 3. Featured: Percorso Posturale ── */}
       <section
         ref={sf1.ref as React.RefObject<HTMLElement>}
-        className={`ben-feature${sf1.visible ? " is-on" : ""}`}
+        className={`ben-feature ben-feature--shade${sf1.visible ? " is-on" : ""}`}
       >
         <div className="ben-feature__inner">
           <div className="ben-feature__image ben-up ben-up--1">
@@ -319,13 +327,6 @@ export const BenesserePageV2: React.FC = () => {
               <span className="ben-feature__tag">Fisioterapia</span>
               <span className="ben-feature__tag">Riabilitazione Posturale</span>
             </div>
-            <a
-              href={`${WA}${encodeURIComponent("Ciao! Vorrei sapere di più sul percorso posturale")}`}
-              target="_blank" rel="noopener noreferrer"
-              className="ben-feature__link ben-up ben-up--5"
-            >
-              Scopri il percorso →
-            </a>
           </div>
         </div>
       </section>
@@ -333,7 +334,7 @@ export const BenesserePageV2: React.FC = () => {
       {/* ── 4. Featured: Pilates Reformer ── */}
       <section
         ref={sf2.ref as React.RefObject<HTMLElement>}
-        className={`ben-feature ben-feature--shade ben-feature--reverse${sf2.visible ? " is-on" : ""}`}
+        className={`ben-feature ben-feature--reverse${sf2.visible ? " is-on" : ""}`}
       >
         <div className="ben-feature__inner">
           <div className="ben-feature__content">
@@ -350,13 +351,6 @@ export const BenesserePageV2: React.FC = () => {
               <span className="ben-feature__tag">Duetto</span>
               <span className="ben-feature__tag">Chair Pilates</span>
             </div>
-            <a
-              href={`${WA}${encodeURIComponent("Ciao! Vorrei info sul Reformer Pilates")}`}
-              target="_blank" rel="noopener noreferrer"
-              className="ben-feature__link ben-up ben-up--5"
-            >
-              Scopri le lezioni →
-            </a>
           </div>
           <div className="ben-feature__image ben-up ben-up--1">
             <video src="/assets/Feature-Posturale-v2.mov" autoPlay muted loop playsInline />
@@ -367,7 +361,7 @@ export const BenesserePageV2: React.FC = () => {
       {/* ── 5. Featured: Recupero & Benessere ── */}
       <section
         ref={sf3.ref as React.RefObject<HTMLElement>}
-        className={`ben-feature${sf3.visible ? " is-on" : ""}`}
+        className={`ben-feature ben-feature--shade${sf3.visible ? " is-on" : ""}`}
       >
         <div className="ben-feature__inner">
           <div className="ben-feature__image ben-up ben-up--1">
@@ -387,13 +381,6 @@ export const BenesserePageV2: React.FC = () => {
               <span className="ben-feature__tag">Linfodrenante</span>
               <span className="ben-feature__tag">Riflessologia</span>
             </div>
-            <a
-              href={`${WA}${encodeURIComponent("Ciao! Vorrei prenotare un trattamento di recupero e benessere")}`}
-              target="_blank" rel="noopener noreferrer"
-              className="ben-feature__link ben-up ben-up--5"
-            >
-              Scopri i trattamenti →
-            </a>
           </div>
         </div>
       </section>
@@ -401,7 +388,7 @@ export const BenesserePageV2: React.FC = () => {
       {/* ── 6. Featured: Nutrizione & Forma ── */}
       <section
         ref={sf4.ref as React.RefObject<HTMLElement>}
-        className={`ben-feature ben-feature--shade ben-feature--reverse${sf4.visible ? " is-on" : ""}`}
+        className={`ben-feature ben-feature--reverse${sf4.visible ? " is-on" : ""}`}
       >
         <div className="ben-feature__inner">
           <div className="ben-feature__content">
@@ -418,13 +405,6 @@ export const BenesserePageV2: React.FC = () => {
               <span className="ben-feature__tag">Allenamento Funzionale</span>
               <span className="ben-feature__tag">Linfodrenante</span>
             </div>
-            <a
-              href={`${WA}${encodeURIComponent("Ciao! Vorrei info sul percorso di nutrizione e forma")}`}
-              target="_blank" rel="noopener noreferrer"
-              className="ben-feature__link ben-up ben-up--5"
-            >
-              Inizia il percorso →
-            </a>
           </div>
           <div className="ben-feature__image ben-up ben-up--1">
             <Image
@@ -498,6 +478,18 @@ export const BenesserePageV2: React.FC = () => {
           />
         </div>
       </section>
+
+      {/* ── Sticky CTA generale ── */}
+      <div className={`ben-sticky${showSticky ? " is-shown" : ""}`}>
+        <span className="ben-sticky__text">Vuoi iniziare?</span>
+        <a
+          href={`${WA}${encodeURIComponent("Ciao! Vorrei sapere di più su EQB Milano")}`}
+          target="_blank" rel="noopener noreferrer"
+          className="ben-sticky__btn"
+        >
+          Scrivici su WhatsApp →
+        </a>
+      </div>
 
     </div>
   );

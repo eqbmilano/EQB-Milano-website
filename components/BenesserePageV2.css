@@ -616,6 +616,29 @@
   .ben-acc__pill, .ben-acc__underline { transition: none; }
 }
 
+/* ── Sticky CTA generale (stile coworking) ── */
+.ben-sticky {
+  position: fixed; left: 50%; bottom: 1.25rem; transform: translate(-50%, 200%);
+  z-index: 900; display: flex; align-items: center; gap: 1.25rem;
+  padding: .6rem .6rem .6rem 1.6rem; border-radius: 100px;
+  background: var(--color-brown-primary); box-shadow: 0 12px 40px rgba(8,5,3,.35);
+  opacity: 0; max-width: calc(100vw - 2rem);
+  transition: transform .6s cubic-bezier(.22,1,.36,1), opacity .4s;
+}
+.ben-sticky.is-shown { transform: translate(-50%, 0); opacity: 1; }
+.ben-sticky__text { font-family: var(--font-manrope); color: #ffffffcc; font-size: .9rem; font-weight: 500; white-space: nowrap; }
+.ben-sticky__btn {
+  font-family: var(--font-manrope); color: var(--color-brown-primary); background: #fff;
+  border-radius: 100px; padding: .7rem 1.5rem; font-size: .85rem; font-weight: 700;
+  white-space: nowrap; transition: background .25s, transform .25s;
+}
+.ben-sticky__btn:hover { background: #ffffffe0; transform: translateY(-1px); }
+@media (max-width: 768px) {
+  .ben-sticky { left: 1rem; right: 1rem; bottom: 1rem; max-width: none; justify-content: space-between; gap: .75rem; padding-left: 1.2rem; transform: translateY(200%); }
+  .ben-sticky.is-shown { transform: translateY(0); }
+  .ben-sticky__text { display: none; }
+}
+
 .ben-feature__tags {
   flex-wrap: wrap;
   gap: .5rem;
