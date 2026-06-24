@@ -22,16 +22,16 @@ Pipeline: **originale → ritaglio → asset web**.
 |---|---|---|---|---|
 | Osteopatia | `Osteopatia.jpg` | = originale | `Osteopatia-v2.jpg` | `…/04 - Gestione Social/Federico/Instagram/Caroselli/1 - Federico/EQB - Post 4 Osteopatia-04.jpg` |
 | Osteopatia Pediatrica | `Osteopatia-Pediatrica.jpg` | = originale | `Osteopatia-pediatrica-v2.jpg` | `…/03 - Shooting/01 - Shooting Originali/Altre foto per sito/baby-massage-close-up-hands-baby-back-top-view.jpg` |
-| Fisioterapia | `Fisioterapia.jpg` | `Fisioterapia.jpg` (**zoom leggero, meno pavimento**) | `Fisioterapia-v2.jpg` | `~/Downloads/ChatGPT Image 24 giu 2026, 17_02_36.png` |
+| Fisioterapia | `Fisioterapia.jpg` | `Fisioterapia.jpg` (**zoom leggero, meno pavimento**) | `Fisioterapia-v3.jpg` | `~/Downloads/ChatGPT Image 24 giu 2026, 17_02_36.png` |
 | Massaggio Decontratturante Sportivo | `Massaggio-Decontratturante-Sportivo.jpg` | = originale | `Massaggio-Decontratturante-Sportivo-v2.jpg` | `~/Downloads/ChatGPT Image 24 giu 2026, 15_58_28.png` |
 | Rinforzo Posturale | `Rinforzo-Posturale.jpg` | = originale | `Rinforzo-Posturale-v2.jpg` | `…/03 - Attività/Training/Kinesioterapia.jpg` |
-| Functional Training | `Functional-Training.jpg` | = originale | `Functional-Training-v2.jpg` | `…/03 - Attività/Training/Allenamento funzionale.jpg` |
+| Functional Training | `Functional-Training.jpg` | = originale | `Functional-Training-v3.jpg` | `…/03 - Attività/Training/Allenamento funzionale.jpg` |
 | Linfodrenante | `Linfodrenante.jpg` | = originale | `Linfodrenante-v2.jpg` | `…/03 - Attività/Massaggi/Immagine.png` |
 | Riflessologia Plantare | `Riflessologia.jpg` | = originale | `Riflessologia-v2.jpg` | `…/03 - Attività/Riflessologia/Riflessologia plantare .jpg` |
 | Coppettazione | `Coppettazione.jpg` | = originale | `Coppettazione-v2.jpg` | `…/03 - Attività/Massaggi/@EQB_Massaggi-11.jpg` |
 | Massaggi Rilassanti | `Massaggi-Rilassanti.jpg` | = originale | `Massaggi-Rilassanti-v2.jpg` | `…/03 - Attività/Massaggi/Massaggio decontratturante.jpg` |
 | Nutrizione & Forma (focus Feature 04) | `Nutrizione-Forma.jpg` | = originale | `Nutrizione-Forma-v2.jpg` | `…/03 - Attività/Nutrizione/@EQB_Nutrizionista-13.jpg` |
-| Nutrizione e Analisi BIA (servizio) | `Nutrizione-BIA.jpg` | = originale (verticale, niente volto) | `Nutrizione-BIA-v2.jpg` | `…/03 - Attività/Nutrizione/C5ED3853-9746-4C2F-8B11-46E77D83705E_1_201_a.jpeg` |
+| Nutrizione e Analisi BIA (servizio) | `Nutrizione-BIA.jpg` | = originale (verticale, niente volto) | `Nutrizione-BIA-v3.jpg` | `…/03 - Attività/Nutrizione/C5ED3853-9746-4C2F-8B11-46E77D83705E_1_201_a.jpeg` |
 | Mental Coach | `Mental-Coach.jpg` | = originale | `Mental-Coach-v2.jpg` | `…/03 - Attività/Nutrizione/@EQB_Nutrizionista-7.jpg` |
 | Sezione di chiusura ("Il tuo percorso…") | `Closing-Federico-osteopatia.jpg` | = originale | `Federico-osteopatia-closing.jpg` | `…/04 - Gestione Social/Federico/Instagram/Caroselli/1 - Federico/EQB - Post 4 Osteopatia-02.jpg` |
 

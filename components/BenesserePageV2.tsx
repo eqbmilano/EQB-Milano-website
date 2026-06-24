@@ -6,17 +6,13 @@ import "./BenesserePageV2.css";
 
 const WA = "https://wa.me/393755153273?text=";
 
-// Versione asset immagini: bumpare quando si sostituisce una foto mantenendo lo stesso nome file,
-// così l'URL cambia e il browser scarica la versione nuova (niente cache vecchia).
-const ASSET_V = 2;
-
 const groups = [
   {
     label: "Trattamenti",
     services: [
       { name: "Osteopatia",            img: "/assets/Osteopatia-v2.jpg",               desc: "Per ritrovare equilibrio, libertà di movimento e affrontare la causa del problema, non solo il sintomo.",          msg: "Ciao! Vorrei info sull'osteopatia" },
       { name: "Osteopatia Pediatrica", img: "/assets/Osteopatia-pediatrica-v2.jpg",      desc: "Un approccio delicato dedicato a neonati e bambini, per accompagnarne la crescita in modo armonioso.",            msg: "Ciao! Vorrei info sull'osteopatia pediatrica" },
-      { name: "Fisioterapia",          img: "/assets/Fisioterapia-v2.jpg",              desc: "Un percorso personalizzato per recuperare funzionalità e tornare alle attività quotidiane con serenità.",          msg: "Ciao! Vorrei info sulla fisioterapia" },
+      { name: "Fisioterapia",          img: "/assets/Fisioterapia-v3.jpg",              desc: "Un percorso personalizzato per recuperare funzionalità e tornare alle attività quotidiane con serenità.",          msg: "Ciao! Vorrei info sulla fisioterapia" },
       { name: "Massaggio Decontratturante Sportivo", img: "/assets/Massaggio-Decontratturante-Sportivo-v2.jpg",   desc: "Per favorire il recupero muscolare, sciogliere le tensioni e ritrovare energia e libertà di movimento.",          msg: "Ciao! Vorrei info sul massaggio decontratturante sportivo" },
     ],
   },
@@ -24,7 +20,7 @@ const groups = [
     label: "Movimento",
     services: [
       { name: "Pilates",    img: "/assets/Pilates.jpg",             desc: "Un metodo che migliora forza, mobilità e controllo del movimento, con un approccio personalizzato.",     msg: "Ciao! Vorrei info sul Pilates" },      { name: "Rinforzo Posturale",  img: "/assets/Rinforzo-Posturale-v2.jpg",   desc: "Esercizi mirati per migliorare la postura, ridurre i compensi e muoversi con più libertà.",             msg: "Ciao! Vorrei info sul rinforzo posturale" },
-      { name: "Functional Training", img: "/assets/Functional-Training-v2.jpg",    desc: "Un allenamento costruito intorno a te per sviluppare forza, mobilità e resistenza.",                    msg: "Ciao! Vorrei info sul Functional Training" },
+      { name: "Functional Training", img: "/assets/Functional-Training-v3.jpg",    desc: "Un allenamento costruito intorno a te per sviluppare forza, mobilità e resistenza.",                    msg: "Ciao! Vorrei info sul Functional Training" },
     ],
   },
   {
@@ -39,7 +35,7 @@ const groups = [
   {
     label: "Consulenza",
     services: [
-      { name: "Nutrizione e Analisi BIA",   img: "/assets/Nutrizione-BIA-v2.jpg",   desc: "Analisi della composizione corporea con BIA e un percorso personalizzato per costruire abitudini sostenibili e obiettivi concreti.",      msg: "Ciao! Vorrei info su Nutrizione e Analisi BIA" },
+      { name: "Nutrizione e Analisi BIA",   img: "/assets/Nutrizione-BIA-v3.jpg",   desc: "Analisi della composizione corporea con BIA e un percorso personalizzato per costruire abitudini sostenibili e obiettivi concreti.",      msg: "Ciao! Vorrei info su Nutrizione e Analisi BIA" },
       { name: "Mental Coach", img: "/assets/Mental-Coach-v2.jpg",           desc: "Per acquisire maggiore consapevolezza, definire obiettivi e sviluppare nuove risorse personali.",        msg: "Ciao! Vorrei info sul mental coaching" },
     ],
   },
@@ -56,7 +52,7 @@ function HoverCard({ name, img, desc, cat, msg }: {
     >
       <div className="hc-front">
         <div className="hc-front__img">
-          <Image src={`${img}?v=${ASSET_V}`} alt={name} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: "cover" }} />
+          <Image src={img} alt={name} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: "cover" }} />
         </div>
         <div className="hc-front__overlay" />
         <span className="hc-front__cat">{cat}</span>
@@ -386,7 +382,7 @@ export const BenesserePageV2: React.FC = () => {
           </div>
           <div className="ben-feature__image ben-up ben-up--1">
             <Image
-              src={`/assets/Nutrizione-Forma-v2.jpg?v=${ASSET_V}`}
+              src="/assets/Nutrizione-Forma-v2.jpg"
               alt="Nutrizione e forma — EQB Milano"
               fill sizes="50vw"
               style={{ objectFit: "cover" }}
@@ -449,7 +445,7 @@ export const BenesserePageV2: React.FC = () => {
         </div>
         <div className="ben-closing__photo">
           <Image
-            src={`/assets/Federico-osteopatia-closing.jpg?v=${ASSET_V}`}
+            src="/assets/Federico-osteopatia-closing.jpg"
             alt="EQB Milano — osteopatia con Federico"
             fill sizes="50vw"
             style={{ objectFit: "cover", objectPosition: "center 25%" }}
