@@ -204,7 +204,7 @@ function BenAccompagna() {
   return (
     <section ref={ref as React.RefObject<HTMLElement>} className={`ben-acc${visible ? " is-on" : ""}`}>
       <div className="ben-acc__head">
-        <span className="ben-label ben-acc-rise ben-acc-rise--0">Il nostro modo di accompagnarti</span>
+        <span className="ben-acc__eyebrow ben-acc-rise ben-acc-rise--0">Il nostro modo di accompagnarti</span>
         <h2 className="ben-acc__title ben-acc-rise ben-acc-rise--1">Non esiste un percorso uguale per tutti.</h2>
         <p className="ben-acc__intro ben-acc-rise ben-acc-rise--2">
           In EQB trovi professionisti, percorsi e attività che lavorano insieme per aiutarti a prenderti cura di te nel modo più adatto alle tue esigenze. Che tu abbia un obiettivo preciso o non sappia ancora da dove partire, ti aiutiamo a trovare la soluzione più adatta a te.
@@ -263,6 +263,9 @@ export const BenesserePageV2: React.FC = () => {
         </div>
       </section>
 
+      {/* ── 1b. Il nostro modo di accompagnarti ── */}
+      <BenAccompagna />
+
       {/* ── 2. Valutazione Posturale — Federico ── */}
       <section
         ref={s7.ref as React.RefObject<HTMLElement>}
@@ -292,9 +295,6 @@ export const BenesserePageV2: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* ── 2b. Il nostro modo di accompagnarti ── */}
-      <BenAccompagna />
 
       {/* ── 3. Featured: Percorso Posturale ── */}
       <section
