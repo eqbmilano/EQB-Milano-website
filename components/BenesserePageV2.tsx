@@ -181,6 +181,50 @@ function useVisible(rootMargin = "-60px") {
   return { ref, visible };
 }
 
+const ACC_PILLARS = [
+  { k: "01", t: "Comprendere", d: "Capire le tue esigenze e individuare il punto di partenza." },
+  { k: "02", t: "Accompagnare", d: "Costruire un percorso personalizzato intorno a te." },
+  { k: "03", t: "Evolvere", d: "Aiutarti a trasformare il benessere in una parte della tua quotidianità." },
+];
+
+function AccIcon({ i }: { i: number }) {
+  const common = {
+    viewBox: "0 0 24 24", fill: "none", stroke: "currentColor",
+    strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const,
+  };
+  if (i === 0)
+    return (<svg {...common}><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></svg>);
+  if (i === 1)
+    return (<svg {...common}><circle cx="6" cy="17" r="2.5" /><circle cx="18" cy="7" r="2.5" /><path d="M8 15.5l8-7" /></svg>);
+  return (<svg {...common}><path d="M3 17l6-6 4 4 7-7" /><path d="M17 7h4v4" /></svg>);
+}
+
+function BenAccompagna() {
+  const { ref, visible } = useVisible("-15%");
+  return (
+    <section ref={ref as React.RefObject<HTMLElement>} className={`ben-acc${visible ? " is-on" : ""}`}>
+      <div className="ben-acc__head">
+        <span className="ben-label ben-acc-rise ben-acc-rise--0">Il nostro modo di accompagnarti</span>
+        <h2 className="ben-acc__title ben-acc-rise ben-acc-rise--1">Non esiste un percorso uguale per tutti.</h2>
+        <p className="ben-acc__intro ben-acc-rise ben-acc-rise--2">
+          In EQB trovi professionisti, percorsi e attività che lavorano insieme per aiutarti a prenderti cura di te nel modo più adatto alle tue esigenze. Che tu abbia un obiettivo preciso o non sappia ancora da dove partire, ti aiutiamo a trovare la soluzione più adatta a te.
+        </p>
+      </div>
+      <div className="ben-acc__row">
+        {ACC_PILLARS.map((p, i) => (
+          <div key={p.k} className={`ben-acc__pill ben-acc-rise ben-acc-rise--${3 + i}`}>
+            <span className="ben-acc__k">{p.k}</span>
+            <span className="ben-acc__icon"><AccIcon i={i} /></span>
+            <h3 className="ben-acc__t">{p.t}</h3>
+            <p className="ben-acc__d">{p.d}</p>
+            <span className="ben-acc__underline" />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export const BenesserePageV2: React.FC = () => {
   const s0   = useVisible("-20px");
   const s7   = useVisible("-60px");
@@ -248,6 +292,9 @@ export const BenesserePageV2: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* ── 2b. Il nostro modo di accompagnarti ── */}
+      <BenAccompagna />
 
       {/* ── 3. Featured: Percorso Posturale ── */}
       <section
