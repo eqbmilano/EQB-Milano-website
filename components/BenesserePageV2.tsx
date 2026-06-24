@@ -332,9 +332,9 @@ export const BenesserePageV2: React.FC = () => {
           </div>
           <div className="ben-feature__content">
             <span className="ben-feature__num">03</span>
-            <span className="ben-label ben-up ben-up--1">Recupero & Benessere</span>
+            <span className="ben-label ben-up ben-up--1">Recuperare</span>
             <h2 className="ben-feature__title ben-up ben-up--2">
-              Recuperare<br />è parte<br />della cura.
+              Recovery<br />&amp; Relax
             </h2>
             <p className="ben-feature__micro ben-up ben-up--3">
               Per chi si allena, lavora intensamente o sente il bisogno di rallentare e ritrovare energie.
