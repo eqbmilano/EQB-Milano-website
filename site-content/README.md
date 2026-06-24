@@ -31,11 +31,11 @@ Pipeline: **originale → ritaglio → asset web**.
 | Coppettazione | `Coppettazione.jpg` | = originale | `Coppettazione-v2.jpg` | `…/03 - Attività/Massaggi/@EQB_Massaggi-11.jpg` |
 | Massaggi Rilassanti | `Massaggi-Rilassanti.jpg` | = originale | `Massaggi-Rilassanti-v2.jpg` | `…/03 - Attività/Massaggi/Massaggio decontratturante.jpg` |
 | Nutrizione & Forma (focus Feature 04) | `Nutrizione-Forma.jpg` | = originale | `Nutrizione-Forma-v2.jpg` | `…/03 - Attività/Nutrizione/@EQB_Nutrizionista-13.jpg` |
-| Nutrizione e Analisi BIA (servizio) | `Nutrizione-BIA.jpg` | `Nutrizione-BIA.jpg` (**zoom 72% centrato**) | `Nutrizione-BIA-v2.jpg` | `…/03 - Attività/Nutrizione/Scienze della nutrizione.jpg` |
+| Nutrizione e Analisi BIA (servizio) | `Nutrizione-BIA.jpg` | `Nutrizione-BIA.jpg` (**crop parte bassa: mani + elettrodi, NO volto**) | `Nutrizione-BIA-v2.jpg` | `…/03 - Attività/Nutrizione/Scienze della nutrizione.jpg` |
 | Sezione di chiusura ("Il tuo percorso…") | `Closing-Federico-osteopatia.jpg` | = originale | `Federico-osteopatia-closing.jpg` | `…/04 - Gestione Social/Federico/Instagram/Caroselli/1 - Federico/EQB - Post 4 Osteopatia-02.jpg` |
 
 > Prefisso cartelle EQB: `~/Desktop/EQB/03 - EQB MARKETING/`
-> Unico ritaglio "vero" finora: **Nutrizione e Analisi BIA** (zoom). Gli altri ritagli sono identici all'originale (il crop avviene via CSS object-fit sul sito).
+> Unico ritaglio "vero" finora: **Nutrizione e Analisi BIA** (crop sulla parte bassa, mani + elettrodi, niente volto). Gli altri ritagli sono identici all'originale (il crop avviene via CSS object-fit sul sito).
 
 ### Note
 - **Fisioterapia**: alternativa disponibile non usata → `~/Downloads/IMG_4238.HEIC` (se Marco la preferisce, va convertita e sostituita).
