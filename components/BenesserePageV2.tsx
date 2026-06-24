@@ -238,15 +238,15 @@ export const BenesserePageV2: React.FC = () => {
               Valutazione<br />Posturale
             </h2>
             <div className="ben-ad-section__body ben-up ben-up--3">
-              <p>Un primo incontro per capire da dove nasce il tuo problema — non solo dove fa male.</p>
-              <p>Se il dolore continua a tornare, di solito non è sfortuna: finora si è agito sul sintomo, non sulla causa. Insieme leggiamo la tua situazione e ne usciamo con una direzione chiara su cosa fare — non con l&apos;ennesimo trattamento da provare.</p>
+              <p>Un primo incontro per capire <strong>da dove nasce il tuo problema</strong> — non solo dove fa male.</p>
+              <p>Se il dolore continua a tornare, di solito <strong>non è sfortuna</strong>: finora si è agito sul sintomo, <strong>non sulla causa</strong>. Insieme leggiamo la tua situazione e ne usciamo con <strong>una direzione chiara su cosa fare</strong> — non con l&apos;ennesimo trattamento da provare.</p>
             </div>
             <p className="ben-ad-section__firma ben-up ben-up--4">
               Federico Mondin<br />
               <span>Osteopata · Co-fondatore EQB Milano</span>
             </p>
             <BenTiltCard variant="dark">
-              <p className="ben-tilt-card__sub">Trenta minuti per fare chiarezza, senza impegno.</p>
+              <p className="ben-tilt-card__sub">Dalla prima visita capisci perché finora non ha funzionato.</p>
               <a href="https://tinyurl.com/valutazioneposturale" target="_blank" rel="noopener noreferrer" className="ben-tilt-card__btn">Prenota subito</a>
             </BenTiltCard>
           </div>
