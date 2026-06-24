@@ -37,7 +37,7 @@ export const Navbar: React.FC = () => {
     const update = () => {
       if (menuOpen) return;
       // Force white navbar on pages where the hero overlay is too transparent for auto-detection
-      const forcedWhitePages = ["/", "/benessere", "/benessere-v2"];
+      const forcedWhitePages = ["/", "/benessere"];
       if (forcedWhitePages.includes(pathname) && window.scrollY < window.innerHeight * 0.85) {
         setIsDark(false);
         return;

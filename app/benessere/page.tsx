@@ -1,5 +1,5 @@
 import { Navbar, Footer } from "@/components";
-import { BenesserePage } from "@/components/BenesserePage";
+import { BenesserePageV2 } from "@/components/BenesserePageV2";
 
 export const metadata = { title: "Benessere — EQB Milano" };
 
@@ -7,7 +7,7 @@ export default function BenessrerePage() {
   return (
     <main className="w-full relative">
       <Navbar />
-      <BenesserePage />
+      <BenesserePageV2 />
       <Footer />
     </main>
   );
