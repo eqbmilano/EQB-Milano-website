@@ -6,6 +6,10 @@ import "./BenesserePageV2.css";
 
 const WA = "https://wa.me/393755153273?text=";
 
+// Versione asset immagini: bumpare quando si sostituisce una foto mantenendo lo stesso nome file,
+// così l'URL cambia e il browser scarica la versione nuova (niente cache vecchia).
+const ASSET_V = 2;
+
 const groups = [
   {
     label: "Trattamenti",
@@ -52,7 +56,7 @@ function HoverCard({ name, img, desc, cat, msg }: {
     >
       <div className="hc-front">
         <div className="hc-front__img">
-          <Image src={img} alt={name} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: "cover" }} />
+          <Image src={`${img}?v=${ASSET_V}`} alt={name} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: "cover" }} />
         </div>
         <div className="hc-front__overlay" />
         <span className="hc-front__cat">{cat}</span>
@@ -382,7 +386,7 @@ export const BenesserePageV2: React.FC = () => {
           </div>
           <div className="ben-feature__image ben-up ben-up--1">
             <Image
-              src="/assets/Nutrizione-Forma-v2.jpg"
+              src={`/assets/Nutrizione-Forma-v2.jpg?v=${ASSET_V}`}
               alt="Nutrizione e forma — EQB Milano"
               fill sizes="50vw"
               style={{ objectFit: "cover" }}
@@ -445,7 +449,7 @@ export const BenesserePageV2: React.FC = () => {
         </div>
         <div className="ben-closing__photo">
           <Image
-            src="/assets/Federico-osteopatia-closing.jpg"
+            src={`/assets/Federico-osteopatia-closing.jpg?v=${ASSET_V}`}
             alt="EQB Milano — osteopatia con Federico"
             fill sizes="50vw"
             style={{ objectFit: "cover", objectPosition: "center 25%" }}
