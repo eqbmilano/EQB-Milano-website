@@ -1,0 +1,147 @@
+/* Sezione "I due pilastri" su /benessere:
+   testo animato blur→fuoco per riga (come "Nessuno lo fa come noi" / home),
+   + evidenziatore che sweepa dietro l'accento (variante C).
+   Pelle del sito: crema, Manrope, accento marrone. */
+
+.ben-pilastri {
+  background: var(--color-bg-light);
+}
+
+.ben-pil {
+  min-height: 64vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2.5rem;
+}
+
+.ben-pil__eyebrow {
+  display: block;
+  font-family: var(--font-manrope);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #32252366;
+  margin-bottom: 1.6rem;
+}
+
+.ben-pil__claim {
+  font-family: var(--font-manrope);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  font-size: clamp(2.5rem, 5.4vw, 3.85rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.08em;
+}
+.ben-pil__line { display: block; color: #111; }
+.ben-pil__accent { color: var(--color-brown-primary); }
+
+/* evidenziatore che sweepa dietro l'accento (variante C) */
+.ben-pil__accent-txt {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+.ben-pil__accent-txt::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.06em;
+  height: 0.42em;
+  background: rgba(50, 37, 35, 0.16);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.95s;
+}
+.ben-pil.is-on .ben-pil__accent-txt::after { transform: scaleX(1); }
+
+.ben-pil__body {
+  font-family: var(--font-manrope);
+  margin-top: 1.7rem;
+  max-width: 600px;
+  font-size: clamp(1.05rem, 2vw, 1.22rem);
+  line-height: 1.62;
+  font-weight: 400;
+  color: #1f1f1fb3;
+}
+
+/* sottolineatura ondulata (come "vero" in "Nessuno lo fa come noi") */
+.ben-pil__wavy {
+  position: relative;
+  display: inline-block;
+  color: var(--color-brown-primary);
+  font-weight: 600;
+}
+.ben-pil__wavy-line {
+  position: absolute;
+  left: -3px;
+  bottom: -7px;
+  width: calc(100% + 6px);
+  height: 8px;
+  color: var(--color-brown-primary);
+  stroke-dasharray: 75;
+  stroke-dashoffset: 75px;
+  overflow: visible;
+}
+.ben-pil.is-on .ben-pil__wavy-line {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.7s cubic-bezier(0.4, 0, 0.2, 1) 1.3s;
+}
+
+/* reveal blur → fuoco per riga (come .perche-anim / .eco-anim della home) */
+.ben-pil-rise {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(30px);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ben-pil.is-on .ben-pil-rise { opacity: 1; filter: blur(0); transform: translateY(0); }
+.ben-pil.is-on .ben-pil-rise--0 { transition-delay: 0s; }
+.ben-pil.is-on .ben-pil-rise--1 { transition-delay: 0.15s; }
+.ben-pil.is-on .ben-pil-rise--2 { transition-delay: 0.3s; }
+.ben-pil.is-on .ben-pil-rise--3 { transition-delay: 0.5s; }
+
+/* filo verticale che collega i due pilastri (visione → garanzia) */
+.ben-pil-filo {
+  display: flex;
+  justify-content: center;
+  height: 88px;
+}
+.ben-pil-filo span {
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: var(--color-brown-primary);
+  opacity: 0.4;
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ben-pil-filo.is-on span { transform: scaleY(1); }
+
+@media (max-width: 768px) {
+  .ben-pil { min-height: 56vh; padding: 3rem 1.5rem; }
+  .ben-pil__claim { font-size: 2.15rem; }
+  .ben-pil-filo { height: 60px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ben-pil-rise,
+  .ben-pil__accent-txt::after,
+  .ben-pil-filo span {
+    transition: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+  .ben-pil__wavy-line { stroke-dashoffset: 0 !important; transition: none !important; }
+}
