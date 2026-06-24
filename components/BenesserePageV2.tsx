@@ -235,11 +235,21 @@ export const BenesserePageV2: React.FC = () => {
   const ssec = useVisible("-40px");
 
   const [showSticky, setShowSticky] = useState(false);
+  const closingRef = useRef<HTMLElement>(null);
   useEffect(() => {
-    const onScroll = () => setShowSticky(window.scrollY > window.innerHeight * 0.9);
+    const onScroll = () => {
+      const pastHero = window.scrollY > window.innerHeight * 0.9;
+      const closing = closingRef.current;
+      const beforeClosing = !closing || closing.getBoundingClientRect().top > window.innerHeight * 0.85;
+      setShowSticky(pastHero && beforeClosing);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
@@ -452,7 +462,7 @@ export const BenesserePageV2: React.FC = () => {
       </section>
 
       {/* ── 8. Closing CTA ── */}
-      <section className="ben-closing">
+      <section className="ben-closing" ref={closingRef}>
         <div className="ben-closing__text">
           <span className="ben-closing__label">Inizia da qui</span>
           <h2 className="ben-closing__title">
