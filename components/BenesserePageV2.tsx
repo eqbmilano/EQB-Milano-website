@@ -3,7 +3,6 @@ import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { ParallaxDivider } from "./ParallaxDivider";
 import "./BenesserePageV2.css";
-import "./BenPilastriV2.css";
 
 const WA = "https://wa.me/393755153273?text=";
 
@@ -11,36 +10,36 @@ const groups = [
   {
     label: "Trattamenti",
     services: [
-      { name: "Osteopatia",            img: "/assets/Osteopatia.jpg",                  desc: "Valutazione e trattamento globale del sistema muscolo-scheletrico per ritrovare equilibrio e benessere.",    msg: "Ciao! Vorrei info sull'osteopatia" },
-      { name: "Fisioterapia",          img: "/assets/Federico-lavoro-2.jpg",            desc: "Riabilitazione funzionale post-traumatica, pre e post operatoria, con approccio personalizzato.",           msg: "Ciao! Vorrei info sulla fisioterapia" },
-      { name: "Massoterapia",          img: "/assets/Massaggio-decontratturante.jpg",   desc: "Massaggio terapeutico per sciogliere tensioni muscolari, contratture e rigidità croniche.",               msg: "Ciao! Vorrei info sulla massoterapia" },
-      { name: "Osteopatia Pediatrica", img: "/assets/Osteopatia-pediatrica.jpg",         desc: "Approccio dolce e specifico per neonati e bambini, per favorire uno sviluppo armonioso.",                  msg: "Ciao! Vorrei info sull'osteopatia pediatrica" },
+      { name: "Osteopatia",            img: "/assets/Osteopatia.jpg",                  desc: "Per ritrovare equilibrio, libertà di movimento e affrontare la causa del problema, non solo il sintomo.",          msg: "Ciao! Vorrei info sull'osteopatia" },
+      { name: "Fisioterapia",          img: "/assets/Federico-lavoro-2.jpg",            desc: "Un percorso personalizzato per recuperare funzionalità e tornare alle attività quotidiane con serenità.",          msg: "Ciao! Vorrei info sulla fisioterapia" },
+      { name: "Massoterapia",          img: "/assets/Massaggio-decontratturante.jpg",   desc: "Per favorire il recupero muscolare, sciogliere le tensioni e ritrovare energia e libertà di movimento.",          msg: "Ciao! Vorrei info sulla massoterapia" },
+      { name: "Osteopatia Pediatrica", img: "/assets/Osteopatia-pediatrica.jpg",         desc: "Un approccio delicato dedicato a neonati e bambini, per accompagnarne la crescita in modo armonioso.",            msg: "Ciao! Vorrei info sull'osteopatia pediatrica" },
     ],
   },
   {
     label: "Movimento",
     services: [
-      { name: "Pilates",    img: "/assets/Pilates.jpg",             desc: "Metodo Reformer per forza, equilibrio e consapevolezza corporea profonda, con istruttori certificati.",           msg: "Ciao! Vorrei info sul Pilates" },
-      { name: "Yoga",       img: "/assets/02_Pilates_e_Yoga.jpeg",  desc: "Pratica integrata mente-corpo: respiro, postura e fluidità per tornare a sentirsi centrati.",                  msg: "Ciao! Vorrei info sullo Yoga" },
-      { name: "Posturale",  img: "/assets/Federico-lavoro-1.jpg",   desc: "Rieducazione posturale globale con esercizi mirati per correggere compensi e prevenire dolori ricorrenti.",     msg: "Ciao! Vorrei info sul percorso posturale" },
-      { name: "Funzionale", img: "/assets/Sala-Allenamento.jpg",    desc: "Allenamento adattivo per forza, mobilità e performance. Ogni programma costruito intorno a te.",                msg: "Ciao! Vorrei info sull'allenamento funzionale" },
+      { name: "Pilates",    img: "/assets/Pilates.jpg",             desc: "Un metodo che migliora forza, mobilità e controllo del movimento, con un approccio personalizzato.",     msg: "Ciao! Vorrei info sul Pilates" },
+      { name: "Yoga",       img: "/assets/02_Pilates_e_Yoga.jpeg",  desc: "Una pratica che unisce respiro, movimento e presenza per ritrovare equilibrio e benessere.",            msg: "Ciao! Vorrei info sullo Yoga" },
+      { name: "Posturale",  img: "/assets/Federico-lavoro-1.jpg",   desc: "Esercizi mirati per migliorare la postura, ridurre i compensi e muoversi con più libertà.",             msg: "Ciao! Vorrei info sul percorso posturale" },
+      { name: "Funzionale", img: "/assets/Sala-Allenamento.jpg",    desc: "Un allenamento costruito intorno a te per sviluppare forza, mobilità e resistenza.",                    msg: "Ciao! Vorrei info sull'allenamento funzionale" },
     ],
   },
   {
-    label: "Relax",
+    label: "Recupero & Benessere",
     services: [
-      { name: "Linfodrenante",          img: "/assets/Massaggi-7.jpg",     desc: "Drenaggio linfatico manuale per ridurre ritenzione idrica, gonfiore e senso di pesantezza.",                  msg: "Ciao! Vorrei info sul linfodrenante" },
-      { name: "Riflessologia Plantare", img: "/assets/Riflessologia.jpg",  desc: "Stimolazione dei punti riflessi del piede per riequilibrare l'organismo e favorire il rilassamento profondo.", msg: "Ciao! Vorrei info sulla riflessologia plantare" },
-      { name: "Coppettazione",          img: "/assets/Conchiglie.jpg",     desc: "Tecnica di ventosaterapia per sciogliere aderenze, migliorare la circolazione e allentare le tensioni.",      msg: "Ciao! Vorrei info sulla coppettazione" },
-      { name: "Massaggi Rilassanti",    img: "/assets/Bambu-1.jpg",        desc: "Massaggi personalizzati con bambù, conchiglie, pennelli e oli essenziali per un recupero sensoriale completo.", msg: "Ciao! Vorrei prenotare un massaggio rilassante" },
+      { name: "Linfodrenante",          img: "/assets/Massaggi-7.jpg",     desc: "Per alleggerire il corpo, ridurre gonfiore e favorire una piacevole sensazione di leggerezza.",          msg: "Ciao! Vorrei info sul linfodrenante" },
+      { name: "Riflessologia Plantare", img: "/assets/Riflessologia.jpg",  desc: "Una pratica che favorisce il rilassamento profondo e aiuta il corpo a ritrovare equilibrio.",            msg: "Ciao! Vorrei info sulla riflessologia plantare" },
+      { name: "Coppettazione",          img: "/assets/Conchiglie.jpg",     desc: "Per sciogliere le tensioni, migliorare la circolazione e favorire il recupero dei tessuti.",            msg: "Ciao! Vorrei info sulla coppettazione" },
+      { name: "Massaggi Rilassanti",    img: "/assets/Bambu-1.jpg",        desc: "Un momento dedicato a rallentare, recuperare energie e concedersi uno spazio per sé.",                  msg: "Ciao! Vorrei prenotare un massaggio rilassante" },
     ],
   },
   {
     label: "Consulenza",
     services: [
-      { name: "Nutrizione",   img: "/assets/Nutrizionista.jpg",   desc: "Analisi della composizione corporea e piano nutrizionale su misura, per obiettivi reali e duraturi.",     msg: "Ciao! Vorrei prenotare una consulenza nutrizionale" },
-      { name: "Mental Coach", img: "/assets/Noemi.jpg",           desc: "Percorsi di crescita personale per sbloccare potenziale, chiarire obiettivi e costruire abitudini sane.",  msg: "Ciao! Vorrei info sul mental coaching" },
-      { name: "Counselor",    img: "/assets/Roberta-Boara.jpg",   desc: "Supporto psicologico in un ambiente riservato e accogliente, per affrontare momenti di difficoltà o transizione.", msg: "Ciao! Vorrei info sul counseling" },
+      { name: "Nutrizione",   img: "/assets/Nutrizionista.jpg",   desc: "Un percorso personalizzato per costruire abitudini sostenibili e raggiungere obiettivi concreti.",      msg: "Ciao! Vorrei prenotare una consulenza nutrizionale" },
+      { name: "Mental Coach", img: "/assets/Noemi.jpg",           desc: "Per acquisire maggiore consapevolezza, definire obiettivi e sviluppare nuove risorse personali.",        msg: "Ciao! Vorrei info sul mental coaching" },
+      { name: "Counselor",    img: "/assets/Roberta-Boara.jpg",   desc: "Uno spazio di ascolto e supporto per affrontare momenti di cambiamento o difficoltà.",                  msg: "Ciao! Vorrei info sul counseling" },
     ],
   },
 ];
@@ -186,44 +185,6 @@ function useVisible(rootMargin = "-60px") {
   return { ref, visible };
 }
 
-function BenWavy({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="ben-pil__wavy">
-      {children}
-      <svg className="ben-pil__wavy-line" viewBox="0 0 60 8" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M1 5 Q10 1 20 5 Q30 9 40 5 Q50 1 59 5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    </span>
-  );
-}
-
-function BenPilastro({ eyebrow, line1, accent, body }: {
-  eyebrow: string; line1: string; accent: string; body: React.ReactNode;
-}) {
-  const { ref, visible } = useVisible("-12%");
-  return (
-    <div ref={ref as React.RefObject<HTMLDivElement>} className={`ben-pil${visible ? " is-on" : ""}`}>
-      <span className="ben-pil__eyebrow ben-pil-rise ben-pil-rise--0">{eyebrow}</span>
-      <h2 className="ben-pil__claim">
-        <span className="ben-pil__line ben-pil-rise ben-pil-rise--1">{line1}</span>
-        <span className="ben-pil__line ben-pil__accent ben-pil-rise ben-pil-rise--2">
-          <span className="ben-pil__accent-txt">{accent}</span>
-        </span>
-      </h2>
-      <p className="ben-pil__body ben-pil-rise ben-pil-rise--3">{body}</p>
-    </div>
-  );
-}
-
-function BenFilo() {
-  const { ref, visible } = useVisible("-20%");
-  return (
-    <div ref={ref as React.RefObject<HTMLDivElement>} className={`ben-pil-filo${visible ? " is-on" : ""}`}>
-      <span />
-    </div>
-  );
-}
-
 export const BenesserePageV2: React.FC = () => {
   const s0   = useVisible("-20px");
   const s7   = useVisible("-60px");
@@ -254,29 +215,12 @@ export const BenesserePageV2: React.FC = () => {
             Cura.<br />Movimento.<br />Equilibrio.
           </h1>
           <p className="ben-opening__sub ben-fade ben-fade--3">
-            Un approccio integrato che parte dal corpo<br />e lavora sulla persona.
+            Trova il professionista, il percorso o l&apos;attività<br />più adatta alle tue esigenze.
           </p>
         </div>
         <div className="ben-opening__scroll" aria-hidden="true">
           <div className="ben-opening__scroll-line" />
         </div>
-      </section>
-
-      {/* ── 1b. I due pilastri: visione + garanzia ── */}
-      <section className="ben-pilastri">
-        <BenPilastro
-          eyebrow="La visione"
-          line1="Non è un centro benessere."
-          accent="È un ecosistema."
-          body={<>Qui i professionisti non sono di passaggio: hanno scelto di restare, di crescere insieme, di prendersi cura delle persone allo stesso modo. Non un posto dove passi, un posto <BenWavy>in cui torni</BenWavy>.</>}
-        />
-        <BenFilo />
-        <BenPilastro
-          eyebrow="La garanzia"
-          line1="Chiunque incontri, qui,"
-          accent="è stato scelto."
-          body="Ognuno è qui perché è bravo davvero, e perché ci tiene sul serio. Così, chiunque tu incontri, sei in buone mani — senza doverci pensare."
-        />
       </section>
 
       {/* ── 2. Valutazione Posturale — Federico ── */}
@@ -289,20 +233,20 @@ export const BenesserePageV2: React.FC = () => {
             <BenVideoPlayer src="/assets/Campagna-Fede-1.mov" />
           </div>
           <div className="ben-ad-section__content">
-            <span className="ben-label ben-up ben-up--1">Non sai da dove partire?</span>
+            <span className="ben-label ben-up ben-up--1">Hai un obiettivo ma non sai da dove partire?</span>
             <h2 className="ben-ad-section__title ben-up ben-up--2">
               Valutazione<br />Posturale
             </h2>
             <div className="ben-ad-section__body ben-up ben-up--3">
-              <p>Sei a Milano e il <strong>dolore alla schiena</strong>, o alla <strong>cervicale</strong>, continua a tornare?</p>
-              <p>Il problema non è il dolore. È che nessuno ha ancora capito <strong>da dove nasce davvero</strong>. In <strong>30 minuti</strong> di <strong>valutazione posturale</strong> capiamo insieme la <strong>causa reale</strong> — e usciamo con un quadro chiaro di cosa fare e come.</p>
+              <p>Un primo incontro per capire le tue esigenze e individuare il percorso più adatto a te.</p>
+              <p>Mettiamo a fuoco insieme cosa senti e da dove nasce, così esci con una direzione chiara — non con l&apos;ennesimo trattamento da provare.</p>
             </div>
             <p className="ben-ad-section__firma ben-up ben-up--4">
               Federico Mondin<br />
               <span>Osteopata · Co-fondatore EQB Milano</span>
             </p>
             <BenTiltCard variant="dark">
-              <p className="ben-tilt-card__sub">Un percorso mirato, non l&apos;ennesimo trattamento temporaneo.</p>
+              <p className="ben-tilt-card__sub">Trenta minuti per fare chiarezza, senza impegno.</p>
               <a href="https://tinyurl.com/valutazioneposturale" target="_blank" rel="noopener noreferrer" className="ben-tilt-card__btn">Prenota subito</a>
             </BenTiltCard>
           </div>
@@ -320,14 +264,13 @@ export const BenesserePageV2: React.FC = () => {
           </div>
           <div className="ben-feature__content">
             <span className="ben-feature__num">01</span>
-            <span className="ben-label ben-up ben-up--1">Punto di partenza</span>
-            <h2 className="ben-feature__title ben-up ben-up--2">
+            <span className="ben-label ben-up ben-up--1">Comprendere</span>
+            <p className="ben-feature__micro ben-up ben-up--2">
+              Per chi vuole capire l&apos;origine di un dolore, una rigidità o una limitazione che si ripresenta nel tempo.
+            </p>
+            <h2 className="ben-feature__title ben-up ben-up--3">
               Percorso<br />Posturale
             </h2>
-            <p className="ben-feature__body ben-up ben-up--3">
-              Un percorso continuativo — terapia manuale e lavoro in sala, due volte a settimana.
-              Non per alleviare il dolore, ma per capirne la causa e renderti indipendente.
-            </p>
             <div className="ben-feature__tags ben-up ben-up--4">
               <span className="ben-feature__tag">Osteopatia</span>
               <span className="ben-feature__tag">Fisioterapia</span>
@@ -352,14 +295,13 @@ export const BenesserePageV2: React.FC = () => {
         <div className="ben-feature__inner">
           <div className="ben-feature__content">
             <span className="ben-feature__num">02</span>
-            <span className="ben-label ben-up ben-up--1">Movimento</span>
-            <h2 className="ben-feature__title ben-up ben-up--2">
+            <span className="ben-label ben-up ben-up--1">Muoversi</span>
+            <p className="ben-feature__micro ben-up ben-up--2">
+              Per chi cerca un modo più consapevole, personalizzato e sostenibile di muoversi.
+            </p>
+            <h2 className="ben-feature__title ben-up ben-up--3">
               Pilates<br />Reformer
             </h2>
-            <p className="ben-feature__body ben-up ben-up--3">
-              Lezioni individuali o in duetto su macchina Reformer. Il metodo più efficace
-              per lavorare su postura, forza e mobilità — con la guida di un istruttore certificato.
-            </p>
             <div className="ben-feature__tags ben-up ben-up--4">
               <span className="ben-feature__tag">One to One</span>
               <span className="ben-feature__tag">Duetto</span>
@@ -379,7 +321,7 @@ export const BenesserePageV2: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 5. Featured: Relax & Recovery ── */}
+      {/* ── 5. Featured: Recupero & Benessere ── */}
       <section
         ref={sf3.ref as React.RefObject<HTMLElement>}
         className={`ben-feature${sf3.visible ? " is-on" : ""}`}
@@ -390,21 +332,20 @@ export const BenesserePageV2: React.FC = () => {
           </div>
           <div className="ben-feature__content">
             <span className="ben-feature__num">03</span>
-            <span className="ben-label ben-up ben-up--1">Relax & Recovery</span>
-            <h2 className="ben-feature__title ben-up ben-up--2">
-              Fermarsi<br />è parte<br />della cura.
-            </h2>
-            <p className="ben-feature__body ben-up ben-up--3">
-              Trattamenti professionali per rilasciare la tensione, migliorare la circolazione
-              e ritrovare equilibrio. Non il lusso — la cura che il corpo merita.
+            <span className="ben-label ben-up ben-up--1">Recupero & Benessere</span>
+            <p className="ben-feature__micro ben-up ben-up--2">
+              Per chi si allena, lavora intensamente o sente il bisogno di rallentare e ritrovare energie.
             </p>
+            <h2 className="ben-feature__title ben-up ben-up--3">
+              Recuperare<br />è parte<br />della cura.
+            </h2>
             <div className="ben-feature__tags ben-up ben-up--4">
               <span className="ben-feature__tag">Massoterapia</span>
-              <span className="ben-feature__tag">Linfodrenante</span>
+              <span className="ben-feature__tag">Massaggi</span>
               <span className="ben-feature__tag">Riflessologia</span>
             </div>
             <a
-              href={`${WA}${encodeURIComponent("Ciao! Vorrei prenotare un trattamento Relax & Recovery")}`}
+              href={`${WA}${encodeURIComponent("Ciao! Vorrei prenotare un trattamento di recupero e benessere")}`}
               target="_blank" rel="noopener noreferrer"
               className="ben-feature__link ben-up ben-up--5"
             >
@@ -422,21 +363,20 @@ export const BenesserePageV2: React.FC = () => {
         <div className="ben-feature__inner">
           <div className="ben-feature__content">
             <span className="ben-feature__num">04</span>
-            <span className="ben-label ben-up ben-up--1">Punto di partenza</span>
-            <h2 className="ben-feature__title ben-up ben-up--2">
-              Rimettersi<br />in forma,<br />per davvero.
-            </h2>
-            <p className="ben-feature__body ben-up ben-up--3">
-              Il corpo cambia quando cambia il modo in cui lo nutri, lo muovi e lo recuperi.
-              Un percorso integrato tra nutrizione, allenamento e benessere fisico, costruito intorno a te.
+            <span className="ben-label ben-up ben-up--1">Costruire</span>
+            <p className="ben-feature__micro ben-up ben-up--2">
+              Per chi vuole costruire nuove abitudini e rimettersi in forma con una direzione chiara.
             </p>
+            <h2 className="ben-feature__title ben-up ben-up--3">
+              Nutrizione<br />&amp; Forma
+            </h2>
             <div className="ben-feature__tags ben-up ben-up--4">
               <span className="ben-feature__tag">Nutrizione</span>
-              <span className="ben-feature__tag">Linfodrenante</span>
               <span className="ben-feature__tag">Allenamento Funzionale</span>
+              <span className="ben-feature__tag">Linfodrenante</span>
             </div>
             <a
-              href={`${WA}${encodeURIComponent("Ciao! Vorrei info sul percorso di ricomposizione corporea")}`}
+              href={`${WA}${encodeURIComponent("Ciao! Vorrei info sul percorso di nutrizione e forma")}`}
               target="_blank" rel="noopener noreferrer"
               className="ben-feature__link ben-up ben-up--5"
             >
@@ -457,18 +397,18 @@ export const BenesserePageV2: React.FC = () => {
       {/* ── Parallax Divider ── */}
       <ParallaxDivider
         src="/assets/Osteopatia-cranio.jpg"
-        text="Tutti i percorsi sono personalizzati e seguiti da professionisti certificati."
+        text="Tutti i percorsi sono personalizzati e seguiti da professionisti certificati, per accompagnarti nel modo più adatto alle tue esigenze."
       />
 
-      {/* ── 6. La nostra offerta — Variante B ── */}
+      {/* ── 7. La nostra offerta ── */}
       <section
         ref={ssec.ref as React.RefObject<HTMLElement>}
         className={`ben-offerta${ssec.visible ? " is-on" : ""}`}
       >
         <div className="ben-offerta__inner">
           <div className="ben-offerta__header">
-            <span className="ben-label ben-up ben-up--1">Tutto quello che trovi da EQB</span>
-            <h2 className="ben-offerta__title ben-up ben-up--2">La nostra offerta</h2>
+            <span className="ben-label ben-up ben-up--1">Professionisti, percorsi e attività</span>
+            <h2 className="ben-offerta__title ben-up ben-up--2">Tutto quello che trovi in EQB</h2>
           </div>
           <div className="vb-groups">
             {groups.map((g) => (
@@ -488,7 +428,7 @@ export const BenesserePageV2: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 7. Closing CTA ── */}
+      {/* ── 8. Closing CTA ── */}
       <section className="ben-closing">
         <div className="ben-closing__text">
           <span className="ben-closing__label">Inizia da qui</span>
@@ -496,7 +436,7 @@ export const BenesserePageV2: React.FC = () => {
             Il tuo percorso<br />inizia con una<br />conversazione.
           </h2>
           <p className="ben-closing__body">
-            Raccontaci dove sei e dove vuoi arrivare.<br />Il resto lo costruiamo insieme.
+            Raccontaci di cosa hai bisogno<br />e ti aiuteremo a capire da dove partire.
           </p>
           <a
             href={`${WA}${encodeURIComponent("Ciao! Vorrei sapere di più su EQB Milano")}`}
