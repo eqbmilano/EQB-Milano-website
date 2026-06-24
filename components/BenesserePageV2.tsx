@@ -448,10 +448,10 @@ export const BenesserePageV2: React.FC = () => {
         </div>
         <div className="ben-closing__photo">
           <Image
-            src="/assets/Federico-trattamento.jpg"
-            alt="EQB Milano — trattamento"
+            src="/assets/Federico-osteopatia-closing.jpg"
+            alt="EQB Milano — osteopatia con Federico"
             fill sizes="50vw"
-            style={{ objectFit: "cover", objectPosition: "center 30%" }}
+            style={{ objectFit: "cover", objectPosition: "center 25%" }}
           />
         </div>
       </section>
