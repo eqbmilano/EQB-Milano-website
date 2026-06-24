@@ -10,10 +10,10 @@ const groups = [
   {
     label: "Trattamenti",
     services: [
-      { name: "Osteopatia",            img: "/assets/Osteopatia.jpg",                  desc: "Per ritrovare equilibrio, libertà di movimento e affrontare la causa del problema, non solo il sintomo.",          msg: "Ciao! Vorrei info sull'osteopatia" },
+      { name: "Osteopatia",            img: "/assets/Osteopatia-v2.jpg",               desc: "Per ritrovare equilibrio, libertà di movimento e affrontare la causa del problema, non solo il sintomo.",          msg: "Ciao! Vorrei info sull'osteopatia" },
       { name: "Fisioterapia",          img: "/assets/Federico-lavoro-2.jpg",            desc: "Un percorso personalizzato per recuperare funzionalità e tornare alle attività quotidiane con serenità.",          msg: "Ciao! Vorrei info sulla fisioterapia" },
       { name: "Massoterapia",          img: "/assets/Massaggio-decontratturante.jpg",   desc: "Per favorire il recupero muscolare, sciogliere le tensioni e ritrovare energia e libertà di movimento.",          msg: "Ciao! Vorrei info sulla massoterapia" },
-      { name: "Osteopatia Pediatrica", img: "/assets/Osteopatia-pediatrica.jpg",         desc: "Un approccio delicato dedicato a neonati e bambini, per accompagnarne la crescita in modo armonioso.",            msg: "Ciao! Vorrei info sull'osteopatia pediatrica" },
+      { name: "Osteopatia Pediatrica", img: "/assets/Osteopatia-pediatrica-v2.jpg",      desc: "Un approccio delicato dedicato a neonati e bambini, per accompagnarne la crescita in modo armonioso.",            msg: "Ciao! Vorrei info sull'osteopatia pediatrica" },
     ],
   },
   {
@@ -22,7 +22,7 @@ const groups = [
       { name: "Pilates",    img: "/assets/Pilates.jpg",             desc: "Un metodo che migliora forza, mobilità e controllo del movimento, con un approccio personalizzato.",     msg: "Ciao! Vorrei info sul Pilates" },
       { name: "Yoga",       img: "/assets/02_Pilates_e_Yoga.jpeg",  desc: "Una pratica che unisce respiro, movimento e presenza per ritrovare equilibrio e benessere.",            msg: "Ciao! Vorrei info sullo Yoga" },
       { name: "Posturale",  img: "/assets/Federico-lavoro-1.jpg",   desc: "Esercizi mirati per migliorare la postura, ridurre i compensi e muoversi con più libertà.",             msg: "Ciao! Vorrei info sul percorso posturale" },
-      { name: "Funzionale", img: "/assets/Sala-Allenamento.jpg",    desc: "Un allenamento costruito intorno a te per sviluppare forza, mobilità e resistenza.",                    msg: "Ciao! Vorrei info sull'allenamento funzionale" },
+      { name: "Functional Training", img: "/assets/Functional-Training-v2.jpg",    desc: "Un allenamento costruito intorno a te per sviluppare forza, mobilità e resistenza.",                    msg: "Ciao! Vorrei info sul Functional Training" },
     ],
   },
   {
