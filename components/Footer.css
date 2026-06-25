@@ -126,6 +126,12 @@
   font-size: .75rem;
   line-height: 1.5;
 }
+.footer__legal {
+  max-width: 760px;
+  margin: 0 auto .5rem;
+  font-size: .7rem !important;
+  color: #ffffff5e !important;
+}
 
 @media (max-width: 767px) {
   .footer {

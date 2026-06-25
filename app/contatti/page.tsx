@@ -1,15 +1,13 @@
-import { Navbar, Footer, SectionBenessere, SectionInterno } from "@/components";
-import { SectionContattiHome } from "@/components/SectionContattiHome";
+import { Navbar, Footer } from "@/components";
+import { ContattiPage } from "@/components/ContattiPage";
 
 export const metadata = { title: "Contatti — EQB Milano" };
 
-export default function ContattiPage() {
+export default function ContattiRoute() {
   return (
     <main className="w-full relative">
       <Navbar />
-      <SectionContattiHome />
-      <SectionBenessere />
-      <SectionInterno />
+      <ContattiPage />
       <Footer />
     </main>
   );

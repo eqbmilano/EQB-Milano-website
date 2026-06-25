@@ -78,6 +78,9 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className="footer__bottom">
+        <p className="footer__legal">
+          EQB Milano di Adinolfi Marco · Impresa individuale · P.IVA 14601140966 · C.F. DNLMRC02A11F205W · REA MI-2794459 (CCIAA Milano MB Lodi) · Sede operativa: Viale Regina Margherita 43, 20122 Milano
+        </p>
         <p>© 2026 EQB Milano · Tutti i diritti riservati</p>
       </div>
     </footer>
