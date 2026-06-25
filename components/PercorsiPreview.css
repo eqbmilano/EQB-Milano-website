@@ -58,7 +58,20 @@
 .pp-d__card svg { transition: transform .35s; }
 .pp-d__card:hover svg { transform: translateX(5px); }
 
+/* ── E ── per bisogno, tipografica ── */
+.pp-e__heading { text-align: center; color: #111; font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 600; letter-spacing: -.02em; margin: 0 0 clamp(1.5rem, 3vw, 2.4rem); }
+.pp-e__rows { border-top: 1px solid #32252318; }
+.pp-e__row { display: grid; grid-template-columns: 1fr auto; column-gap: 2rem; row-gap: .5rem; align-items: center; padding: clamp(1.6rem, 3vw, 2.2rem) 0; border-bottom: 1px solid #32252318; text-decoration: none; color: var(--color-brown-primary); }
+.pp-e__q { grid-column: 1; font-size: clamp(1.3rem, 2.6vw, 1.85rem); font-weight: 600; letter-spacing: -.01em; color: #111; }
+.pp-e__d { grid-column: 1; color: #1f1f1fb3; font-size: 1rem; line-height: 1.55; max-width: 54ch; }
+.pp-e__cta { grid-column: 2; grid-row: 1 / span 2; display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; white-space: nowrap; color: var(--color-brown-primary); }
+.pp-e__row svg { transition: transform .3s; }
+.pp-e__row:hover svg { transform: translateX(5px); }
+.pp-e__row:hover .pp-e__q { opacity: .85; }
+
 @media (max-width: 768px) {
+  .pp-e__row { grid-template-columns: 1fr; }
+  .pp-e__cta { grid-column: 1; grid-row: auto; margin-top: .8rem; }
   .pp-a__cards, .pp-d { grid-template-columns: 1fr; }
   .pp-b { grid-template-columns: 1fr; }
   .pp-b::before { display: none; }

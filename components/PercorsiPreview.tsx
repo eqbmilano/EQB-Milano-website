@@ -76,7 +76,29 @@ function VarD() {
   );
 }
 
+/* E — Per BISOGNO, tipografica/editoriale (niente "professionista/cliente") */
+function VarE() {
+  return (
+    <div className="pp pp-e">
+      <h2 className="pp-e__heading">Cosa stai cercando?</h2>
+      <div className="pp-e__rows">
+        <Link href="/coworking" className="pp-e__row">
+          <span className="pp-e__q">Cerchi uno spazio per lavorare?</span>
+          <span className="pp-e__d">Uno studio pronto, una community di professionisti e un modello flessibile per far crescere la tua attività.</span>
+          <span className="pp-e__cta">Scopri il coworking <Arrow /></span>
+        </Link>
+        <Link href="/benessere" className="pp-e__row">
+          <span className="pp-e__q">Cerchi il professionista giusto?</span>
+          <span className="pp-e__d">Trova il percorso, l’attività o il professionista più adatto alle tue esigenze.</span>
+          <span className="pp-e__cta">Scopri il benessere <Arrow /></span>
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 const VARS = [
+  { n: "E", label: "Per BISOGNO, tipografica — incarna l’idea “niente cliente/professionista”", C: VarE },
   { n: "A", label: "Card affiancate (variante attualmente live)", C: VarA },
   { n: "B", label: "Fascia divisa a metà — minimal, niente card", C: VarB },
   { n: "C", label: "Dichiarativa + due link — compatta, editoriale", C: VarC },
