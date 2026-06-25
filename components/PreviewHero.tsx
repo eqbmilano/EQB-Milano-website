@@ -1,12 +1,15 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import Link from "next/link";
+import { FixedBackground, Navbar, SectionEcosistema, SectionSpazio } from "@/components";
+import "./Hero.css";
 import "./PreviewHero.css";
 
 export const PreviewHero: React.FC = () => {
   const stageRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const bivioRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let raf = 0;
@@ -18,11 +21,10 @@ export const PreviewHero: React.FC = () => {
       const dist = rect.height - window.innerHeight;
       let p = dist > 0 ? -rect.top / dist : 0;
       p = Math.max(0, Math.min(1, p));
-      // testo hero: svanisce e sale nella prima parte
       const tHero = Math.min(1, p / 0.55);
       hero.style.opacity = String(1 - tHero);
       hero.style.transform = `translateY(${-tHero * 60}px)`;
-      // bivio: compare nella seconda parte
+      if (scrollRef.current) scrollRef.current.style.opacity = String(Math.max(0, 1 - tHero * 2));
       const tB = Math.max(0, Math.min(1, (p - 0.35) / 0.55));
       bivio.style.opacity = String(tB);
       bivio.style.transform = `translateY(${(1 - tB) * 28}px)`;
@@ -41,56 +43,63 @@ export const PreviewHero: React.FC = () => {
 
   const continua = (e: React.MouseEvent) => {
     e.preventDefault();
-    document.getElementById("ph-after")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById("ecosistema")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div className="ph">
-      <div className="ph-stage" ref={stageRef}>
-        <div className="ph-pin">
-          <video className="ph-video" autoPlay loop muted playsInline preload="auto" poster="/assets/Sfondo-Menu-Hamburger.jpg">
-            <source src="/assets/Video-Home.mp4" type="video/mp4" />
-          </video>
-          <div className="ph-overlay" />
+    <>
+      <FixedBackground />
+      <main className="w-full relative">
+        <Navbar />
 
-          <div className="ph-layer">
-            {/* Testo hero */}
-            <div className="ph-hero" ref={heroRef}>
-              <span className="ph-hero__label">MILANO</span>
-              <h1 className="ph-hero__title">Wellness &amp; Fitness Coworking</h1>
-              <p className="ph-hero__vision"><span>Spazio</span><i /><span>Relazioni</span><i /><span>Crescita</span></p>
-            </div>
+        <div className="phh-stage" ref={stageRef}>
+          <div className="phh-pin">
+            <section className="hero">
+              <video className="hero__video" autoPlay loop muted playsInline preload="auto" poster="/assets/Sfondo-Menu-Hamburger.jpg">
+                <source src="/assets/Video-Home.mp4" type="video/mp4" />
+              </video>
+              <div className="hero__overlay" />
 
-            {/* Bivio glassy */}
-            <div className="ph-bivio" ref={bivioRef}>
-              <span className="ph-bivio__eyebrow">A chi è dedicato EQB?</span>
-              <div className="ph-bivio__cards">
-                <a href="#ph-after" onClick={continua} className="ph-card">
-                  <span className="ph-card__kicker">Sei un professionista?</span>
-                  <p className="ph-card__text">Scopri come EQB può diventare il tuo spazio di lavoro.</p>
-                  <span className="ph-card__cta">Continua a scoprire ↓</span>
-                </a>
-                <Link href="/benessere" className="ph-card">
-                  <span className="ph-card__kicker">Cerchi un professionista?</span>
-                  <p className="ph-card__text">Trova il percorso e la persona più adatta a te.</p>
-                  <span className="ph-card__cta">Scopri i servizi →</span>
-                </Link>
+              {/* Testo hero — stessa posizione del reale (in basso) */}
+              <div className="hero__content" ref={heroRef}>
+                <span className="hero__label hero__anim hero__anim--1">MILANO</span>
+                <h1 className="hero__title hero__anim hero__anim--2">Wellness &amp; Fitness Coworking</h1>
+                <p className="hero__vision">
+                  <span className="hero__vision-word hero__vision-word--1">Spazio</span>
+                  <span className="hero__vision-sep hero__vision-sep--1" />
+                  <span className="hero__vision-word hero__vision-word--2">Relazioni</span>
+                  <span className="hero__vision-sep hero__vision-sep--2" />
+                  <span className="hero__vision-word hero__vision-word--3">Crescita</span>
+                </p>
               </div>
-            </div>
+
+              {/* Bivio glassy — compare nella stessa posizione del testo */}
+              <div className="phh-bivio" ref={bivioRef}>
+                <span className="phh-bivio__eyebrow">A chi è dedicato EQB?</span>
+                <div className="phh-bivio__cards">
+                  <a href="#ecosistema" onClick={continua} className="phh-card">
+                    <span className="phh-card__kicker">Sei un professionista?</span>
+                    <p className="phh-card__text">Scopri come EQB può diventare il tuo spazio di lavoro.</p>
+                    <span className="phh-card__cta">Continua a scoprire ↓</span>
+                  </a>
+                  <Link href="/benessere" className="phh-card">
+                    <span className="phh-card__kicker">Cerchi un professionista?</span>
+                    <p className="phh-card__text">Trova il percorso e la persona più adatta a te.</p>
+                    <span className="phh-card__cta">Scopri i servizi →</span>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="hero__scroll" ref={scrollRef} aria-hidden="true">
+                <div className="hero__scroll-line" />
+              </div>
+            </section>
           </div>
-
-          <div className="ph-hint" aria-hidden="true">scorri</div>
         </div>
-      </div>
 
-      {/* Contenuto sotto: per provare lo sblocco dello scroll */}
-      <section id="ph-after" className="ph-after">
-        <h2>Non è uno studio.<br /><em>È un ecosistema.</em></h2>
-        <p>Da qui in giù la home continua normalmente (manifesto, spazio, coworking, …).</p>
-      </section>
-      <section className="ph-after ph-after--2">
-        <p>Sezione segnaposto — conferma che lo scroll è sbloccato. Scrolla su per riagganciare l’hero.</p>
-      </section>
-    </div>
+        <SectionEcosistema />
+        <SectionSpazio />
+      </main>
+    </>
   );
 };
