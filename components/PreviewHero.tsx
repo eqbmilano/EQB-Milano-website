@@ -10,6 +10,7 @@ export const PreviewHero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const bivioRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const scrimRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let raf = 0;
@@ -29,6 +30,7 @@ export const PreviewHero: React.FC = () => {
       bivio.style.opacity = String(tB);
       bivio.style.transform = `translateY(${(1 - tB) * 28}px)`;
       bivio.style.pointerEvents = tB > 0.5 ? "auto" : "none";
+      if (scrimRef.current) scrimRef.current.style.opacity = String(tB * 0.6);
     };
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
     update();
@@ -59,6 +61,7 @@ export const PreviewHero: React.FC = () => {
                 <source src="/assets/Video-Home.mp4" type="video/mp4" />
               </video>
               <div className="hero__overlay" />
+              <div className="phh-scrim" ref={scrimRef} />
 
               {/* Testo hero — stessa posizione del reale (in basso) */}
               <div className="hero__content" ref={heroRef}>

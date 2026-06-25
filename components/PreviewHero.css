@@ -1,10 +1,17 @@
 /* Preview — hero pinned con crossfade testo->bivio (riusa Hero.css per la posizione esatta).
    Identica alla home fino a Spazio. */
 
-.phh-stage { height: 200vh; position: relative; }   /* 1 schermata di pin morbido */
+.phh-stage { height: 320vh; position: relative; }   /* ~2,2 schermate: transizione più lenta */
 .phh-pin { position: sticky; top: 0; height: 100vh; }
 .phh-pin .hero { height: 100vh; }
 .phh-pin .hero__content { will-change: opacity, transform; }
+
+/* scrim che scurisce il video quando entra il bivio (più contrasto) */
+.phh-scrim {
+  position: absolute; inset: 0; z-index: 1; opacity: 0; pointer-events: none;
+  background: linear-gradient(to top, rgba(8,5,4,.94), rgba(8,5,4,.6) 55%, rgba(8,5,4,.3) 100%);
+  will-change: opacity;
+}
 
 /* Bivio glassy nella stessa posizione del testo (in basso, centrato) */
 .phh-bivio {
@@ -15,19 +22,21 @@
 }
 .phh-bivio__eyebrow {
   display: block; font-family: var(--font-manrope); letter-spacing: .2em; text-transform: uppercase;
-  font-size: .75rem; font-weight: 700; opacity: .85; margin-bottom: 1.4rem; text-align: center;
+  font-size: .78rem; font-weight: 700; opacity: 1; margin-bottom: 1.4rem; text-align: center;
+  text-shadow: 0 1px 14px rgba(0,0,0,.55);
 }
 .phh-bivio__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; width: 100%; max-width: 900px; }
 .phh-card {
   display: flex; flex-direction: column; text-align: left; text-decoration: none; color: #fff;
-  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); border-radius: 20px;
+  background: rgba(18,13,11,.52); border: 1px solid rgba(255,255,255,.34); border-radius: 20px;
   padding: clamp(1.3rem, 2.4vw, 1.9rem); min-height: 168px;
-  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  box-shadow: 0 16px 42px rgba(0,0,0,.4);
   transition: background .35s, transform .35s, border-color .35s;
 }
-.phh-card:hover { background: rgba(255,255,255,.16); transform: translateY(-4px); border-color: rgba(255,255,255,.42); }
-.phh-card__kicker { font-family: var(--font-manrope); font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 600; }
-.phh-card__text { color: #ffffffcc; font-size: .98rem; line-height: 1.5; margin: .55rem 0 0; }
+.phh-card:hover { background: rgba(18,13,11,.68); transform: translateY(-4px); border-color: rgba(255,255,255,.6); }
+.phh-card__kicker { font-family: var(--font-manrope); font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 700; }
+.phh-card__text { color: #ffffffe0; font-size: .98rem; line-height: 1.5; margin: .55rem 0 0; }
 .phh-card__cta { margin-top: auto; padding-top: 1.2rem; font-weight: 700; font-size: .92rem; }
 
 @media (max-width: 768px) {
