@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./MenuOverlay.css";
 
@@ -9,18 +10,27 @@ interface MenuOverlayProps {
   onClose: () => void;
 }
 
-const navItems = [
-  { label: "Home",       href: "/" },
-  { label: "Spazio",     href: "/spazio" },
-  { label: "Coworking",  href: "/coworking" },
-  { label: "Benessere",  href: "/benessere" },
-  { label: "Visione",    href: "/visione" },
-  { label: "Contatti",   href: "/contatti" },
+const NAV_GROUPS = [
+  { label: "Per i professionisti", items: [
+    { label: "Coworking", href: "/coworking" },
+    { label: "Spazio", href: "/spazio" },
+    { label: "Visione", href: "/visione" },
+  ] },
+  { label: "Per te", items: [
+    { label: "Benessere", href: "/benessere" },
+  ] },
+  { label: "Info", items: [
+    { label: "Contatti", href: "/contatti" },
+  ] },
 ];
 
 export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname();
-  const visibleItems = navItems.filter((item) => item.href !== pathname);
+  const groups = NAV_GROUPS
+    .map((g) => ({ ...g, items: g.items.filter((it) => it.href !== pathname) }))
+    .filter((g) => g.items.length > 0);
+
+  let order = 0;
 
   return (
     <div className={`menu-overlay${isOpen ? " menu-overlay--open" : ""}`}>
@@ -44,12 +54,14 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
         <div className="menu-overlay__left">
 
           <div className="menu-overlay__logo">
-            <Image
-              src="/assets/Logo-Bianco.svg"
-              alt="EQB Milano"
-              width={80}
-              height={40}
-            />
+            <Link href="/" onClick={onClose} aria-label="Home">
+              <Image
+                src="/assets/Logo-Bianco.svg"
+                alt="EQB Milano"
+                width={80}
+                height={40}
+              />
+            </Link>
           </div>
 
           <div className="menu-overlay__socials">
@@ -96,24 +108,34 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
 
         </div>
 
-        {/* Colonna destra: voci di navigazione */}
+        {/* Colonna destra: voci di navigazione raggruppate per pubblico */}
         <nav className="menu-overlay__right">
-          <ul className="menu-overlay__nav-list">
-            {visibleItems.map((item, i) => {
-              const isPrimary = item.href === "/coworking" || item.href === "/benessere";
+          <div className="menu-overlay__nav-groups">
+            {groups.map((g) => {
+              const labelDelay = 0.18 + order * 0.06;
               return (
-                <li
-                  key={item.label}
-                  className={`menu-overlay__nav-item${isPrimary ? " menu-overlay__nav-item--primary" : ""}`}
-                  style={{ animationDelay: `${0.2 + i * 0.07}s` }}
-                >
-                  <a href={item.href} onClick={onClose}>
-                    {item.label}
-                  </a>
-                </li>
+                <div className="menu-overlay__nav-group" key={g.label}>
+                  <span className="menu-overlay__nav-label" style={{ animationDelay: `${labelDelay}s` }}>
+                    {g.label}
+                  </span>
+                  <ul className="menu-overlay__nav-list">
+                    {g.items.map((item) => {
+                      order += 1;
+                      return (
+                        <li
+                          key={item.label}
+                          className="menu-overlay__nav-item"
+                          style={{ animationDelay: `${0.18 + order * 0.06}s` }}
+                        >
+                          <a href={item.href} onClick={onClose}>{item.label}</a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               );
             })}
-          </ul>
+          </div>
         </nav>
 
       </div>
