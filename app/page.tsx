@@ -1,6 +1,7 @@
 import {
   Navbar,
   Hero,
+  SectionPercorsi,
   SectionEcosistema,
   SectionSpazio,
   ParallaxDivider,
@@ -19,6 +20,7 @@ export default function Home() {
       <main className="w-full relative">
         <Navbar />
         <Hero />
+        <SectionPercorsi />
         <SectionEcosistema />
         <SectionSpazio />
         <ParallaxDivider />

@@ -1,0 +1,92 @@
+/* Home — sezione biforcazione "A chi è dedicato EQB?" (tra Hero e manifesto) */
+.section-percorsi {
+  background-color: var(--color-bg-light);
+  padding: clamp(4.5rem, 8vw, 7rem) 2rem clamp(3.5rem, 6vw, 5rem);
+  display: flex;
+  justify-content: center;
+}
+.section-percorsi__inner { width: 100%; max-width: 1000px; }
+
+.section-percorsi__heading {
+  font-family: var(--font-manrope);
+  text-align: center;
+  color: #111;
+  letter-spacing: -.02em;
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+}
+
+.section-percorsi__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+
+.percorso-card {
+  display: flex;
+  flex-direction: column;
+  background: #fffdfa;
+  border: 1px solid #32252314;
+  border-radius: 22px;
+  padding: clamp(1.8rem, 3.2vw, 2.8rem);
+  text-decoration: none;
+  color: var(--color-brown-primary);
+  min-height: 230px;
+  transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s cubic-bezier(.22,1,.36,1), border-color .45s;
+}
+.percorso-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(50,37,35,.12);
+  border-color: #32252333;
+}
+
+.percorso-card__kicker {
+  font-family: var(--font-manrope);
+  font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: #111;
+}
+.percorso-card__text {
+  font-family: var(--font-manrope);
+  color: #1f1f1fb3;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: .8rem 0 0;
+  max-width: 32ch;
+}
+.percorso-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: auto;
+  padding-top: 1.6rem;
+  font-family: var(--font-manrope);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--color-brown-primary);
+}
+.percorso-card__arrow { transition: transform .35s cubic-bezier(.22,1,.36,1); }
+.percorso-card:hover .percorso-card__arrow { transform: translateX(5px); }
+
+/* animazione blur->fuoco scaglionata (come il manifesto) */
+.pc-anim {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(32px);
+  transition: opacity .85s cubic-bezier(.22,1,.36,1), filter .85s cubic-bezier(.22,1,.36,1), transform .85s cubic-bezier(.22,1,.36,1);
+}
+.section-percorsi.is-visible .pc-anim--1 { opacity: 1; filter: blur(0); transform: none; transition-delay: 0s; }
+.section-percorsi.is-visible .pc-anim--2 { opacity: 1; filter: blur(0); transform: none; transition-delay: .15s; }
+.section-percorsi.is-visible .pc-anim--3 { opacity: 1; filter: blur(0); transform: none; transition-delay: .3s; }
+
+@media (max-width: 768px) {
+  .section-percorsi__cards { grid-template-columns: 1fr; }
+  .percorso-card { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pc-anim { opacity: 1; filter: none; transform: none; transition: none; }
+  .percorso-card, .percorso-card__arrow { transition: none; }
+}

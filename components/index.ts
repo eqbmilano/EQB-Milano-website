@@ -3,6 +3,7 @@ export * from "./SpazioPage";
 export * from "./PageHero";
 export * from "./Navbar";
 export * from "./Hero";
+export * from "./SectionPercorsi";
 export * from "./SectionEcosistema";
 export * from "./CTAButton";
 export * from "./SectionSpazio";
