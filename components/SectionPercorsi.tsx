@@ -48,7 +48,7 @@ export const SectionPercorsi: React.FC = () => {
           {/* Cliente: uscita dedicata al benessere */}
           <Link href="/benessere" className="percorso-card pc-anim pc-anim--3">
             <span className="percorso-card__kicker">Cerchi un professionista?</span>
-            <p className="percorso-card__text">Trova il percorso e la persona più adatta a te.</p>
+            <p className="percorso-card__text">Trova il percorso, l&rsquo;attività e la persona più adatta a te.</p>
             <span className="percorso-card__cta">Scopri i servizi <ArrowRight /></span>
           </Link>
         </div>
