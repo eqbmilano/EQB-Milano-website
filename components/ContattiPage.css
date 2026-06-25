@@ -33,6 +33,10 @@
 .cnt-card__value { font-size: 1.1rem; font-weight: 600; margin: .3rem 0 1rem; }
 .cnt-card__cta { font-size: .85rem; font-weight: 700; color: var(--color-brown-primary); margin-top: auto; }
 
+/* Seguici / social */
+.cnt-social { max-width: 1080px; margin: 0 auto; padding: clamp(2.2rem, 4vw, 3.2rem) 1.5rem 0; display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; }
+.cnt-social__label { font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #b08968; }
+
 /* Dove siamo */
 .cnt-where {
   max-width: 1080px; margin: 0 auto; padding: clamp(4rem, 8vw, 6.5rem) 1.5rem;

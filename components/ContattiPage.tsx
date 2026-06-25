@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { SocialLinks } from "./SocialIcons";
 import "./ContattiPage.css";
 
 const WA_NUM = "393755153273";
@@ -58,6 +59,12 @@ export const ContattiPage: React.FC = () => {
           <span className="cnt-card__value">{EMAIL}</span>
           <span className="cnt-card__cta">Invia →</span>
         </a>
+      </section>
+
+      {/* Seguici */}
+      <section className="cnt-social">
+        <span className="cnt-social__label">Seguici</span>
+        <SocialLinks variant="dark" size={22} iconStyle="circle" />
       </section>
 
       {/* Dove siamo */}

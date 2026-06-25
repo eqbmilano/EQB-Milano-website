@@ -167,13 +167,6 @@ export const SectionInterno: React.FC = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Link invisibile sull'intera card */}
-                <a
-                  href={slide.href}
-                  className="interno-slide__link-full"
-                  aria-label={`Scopri ${slide.label}`}
-                />
               </div>
 
               <span className="interno-slide__label">{slide.label}</span>
