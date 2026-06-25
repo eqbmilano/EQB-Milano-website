@@ -77,6 +77,7 @@ export const Navbar: React.FC = () => {
             className={`navbar__hamburger${menuOpen ? " navbar__hamburger--open" : ""}`}
             onClick={toggleMenu}
             aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
+            aria-expanded={menuOpen}
           >
             <span className="navbar__hamburger-line" />
             <span className="navbar__hamburger-line" />

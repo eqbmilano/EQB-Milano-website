@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -32,8 +32,45 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
 
   let order = 0;
 
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  // ESC per chiudere + focus trap quando aperto, ripristino del focus alla chiusura
+  useEffect(() => {
+    if (!isOpen) return;
+    const overlay = overlayRef.current;
+    if (!overlay) return;
+    const prev = document.activeElement as HTMLElement | null;
+    const focusables = () =>
+      Array.from(overlay.querySelectorAll<HTMLElement>("a[href], button")).filter((el) => el.offsetParent !== null);
+    focusables()[0]?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { onClose(); return; }
+      if (e.key === "Tab") {
+        const f = focusables();
+        if (!f.length) return;
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => { document.removeEventListener("keydown", onKey); prev?.focus?.(); };
+  }, [isOpen, onClose]);
+
+  // click sullo sfondo (fuori dai link) per chiudere
+  const onOverlayClick = (e: React.MouseEvent) => {
+    if (!(e.target as HTMLElement).closest("a, button")) onClose();
+  };
+
   return (
-    <div className={`menu-overlay${isOpen ? " menu-overlay--open" : ""}`}>
+    <div
+      ref={overlayRef}
+      className={`menu-overlay${isOpen ? " menu-overlay--open" : ""}`}
+      role="dialog"
+      aria-modal="true"
+      aria-hidden={!isOpen}
+      onClick={onOverlayClick}
+    >
 
       {/* Sfondo */}
       <div className="menu-overlay__bg">
