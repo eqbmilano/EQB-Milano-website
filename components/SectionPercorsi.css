@@ -70,6 +70,7 @@
 }
 .percorso-card__arrow { transition: transform .35s cubic-bezier(.22,1,.36,1); }
 .percorso-card:hover .percorso-card__arrow { transform: translateX(5px); }
+.percorso-card:hover .percorso-card__arrow--down { transform: translateY(4px); }
 
 /* animazione blur->fuoco scaglionata (come il manifesto) */
 .pc-anim {
