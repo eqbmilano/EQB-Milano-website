@@ -22,15 +22,16 @@ export const PreviewHero: React.FC = () => {
       const dist = rect.height - window.innerHeight;
       let p = dist > 0 ? -rect.top / dist : 0;
       p = Math.max(0, Math.min(1, p));
-      const tHero = Math.min(1, p / 0.55);
+      // crossfade completato a ~p=0.6, poi "blocco" (dwell) fino a p=1
+      const tHero = Math.min(1, p / 0.40);
       hero.style.opacity = String(1 - tHero);
       hero.style.transform = `translateY(${-tHero * 60}px)`;
       if (scrollRef.current) scrollRef.current.style.opacity = String(Math.max(0, 1 - tHero * 2));
-      const tB = Math.max(0, Math.min(1, (p - 0.35) / 0.55));
+      const tB = Math.max(0, Math.min(1, (p - 0.25) / 0.35));
       bivio.style.opacity = String(tB);
-      bivio.style.transform = `translateY(${(1 - tB) * 28}px)`;
+      bivio.style.transform = `translateY(${(1 - tB) * 26}px)`;
       bivio.style.pointerEvents = tB > 0.5 ? "auto" : "none";
-      if (scrimRef.current) scrimRef.current.style.opacity = String(tB * 0.6);
+      if (scrimRef.current) scrimRef.current.style.opacity = String(tB * 0.38);
     };
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
     update();
