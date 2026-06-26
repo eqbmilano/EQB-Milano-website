@@ -20,7 +20,7 @@ export const SectionSpazio: React.FC = () => {
           </Reveal>
           <Reveal delay={160}>
             <p className="section-spazio__description">
-              Ambientazioni curate, luce naturale e<br />
+              Ambientazioni curate, luce naturale e
               spazi progettati per il lavoro professionale.
             </p>
           </Reveal>

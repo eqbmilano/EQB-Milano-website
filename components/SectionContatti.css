@@ -1,6 +1,6 @@
 /* [project]/components/SectionContatti.css [app-client] (css) */
 .section-split {
-  height: 100vh;
+  height: 100vh; height: 100dvh;
   min-height: 600px;
   display: flex;
   position: relative;

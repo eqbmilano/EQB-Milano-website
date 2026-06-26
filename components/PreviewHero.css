@@ -2,8 +2,8 @@
    Identica alla home fino a Spazio. */
 
 .phh-stage { height: 260vh; position: relative; }   /* via di mezzo: ~1,6 schermate */
-.phh-pin { position: sticky; top: 0; height: 100vh; }
-.phh-pin .hero { height: 100vh; }
+.phh-pin { position: sticky; top: 0; height: 100vh; height: 100dvh; }
+.phh-pin .hero { height: 100vh; height: 100dvh; }
 .phh-pin .hero__content { will-change: opacity, transform; }
 
 /* scrim che scurisce il video quando entra il bivio (più contrasto) */
