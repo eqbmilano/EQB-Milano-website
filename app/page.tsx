@@ -1,33 +1,9 @@
-import {
-  Navbar,
-  Hero,
-  SectionEcosistema,
-  SectionSpazio,
-  ParallaxDivider,
-  SectionPercheScegliere,
-  SectionInterno,
-  SectionVisione,
-  SectionRecensioni,
-  Footer,
-  FixedBackground,
-} from "@/components";
+import { notFound } from "next/navigation";
+
+export const metadata = {
+  robots: { index: false, follow: false },
+};
 
 export default function Home() {
-  return (
-    <>
-      <FixedBackground />
-      <main className="w-full relative">
-        <Navbar />
-        <Hero />
-        <SectionEcosistema />
-        <SectionSpazio />
-        <ParallaxDivider />
-        <SectionPercheScegliere />
-        <SectionInterno />
-        <SectionRecensioni />
-        <SectionVisione />
-        <Footer />
-      </main>
-    </>
-  );
+  notFound();
 }
