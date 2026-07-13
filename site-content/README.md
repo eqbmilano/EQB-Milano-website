@@ -40,3 +40,23 @@ Pipeline: **originale → ritaglio → asset web**.
 
 ### Note
 - **Fisioterapia**: alternativa disponibile non usata → `~/Downloads/IMG_4238.HEIC` (se Marco la preferisce, va convertita e sostituita).
+
+## Pagina /coworking — testimonianze
+
+| Servizio / Uso | Originale (`originali/`) | Ritaglio finale (`ritagli/`) | Asset web (`public/assets/`) | Sorgente originale |
+|---|---|---|---|---|
+| Testimonianza Loris Bonacina | `coworking/originali/Loris-Testimonianza.jpg` | `Loris-Testimonianza.jpg` (**crop 4:5 centrato**) | `testi-loris.jpg` | Foto inviata da Marco via chat, 2026-07-13 |
+
+## Pagina /visione — fondatori
+
+| Servizio / Uso | Originale (`originali/`) | Ritaglio finale (`ritagli/`) | Asset web (`public/assets/`) | Sorgente originale |
+|---|---|---|---|---|
+| Fondatore Marco Adinolfi | `visione/originali/Marco-Fondatore.jpg` | `Marco-Fondatore.jpg` (**crop 1:1 zoom, box 75,530-1425,1880 dal master: mani sulla gamba visibili, rifatto 13/07 su richiesta Marco**) | `visione-marco.jpg` | Foto inviata da Marco via chat, 2026-07-13 |
+| Fondatore Federico Mondin | `visione/originali/Federico-Fondatore.jpg` | = originale (già 1:1) | `visione-federico.jpg` | Foto inviata da Marco via chat, 2026-07-13 |
+
+## Home — hero
+
+| Servizio / Uso | Originale | Ritaglio | Asset web (`public/assets/`) | Sorgente |
+|---|---|---|---|---|
+| Poster video hero (primo frame) | — (derivato dal video) | — | `Hero-Poster.jpg` | Estratto con ffmpeg da `Video-Home.mp4` (frame 0), 2026-07-13 |
+| Favicon | — | — | `app/icon.svg` + `app/favicon.ico` | Ricostruita in vettoriale dal brand asset `~/Desktop/EQB/03 - EQB MARKETING/00 - Brand Asset/01 - Logo/Exp/DEF/1x/EQB-Logo-su-Bianco-1(x1).jpg` (marchio #322523 su bianco), 2026-07-13 |
