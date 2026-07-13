@@ -2,7 +2,7 @@ import { Navbar, Footer } from "@/components";
 import "./privacy.css";
 
 export const metadata = {
-  title: "Privacy Policy — EQB Milano",
+  title: "Privacy Policy",
   description:
     "Informativa sul trattamento dei dati personali del sito eqbmilano.it, ai sensi del Regolamento (UE) 2016/679 (GDPR).",
 };
