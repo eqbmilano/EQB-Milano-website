@@ -24,6 +24,7 @@ function Ico({ name }: { name: "phone" | "wa" | "mail" | "pin" | "clock" }) {
 export const ContattiPage: React.FC = () => {
   const [nome, setNome] = useState("");
   const [msg, setMsg] = useState("");
+  const [mapOn, setMapOn] = useState(false);
   const composed = `Ciao! Sono ${nome.trim() || "[nome]"}. ${msg.trim() || "Vorrei avere informazioni."}`;
   const formWa = `${WA}${encodeURIComponent(composed)}`;
 
@@ -91,13 +92,24 @@ export const ContattiPage: React.FC = () => {
           <a className="cnt-where__btn" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>
         </div>
         <div className="cnt-where__map">
-          <iframe
-            title="Mappa EQB Milano"
-            src={MAPS_EMBED}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
+          {mapOn ? (
+            <iframe
+              title="Mappa EQB Milano"
+              src={MAPS_EMBED}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          ) : (
+            <button type="button" className="cnt-map-gate" onClick={() => setMapOn(true)}>
+              <span className="cnt-map-gate__ico"><Ico name="pin" /></span>
+              <span className="cnt-map-gate__title">Mostra la mappa</span>
+              <span className="cnt-map-gate__note">
+                La mappa è di Google Maps: caricandola accetti i suoi cookie.{" "}
+                <a href="/privacy" onClick={(e) => e.stopPropagation()}>Più dettagli</a>
+              </span>
+            </button>
+          )}
         </div>
       </section>
 

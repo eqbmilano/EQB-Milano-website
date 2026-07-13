@@ -132,6 +132,12 @@
   font-size: .7rem !important;
   color: #ffffff5e !important;
 }
+.footer__privacy-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer__privacy-link:hover { color: #ffffff99; }
 
 @media (max-width: 767px) {
   .footer {
