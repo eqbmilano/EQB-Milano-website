@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { ParallaxDivider } from "./ParallaxDivider";
+import LazyVideo from "./LazyVideo";
 import "./BenesserePageV2.css";
 
 const WA = "https://wa.me/393755153273?text=";
@@ -77,7 +78,7 @@ function HoverCard({ name, img, desc, cat, msg }: {
   );
 }
 
-function BenVideoPlayer({ src }: { src: string }) {
+function BenVideoPlayer({ src, poster }: { src: string; poster: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -108,7 +109,16 @@ function BenVideoPlayer({ src }: { src: string }) {
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
-      <video ref={videoRef} src={src} playsInline onTimeUpdate={onTimeUpdate} onEnded={() => setPlaying(false)} />
+      {/* preload="none": il video parte al click, non va scaricato (19MB) prima */}
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        preload="none"
+        playsInline
+        onTimeUpdate={onTimeUpdate}
+        onEnded={() => setPlaying(false)}
+      />
       <div className={`ben-video-overlay${playing ? " is-hidden" : ""}`} />
       <div className={`ben-video-ui${showUI ? " is-visible" : ""}`}>
         <button className="ben-video-play" onClick={toggle} aria-label={playing ? "Pausa" : "Play"}>
@@ -291,7 +301,7 @@ export const BenesserePageV2: React.FC = () => {
       >
         <div className="ben-ad-section__inner">
           <div className="ben-ad-section__video ben-up ben-up--1">
-            <BenVideoPlayer src="/assets/Campagna-Fede-1.mp4" />
+            <BenVideoPlayer src="/assets/Campagna-Fede-1.mp4" poster="/assets/poster-Campagna-Fede-1.jpg" />
           </div>
           <div className="ben-ad-section__content">
             <span className="ben-label ben-up ben-up--1">Hai un obiettivo ma non sai da dove partire?</span>
@@ -321,7 +331,7 @@ export const BenesserePageV2: React.FC = () => {
       >
         <div className="ben-feature__inner">
           <div className="ben-feature__image ben-up ben-up--1">
-            <video src="/assets/Feature-Pilates-v2.mp4" autoPlay muted loop playsInline />
+            <LazyVideo src="/assets/Feature-Pilates-v2.mp4" poster="/assets/poster-Feature-Pilates-v2.jpg" />
           </div>
           <div className="ben-feature__content">
             <span className="ben-feature__num">01</span>
@@ -363,7 +373,7 @@ export const BenesserePageV2: React.FC = () => {
             </div>
           </div>
           <div className="ben-feature__image ben-up ben-up--1">
-            <video src="/assets/Feature-Posturale-v2.mp4" autoPlay muted loop playsInline />
+            <LazyVideo src="/assets/Feature-Posturale-v2.mp4" poster="/assets/poster-Feature-Posturale-v2.jpg" />
           </div>
         </div>
       </section>
@@ -375,7 +385,7 @@ export const BenesserePageV2: React.FC = () => {
       >
         <div className="ben-feature__inner">
           <div className="ben-feature__image ben-up ben-up--1">
-            <video src="/assets/Feature-Relax.mp4" autoPlay muted loop playsInline />
+            <LazyVideo src="/assets/Feature-Relax.mp4" poster="/assets/poster-Feature-Relax.jpg" />
           </div>
           <div className="ben-feature__content">
             <span className="ben-feature__num">03</span>
