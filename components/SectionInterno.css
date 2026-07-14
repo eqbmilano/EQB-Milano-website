@@ -230,6 +230,14 @@
   height: 2.25rem;
   display: inline-flex;
   position: relative;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* l'overlay è pointer-events:none per non bloccare il drag dello slider:
+   il link torna cliccabile solo quando l'overlay è effettivamente visibile */
+.interno-slide:hover .interno-overlay__esplora-btn {
+  pointer-events: auto;
 }
 
 .interno-overlay__esplora-svg {

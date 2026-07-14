@@ -145,7 +145,7 @@ export const SectionInterno: React.FC = () => {
                       ))}
                     </ul>
                     <div className="interno-overlay__esplora">
-                      <div className="interno-overlay__esplora-btn">
+                      <a href="/benessere" className="interno-overlay__esplora-btn">
                         {/*
                           ViewBox 128×36 — corrisponde esattamente al button (8rem×2.25rem a 16px base)
                           rx=18 (height/2) → pill perfetto
@@ -163,7 +163,7 @@ export const SectionInterno: React.FC = () => {
                           <path className="esplora-path" d="M 64 36 L 110 36 A 18 18 0 0 0 110 0 L 64 0" />
                         </svg>
                         <span className="interno-overlay__esplora-text">ESPLORA</span>
-                      </div>
+                      </a>
                     </div>
                   </div>
                 </div>
