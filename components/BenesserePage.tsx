@@ -286,7 +286,7 @@ export const BenesserePage: React.FC = () => {
       >
         <div className="ben-ad-section__inner">
           <div className="ben-ad-section__video ben-up ben-up--1">
-            <BenVideoPlayer src="/assets/Campagna-Fede-1.mov" />
+            <BenVideoPlayer src="/assets/Campagna-Fede-1.mp4" />
           </div>
           <div className="ben-ad-section__content">
             <span className="ben-label ben-up ben-up--1">Non sai da dove partire?</span>
@@ -316,7 +316,7 @@ export const BenesserePage: React.FC = () => {
       >
         <div className="ben-feature__inner">
           <div className="ben-feature__image ben-up ben-up--1">
-            <video src="/assets/Feature-Pilates-v2.mov" autoPlay muted loop playsInline />
+            <video src="/assets/Feature-Pilates-v2.mp4" autoPlay muted loop playsInline />
           </div>
           <div className="ben-feature__content">
             <span className="ben-feature__num">01</span>
@@ -374,7 +374,7 @@ export const BenesserePage: React.FC = () => {
             </a>
           </div>
           <div className="ben-feature__image ben-up ben-up--1">
-            <video src="/assets/Feature-Posturale-v2.mov" autoPlay muted loop playsInline />
+            <video src="/assets/Feature-Posturale-v2.mp4" autoPlay muted loop playsInline />
           </div>
         </div>
       </section>

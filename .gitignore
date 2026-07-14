@@ -40,6 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Video assets (too large for GitHub)
+# Video: i master (.mov, 4K, centinaia di MB) restano fuori dal repo.
+# I video web (public/assets/*.mp4, 1080p) sono versionati e serviti dalla CDN di Vercel.
 *.mov
-*.mp4
