@@ -123,10 +123,10 @@ const testimonials = [
     quote: "Sono entrata che lavoravo da sola. Oggi collaboro, ricevo referral, e il mio lavoro è cresciuto insieme allo spazio.",
   },
   {
-    name: "Sebastian Parolini",
-    role: "Massoterapista sportivo",
-    img: "/assets/testi-sebastian.png",
-    quote: "Pago solo le ore che lavoro e tutto il resto è mio. Non tornerei mai a un modello tradizionale.",
+    name: "Loris Bonacina",
+    role: "Chinesiologo",
+    img: "/assets/testi-loris.jpg",
+    quote: "Alleno i miei clienti in uno spazio curato, e le collaborazioni con gli altri professionisti nascono da sole.",
   },
 ];
 
