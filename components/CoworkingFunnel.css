@@ -439,6 +439,9 @@
   clip-path: inset(0 100% 0 0 round 24px);
   transition: clip-path 1.4s cubic-bezier(.16, 1, .3, 1) .4s;
   position: relative;
+  /* il clip-path nasconde l'immagine in scale(1.08) ma non riduce l'area di scroll:
+     senza overflow la pagina scrollava di lato di ~5px */
+  overflow: hidden;
 }
 
 .is-on .cw-community__image {

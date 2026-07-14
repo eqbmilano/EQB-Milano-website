@@ -629,6 +629,12 @@
     gap: 3rem;
   }
 
+  /* le 3 colonne (label / titolo / corpo) spingevano il testo fuori dal viewport */
+  .spazio-v4__text {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
   .spazio-accoglienza__images {
     grid-template-columns: 1fr 1fr;
   }

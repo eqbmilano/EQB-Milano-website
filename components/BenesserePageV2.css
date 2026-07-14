@@ -1061,7 +1061,8 @@
   }
 
   .ben-closing {
-    grid-template-columns: 1fr;
+    /* minmax(0,...): con 1fr la colonna non scendeva sotto il min-content e la pagina scrollava di 1px */
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .ben-closing__text {
