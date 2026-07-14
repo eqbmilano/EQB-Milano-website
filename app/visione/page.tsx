@@ -88,8 +88,14 @@ export default function VisionePage() {
 
           {/* Marco */}
           <div className="vis-founder">
-            <Reveal className="vis-founder__photo vis-founder__photo--placeholder">
-              <span className="vis-photo-hint">Foto Marco Adinolfi</span>
+            <Reveal className="vis-founder__photo">
+              <Image
+                src="/assets/visione-marco.jpg"
+                alt="Marco Adinolfi, co-fondatore di EQB Milano"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: "cover" }}
+              />
             </Reveal>
             <Reveal delay={100} className="vis-founder__text">
               <h3 className="vis-founder__name">Marco Adinolfi</h3>
@@ -117,8 +123,14 @@ export default function VisionePage() {
                 per ogni cliente.
               </p>
             </Reveal>
-            <Reveal className="vis-founder__photo vis-founder__photo--placeholder">
-              <span className="vis-photo-hint">Foto Federico Mondin</span>
+            <Reveal className="vis-founder__photo">
+              <Image
+                src="/assets/visione-federico.jpg"
+                alt="Federico Mondin, co-fondatore di EQB Milano"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: "cover" }}
+              />
             </Reveal>
           </div>
         </div>
