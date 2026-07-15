@@ -1,0 +1,27 @@
+/* Animazione di apparizione condivisa dal componente <Reveal>, usata da
+   SectionSpazio, SectionRecensioni, SectionInterno, Footer, VisionePillars e
+   dalla pagina /visione. Stessa "anima" della sezione Ecosistema (blur + fade
+   up), cosi' l'apparizione dei contenuti e' coerente in tutto il sito. */
+.apple-reveal {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(32px);
+  transition: opacity .85s cubic-bezier(.22, 1, .36, 1),
+              filter .85s cubic-bezier(.22, 1, .36, 1),
+              transform .85s cubic-bezier(.22, 1, .36, 1);
+}
+
+.apple-reveal--on {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apple-reveal {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}

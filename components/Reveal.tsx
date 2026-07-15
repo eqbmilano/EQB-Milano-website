@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
+import "./Reveal.css";
 
 export function useReveal() {
   const ref = useRef<HTMLElement>(null);
