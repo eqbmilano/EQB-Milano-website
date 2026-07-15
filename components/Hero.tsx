@@ -5,15 +5,14 @@ import "./Hero.css";
 
 // px di "sforzo" scroll per andare da hero puro a bivio completamente a riposo
 const SCROLL_DISTANCE = 900;
-// Il blocco si rilascia quando SONO VERE ENTRAMBE: è passato almeno LOCK_MIN
-// dal momento in cui ci si è fermati al bivio, E c'è stata una pausa reale
-// (IDLE_GAP) prima dell'input corrente — così un fling lunghissimo non basta
-// da solo, serve un momento di stacco. LOCK_MAX è una rete di sicurezza: oltre
-// quel tempo si sblocca comunque, per non restare bloccati per sempre se lo
-// scroll inerziale del dispositivo continua a mandare eventi senza mai fermarsi.
-const LOCK_MIN = 500;
-const IDLE_GAP = 200;
-const LOCK_MAX = 2200;
+// Tempo minimo di blocco fermo al bivio prima che un ulteriore scroll in avanti
+// sblocchi. Un solo timer assoluto dal momento del blocco, senza richiedere
+// anche una "pausa reale" tra un evento e il successivo: con le tacche di una
+// rotellina normale il tempo tra una tacca e l'altra è spesso sotto ai 200ms
+// (a volte anche scrollando con calma), quindi un requisito di pausa rendeva
+// il rilascio quasi impossibile finché non si aspettava svariati secondi —
+// sembrava un blocco rotto durante uno scroll del tutto normale.
+const LOCK_MIN = 700;
 
 export const Hero: React.FC = () => {
   const stageRef = useRef<HTMLDivElement>(null);
@@ -30,7 +29,6 @@ export const Hero: React.FC = () => {
   const progressRef = useRef(0); // 0..1
   const lockedRef = useRef(false);
   const lockSinceRef = useRef(0);
-  const lastInputAtRef = useRef(0);
 
   const release = () => {
     engagedRef.current = false;
@@ -60,16 +58,11 @@ export const Hero: React.FC = () => {
     // intercettato (preventDefault), false se va lasciato passare al browser.
     const applyDelta = (deltaY: number) => {
       if (!engagedRef.current) return false;
-      const now = performance.now();
-      const gapSinceLastInput = now - lastInputAtRef.current;
-      lastInputAtRef.current = now;
       const forward = deltaY > 0;
 
       if (forward && lockedRef.current) {
-        const sinceLock = now - lockSinceRef.current;
-        const pausedEnough = sinceLock >= LOCK_MIN && gapSinceLastInput >= IDLE_GAP;
-        if (!pausedEnough && sinceLock < LOCK_MAX) return true; // resta bloccato
-        // "seconda scrollata" deliberata (o rete di sicurezza oltre LOCK_MAX):
+        if (performance.now() - lockSinceRef.current < LOCK_MIN) return true; // resta bloccato
+        // passato il tempo minimo di blocco: il prossimo scroll in avanti
         // rilascia il controllo allo scroll nativo
         release();
         return false;
@@ -80,7 +73,7 @@ export const Hero: React.FC = () => {
 
       if (forward && progressRef.current >= 1 && !lockedRef.current) {
         lockedRef.current = true;
-        lockSinceRef.current = now;
+        lockSinceRef.current = performance.now();
       }
       if (!forward && progressRef.current < 1) {
         lockedRef.current = false;
