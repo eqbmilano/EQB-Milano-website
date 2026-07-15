@@ -51,6 +51,7 @@ export const SpazioPage: React.FC = () => {
   const s4 = useVisible("-40px");
   const s5 = useVisible("-60px");
   const s6 = useVisible("-60px");
+  const s7 = useVisible("-60px");
 
   const [showSticky, setShowSticky] = useState(false);
   useEffect(() => {
@@ -255,6 +256,52 @@ export const SpazioPage: React.FC = () => {
               <span>Stanza <u>Luna</u></span>
               <span>EQB Milano</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 8. Aree comuni ── */}
+      <section ref={s7.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-comuni${s7.visible ? " is-on" : ""}`}>
+        <div className="spazio-comuni__inner">
+          <div className="spazio-comuni__gallery spazio-up spazio-up--1">
+            <div className="spazio-comuni__main">
+              <Image src="/assets/Spazi-relax-corner.jpg" alt="Area snack e relax EQB Milano" fill
+                sizes="(max-width: 900px) 100vw, 45vw"
+                style={{ objectFit: "cover", objectPosition: "center" }} />
+              <div className="spazio-photo-caption">
+                <span>Area <u>Snack</u></span>
+                <span>EQB Milano</span>
+              </div>
+            </div>
+            <div className="spazio-comuni__side">
+              <div className="spazio-comuni__side-img">
+                <Image src="/assets/Spazi-bagno-completo.jpg" alt="Bagno con doccia EQB Milano" fill
+                  sizes="(max-width: 900px) 100vw, 22vw"
+                  style={{ objectFit: "cover", objectPosition: "center" }} />
+              </div>
+              <div className="spazio-comuni__side-img">
+                <Image src="/assets/Spazi-bagno-doccia.jpg" alt="Doccia EQB Milano" fill
+                  sizes="(max-width: 900px) 100vw, 22vw"
+                  style={{ objectFit: "cover", objectPosition: "center" }} />
+              </div>
+            </div>
+          </div>
+          <div className="spazio-comuni__text spazio-up spazio-up--2">
+            <span className="spazio-label">Aree comuni</span>
+            <h2 className="spazio-section__title">
+              Tutto quello che serve,<br />a portata di mano.
+            </h2>
+            <p className="spazio-section__body">
+              Un angolo snack per una pausa tra un cliente e l'altro, e bagni con doccia per chi arriva di corsa o si allena prima di lavorare.
+            </p>
+            <TiltCard className="spazio-card spazio-up spazio-up--3">
+              <span className="spazio-label">Caratteristiche</span>
+              <ul>
+                <li>Area snack e relax</li>
+                <li>2 spogliatoi (foto in arrivo)</li>
+                <li>2 bagni con doccia</li>
+              </ul>
+            </TiltCard>
           </div>
         </div>
       </section>
