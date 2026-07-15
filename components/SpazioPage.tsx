@@ -43,30 +43,6 @@ function TiltCard({ children, className }: { children: React.ReactNode; classNam
   );
 }
 
-function Slideshow({ slides }: { slides: { src: string; alt: string }[] }) {
-  const [current, setCurrent] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setCurrent(c => (c + 1) % slides.length), 4500);
-    return () => clearInterval(t);
-  }, [slides.length]);
-  return (
-    <div className="spazio-slideshow">
-      {slides.map((s, i) => (
-        <div key={s.src} className={`spazio-slideshow__slide${i === current ? " is-active" : ""}`}>
-          <Image src={s.src} alt={s.alt} fill sizes="(max-width: 900px) 100vw, 55vw"
-            style={{ objectFit: "cover", objectPosition: "center" }} />
-        </div>
-      ))}
-      <div className="spazio-slideshow__dots">
-        {slides.map((_, i) => (
-          <button key={i} className={`spazio-slideshow__dot${i === current ? " is-active" : ""}`}
-            onClick={() => setCurrent(i)} aria-label={`Slide ${i + 1}`} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export const SpazioPage: React.FC = () => {
   const s0 = useVisible("-20px");
   const s1 = useVisible("-60px");
@@ -114,7 +90,7 @@ export const SpazioPage: React.FC = () => {
       <section ref={s1.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-v4${s1.visible ? " is-on" : ""}`}>
         <div className="spazio-v4__inner spazio-up spazio-up--1">
           <div className="spazio-v4__main">
-            <Image src="/assets/Reception-Main.jpg" alt="Reception EQB Milano" fill
+            <Image src="/assets/Spazi-ingresso-frontale.jpg" alt="Ingresso e reception EQB Milano, con la sala allenamento sullo sfondo" fill
               sizes="(max-width: 900px) 100vw, 60vw"
               style={{ objectFit: "cover", objectPosition: "center 40%" }} />
             <div className="spazio-photo-caption">
@@ -138,10 +114,10 @@ export const SpazioPage: React.FC = () => {
         <div className="spazio-v4__text spazio-up spazio-up--2">
           <span className="spazio-label">L'ingresso</span>
           <h2 className="spazio-section__title">
-            Entri. Respiri. Il resto scompare.
+            La prima impressione<br />è già vinta.
           </h2>
           <p className="spazio-section__body">
-            La reception accoglie, la sala d'attesa rilassa. Ogni dettaglio è pensato per far sentire chi arriva esattamente nel posto giusto.
+            La reception accoglie i tuoi clienti, la sala d'attesa li mette a proprio agio. Il biglietto da visita perfetto, prima ancora che entrino nella tua stanza.
           </p>
         </div>
       </section>
@@ -168,11 +144,10 @@ export const SpazioPage: React.FC = () => {
               </ul>
             </TiltCard>
           </div>
-          <div className="spazio-sala__slideshow spazio-up spazio-up--2">
-            <Slideshow slides={[
-              { src: "/assets/Sala-Allenamento.jpg", alt: "Sala allenamento EQB Milano" },
-              { src: "/assets/Spazi-sala-3.jpg",     alt: "Sala allenamento EQB Milano — reformer" },
-            ]} />
+          <div className="spazio-sala__image spazio-up spazio-up--2">
+            <Image src="/assets/Sala-Allenamento.jpg" alt="Sala allenamento EQB Milano" fill
+              sizes="(max-width: 900px) 100vw, 55vw"
+              style={{ objectFit: "cover", objectPosition: "center" }} />
           </div>
         </div>
       </section>
@@ -212,7 +187,7 @@ export const SpazioPage: React.FC = () => {
       {/* ── 5. Intermezzo artwork ── */}
       <section ref={s4.ref as React.RefObject<HTMLElement>} className={`spazio-artwork${s4.visible ? " is-on" : ""}`}>
         <div className="spazio-artwork__image spazio-fade spazio-fade--1">
-          <Image src="/assets/Spazi-artwork.jpg" alt="Ingresso Stanza Sole e Stanza Luna"
+          <Image src="/assets/Spazi-sole-luna-ingresso.jpg" alt="Ingresso Stanza Sole e Stanza Luna"
             fill sizes="100vw" style={{ objectFit: "cover", objectPosition: "center" }} />
         </div>
         <div className="spazio-artwork__caption spazio-fade spazio-fade--2">
@@ -233,7 +208,7 @@ export const SpazioPage: React.FC = () => {
             </div>
           </div>
           <div className="spazio-sole__text spazio-up spazio-up--2">
-            <span className="spazio-label">Piano inferiore</span>
+            <span className="spazio-label">Piano inferiore · Relax &amp; Recovery</span>
             <h2 className="spazio-section__title">
               Luce che<br />accompagna<br />il lavoro.
             </h2>
@@ -256,7 +231,7 @@ export const SpazioPage: React.FC = () => {
       <section ref={s6.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-luna${s6.visible ? " is-on" : ""}`}>
         <div className="spazio-luna__inner">
           <div className="spazio-luna__text spazio-up spazio-up--1">
-            <span className="spazio-label">Piano inferiore</span>
+            <span className="spazio-label">Piano inferiore · Relax &amp; Recovery</span>
             <h2 className="spazio-section__title">
               Silenzio.<br />Intimità.<br />Ascolto.
             </h2>

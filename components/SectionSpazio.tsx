@@ -7,7 +7,6 @@ import "./SectionSpazio.css";
 const SPAZIO_SLIDES = [
   { src: "/assets/Stanza Terra.jpg", alt: "Stanza Terra EQB Milano" },
   { src: "/assets/Sala-Allenamento.jpg", alt: "Sala allenamento EQB Milano" },
-  { src: "/assets/Spazi-sala-3.jpg", alt: "Sala allenamento EQB Milano — reformer" },
 ];
 
 function SpazioSlideshow() {
