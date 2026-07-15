@@ -239,7 +239,7 @@
 }
 
 .spazio-section {
-  padding: 11rem 7rem;
+  padding: 7rem 7rem;
 }
 
 /* Queste sezioni prima ereditavano il cream da .spazio-page: ora che quel
@@ -717,7 +717,7 @@
 
 @media (max-width: 1024px) {
   .spazio-section {
-    padding: 8rem 4rem;
+    padding: 5.5rem 4rem;
   }
 
   .spazio-opening__content {
@@ -731,7 +731,7 @@
 
 @media (max-width: 768px) {
   .spazio-section {
-    padding: 5rem 1.5rem;
+    padding: 4rem 1.5rem;
   }
 
   .spazio-opening__content {
