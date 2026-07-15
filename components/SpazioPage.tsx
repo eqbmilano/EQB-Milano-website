@@ -74,6 +74,15 @@ export const SpazioPage: React.FC = () => {
   const s3 = useVisible("-60px");
   const s4 = useVisible("-40px");
   const s5 = useVisible("-60px");
+  const s6 = useVisible("-60px");
+
+  const [showSticky, setShowSticky] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowSticky(window.scrollY > window.innerHeight * 0.9);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div className="spazio-page">
@@ -211,34 +220,25 @@ export const SpazioPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 6. Sole + Luna ── */}
-      <section ref={s5.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-duo${s5.visible ? " is-on" : ""}`}>
-        <div className="spazio-duo__inner">
-          <div className="spazio-duo__images spazio-up spazio-up--1">
-            <div className="spazio-duo__img">
-              <Image src="/assets/Spazi-sole-2.jpg" alt="Stanza Sole EQB Milano" fill
-                sizes="(max-width: 900px) 50vw, 28vw"
-                style={{ objectFit: "cover", objectPosition: "center" }} />
-              <div className="spazio-photo-caption spazio-photo-caption--light">
-                <span>Stanza <u>Sole</u></span>
-              </div>
-            </div>
-            <div className="spazio-duo__img">
-              <Image src="/assets/Spazi-luna-2.jpg" alt="Stanza Luna EQB Milano" fill
-                sizes="(max-width: 900px) 50vw, 28vw"
-                style={{ objectFit: "cover", objectPosition: "center" }} />
-              <div className="spazio-photo-caption">
-                <span>Stanza <u>Luna</u></span>
-              </div>
+      {/* ── 6. Stanza Sole ── */}
+      <section ref={s5.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-sole${s5.visible ? " is-on" : ""}`}>
+        <div className="spazio-sole__inner">
+          <div className="spazio-sole__image spazio-up spazio-up--1">
+            <Image src="/assets/Spazi-sole-2.jpg" alt="Stanza Sole EQB Milano" fill
+              sizes="(max-width: 900px) 100vw, 55vw"
+              style={{ objectFit: "cover", objectPosition: "center" }} />
+            <div className="spazio-photo-caption">
+              <span>Stanza <u>Sole</u></span>
+              <span>EQB Milano</span>
             </div>
           </div>
-          <div className="spazio-duo__text spazio-up spazio-up--2">
-            <span className="spazio-label">Piano separato</span>
+          <div className="spazio-sole__text spazio-up spazio-up--2">
+            <span className="spazio-label">Piano inferiore</span>
             <h2 className="spazio-section__title">
-              Due stanze.<br />Un'atmosfera.
+              Luce che<br />accompagna<br />il lavoro.
             </h2>
             <p className="spazio-section__body">
-              Al piano inferiore, Sole e Luna hanno ognuna la propria carta da parati originale. Intimi, silenziosi, pensati per chi lavora nella sfera del tatto e dell'ascolto.
+              15 mq luminosi con la propria carta da parati originale, lettino regolabile e scrivania. Pensata per chi lavora nella sfera del tatto, con calma e continuità.
             </p>
             <TiltCard className="spazio-card spazio-up spazio-up--3">
               <span className="spazio-label">Caratteristiche</span>
@@ -251,6 +251,44 @@ export const SpazioPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* ── 7. Stanza Luna ── */}
+      <section ref={s6.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-luna${s6.visible ? " is-on" : ""}`}>
+        <div className="spazio-luna__inner">
+          <div className="spazio-luna__text spazio-up spazio-up--1">
+            <span className="spazio-label">Piano inferiore</span>
+            <h2 className="spazio-section__title">
+              Silenzio.<br />Intimità.<br />Ascolto.
+            </h2>
+            <p className="spazio-section__body">
+              15 mq con la propria carta da parati originale, lettino regolabile e scrivania. Il rifugio ideale per chi lavora nella sfera dell'ascolto e ha bisogno di riservatezza.
+            </p>
+            <TiltCard className="spazio-card spazio-up spazio-up--2">
+              <span className="spazio-label">Caratteristiche</span>
+              <ul>
+                <li>15 mq</li>
+                <li>Lettino regolabile</li>
+                <li>Scrivania con sgabelli</li>
+              </ul>
+            </TiltCard>
+          </div>
+          <div className="spazio-luna__image spazio-up spazio-up--3">
+            <Image src="/assets/Spazi-luna-2.jpg" alt="Stanza Luna EQB Milano" fill
+              sizes="(max-width: 900px) 100vw, 55vw"
+              style={{ objectFit: "cover", objectPosition: "center" }} />
+            <div className="spazio-photo-caption">
+              <span>Stanza <u>Luna</u></span>
+              <span>EQB Milano</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Sticky CTA verso il coworking ── */}
+      <div className={`sp-sticky${showSticky ? " is-shown" : ""}`}>
+        <span className="sp-sticky__text">Vuoi lavorare in questo spazio?</span>
+        <a href="/coworking" className="sp-sticky__btn">Scopri il coworking →</a>
+      </div>
 
     </div>
   );

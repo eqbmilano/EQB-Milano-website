@@ -144,7 +144,7 @@
 
 .spazio-opening__overlay {
   z-index: 1;
-  background: linear-gradient(170deg, #0a060414 0%, #0a06040f 45%, #0a06049e 100%);
+  background: linear-gradient(170deg, #0a060433 0%, #0a060440 45%, #0a0604c7 100%);
   position: absolute;
   inset: 0;
 }
@@ -159,11 +159,12 @@
   font-family: var(--font-manrope);
   letter-spacing: .32em;
   text-transform: uppercase;
-  color: #ffffff80;
+  color: #ffffffb3;
   margin-bottom: 1.4rem;
   font-size: .7rem;
   font-weight: 600;
   display: block;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .45);
 }
 
 .spazio-opening__title {
@@ -174,15 +175,17 @@
   font-size: clamp(3.2rem, 6.5vw, 6rem);
   font-weight: 400;
   line-height: 1.06;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, .5);
 }
 
 .spazio-opening__sub {
   font-family: var(--font-manrope);
-  color: #fff9;
+  color: #ffffffe0;
   letter-spacing: .04em;
   margin: 0;
   font-size: 1rem;
   font-weight: 300;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .45);
 }
 
 .spazio-opening__scroll {
@@ -597,6 +600,64 @@
   display: flex;
 }
 
+.spazio-sole__inner {
+  grid-template-columns: 1.25fr 1fr;
+  align-items: center;
+  gap: 8rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+}
+
+.spazio-sole__image {
+  aspect-ratio: 4 / 3;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spazio-sole__image img {
+  transition: transform .9s cubic-bezier(.25, .46, .45, .94);
+}
+
+.spazio-sole__image:hover img {
+  transform: scale(1.04);
+}
+
+.spazio-sole__text {
+  flex-direction: column;
+  display: flex;
+}
+
+.spazio-luna__inner {
+  grid-template-columns: 1fr 1.25fr;
+  align-items: center;
+  gap: 8rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+}
+
+.spazio-luna__image {
+  aspect-ratio: 4 / 3;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spazio-luna__image img {
+  transition: transform .9s cubic-bezier(.25, .46, .45, .94);
+}
+
+.spazio-luna__image:hover img {
+  transform: scale(1.04);
+}
+
+.spazio-luna__text {
+  flex-direction: column;
+  display: flex;
+}
+
 @media (max-width: 1024px) {
   .spazio-section {
     padding: 8rem 4rem;
@@ -624,7 +685,8 @@
     right: 1.5rem;
   }
 
-  .spazio-accoglienza__inner, .spazio-sala__inner, .spazio-terra__inner, .spazio-duo__inner {
+  .spazio-accoglienza__inner, .spazio-sala__inner, .spazio-terra__inner, .spazio-duo__inner,
+  .spazio-sole__inner, .spazio-luna__inner {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
@@ -643,7 +705,9 @@
     margin-top: 2rem;
   }
 
-  .spazio-terra__inner .spazio-terra__image {
+  .spazio-terra__inner .spazio-terra__image,
+  .spazio-sole__inner .spazio-sole__image,
+  .spazio-luna__inner .spazio-luna__image {
     order: -1;
   }
 
@@ -658,6 +722,71 @@
   .spazio-artwork {
     height: 50vh;
   }
+}
+
+/* ════════ Sticky CTA verso il coworking ════════ */
+.sp-sticky {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translate(-50%, 200%);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: .6rem .6rem .6rem 1.6rem;
+  border-radius: 100px;
+  background: var(--color-brown-primary);
+  box-shadow: 0 12px 40px rgba(8, 5, 3, .35);
+  opacity: 0;
+  max-width: calc(100vw - 2rem);
+  transition: transform .6s cubic-bezier(.22, 1, .36, 1), opacity .4s;
+}
+
+.sp-sticky.is-shown {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.sp-sticky__text {
+  font-family: var(--font-manrope);
+  color: #ffffffcc;
+  font-size: .9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sp-sticky__btn {
+  font-family: var(--font-manrope);
+  color: var(--color-brown-primary);
+  background: #fff;
+  border-radius: 100px;
+  padding: .7rem 1.5rem;
+  font-size: .85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background .25s, transform .25s;
+}
+
+.sp-sticky__btn:hover {
+  background: #ffffffe0;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .sp-sticky {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    max-width: none;
+    justify-content: space-between;
+    gap: .75rem;
+    padding-left: 1.2rem;
+    transform: translateY(200%);
+  }
+  .sp-sticky.is-shown { transform: translateY(0); }
+  .sp-sticky__text { display: none; }
 }
 
 /*# sourceMappingURL=components_SpazioPage_css_bad6b30c._.single.css.map*/

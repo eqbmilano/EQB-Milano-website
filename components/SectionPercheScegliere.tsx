@@ -21,7 +21,7 @@ function useVisible(threshold = 0.2, rootMargin = "-120px") {
 const cards = [
   { value: "0",    title: "Costi fissi",    desc: "Nessun contratto. Nessun affitto mensile. Paghi solo le ore che usi." },
   { value: "20+",  title: "Professionisti", desc: "Una community di trainer e terapisti che collabora, cresce e costruisce percorsi integrati per i clienti." },
-  { value: "A piedi", title: "Dal Duomo",   desc: "Piazza Cinque Giornate. Un quartiere vivo, centrale, circondato da una Milano che si muove." },
+  { value: "1 km",  title: "Dal Duomo",     desc: "A piedi da Piazza Cinque Giornate. Un quartiere vivo, centrale, circondato da una Milano che si muove." },
   { value: "1°",   title: "In Italia",      desc: "Un modello che non esisteva. Abbiamo costruito da zero qualcosa che il settore non aveva mai visto." },
 ];
 
@@ -104,7 +104,7 @@ export const SectionPercheScegliere: React.FC = () => {
           </div>
           <div className="statement__divider" />
           <p className="statement__coda">EQB.</p>
-          <a href="/coworking" className="statement__cta">UNISCITI</a>
+          <a href="/coworking" className="statement__cta">UNISCITI AL TEAM</a>
         </div>
 
       </div>

@@ -136,7 +136,7 @@ export const SectionInterno: React.FC = () => {
                   style={{ backgroundImage: `url('${slide.src}')` }}
                 />
 
-                {/* Overlay: blur pieno + voci centrate + ESPLORA */}
+                {/* Overlay: blur pieno + voci centrate */}
                 <div className="interno-overlay">
                   <div className="interno-overlay__content">
                     <ul className="interno-overlay__list">
@@ -144,27 +144,6 @@ export const SectionInterno: React.FC = () => {
                         <li key={item} className="interno-overlay__item">{item}</li>
                       ))}
                     </ul>
-                    <div className="interno-overlay__esplora">
-                      <a href="/benessere" className="interno-overlay__esplora-btn">
-                        {/*
-                          ViewBox 128×36 — corrisponde esattamente al button (8rem×2.25rem a 16px base)
-                          rx=18 (height/2) → pill perfetto
-                          Due path speculari che partono dal basso-centro (64,36)
-                          e si incontrano al top-centro (64,0)
-                          Perimetro di ciascun path: 46 + π*18 + 46 = 148.55 ≈ 149
-                        */}
-                        <svg
-                          className="interno-overlay__esplora-svg"
-                          viewBox="0 0 128 36"
-                          xmlns="http://www.w3.org/2000/svg"
-                          aria-hidden="true"
-                        >
-                          <path className="esplora-path" d="M 64 36 L 18 36 A 18 18 0 0 1 18 0 L 64 0" />
-                          <path className="esplora-path" d="M 64 36 L 110 36 A 18 18 0 0 0 110 0 L 64 0" />
-                        </svg>
-                        <span className="interno-overlay__esplora-text">ESPLORA</span>
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
