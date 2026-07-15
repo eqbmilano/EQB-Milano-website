@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
+import { ParallaxDivider } from "./ParallaxDivider";
 import "./SpazioPage.css";
 
 function useVisible(rootMargin = "-60px") {
@@ -48,7 +49,6 @@ export const SpazioPage: React.FC = () => {
   const s1 = useVisible("-60px");
   const s2 = useVisible("-60px");
   const s3 = useVisible("-60px");
-  const s4 = useVisible("-40px");
   const s5 = useVisible("-60px");
   const s6 = useVisible("-60px");
   const s7 = useVisible("-60px");
@@ -132,16 +132,16 @@ export const SpazioPage: React.FC = () => {
               45 mq per<br />il lavoro sul corpo.
             </h2>
             <p className="spazio-section__body spazio-up spazio-up--3">
-              Full rack professionale, scaffalatura attrezzata, 2 Reformer Merrithew, 2 Chair, spalliera a muro, kettlebell e pesi liberi. Luce naturale da tre finestre, parquet a lisca di pesce.
+              Rack a muro in ferro, 2 Reformer Merrithew con spalliera, 2 Chair, dischi e manubri liberi, panca in legno. Luce naturale da tre finestre, parquet a lisca di pesce.
             </p>
             <TiltCard className="spazio-card spazio-up spazio-up--4">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
                 <li>45 mq</li>
-                <li>Full rack + scaffalatura attrezzi</li>
+                <li>Rack a muro in ferro</li>
                 <li>2 Reformer + 2 Chair Merrithew</li>
-                <li>Kettlebell, pesi liberi, spalliera</li>
-                <li>Attrezzatura pilates, yoga, funzionale</li>
+                <li>Dischi e manubri liberi, panca</li>
+                <li>Attrezzatura pilates e corpo libero</li>
               </ul>
             </TiltCard>
           </div>
@@ -185,16 +185,9 @@ export const SpazioPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 5. Intermezzo artwork ── */}
-      <section ref={s4.ref as React.RefObject<HTMLElement>} className={`spazio-artwork${s4.visible ? " is-on" : ""}`}>
-        <div className="spazio-artwork__image spazio-fade spazio-fade--1">
-          <Image src="/assets/Spazi-sole-luna-ingresso.jpg" alt="Ingresso Stanza Sole e Stanza Luna"
-            fill sizes="100vw" style={{ objectFit: "cover", objectPosition: "center" }} />
-        </div>
-        <div className="spazio-artwork__caption spazio-fade spazio-fade--2">
-          Stanza Sole &nbsp;·&nbsp; Stanza Luna
-        </div>
-      </section>
+      {/* ── 5. Intermezzo: la foto ora vive nel FixedBackground della pagina,
+             qui c'è solo il varco trasparente che la rivela (come in home) ── */}
+      <ParallaxDivider />
 
       {/* ── 6. Stanza Sole ── */}
       <section ref={s5.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-sole${s5.visible ? " is-on" : ""}`}>

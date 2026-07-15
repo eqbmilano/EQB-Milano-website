@@ -101,15 +101,30 @@ export const Hero: React.FC = () => {
       }
     };
 
+    // Se si torna in cima scrollando all'indietro dopo il rilascio, il testo
+    // hero deve ricomparire com'era all'inizio (senza questo, restava fermo
+    // sull'ultimo stato inline lasciato da render() al momento del rilascio).
+    const onScroll = () => {
+      if (!engagedRef.current && window.scrollY <= 0) {
+        engagedRef.current = true;
+        progressRef.current = 0;
+        lockedRef.current = false;
+        if (stageRef.current) stageRef.current.style.touchAction = "none";
+        render();
+      }
+    };
+
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("touchmove", onTouchMove, { passive: false });
     window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 

@@ -1,14 +1,17 @@
-import { Navbar, Footer } from "@/components";
+import { Navbar, Footer, FixedBackground } from "@/components";
 import { SpazioPage } from "@/components/SpazioPage";
 
 export const metadata = { title: "Spazio — EQB Milano" };
 
 export default function SpazioRoute() {
   return (
-    <main className="w-full relative">
-      <Navbar />
-      <SpazioPage />
-      <Footer />
-    </main>
+    <>
+      <FixedBackground src="/assets/Spazi-sole-luna-ingresso.jpg" alt="Ingresso Stanza Sole e Stanza Luna" />
+      <main className="w-full relative">
+        <Navbar />
+        <SpazioPage />
+        <Footer />
+      </main>
+    </>
   );
 }

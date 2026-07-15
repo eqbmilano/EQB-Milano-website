@@ -4,11 +4,11 @@
    up), cosi' l'apparizione dei contenuti e' coerente in tutto il sito. */
 .apple-reveal {
   opacity: 0;
-  filter: blur(10px);
-  transform: translateY(32px);
-  transition: opacity .85s cubic-bezier(.22, 1, .36, 1),
-              filter .85s cubic-bezier(.22, 1, .36, 1),
-              transform .85s cubic-bezier(.22, 1, .36, 1);
+  filter: blur(8px);
+  transform: translateY(24px);
+  transition: opacity .5s cubic-bezier(.22, 1, .36, 1),
+              filter .5s cubic-bezier(.22, 1, .36, 1),
+              transform .5s cubic-bezier(.22, 1, .36, 1);
 }
 
 .apple-reveal--on {

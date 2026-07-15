@@ -68,9 +68,9 @@
 
 .eco-anim {
   opacity: 0;
-  filter: blur(10px);
-  transition: opacity .85s cubic-bezier(.22, 1, .36, 1), filter .85s cubic-bezier(.22, 1, .36, 1), transform .85s cubic-bezier(.22, 1, .36, 1);
-  transform: translateY(32px);
+  filter: blur(8px);
+  transition: opacity .5s cubic-bezier(.22, 1, .36, 1), filter .5s cubic-bezier(.22, 1, .36, 1), transform .5s cubic-bezier(.22, 1, .36, 1);
+  transform: translateY(24px);
 }
 
 .is-visible .eco-anim--1 {
@@ -83,28 +83,28 @@
 .is-visible .eco-anim--2 {
   opacity: 1;
   filter: blur();
-  transition-delay: .15s;
+  transition-delay: .08s;
   transform: translateY(0);
 }
 
 .is-visible .eco-anim--3 {
   opacity: 1;
   filter: blur();
-  transition-delay: .3s;
+  transition-delay: .16s;
   transform: translateY(0);
 }
 
 .is-visible .eco-anim--4 {
   opacity: 1;
   filter: blur();
-  transition-delay: .5s;
+  transition-delay: .26s;
   transform: translateY(0);
 }
 
 .is-visible .eco-anim--5 {
   opacity: 1;
   filter: blur();
-  transition-delay: .68s;
+  transition-delay: .36s;
   transform: translateY(0);
 }
 

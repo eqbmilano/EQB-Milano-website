@@ -98,17 +98,17 @@
 /* reveal blur → fuoco per riga (come .perche-anim / .eco-anim della home) */
 .ben-pil-rise {
   opacity: 0;
-  filter: blur(10px);
-  transform: translateY(30px);
-  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: blur(8px);
+  transform: translateY(24px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .ben-pil.is-on .ben-pil-rise { opacity: 1; filter: blur(0); transform: translateY(0); }
 .ben-pil.is-on .ben-pil-rise--0 { transition-delay: 0s; }
-.ben-pil.is-on .ben-pil-rise--1 { transition-delay: 0.15s; }
-.ben-pil.is-on .ben-pil-rise--2 { transition-delay: 0.3s; }
-.ben-pil.is-on .ben-pil-rise--3 { transition-delay: 0.5s; }
+.ben-pil.is-on .ben-pil-rise--1 { transition-delay: 0.08s; }
+.ben-pil.is-on .ben-pil-rise--2 { transition-delay: 0.16s; }
+.ben-pil.is-on .ben-pil-rise--3 { transition-delay: 0.24s; }
 
 /* filo verticale che collega i due pilastri (visione → garanzia) */
 .ben-pil-filo {
