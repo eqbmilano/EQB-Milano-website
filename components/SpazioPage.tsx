@@ -117,7 +117,7 @@ export const SpazioPage: React.FC = () => {
           <div className="spazio-v4__text spazio-up spazio-up--2">
             <span className="spazio-label">L'ingresso</span>
             <h2 className="spazio-section__title">
-              L'accoglienza che il<br />tuo cliente si merita.
+              Reception
             </h2>
             <p className="spazio-section__body">
               La reception accoglie i tuoi clienti, la sala d'attesa li mette a proprio agio. Il biglietto da visita perfetto, prima ancora che entrino nella tua stanza.
@@ -155,7 +155,7 @@ export const SpazioPage: React.FC = () => {
           <div className="spazio-comuni__text spazio-up spazio-up--2">
             <span className="spazio-label">Aree comuni</span>
             <h2 className="spazio-section__title">
-              Tutto quello che serve,<br />a portata di mano.
+              Aree Comuni
             </h2>
             <p className="spazio-section__body">
               Un angolo snack per una pausa tra un cliente e l'altro. Bagni con doccia per chi arriva di corsa o si allena prima di lavorare.
@@ -181,6 +181,11 @@ export const SpazioPage: React.FC = () => {
                   </svg>
                   2 bagni con doccia
                 </li>
+              </ul>
+            </TiltCard>
+            <TiltCard className="spazio-card spazio-card--featured spazio-up spazio-up--4">
+              <span className="spazio-label">Servizi inclusi</span>
+              <ul>
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
