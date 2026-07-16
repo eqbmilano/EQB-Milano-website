@@ -16,6 +16,7 @@ export const ParallaxDivider: React.FC<ParallaxDividerProps> = ({ src, text }) =
         )}
         {text && (
           <div className="parallax-divider__content">
+            <span className="parallax-divider__rule" aria-hidden="true" />
             <p className="parallax-divider__text">{text}</p>
           </div>
         )}

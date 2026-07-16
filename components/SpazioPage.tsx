@@ -131,31 +131,8 @@ export const SpazioPage: React.FC = () => {
       {/* ── 3. Aree comuni ── */}
       <section ref={s7.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-comuni${s7.visible ? " is-on" : ""}`}>
         <div className="spazio-comuni__inner">
-          <div className="spazio-comuni__gallery spazio-up spazio-up--1">
-            <div className="spazio-comuni__main">
-              <Image src="/assets/Spazi-relax-corner.jpg" alt="Area snack e relax EQB Milano" fill
-                sizes="(max-width: 900px) 100vw, 45vw"
-                style={{ objectFit: "cover", objectPosition: "center" }} />
-              <div className="spazio-photo-caption">
-                <span>Area Snack</span>
-                <span>EQB Milano</span>
-              </div>
-            </div>
-            <div className="spazio-comuni__side">
-              <div className="spazio-comuni__side-img">
-                <Image src="/assets/Spazi-bagno-completo.jpg" alt="Bagno con doccia EQB Milano" fill
-                  sizes="(max-width: 900px) 100vw, 22vw"
-                  style={{ objectFit: "cover", objectPosition: "center" }} />
-              </div>
-              <div className="spazio-comuni__side-img">
-                <Image src="/assets/Spazi-bagno-doccia.jpg" alt="Doccia EQB Milano" fill
-                  sizes="(max-width: 900px) 100vw, 22vw"
-                  style={{ objectFit: "cover", objectPosition: "center" }} />
-              </div>
-            </div>
-          </div>
-          <div className="spazio-comuni__text spazio-up spazio-up--2">
-            <span className="spazio-label">Aree comuni</span>
+          <div className="spazio-comuni__text spazio-up spazio-up--1">
+            <span className="spazio-label">Spazi comuni</span>
             <h2 className="spazio-section__title">
               Aree Comuni
             </h2>
@@ -186,6 +163,29 @@ export const SpazioPage: React.FC = () => {
                 </li>
               </ul>
             </TiltCard>
+          </div>
+          <div className="spazio-comuni__gallery spazio-up spazio-up--2">
+            <div className="spazio-comuni__main">
+              <Image src="/assets/Spazi-relax-corner.jpg" alt="Area snack e relax EQB Milano" fill
+                sizes="(max-width: 900px) 100vw, 45vw"
+                style={{ objectFit: "cover", objectPosition: "center" }} />
+              <div className="spazio-photo-caption">
+                <span>Area Snack</span>
+                <span>EQB Milano</span>
+              </div>
+            </div>
+            <div className="spazio-comuni__side">
+              <div className="spazio-comuni__side-img">
+                <Image src="/assets/Spazi-bagno-completo.jpg" alt="Bagno con doccia EQB Milano" fill
+                  sizes="(max-width: 900px) 100vw, 22vw"
+                  style={{ objectFit: "cover", objectPosition: "center" }} />
+              </div>
+              <div className="spazio-comuni__side-img">
+                <Image src="/assets/Spazi-bagno-doccia.jpg" alt="Doccia EQB Milano" fill
+                  sizes="(max-width: 900px) 100vw, 22vw"
+                  style={{ objectFit: "cover", objectPosition: "center" }} />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -218,7 +218,7 @@ export const SpazioPage: React.FC = () => {
       </section>
 
       {/* ── 4. Intermezzo Piano Nobile ── */}
-      <ParallaxDivider src="/assets/Spazi-ingresso-frontale.jpg" text="PIANO NOBILE — TERAPIA E ALLENAMENTO" />
+      <ParallaxDivider src="/assets/Spazi-ingresso-frontale.jpg" text="Piano nobile · Terapia e allenamento" />
 
       {/* ── 5. Sala Allenamento ── */}
       <section ref={s2.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-sala${s2.visible ? " is-on" : ""}`}>
@@ -231,11 +231,6 @@ export const SpazioPage: React.FC = () => {
             <p className="spazio-section__body spazio-up spazio-up--3">
               Rack a muro in ferro, 2 Reformer Merrithew con spalliera, 2 Chair, dischi e manubri liberi, panca in legno. Luce naturale da tre finestre, parquet a lisca di pesce.
             </p>
-            <div className="spazio-tags spazio-up spazio-up--3">
-              <span className="spazio-tag">Pilates</span>
-              <span className="spazio-tag">Personal Training</span>
-              <span className="spazio-tag">Functional Training</span>
-            </div>
             <TiltCard className="spazio-card spazio-up spazio-up--4">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
@@ -248,12 +243,19 @@ export const SpazioPage: React.FC = () => {
             </TiltCard>
           </div>
           <div className="spazio-sala__image spazio-up spazio-up--2">
-            <Image src="/assets/Sala-Allenamento.jpg" alt="Sala allenamento EQB Milano" fill
-              sizes="(max-width: 900px) 100vw, 55vw"
-              style={{ objectFit: "cover", objectPosition: "center" }} />
-            <div className="spazio-photo-caption">
-              <span>Sala Allenamento</span>
-              <span>EQB Milano</span>
+            <div className="spazio-photo-frame">
+              <Image src="/assets/Sala-Allenamento.jpg" alt="Sala allenamento EQB Milano" fill
+                sizes="(max-width: 900px) 100vw, 55vw"
+                style={{ objectFit: "cover", objectPosition: "center" }} />
+              <div className="spazio-photo-caption">
+                <span>Sala Allenamento</span>
+                <span>EQB Milano</span>
+              </div>
+            </div>
+            <div className="spazio-tags">
+              <span className="spazio-tag">Pilates</span>
+              <span className="spazio-tag">Personal Training</span>
+              <span className="spazio-tag">Functional Training</span>
             </div>
           </div>
         </div>
@@ -263,12 +265,20 @@ export const SpazioPage: React.FC = () => {
       <section ref={s3.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-terra${s3.visible ? " is-on" : ""}`}>
         <div className="spazio-terra__inner">
           <div className="spazio-terra__image spazio-up spazio-up--1">
-            <Image src="/assets/Stanza Terra.jpg" alt="Stanza Terra EQB Milano" fill
-              sizes="(max-width: 900px) 100vw, 55vw"
-              style={{ objectFit: "cover", objectPosition: "center" }} />
-            <div className="spazio-photo-caption">
-              <span>Stanza Terra</span>
-              <span>EQB Milano</span>
+            <div className="spazio-photo-frame">
+              <Image src="/assets/Stanza Terra.jpg" alt="Stanza Terra EQB Milano" fill
+                sizes="(max-width: 900px) 100vw, 55vw"
+                style={{ objectFit: "cover", objectPosition: "center" }} />
+              <div className="spazio-photo-caption">
+                <span>Stanza Terra</span>
+                <span>EQB Milano</span>
+              </div>
+            </div>
+            <div className="spazio-tags">
+              <span className="spazio-tag">Osteopatia</span>
+              <span className="spazio-tag">Fisioterapia</span>
+              <span className="spazio-tag">Nutrizione</span>
+              <span className="spazio-tag">Psicoterapia</span>
             </div>
           </div>
           <div className="spazio-terra__text spazio-up spazio-up--2">
@@ -279,10 +289,6 @@ export const SpazioPage: React.FC = () => {
             <p className="spazio-section__body">
               20 mq luminosi con lettino regolabile, spalliera a muro e ampia scrivania. Lo spazio giusto per chi lavora con metodo, seduta dopo seduta.
             </p>
-            <div className="spazio-tags">
-              <span className="spazio-tag">Osteopatia</span>
-              <span className="spazio-tag">Fisioterapia</span>
-            </div>
             <TiltCard className="spazio-card spazio-up spazio-up--3">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
@@ -297,18 +303,26 @@ export const SpazioPage: React.FC = () => {
 
       {/* ── 6. Intermezzo: la foto ora vive nel FixedBackground della pagina,
              qui c'è solo il varco trasparente che la rivela (come in home) ── */}
-      <ParallaxDivider text="PIANO INFERIORE — RELAX & RECOVERY" />
+      <ParallaxDivider text="Piano inferiore · Relax & Recovery" />
 
       {/* ── 6. Stanza Sole ── */}
       <section ref={s5.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-sole${s5.visible ? " is-on" : ""}`}>
         <div className="spazio-sole__inner">
           <div className="spazio-sole__image spazio-up spazio-up--1">
-            <Image src="/assets/Spazi-sole-2.jpg" alt="Stanza Sole EQB Milano" fill
-              sizes="(max-width: 900px) 100vw, 55vw"
-              style={{ objectFit: "cover", objectPosition: "center" }} />
-            <div className="spazio-photo-caption">
-              <span>Stanza Sole</span>
-              <span>EQB Milano</span>
+            <div className="spazio-photo-frame">
+              <Image src="/assets/Spazi-sole-2.jpg" alt="Stanza Sole EQB Milano" fill
+                sizes="(max-width: 900px) 100vw, 55vw"
+                style={{ objectFit: "cover", objectPosition: "center" }} />
+              <div className="spazio-photo-caption">
+                <span>Stanza Sole</span>
+                <span>EQB Milano</span>
+              </div>
+            </div>
+            <div className="spazio-tags">
+              <span className="spazio-tag">Massaggi</span>
+              <span className="spazio-tag">Olistica</span>
+              <span className="spazio-tag">Terapie rilassanti</span>
+              <span className="spazio-tag">Recovery</span>
             </div>
           </div>
           <div className="spazio-sole__text spazio-up spazio-up--2">
@@ -319,11 +333,6 @@ export const SpazioPage: React.FC = () => {
             <p className="spazio-section__body">
               15 mq luminosi con la propria carta da parati originale, lettino regolabile e scrivania. Pensata per chi lavora con calma e continuità.
             </p>
-            <div className="spazio-tags">
-              <span className="spazio-tag">Massoterapia</span>
-              <span className="spazio-tag">Riflessologia</span>
-              <span className="spazio-tag">Nutrizione</span>
-            </div>
             <TiltCard className="spazio-card spazio-up spazio-up--3">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
@@ -348,11 +357,6 @@ export const SpazioPage: React.FC = () => {
               {/* TODO: mq da confermare con Marco - Luna sarebbe più grande di Sole ma il codice le ha entrambe a 15 mq */}
               15 mq con la propria carta da parati originale, lettino regolabile e scrivania. Il rifugio ideale per chi ha bisogno di riservatezza.
             </p>
-            <div className="spazio-tags">
-              <span className="spazio-tag">Psicoterapia</span>
-              <span className="spazio-tag">Nutrizione</span>
-              <span className="spazio-tag">Consulenze</span>
-            </div>
             <TiltCard className="spazio-card spazio-up spazio-up--2">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
@@ -363,12 +367,20 @@ export const SpazioPage: React.FC = () => {
             </TiltCard>
           </div>
           <div className="spazio-luna__image spazio-up spazio-up--3">
-            <Image src="/assets/Spazi-luna-2.jpg" alt="Stanza Luna EQB Milano" fill
-              sizes="(max-width: 900px) 100vw, 55vw"
-              style={{ objectFit: "cover", objectPosition: "center" }} />
-            <div className="spazio-photo-caption">
-              <span>Stanza Luna</span>
-              <span>EQB Milano</span>
+            <div className="spazio-photo-frame">
+              <Image src="/assets/Spazi-luna-2.jpg" alt="Stanza Luna EQB Milano" fill
+                sizes="(max-width: 900px) 100vw, 55vw"
+                style={{ objectFit: "cover", objectPosition: "center" }} />
+              <div className="spazio-photo-caption">
+                <span>Stanza Luna</span>
+                <span>EQB Milano</span>
+              </div>
+            </div>
+            <div className="spazio-tags">
+              <span className="spazio-tag">Massaggi</span>
+              <span className="spazio-tag">Olistica</span>
+              <span className="spazio-tag">Terapie rilassanti</span>
+              <span className="spazio-tag">Recovery</span>
             </div>
           </div>
         </div>

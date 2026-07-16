@@ -119,6 +119,21 @@
   font-weight: 600;
 }
 
+.spazio-photo-frame {
+  aspect-ratio: 4 / 3;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spazio-photo-frame img {
+  transition: transform .9s cubic-bezier(.25, .46, .45, .94);
+}
+
+.spazio-photo-frame:hover img {
+  transform: scale(1.04);
+}
+
 .spazio-card {
   cursor: default;
   background: #3c281e0b;
@@ -488,18 +503,9 @@
 }
 
 .spazio-sala__image {
-  aspect-ratio: 4 / 3;
-  border-radius: 3px;
-  position: relative;
-  overflow: hidden;
-}
-
-.spazio-sala__image img {
-  transition: transform .9s cubic-bezier(.25, .46, .45, .94);
-}
-
-.spazio-sala__image:hover img {
-  transform: scale(1.04);
+  flex-direction: column;
+  gap: 1.25rem;
+  display: flex;
 }
 
 .spazio-slideshow {
@@ -557,18 +563,9 @@
 }
 
 .spazio-terra__image {
-  aspect-ratio: 4 / 3;
-  border-radius: 3px;
-  position: relative;
-  overflow: hidden;
-}
-
-.spazio-terra__image img {
-  transition: transform .9s cubic-bezier(.25, .46, .45, .94);
-}
-
-.spazio-terra__image:hover img {
-  transform: scale(1.04);
+  flex-direction: column;
+  gap: 1.25rem;
+  display: flex;
 }
 
 .spazio-terra__text {
@@ -625,18 +622,9 @@
 }
 
 .spazio-sole__image {
-  aspect-ratio: 4 / 3;
-  border-radius: 3px;
-  position: relative;
-  overflow: hidden;
-}
-
-.spazio-sole__image img {
-  transition: transform .9s cubic-bezier(.25, .46, .45, .94);
-}
-
-.spazio-sole__image:hover img {
-  transform: scale(1.04);
+  flex-direction: column;
+  gap: 1.25rem;
+  display: flex;
 }
 
 .spazio-sole__text {
@@ -654,18 +642,9 @@
 }
 
 .spazio-luna__image {
-  aspect-ratio: 4 / 3;
-  border-radius: 3px;
-  position: relative;
-  overflow: hidden;
-}
-
-.spazio-luna__image img {
-  transition: transform .9s cubic-bezier(.25, .46, .45, .94);
-}
-
-.spazio-luna__image:hover img {
-  transform: scale(1.04);
+  flex-direction: column;
+  gap: 1.25rem;
+  display: flex;
 }
 
 .spazio-luna__text {
@@ -678,7 +657,7 @@
 }
 
 .spazio-comuni__inner {
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: 1fr 1.3fr;
   align-items: center;
   gap: 5rem;
   max-width: 1200px;
@@ -734,8 +713,9 @@
 }
 
 .spazio-servizi {
-  background: #f0ebe1;
-  padding: 5rem 7rem;
+  background: #faf8f5;
+  border-top: 1px solid #3c281e14;
+  padding: 4rem 7rem 5rem;
 }
 
 .spazio-servizi__inner {
