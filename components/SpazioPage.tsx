@@ -52,6 +52,7 @@ export const SpazioPage: React.FC = () => {
   const s5 = useVisible("-60px");
   const s6 = useVisible("-60px");
   const s7 = useVisible("-60px");
+  const s8 = useVisible("-60px");
 
   const [showSticky, setShowSticky] = useState(false);
   useEffect(() => {
@@ -287,14 +288,58 @@ export const SpazioPage: React.FC = () => {
             <p className="spazio-section__body">
               Un angolo snack per una pausa tra un cliente e l'altro, e bagni con doccia per chi arriva di corsa o si allena prima di lavorare.
             </p>
-            <TiltCard className="spazio-card spazio-up spazio-up--3">
+            <TiltCard className="spazio-card spazio-card--featured spazio-up spazio-up--3">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
-                <li>Area snack e relax</li>
-                <li>2 spogliatoi (foto in arrivo)</li>
-                <li>2 bagni con doccia</li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Area snack e relax
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  2 spogliatoi (foto in arrivo)
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  2 bagni con doccia
+                </li>
               </ul>
             </TiltCard>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 9. CTA finale ── */}
+      <section ref={s8.ref as React.RefObject<HTMLElement>} className={`spazio-cta${s8.visible ? " is-on" : ""}`}>
+        <div className="spazio-cta__inner">
+          <div className="spazio-cta__text spazio-up spazio-up--1">
+            <h2 className="spazio-cta__title">Scopri come rendere tuo<br />questo spazio.</h2>
+            <p className="spazio-cta__body">
+              Zero costi fissi, un ecosistema che ti porta clienti e un ambiente pensato per farti lavorare al meglio.
+            </p>
+            <a href="/coworking" className="spazio-cta__btn">Scopri il coworking →</a>
+          </div>
+          <div className="spazio-cta__mosaic spazio-up spazio-up--2">
+            <div className="spazio-cta__grid">
+              <div className="spazio-cta__item spazio-cta__item--tall">
+                <Image src="/assets/Spazi-ingresso-frontale.jpg" alt="" fill style={{ objectFit: "cover" }} />
+              </div>
+              <div className="spazio-cta__item">
+                <Image src="/assets/Sala-Allenamento.jpg" alt="" fill style={{ objectFit: "cover" }} />
+              </div>
+              <div className="spazio-cta__item">
+                <Image src="/assets/Stanza Terra.jpg" alt="" fill style={{ objectFit: "cover" }} />
+              </div>
+              <div className="spazio-cta__item">
+                <Image src="/assets/Spazi-relax-corner.jpg" alt="" fill style={{ objectFit: "cover" }} />
+              </div>
+            </div>
           </div>
         </div>
       </section>
