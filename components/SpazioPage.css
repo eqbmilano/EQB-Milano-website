@@ -414,71 +414,32 @@
 }
 
 .spazio-v4__inner {
-  grid-template-columns: 1.8fr .6fr;
-  gap: .8rem;
-  max-width: 1200px;
-  height: 560px;
-  margin: 0 auto 4rem;
-  display: grid;
-}
-
-.spazio-v4__main {
-  border-radius: 3px 0 0 3px;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.spazio-v4__side {
-  flex-direction: column;
-  gap: .8rem;
-  height: 100%;
-  display: flex;
-}
-
-.spazio-v4__side-img {
-  border-radius: 0 3px 3px 0;
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-}
-
-.spazio-v4__side-img:first-child {
-  border-radius: 0 3px 0 0;
-}
-
-.spazio-v4__side-img:last-child {
-  border-radius: 0 0 3px;
-}
-
-.spazio-v4__side-img img {
-  transition: transform .8s;
-}
-
-.spazio-v4__side-img:hover img {
-  transform: scale(1.05);
-}
-
-.spazio-v4__main img {
-  transition: transform .8s;
-}
-
-.spazio-v4__main:hover img {
-  transform: scale(1.03);
-}
-
-.spazio-v4__text {
-  grid-template-columns: auto 1fr 1fr;
-  align-items: start;
-  gap: 3rem;
+  grid-template-columns: 1.25fr 1fr;
+  align-items: center;
+  gap: 8rem;
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
 }
 
-.spazio-v4__text .spazio-section__title {
-  margin-bottom: 0;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
+.spazio-v4__main {
+  aspect-ratio: 4 / 3;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spazio-v4__main img {
+  transition: transform .9s cubic-bezier(.25, .46, .45, .94);
+}
+
+.spazio-v4__main:hover img {
+  transform: scale(1.04);
+}
+
+.spazio-v4__text {
+  flex-direction: column;
+  display: flex;
 }
 
 .spazio-sala {
@@ -854,7 +815,7 @@
     right: 1.5rem;
   }
 
-  .spazio-accoglienza__inner, .spazio-sala__inner, .spazio-terra__inner, .spazio-duo__inner,
+  .spazio-v4__inner, .spazio-sala__inner, .spazio-terra__inner, .spazio-duo__inner,
   .spazio-sole__inner, .spazio-luna__inner, .spazio-comuni__inner, .spazio-cta__inner {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -893,20 +854,6 @@
 
   .spazio-comuni__side-img:last-child {
     border-radius: 0 0 3px;
-  }
-
-  /* le 3 colonne (label / titolo / corpo) spingevano il testo fuori dal viewport */
-  .spazio-v4__text {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .spazio-accoglienza__images {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .spazio-accoglienza__img--b {
-    margin-top: 2rem;
   }
 
   .spazio-terra__inner .spazio-terra__image,

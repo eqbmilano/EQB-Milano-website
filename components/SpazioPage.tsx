@@ -54,12 +54,26 @@ export const SpazioPage: React.FC = () => {
   const s7 = useVisible("-60px");
   const s8 = useVisible("-60px");
 
-  const [showSticky, setShowSticky] = useState(false);
+  const [scrolledPastHero, setScrolledPastHero] = useState(false);
+  const [ctaVisible, setCtaVisible] = useState(false);
+  const ctaRef = useRef<HTMLElement>(null);
+  const showSticky = scrolledPastHero && !ctaVisible;
+
   useEffect(() => {
-    const onScroll = () => setShowSticky(window.scrollY > window.innerHeight * 0.9);
+    const onScroll = () => setScrolledPastHero(window.scrollY > window.innerHeight * 0.9);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const el = ctaRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => setCtaVisible(e.isIntersecting), {
+      rootMargin: "0px 0px -20% 0px",
+    });
+    obs.observe(el);
+    return () => obs.disconnect();
   }, []);
 
   return (
@@ -80,6 +94,7 @@ export const SpazioPage: React.FC = () => {
             Un appartamento<br />del '900 milanese.
           </h1>
           <p className="spazio-opening__sub spazio-fade spazio-fade--3">
+            {/* TODO: da confermare con Marco (opzioni proposte in chat) */}
             Restaurato per chi lavora sul corpo.
           </p>
         </div>
@@ -90,41 +105,112 @@ export const SpazioPage: React.FC = () => {
 
       {/* ── 2. Accoglienza ── */}
       <section ref={s1.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-v4${s1.visible ? " is-on" : ""}`}>
-        <div className="spazio-v4__inner spazio-up spazio-up--1">
-          <div className="spazio-v4__main">
-            <Image src="/assets/Spazi-ingresso-frontale.jpg" alt="Ingresso e reception EQB Milano, con la sala allenamento sullo sfondo" fill
-              sizes="(max-width: 900px) 100vw, 60vw"
-              style={{ objectFit: "cover", objectPosition: "center 40%" }} />
+        <div className="spazio-v4__inner">
+          <div className="spazio-v4__main spazio-up spazio-up--1">
+            <Image src="/assets/Spazi-reception-ambiente.jpg" alt="Reception EQB Milano" fill
+              sizes="(max-width: 900px) 100vw, 55vw"
+              style={{ objectFit: "cover", objectPosition: "center" }} />
             <div className="spazio-photo-caption">
               <span>Accoglienza e Reception</span>
               <span>EQB Milano</span>
             </div>
           </div>
-          <div className="spazio-v4__side">
-            <div className="spazio-v4__side-img">
-              <Image src="/assets/Spazi-reception-2.jpg" alt="Reception" fill
-                sizes="(max-width: 900px) 100vw, 20vw"
-                style={{ objectFit: "cover", objectPosition: "center" }} />
-            </div>
-            <div className="spazio-v4__side-img">
-              <Image src="/assets/Spazi-attesa.jpg" alt="Sala attesa" fill
-                sizes="(max-width: 900px) 100vw, 20vw"
-                style={{ objectFit: "cover", objectPosition: "center top" }} />
-            </div>
+          <div className="spazio-v4__text spazio-up spazio-up--2">
+            <span className="spazio-label">L'ingresso</span>
+            <h2 className="spazio-section__title">
+              {/* TODO: titolo da confermare con Marco (opzioni proposte in chat) */}
+              La prima impressione<br />è già vinta.
+            </h2>
+            <p className="spazio-section__body">
+              La reception accoglie i tuoi clienti, la sala d'attesa li mette a proprio agio. Il biglietto da visita perfetto, prima ancora che entrino nella tua stanza.
+            </p>
           </div>
-        </div>
-        <div className="spazio-v4__text spazio-up spazio-up--2">
-          <span className="spazio-label">L'ingresso</span>
-          <h2 className="spazio-section__title">
-            La prima impressione<br />è già vinta.
-          </h2>
-          <p className="spazio-section__body">
-            La reception accoglie i tuoi clienti, la sala d'attesa li mette a proprio agio. Il biglietto da visita perfetto, prima ancora che entrino nella tua stanza.
-          </p>
         </div>
       </section>
 
-      {/* ── 3. Sala Allenamento ── */}
+      {/* ── 3. Aree comuni ── */}
+      <section ref={s7.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-comuni${s7.visible ? " is-on" : ""}`}>
+        <div className="spazio-comuni__inner">
+          <div className="spazio-comuni__gallery spazio-up spazio-up--1">
+            <div className="spazio-comuni__main">
+              <Image src="/assets/Spazi-relax-corner.jpg" alt="Area snack e relax EQB Milano" fill
+                sizes="(max-width: 900px) 100vw, 45vw"
+                style={{ objectFit: "cover", objectPosition: "center" }} />
+              <div className="spazio-photo-caption">
+                <span>Area Snack</span>
+                <span>EQB Milano</span>
+              </div>
+            </div>
+            <div className="spazio-comuni__side">
+              <div className="spazio-comuni__side-img">
+                <Image src="/assets/Spazi-bagno-completo.jpg" alt="Bagno con doccia EQB Milano" fill
+                  sizes="(max-width: 900px) 100vw, 22vw"
+                  style={{ objectFit: "cover", objectPosition: "center" }} />
+              </div>
+              <div className="spazio-comuni__side-img">
+                <Image src="/assets/Spazi-bagno-doccia.jpg" alt="Doccia EQB Milano" fill
+                  sizes="(max-width: 900px) 100vw, 22vw"
+                  style={{ objectFit: "cover", objectPosition: "center" }} />
+              </div>
+            </div>
+          </div>
+          <div className="spazio-comuni__text spazio-up spazio-up--2">
+            <span className="spazio-label">Aree comuni</span>
+            <h2 className="spazio-section__title">
+              Tutto quello che serve,<br />a portata di mano.
+            </h2>
+            <p className="spazio-section__body">
+              Un angolo snack per una pausa tra un cliente e l'altro. Bagni con doccia per chi arriva di corsa o si allena prima di lavorare.
+            </p>
+            <TiltCard className="spazio-card spazio-card--featured spazio-up spazio-up--3">
+              <span className="spazio-label">Caratteristiche</span>
+              <ul>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Area snack e relax
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  2 spogliatoi
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  2 bagni con doccia
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Pulizie incluse
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Asciugamani brandizzati (grandi, medi, piccoli)
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Rotolo lettino incluso
+                </li>
+              </ul>
+            </TiltCard>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. Intermezzo Piano Nobile ── */}
+      <ParallaxDivider src="/assets/Spazi-ingresso-frontale.jpg" text="PIANO NOBILE — TERAPIA E ALLENAMENTO" />
+
+      {/* ── 5. Sala Allenamento ── */}
       <section ref={s2.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-sala${s2.visible ? " is-on" : ""}`}>
         <div className="spazio-sala__inner">
           <div className="spazio-sala__text">
@@ -138,7 +224,7 @@ export const SpazioPage: React.FC = () => {
             <TiltCard className="spazio-card spazio-up spazio-up--4">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
-                <li>45 mq</li>
+                <li>Sala da 45 mq</li>
                 <li>Rack a muro in ferro</li>
                 <li>2 Reformer + 2 Chair Merrithew</li>
                 <li>Dischi e manubri liberi, panca</li>
@@ -162,7 +248,7 @@ export const SpazioPage: React.FC = () => {
               sizes="(max-width: 900px) 100vw, 55vw"
               style={{ objectFit: "cover", objectPosition: "center" }} />
             <div className="spazio-photo-caption">
-              <span>Stanza <u>Terra</u></span>
+              <span>Stanza Terra</span>
               <span>EQB Milano</span>
             </div>
           </div>
@@ -172,12 +258,13 @@ export const SpazioPage: React.FC = () => {
               Ordine.<br />Chiarezza.<br />Energia.
             </h2>
             <p className="spazio-section__body">
+              {/* TODO: ultima frase da confermare con Marco (opzioni proposte in chat) */}
               20 mq luminosi con lettino regolabile, spalliera a muro e ampia scrivania. Lo spazio ideale per chi lavora con struttura e ha bisogno di silenzio per concentrarsi.
             </p>
             <TiltCard className="spazio-card spazio-up spazio-up--3">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
-                <li>20 mq</li>
+                <li>Stanza da 20 mq</li>
                 <li>Lettino regolabile + spalliera a muro</li>
                 <li>Scrivania, sedie, sgabelli</li>
               </ul>
@@ -186,9 +273,9 @@ export const SpazioPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── 5. Intermezzo: la foto ora vive nel FixedBackground della pagina,
+      {/* ── 6. Intermezzo: la foto ora vive nel FixedBackground della pagina,
              qui c'è solo il varco trasparente che la rivela (come in home) ── */}
-      <ParallaxDivider />
+      <ParallaxDivider text="PIANO INFERIORE — RELAX & RECOVERY" />
 
       {/* ── 6. Stanza Sole ── */}
       <section ref={s5.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-sole${s5.visible ? " is-on" : ""}`}>
@@ -198,7 +285,7 @@ export const SpazioPage: React.FC = () => {
               sizes="(max-width: 900px) 100vw, 55vw"
               style={{ objectFit: "cover", objectPosition: "center" }} />
             <div className="spazio-photo-caption">
-              <span>Stanza <u>Sole</u></span>
+              <span>Stanza Sole</span>
               <span>EQB Milano</span>
             </div>
           </div>
@@ -208,12 +295,13 @@ export const SpazioPage: React.FC = () => {
               Luce che<br />accompagna<br />il lavoro.
             </h2>
             <p className="spazio-section__body">
+              {/* TODO: ultima frase da confermare con Marco (opzioni proposte in chat) */}
               15 mq luminosi con la propria carta da parati originale, lettino regolabile e scrivania. Pensata per chi lavora nella sfera del tatto, con calma e continuità.
             </p>
             <TiltCard className="spazio-card spazio-up spazio-up--3">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
-                <li>15 mq</li>
+                <li>Stanza da 15 mq</li>
                 <li>Lettino regolabile</li>
                 <li>Scrivania con sgabelli</li>
               </ul>
@@ -231,12 +319,13 @@ export const SpazioPage: React.FC = () => {
               Silenzio.<br />Intimità.<br />Ascolto.
             </h2>
             <p className="spazio-section__body">
+              {/* TODO: ultima frase da confermare con Marco (opzioni proposte in chat) */}
               15 mq con la propria carta da parati originale, lettino regolabile e scrivania. Il rifugio ideale per chi lavora nella sfera dell'ascolto e ha bisogno di riservatezza.
             </p>
             <TiltCard className="spazio-card spazio-up spazio-up--2">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
-                <li>15 mq</li>
+                <li>Stanza da 15 mq</li>
                 <li>Lettino regolabile</li>
                 <li>Scrivania con sgabelli</li>
               </ul>
@@ -247,81 +336,26 @@ export const SpazioPage: React.FC = () => {
               sizes="(max-width: 900px) 100vw, 55vw"
               style={{ objectFit: "cover", objectPosition: "center" }} />
             <div className="spazio-photo-caption">
-              <span>Stanza <u>Luna</u></span>
+              <span>Stanza Luna</span>
               <span>EQB Milano</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── 8. Aree comuni ── */}
-      <section ref={s7.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-comuni${s7.visible ? " is-on" : ""}`}>
-        <div className="spazio-comuni__inner">
-          <div className="spazio-comuni__gallery spazio-up spazio-up--1">
-            <div className="spazio-comuni__main">
-              <Image src="/assets/Spazi-relax-corner.jpg" alt="Area snack e relax EQB Milano" fill
-                sizes="(max-width: 900px) 100vw, 45vw"
-                style={{ objectFit: "cover", objectPosition: "center" }} />
-              <div className="spazio-photo-caption">
-                <span>Area <u>Snack</u></span>
-                <span>EQB Milano</span>
-              </div>
-            </div>
-            <div className="spazio-comuni__side">
-              <div className="spazio-comuni__side-img">
-                <Image src="/assets/Spazi-bagno-completo.jpg" alt="Bagno con doccia EQB Milano" fill
-                  sizes="(max-width: 900px) 100vw, 22vw"
-                  style={{ objectFit: "cover", objectPosition: "center" }} />
-              </div>
-              <div className="spazio-comuni__side-img">
-                <Image src="/assets/Spazi-bagno-doccia.jpg" alt="Doccia EQB Milano" fill
-                  sizes="(max-width: 900px) 100vw, 22vw"
-                  style={{ objectFit: "cover", objectPosition: "center" }} />
-              </div>
-            </div>
-          </div>
-          <div className="spazio-comuni__text spazio-up spazio-up--2">
-            <span className="spazio-label">Aree comuni</span>
-            <h2 className="spazio-section__title">
-              Tutto quello che serve,<br />a portata di mano.
-            </h2>
-            <p className="spazio-section__body">
-              Un angolo snack per una pausa tra un cliente e l'altro, e bagni con doccia per chi arriva di corsa o si allena prima di lavorare.
-            </p>
-            <TiltCard className="spazio-card spazio-card--featured spazio-up spazio-up--3">
-              <span className="spazio-label">Caratteristiche</span>
-              <ul>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  Area snack e relax
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  2 spogliatoi
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  2 bagni con doccia
-                </li>
-              </ul>
-            </TiltCard>
-          </div>
-        </div>
-      </section>
-
       {/* ── 9. CTA finale ── */}
-      <section ref={s8.ref as React.RefObject<HTMLElement>} className={`spazio-cta${s8.visible ? " is-on" : ""}`}>
+      <section
+        ref={(el) => {
+          (s8.ref as React.RefObject<HTMLElement | null>).current = el;
+          ctaRef.current = el;
+        }}
+        className={`spazio-cta${s8.visible ? " is-on" : ""}`}
+      >
         <div className="spazio-cta__inner">
           <div className="spazio-cta__text spazio-up spazio-up--1">
             <h2 className="spazio-cta__title">Scopri come rendere tuo<br />questo spazio.</h2>
             <p className="spazio-cta__body">
-              Zero costi fissi, un ecosistema che ti porta clienti e un ambiente pensato per farti lavorare al meglio.
+              Zero costi fissi e un ambiente pensato per farti lavorare al meglio, ogni giorno.
             </p>
             <a href="/coworking" className="spazio-cta__btn">Scopri il coworking →</a>
           </div>

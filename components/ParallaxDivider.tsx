@@ -9,7 +9,18 @@ interface ParallaxDividerProps {
 
 export const ParallaxDivider: React.FC<ParallaxDividerProps> = ({ src, text }) => {
   if (!src) {
-    return <div className="parallax-divider" aria-hidden="true" />;
+    return (
+      <div className="parallax-divider" aria-hidden={!text}>
+        {text && (
+          <div className="parallax-divider__overlay" />
+        )}
+        {text && (
+          <div className="parallax-divider__content">
+            <p className="parallax-divider__text">{text}</p>
+          </div>
+        )}
+      </div>
+    );
   }
 
   return (

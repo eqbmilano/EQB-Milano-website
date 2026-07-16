@@ -154,7 +154,7 @@ export const SectionInterno: React.FC = () => {
         </Swiper>
 
         {/* Cursore drag custom */}
-        <div ref={cursorRef} className="interno-cursor">Drag</div>
+        <div ref={cursorRef} className="interno-cursor">Trascina</div>
       </div>
 
     </section>

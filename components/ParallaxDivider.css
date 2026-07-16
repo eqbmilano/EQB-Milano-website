@@ -1,6 +1,9 @@
 .parallax-divider {
   background-color: #0000;
   height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
 }
 
@@ -8,9 +11,6 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .parallax-divider__overlay {
