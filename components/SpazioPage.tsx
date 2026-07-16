@@ -214,7 +214,7 @@ export const SpazioPage: React.FC = () => {
           <div className="spazio-sala__text">
             <span className="spazio-label spazio-up spazio-up--1">Piano nobile</span>
             <h2 className="spazio-section__title spazio-up spazio-up--2">
-              45 mq per<br />il lavoro sul corpo.
+              Sala Allenamento
             </h2>
             <p className="spazio-section__body spazio-up spazio-up--3">
               Rack a muro in ferro, 2 Reformer Merrithew con spalliera, 2 Chair, dischi e manubri liberi, panca in legno. Luce naturale da tre finestre, parquet a lisca di pesce.
@@ -253,7 +253,7 @@ export const SpazioPage: React.FC = () => {
           <div className="spazio-terra__text spazio-up spazio-up--2">
             <span className="spazio-label">Piano nobile</span>
             <h2 className="spazio-section__title">
-              Ordine.<br />Chiarezza.<br />Energia.
+              Stanza Terra
             </h2>
             <p className="spazio-section__body">
               20 mq luminosi con lettino regolabile, spalliera a muro e ampia scrivania. Lo spazio giusto per chi lavora con metodo, seduta dopo seduta.
@@ -289,7 +289,7 @@ export const SpazioPage: React.FC = () => {
           <div className="spazio-sole__text spazio-up spazio-up--2">
             <span className="spazio-label">Piano inferiore · Relax &amp; Recovery</span>
             <h2 className="spazio-section__title">
-              Luce che<br />accompagna<br />il lavoro.
+              Stanza Sole
             </h2>
             <p className="spazio-section__body">
               15 mq luminosi con la propria carta da parati originale, lettino regolabile e scrivania. Pensata per chi lavora con calma e continuità.
@@ -312,7 +312,7 @@ export const SpazioPage: React.FC = () => {
           <div className="spazio-luna__text spazio-up spazio-up--1">
             <span className="spazio-label">Piano inferiore · Relax &amp; Recovery</span>
             <h2 className="spazio-section__title">
-              Silenzio.<br />Intimità.<br />Ascolto.
+              Stanza Luna
             </h2>
             <p className="spazio-section__body">
               {/* TODO: mq da confermare con Marco - Luna sarebbe più grande di Sole ma il codice le ha entrambe a 15 mq */}

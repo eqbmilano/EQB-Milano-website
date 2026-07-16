@@ -119,7 +119,7 @@ export const ContattiPage: React.FC = () => {
           <div className="cnt-form__head">
             <span className="cnt-eyebrow">Scrivici</span>
             <h2 className="cnt-form__title">Raccontaci di cosa hai bisogno.</h2>
-            <p className="cnt-form__sub">Compila e invia: si apre WhatsApp con il messaggio già pronto.</p>
+            <p className="cnt-form__sub">Ti rispondiamo noi, di persona, appena possibile.</p>
           </div>
           <div className="cnt-form__fields">
             <label className="cnt-field">
