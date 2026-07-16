@@ -381,7 +381,10 @@ export const CoworkingFunnel: React.FC = () => {
             Lo spazio è fisico: i posti non sono infiniti.
           </p>
           <div className="cw-cta__actions cw-anim cw-anim--5">
-            <CTAButton href="tel:+393755153273" variant="filled">
+            <CTAButton href="/candidatura" variant="filled">
+              Candidati per lavorare da EQB →
+            </CTAButton>
+            <CTAButton href="tel:+393755153273" variant="light">
               Chiama ora — +39 375 515 3273
             </CTAButton>
             <CTAButton href="mailto:info@eqbmilano.it" variant="light">
@@ -397,7 +400,7 @@ export const CoworkingFunnel: React.FC = () => {
       {/* ── Sticky CTA ── */}
       <div className={`cw-sticky${showSticky ? " is-shown" : ""}`}>
         <span className="cw-sticky__text">Pronto a renderlo tuo?</span>
-        <a href="/contatti" className="cw-sticky__btn">Prenota una visita →</a>
+        <a href="/candidatura" className="cw-sticky__btn">Candidati →</a>
       </div>
     </>
   );
