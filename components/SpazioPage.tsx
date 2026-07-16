@@ -94,8 +94,7 @@ export const SpazioPage: React.FC = () => {
             Un appartamento<br />del '900 milanese.
           </h1>
           <p className="spazio-opening__sub spazio-fade spazio-fade--3">
-            {/* TODO: da confermare con Marco (opzioni proposte in chat) */}
-            Restaurato per chi lavora sul corpo.
+            Pensato per chi lavora sul corpo.
           </p>
         </div>
         <div className="spazio-opening__scroll" aria-hidden="true">
@@ -118,8 +117,7 @@ export const SpazioPage: React.FC = () => {
           <div className="spazio-v4__text spazio-up spazio-up--2">
             <span className="spazio-label">L'ingresso</span>
             <h2 className="spazio-section__title">
-              {/* TODO: titolo da confermare con Marco (opzioni proposte in chat) */}
-              La prima impressione<br />è già vinta.
+              L'accoglienza che il<br />tuo cliente si merita.
             </h2>
             <p className="spazio-section__body">
               La reception accoglie i tuoi clienti, la sala d'attesa li mette a proprio agio. Il biglietto da visita perfetto, prima ancora che entrino nella tua stanza.
@@ -258,8 +256,7 @@ export const SpazioPage: React.FC = () => {
               Ordine.<br />Chiarezza.<br />Energia.
             </h2>
             <p className="spazio-section__body">
-              {/* TODO: ultima frase da confermare con Marco (opzioni proposte in chat) */}
-              20 mq luminosi con lettino regolabile, spalliera a muro e ampia scrivania. Lo spazio ideale per chi lavora con struttura e ha bisogno di silenzio per concentrarsi.
+              20 mq luminosi con lettino regolabile, spalliera a muro e ampia scrivania. Lo spazio giusto per chi lavora con metodo, seduta dopo seduta.
             </p>
             <TiltCard className="spazio-card spazio-up spazio-up--3">
               <span className="spazio-label">Caratteristiche</span>
@@ -295,8 +292,7 @@ export const SpazioPage: React.FC = () => {
               Luce che<br />accompagna<br />il lavoro.
             </h2>
             <p className="spazio-section__body">
-              {/* TODO: ultima frase da confermare con Marco (opzioni proposte in chat) */}
-              15 mq luminosi con la propria carta da parati originale, lettino regolabile e scrivania. Pensata per chi lavora nella sfera del tatto, con calma e continuità.
+              15 mq luminosi con la propria carta da parati originale, lettino regolabile e scrivania. Pensata per chi lavora con calma e continuità.
             </p>
             <TiltCard className="spazio-card spazio-up spazio-up--3">
               <span className="spazio-label">Caratteristiche</span>
@@ -319,8 +315,8 @@ export const SpazioPage: React.FC = () => {
               Silenzio.<br />Intimità.<br />Ascolto.
             </h2>
             <p className="spazio-section__body">
-              {/* TODO: ultima frase da confermare con Marco (opzioni proposte in chat) */}
-              15 mq con la propria carta da parati originale, lettino regolabile e scrivania. Il rifugio ideale per chi lavora nella sfera dell'ascolto e ha bisogno di riservatezza.
+              {/* TODO: mq da confermare con Marco - Luna sarebbe più grande di Sole ma il codice le ha entrambe a 15 mq */}
+              15 mq con la propria carta da parati originale, lettino regolabile e scrivania. Il rifugio ideale per chi ha bisogno di riservatezza.
             </p>
             <TiltCard className="spazio-card spazio-up spazio-up--2">
               <span className="spazio-label">Caratteristiche</span>
