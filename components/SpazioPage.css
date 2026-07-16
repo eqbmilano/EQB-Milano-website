@@ -92,6 +92,33 @@
   line-height: 1.95;
 }
 
+.spazio-tagline {
+  font-family: var(--font-manrope);
+  color: #3c281eb0;
+  margin: -1.5rem 0 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.spazio-tags {
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1.5rem 0 0;
+  display: flex;
+}
+
+.spazio-tag {
+  font-family: var(--font-manrope);
+  letter-spacing: .02em;
+  color: var(--color-brown-primary);
+  background: #3c281e0f;
+  border-radius: 9999px;
+  padding: .4rem .95rem;
+  font-size: .78rem;
+  font-weight: 600;
+}
+
 .spazio-card {
   cursor: default;
   background: #3c281e0b;
@@ -706,6 +733,50 @@
   display: flex;
 }
 
+.spazio-servizi {
+  background: #f0ebe1;
+  padding: 5rem 7rem;
+}
+
+.spazio-servizi__inner {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.spazio-servizi__inner .spazio-label {
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+
+.spazio-servizi__list {
+  flex-wrap: wrap;
+  gap: 1.25rem 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.spazio-servizi__list li {
+  align-items: center;
+  gap: .55rem;
+  font-family: var(--font-manrope);
+  color: #3c281eb0;
+  font-size: .92rem;
+  font-weight: 500;
+  display: flex;
+}
+
+.spazio-servizi__list li svg {
+  color: var(--color-brown-primary);
+  opacity: .7;
+  flex-shrink: 0;
+}
+
 .spazio-cta {
   background-color: var(--color-brown-primary);
   padding: 7rem 2rem;
@@ -805,6 +876,14 @@
 @media (max-width: 768px) {
   .spazio-section {
     padding: 4rem 1.5rem;
+  }
+
+  .spazio-servizi {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .spazio-servizi__inner {
+    gap: 1rem;
   }
 
   .spazio-opening__content {

@@ -53,6 +53,7 @@ export const SpazioPage: React.FC = () => {
   const s6 = useVisible("-60px");
   const s7 = useVisible("-60px");
   const s8 = useVisible("-60px");
+  const sServizi = useVisible("-60px");
 
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
   const [ctaVisible, setCtaVisible] = useState(false);
@@ -119,6 +120,7 @@ export const SpazioPage: React.FC = () => {
             <h2 className="spazio-section__title">
               Reception
             </h2>
+            <p className="spazio-tagline">L'accoglienza che il tuo cliente si merita.</p>
             <p className="spazio-section__body">
               La reception accoglie i tuoi clienti, la sala d'attesa li mette a proprio agio. Il biglietto da visita perfetto, prima ancora che entrino nella tua stanza.
             </p>
@@ -157,6 +159,7 @@ export const SpazioPage: React.FC = () => {
             <h2 className="spazio-section__title">
               Aree Comuni
             </h2>
+            <p className="spazio-tagline">Tutto quello che serve, a portata di mano.</p>
             <p className="spazio-section__body">
               Un angolo snack per una pausa tra un cliente e l'altro. Bagni con doccia per chi arriva di corsa o si allena prima di lavorare.
             </p>
@@ -183,30 +186,34 @@ export const SpazioPage: React.FC = () => {
                 </li>
               </ul>
             </TiltCard>
-            <TiltCard className="spazio-card spazio-card--featured spazio-up spazio-up--4">
-              <span className="spazio-label">Servizi inclusi</span>
-              <ul>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  Pulizie incluse
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  Asciugamani brandizzati (grandi, medi, piccoli)
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  Rotolo lettino incluso
-                </li>
-              </ul>
-            </TiltCard>
           </div>
+        </div>
+      </section>
+
+      {/* ── 3b. Servizi inclusi — piccola sezione a parte ── */}
+      <section ref={sServizi.ref as React.RefObject<HTMLElement>} className={`spazio-servizi${sServizi.visible ? " is-on" : ""}`}>
+        <div className="spazio-servizi__inner spazio-up spazio-up--1">
+          <span className="spazio-label">Servizi inclusi</span>
+          <ul className="spazio-servizi__list">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Pulizie incluse
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Asciugamani brandizzati (grandi, medi, piccoli)
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Rotolo lettino incluso
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -224,6 +231,11 @@ export const SpazioPage: React.FC = () => {
             <p className="spazio-section__body spazio-up spazio-up--3">
               Rack a muro in ferro, 2 Reformer Merrithew con spalliera, 2 Chair, dischi e manubri liberi, panca in legno. Luce naturale da tre finestre, parquet a lisca di pesce.
             </p>
+            <div className="spazio-tags spazio-up spazio-up--3">
+              <span className="spazio-tag">Pilates</span>
+              <span className="spazio-tag">Personal Training</span>
+              <span className="spazio-tag">Functional Training</span>
+            </div>
             <TiltCard className="spazio-card spazio-up spazio-up--4">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
@@ -239,6 +251,10 @@ export const SpazioPage: React.FC = () => {
             <Image src="/assets/Sala-Allenamento.jpg" alt="Sala allenamento EQB Milano" fill
               sizes="(max-width: 900px) 100vw, 55vw"
               style={{ objectFit: "cover", objectPosition: "center" }} />
+            <div className="spazio-photo-caption">
+              <span>Sala Allenamento</span>
+              <span>EQB Milano</span>
+            </div>
           </div>
         </div>
       </section>
@@ -263,6 +279,10 @@ export const SpazioPage: React.FC = () => {
             <p className="spazio-section__body">
               20 mq luminosi con lettino regolabile, spalliera a muro e ampia scrivania. Lo spazio giusto per chi lavora con metodo, seduta dopo seduta.
             </p>
+            <div className="spazio-tags">
+              <span className="spazio-tag">Osteopatia</span>
+              <span className="spazio-tag">Fisioterapia</span>
+            </div>
             <TiltCard className="spazio-card spazio-up spazio-up--3">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
@@ -299,6 +319,11 @@ export const SpazioPage: React.FC = () => {
             <p className="spazio-section__body">
               15 mq luminosi con la propria carta da parati originale, lettino regolabile e scrivania. Pensata per chi lavora con calma e continuità.
             </p>
+            <div className="spazio-tags">
+              <span className="spazio-tag">Massoterapia</span>
+              <span className="spazio-tag">Riflessologia</span>
+              <span className="spazio-tag">Nutrizione</span>
+            </div>
             <TiltCard className="spazio-card spazio-up spazio-up--3">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
@@ -323,6 +348,11 @@ export const SpazioPage: React.FC = () => {
               {/* TODO: mq da confermare con Marco - Luna sarebbe più grande di Sole ma il codice le ha entrambe a 15 mq */}
               15 mq con la propria carta da parati originale, lettino regolabile e scrivania. Il rifugio ideale per chi ha bisogno di riservatezza.
             </p>
+            <div className="spazio-tags">
+              <span className="spazio-tag">Psicoterapia</span>
+              <span className="spazio-tag">Nutrizione</span>
+              <span className="spazio-tag">Consulenze</span>
+            </div>
             <TiltCard className="spazio-card spazio-up spazio-up--2">
               <span className="spazio-label">Caratteristiche</span>
               <ul>
