@@ -83,7 +83,7 @@ export const Navbar: React.FC = () => {
               aria-expanded={joinOpen}
               aria-haspopup="dialog"
             >
-              JOIN US
+              INIZIA
             </button>
           </div>
           <button

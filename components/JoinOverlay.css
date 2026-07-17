@@ -6,7 +6,6 @@
   visibility: hidden;
   pointer-events: none;
   transform: translateY(-100%);
-  background: #080503;
 }
 
 .join-overlay--open {
@@ -24,6 +23,18 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.join-overlay__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.join-overlay__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: #1e100e8c;
 }
 
 .join-overlay__close {
@@ -49,113 +60,104 @@
   background: rgba(255, 255, 255, .12);
 }
 
-.join-overlay__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.join-overlay__stack {
+  position: relative;
+  z-index: 1;
   height: 100vh;
   height: 100dvh;
-}
-
-.join-overlay__half {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-  text-decoration: none;
-}
-
-.join-overlay__bg {
-  position: absolute;
-  inset: 0;
-  transition: transform .8s cubic-bezier(.22, 1, .36, 1);
-}
-
-.join-overlay__half:hover .join-overlay__bg {
-  transform: scale(1.045);
-}
-
-.join-overlay__scrim {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(to top, rgba(8, 5, 3, .82) 0%, rgba(8, 5, 3, .38) 45%, rgba(8, 5, 3, .3) 100%);
-  transition: background-color .4s;
-}
-
-.join-overlay__half:hover .join-overlay__scrim {
-  background-color: rgba(8, 5, 3, .12);
-}
-
-.join-overlay__content {
-  position: relative;
-  z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1.1rem;
-  padding: 0 clamp(2rem, 5vw, 4.5rem) clamp(3rem, 7vh, 5.5rem);
-  max-width: 34rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2.6rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.join-overlay__row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.join-overlay--open .join-overlay__row {
+  animation: .55s forwards joinRowUp;
+}
+
+.join-overlay__row--1 { animation-delay: .22s; }
+.join-overlay__row--2 { animation-delay: .3s; }
+.join-overlay__row--3 { animation-delay: .38s; }
+
+@keyframes joinRowUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .join-overlay__kicker {
   font-family: var(--font-manrope);
   font-size: .8rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: .28em;
   text-transform: uppercase;
+  color: #ffffff5e;
+  transition: color .25s;
+}
+
+.join-overlay__action {
+  font-family: var(--font-manrope);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 5.5vw, 4.05rem);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  color: rgba(255, 255, 255, .86);
+  transition: color .25s;
+}
+
+.join-overlay__arrow {
+  display: inline-block;
+  transition: transform .3s cubic-bezier(.22, 1, .36, 1);
+}
+
+.join-overlay__row:hover .join-overlay__kicker {
   color: #ffffff96;
 }
 
-.join-overlay__title {
-  font-family: var(--font-manrope);
-  font-weight: 300;
-  font-size: clamp(1.9rem, 2.8vw, 2.7rem);
-  line-height: 1.2;
-  letter-spacing: -.02em;
+.join-overlay__row:hover .join-overlay__action {
   color: #fff;
-  margin: 0;
-  text-wrap: balance;
 }
 
-.join-overlay__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: .55rem;
-  margin-top: .5rem;
-  padding: .9rem 1.9rem;
-  border: 1px solid rgba(255, 255, 255, .55);
-  border-radius: 50px;
-  font-family: var(--font-manrope);
-  font-size: .88rem;
-  font-weight: 600;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  color: #fff;
-  transition: background-color .3s, color .3s, border-color .3s;
+.join-overlay__row:hover .join-overlay__arrow {
+  transform: translateX(.35em);
 }
 
-.join-overlay__half:hover .join-overlay__cta {
-  background: #fff;
-  color: var(--color-brown-primary);
-  border-color: #fff;
+.join-overlay__rule {
+  width: 44px;
+  height: 1px;
+  background: #ffffff4d;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.join-overlay--open .join-overlay__rule {
+  animation: .55s forwards joinRowUp;
 }
 
 @media (max-width: 767px) {
-  .join-overlay__grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-
   .join-overlay__close {
     right: 1.25rem;
   }
 
-  .join-overlay__content {
-    padding: 0 1.5rem 2.2rem;
-    gap: .8rem;
+  .join-overlay__stack {
+    gap: 2.1rem;
   }
 
-  .join-overlay__title {
-    font-size: 1.6rem;
+  .join-overlay__action {
+    font-size: 2.2rem;
   }
 }

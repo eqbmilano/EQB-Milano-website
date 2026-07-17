@@ -35,33 +35,38 @@ export const JoinOverlay: React.FC<JoinOverlayProps> = ({ isOpen, onClose }) => 
       aria-modal="true"
       aria-hidden={!isOpen}
     >
+      {/* Sfondo brand, lo stesso del menu hamburger */}
+      <div className="join-overlay__bg">
+        <Image
+          src="/assets/Sfondo-Menu-Hamburger.jpg"
+          alt=""
+          fill
+          priority
+          quality={85}
+          style={{ objectFit: "cover" }}
+        />
+        <div className="join-overlay__bg-overlay" />
+      </div>
+
       <button className="join-overlay__close" onClick={onClose} aria-label="Chiudi">
         &#10005;
       </button>
 
-      <div className="join-overlay__grid">
-        <Link href="/candidatura" className="join-overlay__half" onClick={onClose}>
-          <div className="join-overlay__bg">
-            <Image src="/assets/Sala-Allenamento.jpg" alt="" fill sizes="50vw" style={{ objectFit: "cover" }} />
-          </div>
-          <div className="join-overlay__scrim" />
-          <div className="join-overlay__content">
-            <span className="join-overlay__kicker">Sei un professionista?</span>
-            <h2 className="join-overlay__title">Porta il tuo lavoro dove può crescere.</h2>
-            <span className="join-overlay__cta">Candidati &#8594;</span>
-          </div>
+      <div className="join-overlay__stack">
+        <Link href="/candidatura" className="join-overlay__row join-overlay__row--1" onClick={onClose}>
+          <span className="join-overlay__kicker">Sei un professionista?</span>
+          <span className="join-overlay__action">
+            Candidati <span className="join-overlay__arrow" aria-hidden="true">&#8594;</span>
+          </span>
         </Link>
 
-        <Link href="/contatti" className="join-overlay__half" onClick={onClose}>
-          <div className="join-overlay__bg">
-            <Image src="/assets/Massaggio-viso.jpg" alt="" fill sizes="50vw" style={{ objectFit: "cover" }} />
-          </div>
-          <div className="join-overlay__scrim" />
-          <div className="join-overlay__content">
-            <span className="join-overlay__kicker">Cerchi un percorso?</span>
-            <h2 className="join-overlay__title">Trova la persona giusta per stare meglio.</h2>
-            <span className="join-overlay__cta">Scrivici &#8594;</span>
-          </div>
+        <span className="join-overlay__rule join-overlay__row--2" aria-hidden="true" />
+
+        <Link href="/contatti" className="join-overlay__row join-overlay__row--3" onClick={onClose}>
+          <span className="join-overlay__kicker">Cerchi un percorso?</span>
+          <span className="join-overlay__action">
+            Scrivici <span className="join-overlay__arrow" aria-hidden="true">&#8594;</span>
+          </span>
         </Link>
       </div>
     </div>
