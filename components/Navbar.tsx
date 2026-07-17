@@ -8,6 +8,7 @@ import "./Navbar.css";
 
 export const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [joinOpen, setJoinOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const pathname = usePathname();
 
@@ -15,7 +16,25 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     setMenuOpen(false);
+    setJoinOpen(false);
   }, [pathname]);
+
+  // chiude il popover JOIN US con click fuori o ESC
+  useEffect(() => {
+    if (!joinOpen) return;
+    const onDown = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest(".navbar__join")) setJoinOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setJoinOpen(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [joinOpen]);
 
   useEffect(() => {
     const getBgBrightness = (): number => {
@@ -73,6 +92,28 @@ export const Navbar: React.FC = () => {
         </div>
 
         <div className="navbar__right">
+          <div className={`navbar__join${menuOpen ? " navbar__join--hidden" : ""}`}>
+            <button
+              className="navbar__join-btn"
+              onClick={() => setJoinOpen((prev) => !prev)}
+              aria-expanded={joinOpen}
+              aria-haspopup="true"
+            >
+              JOIN US
+            </button>
+            {joinOpen && (
+              <div className="navbar__join-pop">
+                <Link href="/candidatura" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
+                  <span className="navbar__join-kicker">Sei un professionista?</span>
+                  <span className="navbar__join-label">Candidati &#8594;</span>
+                </Link>
+                <Link href="/contatti" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
+                  <span className="navbar__join-kicker">Cerchi un percorso?</span>
+                  <span className="navbar__join-label">Scrivici &#8594;</span>
+                </Link>
+              </div>
+            )}
+          </div>
           <button
             className={`navbar__hamburger${menuOpen ? " navbar__hamburger--open" : ""}`}
             onClick={toggleMenu}

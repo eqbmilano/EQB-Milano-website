@@ -112,6 +112,111 @@
   border-color: var(--color-brown-primary);
 }
 
+/* JOIN US — pillola come il CTAButton originale + popover CTA */
+.navbar__join {
+  position: relative;
+  display: none;
+  transition: opacity .4s;
+}
+
+@media (min-width: 768px) {
+  .navbar__join {
+    display: inline-block;
+  }
+}
+
+.navbar__join--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.navbar__join-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .65rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, .5);
+  background: transparent;
+  font-family: var(--font-manrope);
+  font-size: .85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--color-white);
+  cursor: pointer;
+  border-radius: 50px;
+  white-space: nowrap;
+  transition: color .4s, background-color .3s, border-color .3s;
+}
+
+.navbar__join-btn:hover {
+  background-color: rgba(255, 255, 255, .12);
+  border-color: rgba(255, 255, 255, .85);
+}
+
+.navbar--dark .navbar__join-btn {
+  color: var(--color-brown-primary);
+  border-color: rgba(50, 37, 35, .45);
+}
+
+.navbar--dark .navbar__join-btn:hover {
+  background-color: rgba(50, 37, 35, .08);
+  border-color: var(--color-brown-primary);
+}
+
+.navbar__join-pop {
+  position: absolute;
+  top: calc(100% + .8rem);
+  right: 0;
+  min-width: 265px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 18px 44px rgba(20, 12, 8, .18);
+  padding: .5rem;
+  animation: joinPopIn .3s cubic-bezier(.22, 1, .36, 1);
+}
+
+/* solo transform: animare l'opacity qui lascia un layer composito
+   semitrasparente sopra il video dell'hero (bug di compositing Chrome) */
+@keyframes joinPopIn {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.navbar__join-item {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  padding: .9rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color .2s;
+}
+
+.navbar__join-item:hover {
+  background-color: #f5f1eb;
+}
+
+.navbar__join-kicker {
+  font-family: var(--font-manrope);
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #3c281e73;
+}
+
+.navbar__join-label {
+  font-family: var(--font-manrope);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--color-brown-primary);
+}
+
 .navbar__hamburger {
   z-index: 1002;
   cursor: pointer;
