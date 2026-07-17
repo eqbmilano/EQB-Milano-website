@@ -106,10 +106,12 @@ export const Navbar: React.FC = () => {
                 <Link href="/candidatura" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
                   <span className="navbar__join-kicker">Sei un professionista?</span>
                   <span className="navbar__join-label">Candidati &#8594;</span>
+                  <span className="navbar__join-desc">Spazio a ore, community e supporto.</span>
                 </Link>
                 <Link href="/contatti" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
-                  <span className="navbar__join-kicker">Cerchi un percorso?</span>
+                  <span className="navbar__join-kicker">Sei un cliente?</span>
                   <span className="navbar__join-label">Scrivici &#8594;</span>
+                  <span className="navbar__join-desc">Raccontaci di cosa hai bisogno.</span>
                 </Link>
               </div>
             )}

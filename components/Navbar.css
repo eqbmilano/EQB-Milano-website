@@ -162,7 +162,8 @@
   position: absolute;
   top: calc(100% + .8rem);
   right: 0;
-  min-width: 265px;
+  min-width: 330px;
+  max-width: 350px;
   background: #fff;
   border-radius: 14px;
   box-shadow: 0 18px 44px rgba(20, 12, 8, .18);
@@ -184,8 +185,8 @@
 .navbar__join-item {
   display: flex;
   flex-direction: column;
-  gap: .2rem;
-  padding: .9rem 1rem;
+  gap: .25rem;
+  padding: 1rem 1.1rem;
   border-radius: 10px;
   text-decoration: none;
   transition: background-color .2s;
@@ -206,9 +207,17 @@
 
 .navbar__join-label {
   font-family: var(--font-manrope);
-  font-size: 1.02rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--color-brown-primary);
+}
+
+.navbar__join-desc {
+  font-family: var(--font-manrope);
+  font-size: .85rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #3c281e99;
 }
 
 .navbar__hamburger {
