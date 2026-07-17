@@ -17,8 +17,8 @@
 
 .cand-chrome__brand {
   flex-shrink: 0;
-  width: 74px;
-  height: 30px;
+  width: 86px;
+  height: 35px;
   display: flex;
   align-items: center;
   color: var(--color-brown-primary);
@@ -30,13 +30,13 @@
 }
 
 .cand-chrome__back {
-  width: 2.1rem;
-  height: 2.1rem;
+  width: 2.4rem;
+  height: 2.4rem;
   border-radius: 50%;
   border: 1px solid var(--color-separator);
   background: transparent;
   color: var(--color-brown-primary);
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1;
   cursor: pointer;
   display: flex;
@@ -65,7 +65,7 @@
 
 .cand-chrome__step {
   font-family: var(--font-manrope);
-  font-size: .72rem;
+  font-size: .82rem;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: #3c281e59;
@@ -77,11 +77,11 @@
 
 .cand-chrome__exit {
   flex-shrink: 0;
-  width: 2.1rem;
-  height: 2.1rem;
+  width: 2.4rem;
+  height: 2.4rem;
   border-radius: 50%;
   color: #3c281e59;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   text-decoration: none;
   cursor: pointer;
   display: flex;
@@ -105,7 +105,7 @@
   justify-content: center;
   align-items: flex-start;
   padding: 2rem clamp(1.25rem, 4vw, 3rem) 3rem;
-  max-width: 760px;
+  max-width: 840px;
   margin: 0 auto;
   overflow-y: auto;
   opacity: 0;
@@ -131,7 +131,7 @@
 
 .cand-step__eyebrow {
   font-family: var(--font-manrope);
-  font-size: .72rem;
+  font-size: .82rem;
   font-weight: 700;
   letter-spacing: .28em;
   text-transform: uppercase;
@@ -143,7 +143,7 @@
   font-family: var(--font-manrope);
   font-weight: 300;
   color: var(--color-brown-primary);
-  font-size: clamp(2rem, 4.4vw, 3rem);
+  font-size: clamp(2.3rem, 4.9vw, 3.4rem);
   line-height: 1.18;
   letter-spacing: -.03em;
   margin: 0 0 .9rem;
@@ -153,12 +153,12 @@
 
 .cand-step--intro .cand-step__title {
   max-width: 12ch;
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-size: clamp(2.7rem, 6.6vw, 4.7rem);
 }
 
 .cand-step__sub {
   font-family: var(--font-manrope);
-  font-size: 1.02rem;
+  font-size: 1.15rem;
   color: #3c281e85;
   line-height: 1.65;
   margin: 0 0 2.2rem;
@@ -167,7 +167,7 @@
 
 .cand-btn {
   font-family: var(--font-manrope);
-  font-size: .86rem;
+  font-size: .96rem;
   font-weight: 700;
   letter-spacing: .07em;
   text-transform: uppercase;
@@ -175,7 +175,7 @@
   background: var(--color-brown-primary);
   border: none;
   border-radius: 9999px;
-  padding: 1rem 2.1rem;
+  padding: 1.15rem 2.4rem;
   display: inline-flex;
   align-items: center;
   gap: .55rem;
@@ -204,25 +204,25 @@
 
 .cand-options {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: .7rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: .85rem;
   width: 100%;
 }
-.cand-options--narrow { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); max-width: 640px; }
+.cand-options--narrow { grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); max-width: 700px; }
 
 .cand-option {
   display: flex;
   align-items: center;
-  gap: .7rem;
+  gap: .85rem;
   text-align: left;
   font-family: var(--font-manrope);
-  font-size: .96rem;
+  font-size: 1.08rem;
   font-weight: 600;
   color: var(--color-brown-primary);
   background: #fff;
   border: 1px solid var(--color-separator);
-  border-radius: 10px;
-  padding: 1rem 1.15rem;
+  border-radius: 12px;
+  padding: 1.25rem 1.4rem;
   cursor: pointer;
   transition: border-color .2s cubic-bezier(.22, 1, .36, 1), background .2s cubic-bezier(.22, 1, .36, 1), color .2s cubic-bezier(.22, 1, .36, 1), transform .15s cubic-bezier(.22, 1, .36, 1), box-shadow .2s cubic-bezier(.22, 1, .36, 1);
 }
@@ -231,7 +231,7 @@
   box-shadow: 0 6px 20px rgba(50, 37, 35, .08);
   transform: translateY(-1px);
 }
-.cand-option svg { flex-shrink: 0; opacity: .75; transition: opacity .2s; }
+.cand-option svg { width: 24px; height: 24px; flex-shrink: 0; opacity: .75; transition: opacity .2s; }
 .cand-option.is-selected {
   background: var(--color-brown-primary);
   border-color: var(--color-brown-primary);
@@ -242,33 +242,85 @@
 .cand-option.is-selected svg { opacity: 1; }
 
 .cand-fields { width: 100%; display: flex; flex-direction: column; }
-.cand-field { width: 100%; max-width: 480px; margin-bottom: 1.1rem; }
+.cand-fields--inline { flex-direction: row; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.3rem; }
+.cand-fields--inline .cand-field { margin-bottom: 0; max-width: 320px; }
+.cand-fields--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1.3rem;
+  max-width: 620px;
+}
+.cand-fields--grid .cand-field { max-width: none; }
+.cand-field--full { grid-column: 1 / -1; }
+.cand-field { width: 100%; max-width: 520px; margin-bottom: 1.3rem; }
 .cand-field label {
   display: block;
   font-family: var(--font-manrope);
-  font-size: .74rem;
+  font-size: .82rem;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: #3c281e59;
-  margin-bottom: .5rem;
+  margin-bottom: .55rem;
 }
 .cand-field__optional { text-transform: none; font-weight: 400; }
 .cand-field input, .cand-field textarea {
   width: 100%;
   font-family: var(--font-manrope);
-  font-size: 1rem;
+  font-size: 1.12rem;
   color: var(--color-brown-primary);
   background: #fff;
   border: 1px solid var(--color-separator);
   border-radius: 10px;
-  padding: .85rem 1rem;
+  padding: 1rem 1.15rem;
   transition: border-color .2s;
   resize: vertical;
 }
-.cand-field textarea { min-height: 6rem; }
+.cand-field textarea { min-height: 6.5rem; }
 .cand-field input:focus, .cand-field textarea:focus { border-color: var(--color-brown-primary); outline: none; }
 .cand-field input::placeholder, .cand-field textarea::placeholder { color: #a0989080; }
+
+.cand-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  width: 100%;
+  font-family: var(--font-manrope);
+  font-size: 1.05rem;
+  color: #3c281e85;
+  background: #fff;
+  border: 1px dashed var(--color-separator);
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  cursor: pointer;
+  transition: border-color .2s;
+}
+.cand-file:hover { border-color: var(--color-brown-primary); }
+.cand-file__cta {
+  flex-shrink: 0;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-brown-primary);
+}
+.cand-file__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.cand-file__input:focus-visible + .cand-file,
+.cand-file:has(+ .cand-file__input:focus-visible) {
+  outline: 2px solid var(--color-brown-primary);
+  outline-offset: 2px;
+}
 
 .cand-step--done { align-items: center; text-align: center; margin: 0 auto; }
 .cand-step--done .cand-step__title { max-width: 16ch; }
@@ -304,4 +356,74 @@
   .cand-step { padding: 1.5rem 1.25rem 2.5rem; }
   .cand-options { grid-template-columns: 1fr; }
   .cand-options--narrow { grid-template-columns: 1fr 1fr; }
+  .cand-fields--grid { grid-template-columns: 1fr; }
 }
+
+/* =========================================================
+   TEST — tema scuro, stesso trattamento del menu hamburger
+   (Sfondo-Menu-Hamburger.jpg + testi bianchi)
+   ========================================================= */
+.cand-app--dark {
+  background-image: linear-gradient(#1e100e8c, #1e100e8c), url("/assets/Sfondo-Menu-Hamburger.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.cand-app--dark .cand-chrome__brand { color: #fff; }
+.cand-app--dark .cand-chrome__back { border-color: rgba(255, 255, 255, .3); color: #fff; }
+.cand-app--dark .cand-chrome__back:hover { border-color: #fff; background: rgba(255, 255, 255, .08); }
+.cand-app--dark .cand-chrome__progress { background: rgba(255, 255, 255, .2); }
+.cand-app--dark .cand-chrome__progress-fill { background: #fff; }
+.cand-app--dark .cand-chrome__step { color: rgba(255, 255, 255, .55); }
+.cand-app--dark .cand-chrome__exit { color: rgba(255, 255, 255, .55); }
+.cand-app--dark .cand-chrome__exit:hover { background: rgba(255, 255, 255, .08); color: #fff; }
+
+.cand-app--dark .cand-step__eyebrow { color: rgba(255, 255, 255, .55); }
+.cand-app--dark .cand-step__title { color: #fff; }
+.cand-app--dark .cand-step__sub { color: rgba(255, 255, 255, .78); }
+.cand-app--dark .cand-step__foot { color: rgba(255, 255, 255, .6); }
+
+.cand-app--dark .cand-option {
+  background: rgba(255, 255, 255, .06);
+  border-color: rgba(255, 255, 255, .25);
+  color: #fff;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.cand-app--dark .cand-option:hover {
+  border-color: rgba(255, 255, 255, .6);
+  background: rgba(255, 255, 255, .1);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .35);
+}
+.cand-app--dark .cand-option svg { opacity: .85; }
+.cand-app--dark .cand-option.is-selected {
+  background: #fff;
+  border-color: #fff;
+  color: var(--color-brown-primary);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .35);
+}
+.cand-app--dark .cand-option.is-selected svg { opacity: 1; }
+
+.cand-app--dark .cand-btn { background: #fff; color: var(--color-brown-primary); }
+.cand-app--dark .cand-btn:disabled { background: rgba(255, 255, 255, .18); color: rgba(255, 255, 255, .5); }
+
+.cand-app--dark .cand-field label { color: rgba(255, 255, 255, .55); }
+.cand-app--dark .cand-field input,
+.cand-app--dark .cand-field textarea {
+  background: rgba(255, 255, 255, .08);
+  border-color: rgba(255, 255, 255, .25);
+  color: #fff;
+}
+.cand-app--dark .cand-field input:focus,
+.cand-app--dark .cand-field textarea:focus { border-color: #fff; }
+.cand-app--dark .cand-field input::placeholder,
+.cand-app--dark .cand-field textarea::placeholder { color: rgba(255, 255, 255, .4); }
+
+.cand-app--dark .cand-file { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .3); color: rgba(255, 255, 255, .75); }
+.cand-app--dark .cand-file:hover { border-color: #fff; }
+.cand-app--dark .cand-file__cta { color: #fff; }
+
+.cand-app--dark .cand-done-mark { background: #fff; color: var(--color-brown-primary); }
+.cand-app--dark .cand-link-quiet { color: #fff; border-color: rgba(255, 255, 255, .3); }
+.cand-app--dark .cand-link-quiet:hover { border-color: #fff; }

@@ -1,0 +1,249 @@
+.pm-page {
+  background-color: var(--color-bg-light);
+}
+
+.pm-tag {
+  position: sticky;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 5;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 1.25rem 0 -3.5rem 1.25rem;
+  padding: 0.5rem 0.9rem;
+  background: var(--color-brown-primary);
+  color: #fff;
+  font-family: var(--font-manrope);
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.pm-tag__title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.pm-tag__note {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: #ffffffb3;
+}
+
+/* ---- struttura comune claim ---- */
+.pm-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10.5rem 2.5rem;
+  overflow: hidden;
+}
+
+.pm-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+}
+
+.pm-claim {
+  font-family: var(--font-manrope);
+  color: #111;
+  letter-spacing: -0.02em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+  margin-bottom: 2.5rem;
+  font-size: clamp(2.75rem, 5.5vw, 3.85rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.pm-claim span {
+  display: block;
+}
+
+.pm-claim-accent {
+  color: var(--color-brown-primary);
+}
+
+.pm-subtext {
+  font-family: var(--font-manrope);
+  color: #1f1f1fb3;
+  letter-spacing: 0.01em;
+  max-width: 680px;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   VARIANTE A — Respiro (glow radiale, come /visione ma in chiaro)
+   ========================================================= */
+.pm-a {
+  min-height: 85vh;
+  min-height: 85dvh;
+}
+
+.pm-a__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 600px;
+  pointer-events: none;
+  background: radial-gradient(#3225231a 0%, #3225230d 45%, transparent 75%);
+  animation: pm-a-breathe 7s ease-in-out infinite;
+}
+
+@keyframes pm-a-breathe {
+  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+}
+
+/* =========================================================
+   VARIANTE B — Ambientazione fotografica (foto reale sfumata dietro al testo)
+   ========================================================= */
+.pm-b {
+  min-height: 92vh;
+  min-height: 92dvh;
+  color: #fff;
+}
+
+.pm-b__img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/assets/Sala-Allenamento.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.pm-b__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(8,5,4,.55) 0%, rgba(8,5,4,.72) 55%, rgba(8,5,4,.55) 100%);
+}
+
+.pm-b .pm-claim {
+  color: #fff;
+}
+
+.pm-b .pm-claim-accent {
+  color: #f0dfc8;
+}
+
+.pm-b .pm-subtext {
+  color: #ffffffcc;
+}
+
+/* =========================================================
+   VARIANTE C — Mosaico sotto al claim (foto reali riempiono lo spazio)
+   ========================================================= */
+.pm-c {
+  min-height: 92vh;
+  min-height: 92dvh;
+  padding-bottom: 4rem;
+}
+
+.pm-c__mosaic {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 3.5rem;
+}
+
+.pm-c__mosaic img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.pm-c__mosaic div:nth-child(2) {
+  margin-top: 1.5rem;
+}
+
+.pm-c__mosaic div:nth-child(4) {
+  margin-top: -1.5rem;
+}
+
+/* =========================================================
+   VARIANTE D — Compatto, senza schermo intero (fix del "taglio" via fade)
+   ========================================================= */
+.pm-d-wrap {
+  position: relative;
+}
+
+.pm-d__fade-in {
+  height: 140px;
+  background: #080503;
+  position: relative;
+}
+
+.pm-d__fade-in::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #080503 0%, var(--color-bg-light) 100%);
+}
+
+.pm-d {
+  padding: 5rem 2.5rem 10.5rem;
+}
+
+.pm-d__fade-out {
+  height: 140px;
+  background: linear-gradient(180deg, var(--color-bg-light) 0%, #080503 100%);
+}
+
+/* =========================================================
+   VARIANTE E — Sfondo fisso in bianco (stesso meccanismo di
+   FixedBackground/ParallaxDivider: background-attachment fixed,
+   qui in chiaro invece che fotografico)
+   ========================================================= */
+.pm-e {
+  min-height: 90vh;
+  min-height: 90dvh;
+  background-image: radial-gradient(ellipse at center, #ffffff 0%, #f3ede4 60%, #e9dfd0 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.pm-e-spacer {
+  height: 60vh;
+  background: #080503;
+}
+
+@media (max-width: 768px) {
+  .pm-section {
+    padding: 5.25rem 1.5rem;
+  }
+  .pm-claim {
+    font-size: 2.2rem;
+  }
+  .pm-subtext {
+    font-size: 1.1rem;
+  }
+  .pm-c__mosaic {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pm-c__mosaic div:nth-child(2),
+  .pm-c__mosaic div:nth-child(4) {
+    margin-top: 0;
+  }
+}

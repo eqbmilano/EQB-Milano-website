@@ -5,10 +5,10 @@ import "./CandidaturaWizard.css";
 const STEPS = [
   "intro",
   "categoria",
-  "esperienza",
-  "clienti",
-  "ore",
-  "acquisizione",
+  "portabili",
+  "appuntamenti",
+  "aspettative",
+  "inizio",
   "perche",
   "contatto",
   "done",
@@ -19,21 +19,30 @@ const TOTAL_QUESTIONS = 7;
 const CATEGORIE = [
   { value: "Osteopatia", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><circle cx="9" cy="9" r="5" /><circle cx="15" cy="15" r="5" /></svg> },
   { value: "Fisioterapia", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 17 9 11 13 15 21 6" /><polyline points="15 6 21 6 21 12" /></svg> },
-  { value: "Pilates & Movimento", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="8" /><line x1="12" y1="4" x2="12" y2="20" strokeLinecap="round" /></svg> },
+  { value: "Pilates", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="8" /><line x1="12" y1="4" x2="12" y2="20" strokeLinecap="round" /></svg> },
+  { value: "Allenamento Funzionale", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="8" x2="4" y2="16" /><line x1="20" y1="8" x2="20" y2="16" /><line x1="7" y1="9" x2="7" y2="15" /><line x1="17" y1="9" x2="17" y2="15" /></svg> },
+  { value: "Allenamento Posturale", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="4" r="2" /><path d="M12 6c-1 3 2 4 1 7s-3 3-2 7" /></svg> },
   { value: "Massoterapia", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M3 15c2-3 4-3 6 0s4 3 6 0 4-3 6 0" /><path d="M3 9c2-3 4-3 6 0s4 3 6 0 4-3 6 0" /></svg> },
+  { value: "Massaggi", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="3" /><circle cx="12" cy="12" r="7.5" opacity=".5" /></svg> },
+  { value: "Terapie Olistiche", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3c4 3 7 7 7 11a7 7 0 0 1-14 0c0-4 3-8 7-11z" /></svg> },
   { value: "Nutrizione", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21c-4 0-7-3.5-7-8 0-3.5 2-6 4-8 .5 2 1 3 2 3 1.5 0 1-2.5 1-4 3 2 6 5.5 6 9 0 4.5-3 8-6 8z" /></svg> },
-  { value: "Psicologia & Psicoterapia", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5a8.38 8.38 0 0 1-1-4A8.5 8.5 0 0 1 11.5 3a8.38 8.38 0 0 1 8.5 8.5z" /></svg> },
-  { value: "Altro", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg> },
 ];
 
-const ESPERIENZA = ["Meno di 1 anno", "Da 1 a 3 anni", "Da 3 a 7 anni", "Più di 7 anni"];
-const CLIENTI = ["Sto iniziando ora", "Fino a 5", "Da 6 a 15", "Più di 15"];
-const ORE = ["5 - 10 ore", "10 - 20 ore", "20 - 40 ore", "40+ ore (full time)"];
-const ACQUISIZIONE = [
-  "Con i miei canali social",
-  "Passaparola e referral",
-  "Da uno studio o collaborazione attuale",
-  "Non ho ancora un metodo stabile",
+const PORTABILI = [
+  "Sto partendo da zero",
+  "Alcuni mi seguirebbero",
+  "Una base solida che mi segue",
+];
+const APPUNTAMENTI = ["Fino a 5 a settimana", "6 - 10 a settimana", "11 - 20 a settimana", "Più di 20 a settimana"];
+const ASPETTATIVE = [
+  "Solo uno spazio flessibile",
+  "Spazio + supporto per trovare clienti",
+  "Soprattutto community e collaborazioni",
+];
+const INIZIO = [
+  "Il prima possibile",
+  "Entro un paio di mesi",
+  "Sto ancora esplorando",
 ];
 
 const EqbLogo: React.FC = () => (
@@ -56,16 +65,17 @@ function OptionGroup({
 }: {
   options: { value: string; icon?: React.ReactNode }[];
   narrow?: boolean;
-  selected?: string;
+  selected?: string | string[];
   onSelect: (value: string) => void;
 }) {
+  const isSelected = (v: string) => (Array.isArray(selected) ? selected.includes(v) : selected === v);
   return (
     <div className={`cand-options${narrow ? " cand-options--narrow" : ""}`}>
       {options.map((o) => (
         <button
           key={o.value}
           type="button"
-          className={`cand-option${selected === o.value ? " is-selected" : ""}`}
+          className={`cand-option${isSelected(o.value) ? " is-selected" : ""}`}
           onClick={() => onSelect(o.value)}
         >
           {o.icon}
@@ -79,10 +89,16 @@ function OptionGroup({
 export const CandidaturaWizard: React.FC = () => {
   const [idx, setIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [categorie, setCategorie] = useState<string[]>([]);
+  const [categoriaAltro, setCategoriaAltro] = useState("");
   const [why, setWhy] = useState("");
-  const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
+  const [nome, setNome] = useState("");
+  const [cognome, setCognome] = useState("");
+  const [numero, setNumero] = useState("");
+  const [email, setEmail] = useState("");
   const [ig, setIg] = useState("");
+  const [sito, setSito] = useState("");
+  const [cv, setCv] = useState<File | null>(null);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const key = STEPS[idx];
@@ -97,12 +113,17 @@ export const CandidaturaWizard: React.FC = () => {
     advanceTimer.current = setTimeout(next, 420);
   };
 
+  // domanda 1: selezione multipla, si avanza col bottone, non in automatico
+  const toggleCategoria = (value: string) => {
+    setCategorie((c) => (c.includes(value) ? c.filter((v) => v !== value) : [...c, value]));
+  };
+
   const showBack = key !== "intro" && key !== "done";
   const progressPct =
     key === "intro" ? 0 : key === "done" ? 100 : Math.round((questionNumber / TOTAL_QUESTIONS) * 100);
 
   return (
-    <div className="cand-app">
+    <div className="cand-app cand-app--dark">
       <div className="cand-chrome">
         <div className="cand-chrome__brand">
           <EqbLogo />
@@ -132,67 +153,86 @@ export const CandidaturaWizard: React.FC = () => {
           <button className="cand-btn" onClick={next}>
             Inizia <span aria-hidden="true">&#8594;</span>
           </button>
-          <p className="cand-step__foot">5 minuti, nessun impegno.</p>
+          <p className="cand-step__foot">5 minuti, nessun impegno. Tieni a portata di mano il tuo CV.</p>
         </section>
 
         <section className={`cand-step${key === "categoria" ? " is-active" : ""}`}>
           <p className="cand-step__eyebrow">1 di 7</p>
           <h2 className="cand-step__title">Di cosa ti occupi?</h2>
-          <OptionGroup options={CATEGORIE} selected={answers.categoria} onSelect={(v) => select("categoria", v)} />
+          <p className="cand-step__sub">Puoi selezionare più opzioni.</p>
+          <OptionGroup options={CATEGORIE} selected={categorie} onSelect={toggleCategoria} />
+          <div className="cand-fields" style={{ marginTop: "1.1rem" }}>
+            <div className="cand-field" style={{ maxWidth: "420px" }}>
+              <label htmlFor="cand-categoria-altro">Altro</label>
+              <input
+                id="cand-categoria-altro"
+                type="text"
+                value={categoriaAltro}
+                onChange={(e) => setCategoriaAltro(e.target.value)}
+                placeholder="Fai altro? Scrivilo qui"
+              />
+            </div>
+          </div>
+          <button
+            className="cand-btn"
+            disabled={categorie.length === 0 && categoriaAltro.trim().length === 0}
+            onClick={next}
+          >
+            Continua <span aria-hidden="true">&#8594;</span>
+          </button>
         </section>
 
-        <section className={`cand-step${key === "esperienza" ? " is-active" : ""}`}>
+        <section className={`cand-step${key === "portabili" ? " is-active" : ""}`}>
           <p className="cand-step__eyebrow">2 di 7</p>
-          <h2 className="cand-step__title">Da quanto tempo eserciti?</h2>
-          <OptionGroup
-            narrow
-            options={ESPERIENZA.map((v) => ({ value: v }))}
-            selected={answers.esperienza}
-            onSelect={(v) => select("esperienza", v)}
-          />
-        </section>
-
-        <section className={`cand-step${key === "clienti" ? " is-active" : ""}`}>
-          <p className="cand-step__eyebrow">3 di 7</p>
-          <h2 className="cand-step__title" style={{ maxWidth: "16ch" }}>
-            Quanti clienti segui oggi, in una settimana normale?
+          <h2 className="cand-step__title" style={{ maxWidth: "18ch" }}>
+            Hai già clienti tuoi che porteresti da EQB?
           </h2>
           <p className="cand-step__sub">Ci interessa il tuo punto di partenza, non un numero perfetto.</p>
           <OptionGroup
             narrow
-            options={CLIENTI.map((v) => ({ value: v }))}
-            selected={answers.clienti}
-            onSelect={(v) => select("clienti", v)}
+            options={PORTABILI.map((v) => ({ value: v }))}
+            selected={answers.portabili}
+            onSelect={(v) => select("portabili", v)}
           />
         </section>
 
-        <section className={`cand-step${key === "ore" ? " is-active" : ""}`}>
-          <p className="cand-step__eyebrow">4 di 7</p>
-          <h2 className="cand-step__title">Quante ore a settimana ti servirebbero da noi?</h2>
+        <section className={`cand-step${key === "appuntamenti" ? " is-active" : ""}`}>
+          <p className="cand-step__eyebrow">3 di 7</p>
+          <h2 className="cand-step__title">Quanti appuntamenti pensi di seguire a settimana, da noi?</h2>
           <OptionGroup
             narrow
-            options={ORE.map((v) => ({ value: v }))}
-            selected={answers.ore}
-            onSelect={(v) => select("ore", v)}
+            options={APPUNTAMENTI.map((v) => ({ value: v }))}
+            selected={answers.appuntamenti}
+            onSelect={(v) => select("appuntamenti", v)}
           />
         </section>
 
-        <section className={`cand-step${key === "acquisizione" ? " is-active" : ""}`}>
-          <p className="cand-step__eyebrow">5 di 7</p>
-          <h2 className="cand-step__title" style={{ maxWidth: "15ch" }}>
-            Oggi, come trovi i tuoi clienti?
-          </h2>
+        <section className={`cand-step${key === "aspettative" ? " is-active" : ""}`}>
+          <p className="cand-step__eyebrow">4 di 7</p>
+          <h2 className="cand-step__title">Cosa ti aspetti da EQB?</h2>
+          <p className="cand-step__sub">Non c&rsquo;è una risposta giusta: ci aiuta a capire come esserti utili.</p>
           <OptionGroup
-            options={ACQUISIZIONE.map((v) => ({ value: v }))}
-            selected={answers.acquisizione}
-            onSelect={(v) => select("acquisizione", v)}
+            options={ASPETTATIVE.map((v) => ({ value: v }))}
+            selected={answers.aspettative}
+            onSelect={(v) => select("aspettative", v)}
+          />
+        </section>
+
+        <section className={`cand-step${key === "inizio" ? " is-active" : ""}`}>
+          <p className="cand-step__eyebrow">5 di 7</p>
+          <h2 className="cand-step__title">Quando vorresti iniziare?</h2>
+          <OptionGroup
+            narrow
+            options={INIZIO.map((v) => ({ value: v }))}
+            selected={answers.inizio}
+            onSelect={(v) => select("inizio", v)}
           />
         </section>
 
         <section className={`cand-step${key === "perche" ? " is-active" : ""}`}>
           <p className="cand-step__eyebrow">6 di 7</p>
           <h2 className="cand-step__title">Perché EQB?</h2>
-          <p className="cand-step__sub">Una riga basta, se dice la cosa giusta.</p>
+          <p className="cand-step__sub">Bastano due righe, se dicono la cosa giusta.</p>
           <div className="cand-fields">
             <div className="cand-field">
               <textarea
@@ -210,23 +250,57 @@ export const CandidaturaWizard: React.FC = () => {
         <section className={`cand-step${key === "contatto" ? " is-active" : ""}`}>
           <p className="cand-step__eyebrow">7 di 7</p>
           <h2 className="cand-step__title">Come ti troviamo?</h2>
-          <div className="cand-fields">
+          <div className="cand-fields cand-fields--grid">
             <div className="cand-field">
-              <label htmlFor="cand-name">Nome e cognome</label>
-              <input id="cand-name" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Il tuo nome" />
+              <label htmlFor="cand-nome">Nome</label>
+              <input id="cand-nome" type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Il tuo nome" />
             </div>
             <div className="cand-field">
-              <label htmlFor="cand-contact">Email o telefono</label>
-              <input id="cand-contact" type="text" value={contact} onChange={(e) => setContact(e.target.value)} placeholder="Dove ti raggiungiamo" />
+              <label htmlFor="cand-cognome">Cognome</label>
+              <input id="cand-cognome" type="text" value={cognome} onChange={(e) => setCognome(e.target.value)} placeholder="Il tuo cognome" />
+            </div>
+            <div className="cand-field">
+              <label htmlFor="cand-numero">Numero di telefono</label>
+              <input id="cand-numero" type="tel" value={numero} onChange={(e) => setNumero(e.target.value)} placeholder="Il tuo numero" />
+            </div>
+            <div className="cand-field">
+              <label htmlFor="cand-email">Email</label>
+              <input id="cand-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="La tua email" />
             </div>
             <div className="cand-field">
               <label htmlFor="cand-ig">
-                Instagram o sito <span className="cand-field__optional">(facoltativo)</span>
+                Instagram <span className="cand-field__optional">(facoltativo)</span>
               </label>
               <input id="cand-ig" type="text" value={ig} onChange={(e) => setIg(e.target.value)} placeholder="@tuoprofilo" />
             </div>
+            <div className="cand-field">
+              <label htmlFor="cand-sito">
+                Sito <span className="cand-field__optional">(facoltativo)</span>
+              </label>
+              <input id="cand-sito" type="text" value={sito} onChange={(e) => setSito(e.target.value)} placeholder="Il tuo sito" />
+            </div>
+            <div className="cand-field cand-field--full">
+              <label htmlFor="cand-cv">
+                Il tuo CV <span className="cand-field__optional">(facoltativo)</span>
+              </label>
+              <label htmlFor="cand-cv" className="cand-file">
+                <span>{cv ? cv.name : "Carica il tuo CV (PDF)"}</span>
+                <span className="cand-file__cta">{cv ? "Cambia file" : "Sfoglia"}</span>
+              </label>
+              <input
+                id="cand-cv"
+                type="file"
+                accept="application/pdf"
+                className="cand-file__input"
+                onChange={(e) => setCv(e.target.files?.[0] ?? null)}
+              />
+            </div>
           </div>
-          <button className="cand-btn" disabled={!(name.trim() && contact.trim())} onClick={next}>
+          <button
+            className="cand-btn"
+            disabled={!(nome.trim() && cognome.trim() && (numero.trim() || email.trim()))}
+            onClick={next}
+          >
             Invia candidatura <span aria-hidden="true">&#8594;</span>
           </button>
         </section>

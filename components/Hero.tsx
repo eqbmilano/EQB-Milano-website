@@ -81,31 +81,18 @@ export const Hero: React.FC = () => {
       return true;
     };
 
-    const onWheel = (e: WheelEvent) => {
-      if (applyDelta(e.deltaY)) e.preventDefault();
-    };
-    let touchY = 0;
-    const onTouchStart = (e: TouchEvent) => { touchY = e.touches[0]?.clientY ?? 0; };
-    const onTouchMove = (e: TouchEvent) => {
-      const y = e.touches[0]?.clientY ?? touchY;
-      const delta = touchY - y; // trascinare verso l'alto = scroll in avanti
-      touchY = y;
-      if (applyDelta(delta)) e.preventDefault();
-    };
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (!engagedRef.current) return;
-      if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") {
-        if (applyDelta(120)) e.preventDefault();
-      } else if (e.key === "ArrowUp" || e.key === "PageUp") {
-        if (applyDelta(-120)) e.preventDefault();
-      }
-    };
-
-    // Se si torna in cima scrollando all'indietro dopo il rilascio, il testo
-    // hero deve ricomparire com'era all'inizio (senza questo, restava fermo
-    // sull'ultimo stato inline lasciato da render() al momento del rilascio).
-    const onScroll = () => {
-      if (!engagedRef.current && window.scrollY <= 0) {
+    // Se si torna in cima con un vero gesto verso l'alto dopo il rilascio, il
+    // testo hero deve ricomparire com'era all'inizio (senza questo, restava
+    // fermo sull'ultimo stato inline lasciato da render() al momento del
+    // rilascio). Legato al gesto (deltaY<0) e non al solo valore di scrollY:
+    // un reflow di layout (es. un video che carica più giù nella pagina) può
+    // clampare scrollY a 0 e generare un evento "scroll" senza nessun gesto
+    // dell'utente — se si riattiva l'intercettazione anche in quel caso, la
+    // pagina resta bloccata perché l'hero (position: sticky) è ormai fuori
+    // vista, ma window continua a prevenire ogni scroll in attesa di 900px
+    // di progresso mai raggiungibile.
+    const tryReengage = (deltaY: number) => {
+      if (!engagedRef.current && deltaY < 0 && window.scrollY <= 0) {
         engagedRef.current = true;
         progressRef.current = 0;
         lockedRef.current = false;
@@ -114,17 +101,38 @@ export const Hero: React.FC = () => {
       }
     };
 
+    const onWheel = (e: WheelEvent) => {
+      tryReengage(e.deltaY);
+      if (applyDelta(e.deltaY)) e.preventDefault();
+    };
+    let touchY = 0;
+    const onTouchStart = (e: TouchEvent) => { touchY = e.touches[0]?.clientY ?? 0; };
+    const onTouchMove = (e: TouchEvent) => {
+      const y = e.touches[0]?.clientY ?? touchY;
+      const delta = touchY - y; // trascinare verso l'alto = scroll in avanti
+      touchY = y;
+      tryReengage(delta);
+      if (applyDelta(delta)) e.preventDefault();
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowUp" || e.key === "PageUp") tryReengage(-120);
+      if (!engagedRef.current) return;
+      if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") {
+        if (applyDelta(120)) e.preventDefault();
+      } else if (e.key === "ArrowUp" || e.key === "PageUp") {
+        if (applyDelta(-120)) e.preventDefault();
+      }
+    };
+
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("touchmove", onTouchMove, { passive: false });
     window.addEventListener("keydown", onKeyDown);
-    window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 

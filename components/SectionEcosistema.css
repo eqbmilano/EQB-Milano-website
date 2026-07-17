@@ -1,9 +1,10 @@
 /* [project]/components/SectionEcosistema.css [app-client] (css) */
 .section-ecosistema {
-  background-color: var(--color-bg-light);
+  background-color: #fff;
   text-align: center;
   justify-content: center;
   align-items: center;
+  min-height: 65vh; min-height: 65dvh;
   padding: 10.5rem 2.5rem;
   display: flex;
 }
