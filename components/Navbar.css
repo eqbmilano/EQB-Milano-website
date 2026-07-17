@@ -128,11 +128,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: .5rem 1.9rem;
+  padding: .45rem 1.55rem;
   border: 1px solid rgba(255, 255, 255, .5);
   background: transparent;
   font-family: var(--font-manrope);
-  font-size: .85rem;
+  font-size: .8rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: .08em;
@@ -289,8 +289,8 @@
   }
 
   .navbar__join-btn {
-    padding: .4rem 1.4rem;
-    font-size: .76rem;
+    padding: .35rem 1.15rem;
+    font-size: .72rem;
   }
 }
 
