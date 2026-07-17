@@ -33,17 +33,16 @@ const PORTABILI = [
   "Alcuni mi seguirebbero",
   "Una base solida che mi segue",
 ];
-const APPUNTAMENTI = ["Fino a 5 a settimana", "6 - 10 a settimana", "11 - 20 a settimana", "Più di 20 a settimana"];
+const APPUNTAMENTI = ["Fino a 5 a settimana", "6 - 10 a settimana", "11 - 20 a settimana", "+20 a settimana"];
 const ASPETTATIVE = [
-  "Solo lo spazio",
+  "Solo uno spazio flessibile",
   "Spazio + collaborazioni",
   "Spazio + collaborazioni + supporto clienti",
 ];
 const INIZIO = [
-  "Subito: sto già cercando lo spazio giusto",
-  "A breve: sto pianificando il cambio",
-  "Sto avviando ora la mia attività",
-  "Per ora mi sto solo informando",
+  "Anche subito",
+  "Nei prossimi mesi",
+  "Più avanti: sto ancora valutando",
 ];
 
 const EqbLogo: React.FC = () => (
@@ -246,9 +245,10 @@ export const CandidaturaWizard: React.FC = () => {
 
         <section className={`cand-step${key === "inizio" ? " is-active" : ""}`}>
           <p className="cand-step__eyebrow">5 di 7</p>
-          <h2 className="cand-step__title">A che punto sei?</h2>
+          <h2 className="cand-step__title">Quando ti immagini da EQB?</h2>
           <p className="cand-step__sub">Così capiamo con che tempi muoverci insieme.</p>
           <OptionGroup
+            narrow
             options={INIZIO.map((v) => ({ value: v }))}
             selected={answers.inizio}
             onSelect={(v) => select("inizio", v)}
