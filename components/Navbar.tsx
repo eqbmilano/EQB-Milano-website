@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MenuOverlay } from "./MenuOverlay";
-import { JoinOverlay } from "./JoinOverlay";
 import "./Navbar.css";
 
 export const Navbar: React.FC = () => {
@@ -19,6 +18,23 @@ export const Navbar: React.FC = () => {
     setMenuOpen(false);
     setJoinOpen(false);
   }, [pathname]);
+
+  // chiude il dropdown INIZIA con click fuori o ESC
+  useEffect(() => {
+    if (!joinOpen) return;
+    const onDown = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest(".navbar__join")) setJoinOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setJoinOpen(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [joinOpen]);
 
   useEffect(() => {
     const getBgBrightness = (): number => {
@@ -79,12 +95,24 @@ export const Navbar: React.FC = () => {
           <div className={`navbar__join${menuOpen ? " navbar__join--hidden" : ""}`}>
             <button
               className="navbar__join-btn"
-              onClick={() => setJoinOpen(true)}
+              onClick={() => setJoinOpen((prev) => !prev)}
               aria-expanded={joinOpen}
-              aria-haspopup="dialog"
+              aria-haspopup="true"
             >
               INIZIA
             </button>
+            {joinOpen && (
+              <div className="navbar__join-pop">
+                <Link href="/candidatura" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
+                  <span className="navbar__join-kicker">Sei un professionista?</span>
+                  <span className="navbar__join-label">Candidati &#8594;</span>
+                </Link>
+                <Link href="/contatti" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
+                  <span className="navbar__join-kicker">Cerchi un percorso?</span>
+                  <span className="navbar__join-label">Scrivici &#8594;</span>
+                </Link>
+              </div>
+            )}
           </div>
           <button
             className={`navbar__hamburger${menuOpen ? " navbar__hamburger--open" : ""}`}
@@ -99,7 +127,6 @@ export const Navbar: React.FC = () => {
       </nav>
 
       <MenuOverlay isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
-      <JoinOverlay isOpen={joinOpen} onClose={() => setJoinOpen(false)} />
     </>
   );
 };
