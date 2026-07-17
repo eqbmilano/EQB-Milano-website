@@ -13,6 +13,8 @@ export type Professionista = {
   foto?: string;
   promo?: Promo;
   prenotaLink: string;
+  /* Canale reale di prenotazione: cambia label e icona della CTA primaria */
+  prenotaCanale: "whatsapp" | "calendario";
   sitoWeb?: string;
   social: {
     instagram?: string;
@@ -37,6 +39,7 @@ export const professionisti: Professionista[] = [
       link: "https://eqbstudiocoworking.as.me/?calendarID=11601280",
     },
     prenotaLink: "https://eqbstudiocoworking.as.me/?calendarID=11601280",
+    prenotaCanale: "calendario",
     sitoWeb: undefined,
     social: {
       instagram: undefined,
@@ -57,6 +60,7 @@ export const professionisti: Professionista[] = [
       link: "https://wa.me/393755153273?text=Ciao%20Federico%2C%20vorrei%20prenotare%20la%20visita%20gratuita!",
     },
     prenotaLink: "https://wa.me/393755153273?text=Ciao%20Federico%2C%20vorrei%20prenotare%20una%20seduta!",
+    prenotaCanale: "whatsapp",
     sitoWeb: "https://federicomondin.eqbmilano.it",
     social: {
       instagram: "https://instagram.com/dottorfede32",
@@ -77,6 +81,7 @@ export const professionisti: Professionista[] = [
       link: "https://wa.me/393755153273?text=Ciao%20Roberta%2C%20vorrei%20prenotare%20la%20visita%20gratuita!",
     },
     prenotaLink: "https://wa.me/393755153273?text=Ciao%20Roberta%2C%20vorrei%20prenotare%20una%20seduta!",
+    prenotaCanale: "whatsapp",
     sitoWeb: undefined,
     social: {
       instagram: undefined,
@@ -85,3 +90,34 @@ export const professionisti: Professionista[] = [
     },
   },
 ];
+
+export type CanaleTracker =
+  | "prenota"
+  | "promo"
+  | "sito"
+  | "maps"
+  | "instagram"
+  | "whatsapp"
+  | "linkedin";
+
+export function linkPerCanale(
+  p: Professionista,
+  canale: CanaleTracker
+): string | undefined {
+  switch (canale) {
+    case "prenota":
+      return p.prenotaLink;
+    case "promo":
+      return p.promo?.link;
+    case "sito":
+      return p.sitoWeb;
+    case "maps":
+      return EQB_MAPS;
+    case "instagram":
+      return p.social.instagram;
+    case "whatsapp":
+      return p.social.whatsapp;
+    case "linkedin":
+      return p.social.linkedin;
+  }
+}
