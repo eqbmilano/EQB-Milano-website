@@ -20,8 +20,8 @@ const CATEGORIE = [
   { value: "Osteopatia", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><circle cx="9" cy="9" r="5" /><circle cx="15" cy="15" r="5" /></svg> },
   { value: "Fisioterapia", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 17 9 11 13 15 21 6" /><polyline points="15 6 21 6 21 12" /></svg> },
   { value: "Pilates", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="8" /><line x1="12" y1="4" x2="12" y2="20" strokeLinecap="round" /></svg> },
-  { value: "Allenamento Funzionale", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="8" x2="4" y2="16" /><line x1="20" y1="8" x2="20" y2="16" /><line x1="7" y1="9" x2="7" y2="15" /><line x1="17" y1="9" x2="17" y2="15" /></svg> },
-  { value: "Allenamento Posturale", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="4" r="2" /><path d="M12 6c-1 3 2 4 1 7s-3 3-2 7" /></svg> },
+  { value: "All. Funzionale", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="8" x2="4" y2="16" /><line x1="20" y1="8" x2="20" y2="16" /><line x1="7" y1="9" x2="7" y2="15" /><line x1="17" y1="9" x2="17" y2="15" /></svg> },
+  { value: "All. Posturale", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="4" r="2" /><path d="M12 6c-1 3 2 4 1 7s-3 3-2 7" /></svg> },
   { value: "Massoterapia", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M3 15c2-3 4-3 6 0s4 3 6 0 4-3 6 0" /><path d="M3 9c2-3 4-3 6 0s4 3 6 0 4-3 6 0" /></svg> },
   { value: "Massaggi", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="3" /><circle cx="12" cy="12" r="7.5" opacity=".5" /></svg> },
   { value: "Terapie Olistiche", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3c4 3 7 7 7 11a7 7 0 0 1-14 0c0-4 3-8 7-11z" /></svg> },
@@ -35,14 +35,15 @@ const PORTABILI = [
 ];
 const APPUNTAMENTI = ["Fino a 5 a settimana", "6 - 10 a settimana", "11 - 20 a settimana", "Più di 20 a settimana"];
 const ASPETTATIVE = [
-  "Solo uno spazio flessibile",
-  "Spazio + supporto per trovare clienti",
-  "Soprattutto community e collaborazioni",
+  "Solo lo spazio",
+  "Spazio + collaborazioni",
+  "Spazio + collaborazioni + supporto clienti",
 ];
 const INIZIO = [
-  "Il prima possibile",
-  "Entro un paio di mesi",
-  "Sto ancora esplorando",
+  "Subito: sto già cercando lo spazio giusto",
+  "A breve: sto pianificando il cambio",
+  "Sto avviando ora la mia attività",
+  "Per ora mi sto solo informando",
 ];
 
 const EqbLogo: React.FC = () => (
@@ -122,6 +123,22 @@ export const CandidaturaWizard: React.FC = () => {
   const progressPct =
     key === "intro" ? 0 : key === "done" ? 100 : Math.round((questionNumber / TOTAL_QUESTIONS) * 100);
 
+  // Freccia avanti nell'header: attiva solo se lo step corrente è completo
+  // (i campi facoltativi non bloccano). Sull'ultimo step resta solo il bottone
+  // "Invia candidatura", per rendere l'invio un gesto esplicito.
+  const canAdvance = (() => {
+    switch (key) {
+      case "categoria": return categorie.length > 0 || categoriaAltro.trim().length > 0;
+      case "portabili": return !!answers.portabili;
+      case "appuntamenti": return !!answers.appuntamenti;
+      case "aspettative": return !!answers.aspettative;
+      case "inizio": return !!answers.inizio;
+      case "perche": return why.trim().length > 0;
+      default: return false;
+    }
+  })();
+  const showFwd = key !== "intro" && key !== "contatto" && key !== "done";
+
   return (
     <div className="cand-app cand-app--dark">
       <div className="cand-chrome">
@@ -134,9 +151,15 @@ export const CandidaturaWizard: React.FC = () => {
         <div className="cand-chrome__progress">
           <div className="cand-chrome__progress-fill" style={{ width: `${progressPct}%` }} />
         </div>
-        <span className="cand-chrome__step">
-          {key !== "intro" && key !== "done" ? `${questionNumber} / ${TOTAL_QUESTIONS}` : ""}
-        </span>
+        <button
+          className="cand-chrome__back cand-chrome__fwd"
+          aria-label="Avanti"
+          hidden={!showFwd}
+          disabled={!canAdvance}
+          onClick={next}
+        >
+          &#8594;
+        </button>
         <a className="cand-chrome__exit" href="/coworking" aria-label="Esci" title="Torna al coworking">
           &#10005;
         </a>
@@ -153,7 +176,7 @@ export const CandidaturaWizard: React.FC = () => {
           <button className="cand-btn" onClick={next}>
             Inizia <span aria-hidden="true">&#8594;</span>
           </button>
-          <p className="cand-step__foot">5 minuti, nessun impegno. Tieni a portata di mano il tuo CV.</p>
+          <p className="cand-step__foot">Tieni a portata di mano il tuo CV.</p>
         </section>
 
         <section className={`cand-step${key === "categoria" ? " is-active" : ""}`}>
@@ -198,7 +221,10 @@ export const CandidaturaWizard: React.FC = () => {
 
         <section className={`cand-step${key === "appuntamenti" ? " is-active" : ""}`}>
           <p className="cand-step__eyebrow">3 di 7</p>
-          <h2 className="cand-step__title">Quanti appuntamenti pensi di seguire a settimana, da noi?</h2>
+          <h2 className="cand-step__title" style={{ maxWidth: "16ch" }}>
+            Quanti appuntamenti seguiresti da noi?
+          </h2>
+          <p className="cand-step__sub">Una stima a settimana: ci serve per capire quanto spazio dedicarti.</p>
           <OptionGroup
             narrow
             options={APPUNTAMENTI.map((v) => ({ value: v }))}
@@ -220,9 +246,9 @@ export const CandidaturaWizard: React.FC = () => {
 
         <section className={`cand-step${key === "inizio" ? " is-active" : ""}`}>
           <p className="cand-step__eyebrow">5 di 7</p>
-          <h2 className="cand-step__title">Quando vorresti iniziare?</h2>
+          <h2 className="cand-step__title">A che punto sei?</h2>
+          <p className="cand-step__sub">Così capiamo con che tempi muoverci insieme.</p>
           <OptionGroup
-            narrow
             options={INIZIO.map((v) => ({ value: v }))}
             selected={answers.inizio}
             onSelect={(v) => select("inizio", v)}
