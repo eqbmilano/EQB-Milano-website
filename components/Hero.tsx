@@ -25,7 +25,15 @@ export const Hero: React.FC = () => {
   // l'animazione hero->bivio è guidata a mano dal progresso accumulato in JS,
   // non dalla posizione di scroll reale (che con un fling veloce arriverebbe
   // "in anticipo" rispetto a quando il JS riesce a reagire).
-  const engagedRef = useRef(true);
+  //
+  // INVARIANTE: engaged è legittimo SOLO con la pagina in cima (scrollY ~ 0),
+  // perché l'intercettazione ha senso solo con l'hero sotto il viewport.
+  // Il valore iniziale viene deciso al mount (vedi useEffect) e applyDelta
+  // rilascia da solo se trova lo stato incoerente: senza questo controllo,
+  // tornare alla home con la freccia indietro del browser (che RIPRISTINA lo
+  // scroll a metà pagina) rimontava l'hero engaged e congelava tutto lo
+  // scroll finché non si accumulavano 900px di progresso invisibile.
+  const engagedRef = useRef(false);
   const progressRef = useRef(0); // 0..1
   const lockedRef = useRef(false);
   const lockSinceRef = useRef(0);
@@ -52,12 +60,25 @@ export const Hero: React.FC = () => {
   };
 
   useEffect(() => {
+    // Si parte "engaged" solo se la pagina è davvero in cima: al ritorno con
+    // la freccia indietro o dopo un reload il browser ripristina lo scroll a
+    // metà pagina, e lì l'hero non deve intercettare niente.
+    engagedRef.current = window.scrollY <= 2;
+    if (!engagedRef.current && stageRef.current) stageRef.current.style.touchAction = "auto";
     render();
 
     // Applica un delta di scroll (positivo = in avanti). Ritorna true se va
     // intercettato (preventDefault), false se va lasciato passare al browser.
     const applyDelta = (deltaY: number) => {
       if (!engagedRef.current) return false;
+      // Autodifesa sull'invariante: se lo scroll reale si è mosso mentre
+      // eravamo engaged (anchor link, scrollTo programmatico, ripristino del
+      // browser dopo il mount), l'hero è fuori vista ma stiamo bloccando la
+      // pagina: rilascia subito e lascia passare l'evento al browser.
+      if (window.scrollY > 2) {
+        release();
+        return false;
+      }
       const forward = deltaY > 0;
 
       if (forward && lockedRef.current) {

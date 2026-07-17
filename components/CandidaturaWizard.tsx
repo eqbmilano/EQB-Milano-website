@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./CandidaturaWizard.css";
 
 const STEPS = [
@@ -100,6 +100,12 @@ export const CandidaturaWizard: React.FC = () => {
   const [sito, setSito] = useState("");
   const [cv, setCv] = useState<File | null>(null);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (advanceTimer.current) clearTimeout(advanceTimer.current);
+    };
+  }, []);
 
   const key = STEPS[idx];
   const questionNumber = idx; // categoria=1 ... contatto=7
