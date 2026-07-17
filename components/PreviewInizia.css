@@ -1,0 +1,311 @@
+.pi-page {
+  background: #080503;
+}
+
+.pi-section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pi-bg {
+  position: absolute;
+  inset: 0;
+  background: url("/assets/Sfondo-Menu-Hamburger.jpg") center / cover;
+}
+
+.pi-bg-ov {
+  position: absolute;
+  inset: 0;
+  background: #1e100e8c;
+}
+
+.pi-tag {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+  padding: .5rem .9rem;
+  background: #fff;
+  color: var(--color-brown-primary);
+  font-family: var(--font-manrope);
+  border-radius: 8px;
+  max-width: 420px;
+}
+
+.pi-tag__title {
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.pi-tag__note {
+  font-size: .72rem;
+  font-weight: 400;
+  color: #3c281eb3;
+}
+
+/* ---- elementi comuni ---- */
+.pi-kicker {
+  font-family: var(--font-manrope);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: #ffffff5e;
+  transition: color .25s;
+}
+
+.pi-action {
+  font-family: var(--font-manrope);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 5.5vw, 4.05rem);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  color: rgba(255, 255, 255, .86);
+  transition: color .25s;
+}
+
+.pi-arrow {
+  display: inline-block;
+  transition: transform .3s cubic-bezier(.22, 1, .36, 1);
+}
+
+.pi-rule {
+  width: 44px;
+  height: 1px;
+  background: #ffffff4d;
+}
+
+/* ============ A — Centrata ============ */
+.pi-a {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.6rem;
+  text-align: center;
+}
+
+.pi-a__row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+  text-decoration: none;
+}
+
+.pi-a__row:hover .pi-kicker { color: #ffffff96; }
+.pi-a__row:hover .pi-action { color: #fff; }
+.pi-a__row:hover .pi-arrow { transform: translateX(.35em); }
+
+/* ============ B — Due colonne ============ */
+.pi-b {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  align-self: stretch;
+}
+
+.pi-b__half {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .35s;
+}
+
+.pi-b__half:first-child {
+  border-right: 1px solid #ffffff2e;
+}
+
+.pi-b__half:hover {
+  background: rgba(255, 255, 255, .05);
+}
+
+.pi-b__half:hover .pi-kicker { color: #ffffff96; }
+.pi-b__half:hover .pi-action { color: #fff; }
+.pi-b__half:hover .pi-arrow { transform: translateX(.35em); }
+
+/* ============ C — Stile menu ============ */
+.pi-c {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  width: 100%;
+  padding-left: clamp(2rem, 18vw, 22rem);
+}
+
+.pi-c__label {
+  display: block;
+  font-family: var(--font-manrope);
+  font-size: .94rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #ffffff5e;
+  margin-bottom: .4rem;
+}
+
+.pi-c__item {
+  font-family: var(--font-manrope);
+  color: rgba(255, 255, 255, .86);
+  letter-spacing: -.02em;
+  font-size: clamp(2.65rem, 5.1vw, 4.05rem);
+  font-weight: 300;
+  line-height: 1.22;
+  text-decoration: none;
+  transition: color .25s;
+  display: inline-block;
+}
+
+.pi-c__item:hover { color: #fff; }
+.pi-c__item:hover .pi-arrow { transform: translateX(.35em); }
+
+/* ============ D — Card come il bivio ============ */
+.pi-d {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 2rem;
+}
+
+.pi-d__card {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(14, 10, 8, .58);
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 22px;
+  padding: clamp(1.8rem, 3.2vw, 2.8rem);
+  min-height: 230px;
+  -webkit-backdrop-filter: blur(20px) saturate(1.1);
+  backdrop-filter: blur(20px) saturate(1.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .4);
+  transition: background .4s, transform .4s, border-color .4s;
+}
+
+.pi-d__card:hover {
+  background: rgba(14, 10, 8, .72);
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, .5);
+}
+
+.pi-d__kicker {
+  font-family: var(--font-manrope);
+  font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+  font-weight: 600;
+}
+
+.pi-d__text {
+  font-family: var(--font-manrope);
+  color: #ffffffdb;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: .8rem 0 0;
+  max-width: 32ch;
+}
+
+.pi-d__cta {
+  font-family: var(--font-manrope);
+  margin-top: auto;
+  padding-top: 1.6rem;
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+/* ============ E — Domanda e risposte ============ */
+.pi-e {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.8rem;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.pi-e__q {
+  font-family: var(--font-manrope);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  letter-spacing: -.02em;
+  color: #fff;
+  margin: 0;
+}
+
+.pi-e__answers {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 460px;
+}
+
+.pi-e__pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.6rem;
+  border: 1px solid rgba(255, 255, 255, .45);
+  border-radius: 100px;
+  font-family: var(--font-manrope);
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .92);
+  text-align: left;
+  text-decoration: none;
+  transition: background-color .3s, border-color .3s, color .3s;
+}
+
+.pi-e__pill:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--color-brown-primary);
+}
+
+.pi-e__pill:hover .pi-arrow { transform: translateX(.35em); }
+
+@media (max-width: 767px) {
+  .pi-b {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    min-height: 100vh;
+  }
+
+  .pi-b__half:first-child {
+    border-right: none;
+    border-bottom: 1px solid #ffffff2e;
+  }
+
+  .pi-c {
+    padding-left: 1.5rem;
+  }
+
+  .pi-d {
+    grid-template-columns: 1fr;
+  }
+}
