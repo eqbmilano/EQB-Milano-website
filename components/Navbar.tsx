@@ -99,7 +99,7 @@ export const Navbar: React.FC = () => {
               aria-expanded={joinOpen}
               aria-haspopup="true"
             >
-              INIZIA
+              ENTRA
             </button>
             {joinOpen && (
               <div className="navbar__join-pop">
