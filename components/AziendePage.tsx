@@ -26,25 +26,13 @@ export const AziendePage: React.FC = () => {
   return (
     <div className="az-page">
 
-      {/* Opening — full viewport, stesso pattern di spazio-opening */}
-      <section className="az-opening">
-        <Image
-          src="/assets/Sala-Allenamento.jpg"
-          alt="Sala Allenamento EQB Milano"
-          fill priority sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "center" }}
-        />
-        <div className="az-opening__overlay" />
-        <div className="az-opening__content">
-          <span className="az-opening__label">Aziende & eventi</span>
-          <h1 className="az-opening__title">Il tuo evento,<br />il nostro spazio.</h1>
-          <p className="az-opening__sub">
-            Un ambiente diverso per un workshop, un evento o una collaborazione continuativa.
-          </p>
-        </div>
-        <div className="az-opening__scroll" aria-hidden="true">
-          <div className="az-opening__scroll-line" />
-        </div>
+      {/* Hero */}
+      <section className="az-hero">
+        <span className="az-eyebrow">Aziende & eventi</span>
+        <h1 className="az-hero__title">Il tuo evento,<br />il nostro spazio.</h1>
+        <p className="az-hero__sub">
+          Se cerchi un ambiente diverso per un workshop, un evento o una collaborazione continuativa, raccontaci cosa hai in mente.
+        </p>
       </section>
 
       {/* Eventi e workshop */}
