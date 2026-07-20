@@ -26,13 +26,25 @@ export const AziendePage: React.FC = () => {
   return (
     <div className="az-page">
 
-      {/* Hero */}
-      <section className="az-hero">
-        <span className="az-eyebrow">Aziende & eventi</span>
-        <h1 className="az-hero__title">Il tuo evento,<br />il nostro spazio.</h1>
-        <p className="az-hero__sub">
-          Se cerchi un ambiente diverso per un workshop, un evento o una collaborazione continuativa, raccontaci cosa hai in mente.
-        </p>
+      {/* Opening — full viewport, stesso pattern di spazio-opening */}
+      <section className="az-opening">
+        <Image
+          src="/assets/Sala-Allenamento.jpg"
+          alt="Sala Allenamento EQB Milano"
+          fill priority sizes="100vw"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+        <div className="az-opening__overlay" />
+        <div className="az-opening__content">
+          <span className="az-opening__label">Aziende & eventi</span>
+          <h1 className="az-opening__title">Il tuo evento,<br />il nostro spazio.</h1>
+          <p className="az-opening__sub">
+            Un ambiente diverso per un workshop, un evento o una collaborazione continuativa.
+          </p>
+        </div>
+        <div className="az-opening__scroll" aria-hidden="true">
+          <div className="az-opening__scroll-line" />
+        </div>
       </section>
 
       {/* Eventi e workshop */}
@@ -46,10 +58,14 @@ export const AziendePage: React.FC = () => {
               sizes="(max-width: 900px) 100vw, 55vw"
               style={{ objectFit: "cover" }}
             />
+            <div className="az-photo-caption">
+              <span>Ingresso e Sala</span>
+              <span>EQB Milano</span>
+            </div>
           </Reveal>
           <Reveal as="div" className="az-section__text" delay={100}>
             <span className="az-label">Eventi e workshop</span>
-            <h2 className="az-section__title">Uno spazio pensato per il corpo, aperto anche a te.</h2>
+            <h2 className="az-section__title">Uno spazio pensato<br />per il corpo, aperto anche a te.</h2>
             <p className="az-section__body">
               La sala allenamento e gli spazi comuni sono disponibili anche fuori dagli orari classici: presto la mattina, la sera tardi, nel weekend. L'accesso è autonomo, e se il tuo evento ha bisogno di una mano ci siamo anche noi di persona.
             </p>
@@ -65,7 +81,7 @@ export const AziendePage: React.FC = () => {
         <div className="az-section__inner">
           <Reveal as="div" className="az-section__text" delay={100}>
             <span className="az-label">Collaborazioni</span>
-            <h2 className="az-section__title">Una presenza stabile dentro EQB.</h2>
+            <h2 className="az-section__title">Una presenza<br />stabile dentro EQB.</h2>
             <p className="az-section__body">
               Alcuni professionisti scelgono di stare a EQB con continuità, con una o più stanze dedicate settimana dopo settimana. Siamo aperti a costruire nuove collaborazioni fatte così, con calma e nei tempi giusti.
             </p>
@@ -78,6 +94,10 @@ export const AziendePage: React.FC = () => {
               sizes="(max-width: 900px) 100vw, 55vw"
               style={{ objectFit: "cover" }}
             />
+            <div className="az-photo-caption">
+              <span>Corridoio Stanze</span>
+              <span>EQB Milano</span>
+            </div>
           </Reveal>
         </div>
       </section>
