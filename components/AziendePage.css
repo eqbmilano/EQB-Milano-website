@@ -59,6 +59,14 @@
   font-weight: 400;
   line-height: 1.1;
 }
+.az-tagline {
+  font-family: var(--font-manrope);
+  color: #3c281eb0;
+  margin: -1rem 0 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
 .az-section__body { color: #5a4f48; font-size: 1.02rem; line-height: 1.65; margin: 0 0 1rem; }
 .az-section__body:last-child { margin-bottom: 0; }
 
