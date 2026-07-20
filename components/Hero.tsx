@@ -197,7 +197,7 @@ export const Hero: React.FC = () => {
               </a>
               <Link href="/benessere" className="phh-card">
                 <span className="phh-card__kicker">Cerchi un professionista?</span>
-                <p className="phh-card__text">Trova il percorso e la persona più adatta a te.</p>
+                <p className="phh-card__text">Trova il percorso, l'attività e la persona più adatta a te.</p>
                 <span className="phh-card__cta">Scopri i servizi →</span>
               </Link>
             </div>
