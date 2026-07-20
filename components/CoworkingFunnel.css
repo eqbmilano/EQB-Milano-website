@@ -801,38 +801,6 @@
   box-shadow: 0 0 0 7px #ffffff14;
 }
 
-.cw-tstep__price {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .15rem;
-  margin-top: .5rem;
-}
-
-.cw-tstep__price small {
-  font-family: var(--font-manrope);
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: #ffffff80;
-  font-size: .6rem;
-  font-weight: 700;
-}
-
-.cw-tstep__price em {
-  font-family: var(--font-manrope);
-  font-style: normal;
-  color: #ffffffcc;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.cw-tstep__price strong {
-  color: #fff;
-  font-size: 2.4rem;
-  font-weight: 800;
-  letter-spacing: -.03em;
-}
-
 /* ════════ Differenziatore (climax) — stile manifesto con glow ════════ */
 .cw-diff {
   background: #080503;

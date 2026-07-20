@@ -176,12 +176,6 @@ function PracticeTimeline() {
             <div className="cw-tstep__node">{s.n}</div>
             <h4 className="cw-tstep__title">{s.title}</h4>
             <p className="cw-tstep__body">{s.body}</p>
-            {s.n === "03" && (
-              <span className="cw-tstep__price">
-                <small>Si parte da</small>
-                <em><strong>19€</strong>/ora</em>
-              </span>
-            )}
           </div>
         ))}
       </div>
