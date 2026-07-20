@@ -52,8 +52,8 @@ export const AziendePage: React.FC = () => {
             </div>
           </Reveal>
           <Reveal as="div" className="az-section__text" delay={100}>
-            <span className="az-label">Eventi e workshop</span>
-            <h2 className="az-section__title">Uno spazio pensato<br />per il corpo, aperto anche a te.</h2>
+            <span className="az-label">Il servizio</span>
+            <h2 className="az-section__title">Eventi e Workshop</h2>
             <p className="az-section__body">
               La sala allenamento e gli spazi comuni sono disponibili anche fuori dagli orari classici: presto la mattina, la sera tardi, nel weekend. L'accesso è autonomo, e se il tuo evento ha bisogno di una mano ci siamo anche noi di persona.
             </p>
@@ -68,8 +68,8 @@ export const AziendePage: React.FC = () => {
       <section className="az-section az-section--reverse">
         <div className="az-section__inner">
           <Reveal as="div" className="az-section__text" delay={100}>
-            <span className="az-label">Collaborazioni</span>
-            <h2 className="az-section__title">Una presenza<br />stabile dentro EQB.</h2>
+            <span className="az-label">La collaborazione</span>
+            <h2 className="az-section__title">Partnership e Collaborazioni</h2>
             <p className="az-section__body">
               Alcuni professionisti scelgono di stare a EQB con continuità, con una o più stanze dedicate settimana dopo settimana. Siamo aperti a costruire nuove collaborazioni fatte così, con calma e nei tempi giusti.
             </p>
