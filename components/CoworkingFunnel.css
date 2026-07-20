@@ -76,7 +76,7 @@
 }
 
 .cw-opening {
-  background: #080503;
+  background: var(--color-brown-primary);
   align-items: center;
   min-height: 100vh; min-height: 100dvh;
   padding: 12rem 2rem;
