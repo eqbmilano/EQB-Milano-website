@@ -113,6 +113,11 @@ export const Navbar: React.FC = () => {
                   <span className="navbar__join-label">Scrivici &#8594;</span>
                   <span className="navbar__join-desc">Raccontaci di cosa hai bisogno.</span>
                 </Link>
+                <Link href="/aziende" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
+                  <span className="navbar__join-kicker">Azienda o evento?</span>
+                  <span className="navbar__join-label">Scopri di più &#8594;</span>
+                  <span className="navbar__join-desc">Spazio per workshop, eventi e collaborazioni.</span>
+                </Link>
               </div>
             )}
           </div>
