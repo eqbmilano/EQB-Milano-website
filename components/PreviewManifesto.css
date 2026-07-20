@@ -99,7 +99,7 @@
   width: 900px;
   height: 600px;
   pointer-events: none;
-  background: radial-gradient(#3225231a 0%, #3225230d 45%, transparent 75%);
+  background: radial-gradient(#3026241a 0%, #3026240d 45%, transparent 75%);
   animation: pm-a-breathe 7s ease-in-out infinite;
 }
 

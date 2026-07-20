@@ -73,17 +73,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
     >
 
       {/* Sfondo */}
-      <div className="menu-overlay__bg">
-        <Image
-          src="/assets/Sfondo-Menu-Hamburger.jpg"
-          alt="Sfondo Menu"
-          fill
-          priority
-          quality={85}
-          style={{ objectFit: "cover" }}
-        />
-        <div className="menu-overlay__bg-overlay" />
-      </div>
+      <div className="menu-overlay__bg" />
 
       <div className="menu-overlay__grid">
 

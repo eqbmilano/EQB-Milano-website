@@ -458,7 +458,7 @@
 }
 
 .ben-feature--shade {
-  background: #3225230e;
+  background: #3026240e;
 }
 
 .ben-feature__inner {
@@ -547,7 +547,7 @@
   text-transform: uppercase;
   color: var(--color-brown-primary);
   opacity: .75;
-  border: 1px solid #32252333;
+  border: 1px solid #30262433;
   border-radius: 100px;
   padding: .3rem .85rem;
   font-size: .68rem;
@@ -560,7 +560,7 @@
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--color-brown-primary);
-  border-bottom: 1px solid #32252340;
+  border-bottom: 1px solid #30262440;
   align-items: center;
   gap: .5rem;
   width: fit-content;
@@ -579,7 +579,7 @@
 }
 
 .ben-offerta {
-  background: #32252306;
+  background: #30262406;
   padding: 11rem 7rem;
 }
 
@@ -791,7 +791,7 @@
 }
 
 .vb-group__header {
-  border-bottom: 1px solid #3225231a;
+  border-bottom: 1px solid #3026241a;
   align-items: baseline;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
@@ -823,7 +823,7 @@
 }
 
 .ben-closing {
-  background: #342622;
+  background: #302624;
   grid-template-columns: 1fr 1fr;
   min-height: 80vh;
   display: grid;
@@ -868,7 +868,7 @@
 }
 
 .ben-closing__cta {
-  color: #342622;
+  color: #302624;
   font-family: var(--font-manrope);
   background: #fff;
   border-radius: 100px;

@@ -29,7 +29,7 @@
 }
 
 .social-links--dark .social-links__item {
-  color: #322523a6;
+  color: #302624a6;
 }
 
 .social-links--dark .social-links__item:hover {
@@ -57,7 +57,7 @@
 }
 
 .social-links--light .social-links__item--circle:hover {
-  color: #342622;
+  color: #302624;
   opacity: 1;
   background: #fff;
   transform: scale(1.08);

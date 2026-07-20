@@ -43,23 +43,15 @@ export const AziendePage: React.FC = () => {
               src="/assets/Spazi-ingresso-frontale.jpg"
               alt="Ingresso EQB Milano"
               fill
-              sizes="(max-width: 900px) 100vw, 55vw"
+              sizes="(max-width: 900px) 100vw, 58vw"
               style={{ objectFit: "cover" }}
             />
-            <div className="az-photo-caption">
-              <span>Ingresso e Sala</span>
-              <span>EQB Milano</span>
-            </div>
           </Reveal>
           <Reveal as="div" className="az-section__text" delay={100}>
-            <span className="az-label">Il servizio</span>
             <h2 className="az-section__title">Eventi e Workshop</h2>
             <p className="az-tagline">Il posto giusto per farlo bene.</p>
             <p className="az-section__body">
-              La sala allenamento e gli spazi comuni sono disponibili anche fuori dagli orari classici: presto la mattina, la sera tardi, nel weekend. L'accesso è autonomo, e se il tuo evento ha bisogno di una mano ci siamo anche noi di persona.
-            </p>
-            <p className="az-section__body">
-              Ogni richiesta è diversa, quindi qui non trovi un listino: raccontaci il tuo evento e torniamo con una proposta pensata apposta per te.
+              Ospitiamo esperienze costruite attorno al benessere: workshop, incontri, format dedicati a chi lavora con il corpo e con le persone. Mettiamo a disposizione l'ambiente, la rete di professionisti che vive lo spazio ogni giorno e la cura per ogni dettaglio.
             </p>
           </Reveal>
         </div>
@@ -69,11 +61,10 @@ export const AziendePage: React.FC = () => {
       <section className="az-section az-section--reverse">
         <div className="az-section__inner">
           <Reveal as="div" className="az-section__text" delay={100}>
-            <span className="az-label">La collaborazione</span>
             <h2 className="az-section__title">Partnership e Collaborazioni</h2>
             <p className="az-tagline">Una casa per chi lavora con continuità.</p>
             <p className="az-section__body">
-              Alcuni professionisti scelgono di stare a EQB con continuità, con una o più stanze dedicate settimana dopo settimana. Siamo aperti a costruire nuove collaborazioni fatte così, con calma e nei tempi giusti.
+              Lavoriamo con realtà che condividono il nostro modo di intendere il benessere. Brand, professionisti e progetti che vogliono crescere in un contesto costruito sulla qualità e sulla fiducia.
             </p>
           </Reveal>
           <Reveal as="div" className="az-section__media">
@@ -81,13 +72,9 @@ export const AziendePage: React.FC = () => {
               src="/assets/Spazi-sole-luna-ingresso.jpg"
               alt="Corridoio stanze EQB Milano"
               fill
-              sizes="(max-width: 900px) 100vw, 55vw"
+              sizes="(max-width: 900px) 100vw, 58vw"
               style={{ objectFit: "cover" }}
             />
-            <div className="az-photo-caption">
-              <span>Corridoio Stanze</span>
-              <span>EQB Milano</span>
-            </div>
           </Reveal>
         </div>
       </section>
@@ -98,7 +85,7 @@ export const AziendePage: React.FC = () => {
           <div className="az-form__head">
             <span className="az-eyebrow">Parliamone</span>
             <h2 className="az-form__title">Raccontaci la tua idea.</h2>
-            <p className="az-form__sub">Rispondiamo noi, di persona, appena possibile.</p>
+            <p className="az-form__sub">Rispondiamo noi, di persona.</p>
           </div>
           <div className="az-form__fields">
             <label className="az-field">

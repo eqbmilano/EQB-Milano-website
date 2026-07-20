@@ -241,7 +241,7 @@ export const CandidaturaWizard: React.FC = () => {
         <section className={`cand-step${key === "aspettative" ? " is-active" : ""}`}>
           <p className="cand-step__eyebrow">4 di 7</p>
           <h2 className="cand-step__title">Cosa ti aspetti da EQB?</h2>
-          <p className="cand-step__sub">Non c&rsquo;è una risposta giusta: ci aiuta a capire come esserti utili.</p>
+          <p className="cand-step__sub">Non c&rsquo;è una risposta giusta: ci aiuta a capirci.</p>
           <OptionGroup
             options={ASPETTATIVE.map((v) => ({ value: v }))}
             selected={answers.aspettative}

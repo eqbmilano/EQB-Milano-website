@@ -159,7 +159,7 @@
   min-height: 220px;
   padding: 2.5rem;
   display: flex;
-  box-shadow: 0 2px 16px #3225230d;
+  box-shadow: 0 2px 16px #3026240d;
 }
 
 .vis-pillar__icon {
@@ -217,7 +217,7 @@
 }
 
 .vis-founder {
-  border-top: 1px solid #3225231a;
+  border-top: 1px solid #3026241a;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 5rem;
@@ -251,7 +251,7 @@
 .vis-photo-hint {
   font-family: var(--font-manrope);
   letter-spacing: .06em;
-  color: #3225234d;
+  color: #3026244d;
   text-transform: uppercase;
   font-size: .75rem;
   font-weight: 500;

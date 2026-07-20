@@ -67,7 +67,7 @@
   font-family: var(--font-manrope);
   letter-spacing: .3em;
   text-transform: uppercase;
-  color: #3c281e59;
+  color: #30262459;
   margin-bottom: 1.4rem;
   font-size: .7rem;
   font-weight: 600;
@@ -86,7 +86,7 @@
 
 .spazio-section__body {
   font-family: var(--font-manrope);
-  color: #3c281e85;
+  color: #30262485;
   margin: 0;
   font-size: 1rem;
   line-height: 1.95;
@@ -94,7 +94,7 @@
 
 .spazio-tagline {
   font-family: var(--font-manrope);
-  color: #3c281eb0;
+  color: #302624b0;
   margin: -1.5rem 0 1.5rem;
   font-size: 1.1rem;
   font-weight: 500;
@@ -112,7 +112,7 @@
   font-family: var(--font-manrope);
   letter-spacing: .02em;
   color: var(--color-brown-primary);
-  background: #3c281e0f;
+  background: #3026240f;
   border-radius: 9999px;
   padding: .4rem .95rem;
   font-size: .78rem;
@@ -136,7 +136,7 @@
 
 .spazio-card {
   cursor: default;
-  background: #3c281e0b;
+  background: #3026240b;
   border-radius: 6px;
   margin-top: 3rem;
   padding: 2rem 2.2rem;
@@ -157,7 +157,7 @@
 
 .spazio-card li {
   font-family: var(--font-manrope);
-  color: #3c281e80;
+  color: #30262480;
   font-size: .9rem;
   line-height: 1.5;
 }
@@ -250,12 +250,12 @@
 }
 
 .spazio-opening__title {
-  font-family: var(--font-playfair);
+  font-family: var(--font-manrope);
   color: #fff;
-  letter-spacing: -.02em;
+  letter-spacing: -.03em;
   margin: 0 0 1.4rem;
   font-size: clamp(3.2rem, 6.5vw, 6rem);
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.06;
   text-shadow: 0 1px 10px rgba(0, 0, 0, .35);
 }
@@ -325,8 +325,8 @@
   font-family: var(--font-manrope);
   letter-spacing: .25em;
   text-transform: uppercase;
-  color: #3c281e40;
-  border-top: 1px solid #3c281e1a;
+  color: #30262440;
+  border-top: 1px solid #3026241a;
   margin-bottom: 4rem;
   padding-top: 1.5rem;
   font-size: .68rem;
@@ -714,7 +714,7 @@
 
 .spazio-servizi {
   background: #faf8f5;
-  border-top: 1px solid #3c281e14;
+  border-top: 1px solid #30262414;
   padding: 4rem 7rem 5rem;
 }
 
@@ -745,7 +745,7 @@
   align-items: center;
   gap: .55rem;
   font-family: var(--font-manrope);
-  color: #3c281eb0;
+  color: #302624b0;
   font-size: .92rem;
   font-weight: 500;
   display: flex;

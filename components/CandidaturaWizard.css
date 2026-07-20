@@ -70,7 +70,7 @@
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 50%;
-  color: #3c281e59;
+  color: #30262459;
   font-size: 1.25rem;
   text-decoration: none;
   cursor: pointer;
@@ -125,7 +125,7 @@
   font-weight: 700;
   letter-spacing: .28em;
   text-transform: uppercase;
-  color: #3c281e59;
+  color: #30262459;
   margin: 0 0 1.1rem;
 }
 
@@ -149,7 +149,7 @@
 .cand-step__sub {
   font-family: var(--font-manrope);
   font-size: 1.24rem;
-  color: #3c281e85;
+  color: #30262485;
   line-height: 1.65;
   margin: 0 0 2.2rem;
   max-width: 46ch;
@@ -188,7 +188,7 @@
 .cand-step__foot {
   font-family: var(--font-manrope);
   font-size: .92rem;
-  color: #3c281e85;
+  color: #30262485;
   margin-top: 1.1rem;
 }
 
@@ -250,7 +250,7 @@
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: #3c281e59;
+  color: #30262459;
   margin-bottom: .55rem;
 }
 .cand-field__optional { text-transform: none; font-weight: 400; }
@@ -278,7 +278,7 @@
   width: 100%;
   font-family: var(--font-manrope);
   font-size: 1.1rem;
-  color: #3c281e85;
+  color: #30262485;
   background: #fff;
   border: 1px dashed var(--color-separator);
   border-radius: 10px;
@@ -350,13 +350,10 @@
 }
 
 /* =========================================================
-   TEST — tema scuro, stesso trattamento del menu hamburger
-   (Sfondo-Menu-Hamburger.jpg + testi bianchi)
+   Tema scuro — stesso marrone pieno del menu hamburger
    ========================================================= */
 .cand-app--dark {
-  background-image: linear-gradient(#1e100e8c, #1e100e8c), url("/assets/Sfondo-Menu-Hamburger.jpg");
-  background-size: cover;
-  background-position: center;
+  background-color: #302624;
   color: #fff;
 }
 

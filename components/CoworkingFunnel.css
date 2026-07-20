@@ -10,7 +10,7 @@
 }
 
 .cw-label--dark {
-  color: #32252366;
+  color: #30262466;
 }
 
 .cw-anim {
@@ -215,13 +215,13 @@
   gap: 1.1rem;
   padding: 3rem;
   display: flex;
-  box-shadow: 0 4px 32px #32252312;
+  box-shadow: 0 4px 32px #30262412;
 }
 
 .cw-pain__n {
   font-family: var(--font-manrope);
   letter-spacing: .2em;
-  color: #32252333;
+  color: #30262433;
   font-size: .65rem;
   font-weight: 700;
 }
@@ -246,9 +246,9 @@
 
 .cw-pain__close {
   font-family: var(--font-manrope);
-  color: #32252373;
+  color: #30262473;
   text-align: center;
-  border-top: 1px solid #32252314;
+  border-top: 1px solid #30262414;
   margin: 0;
   padding: 3rem 0 0;
   font-size: clamp(1.15rem, 2.5vw, 1.5rem);

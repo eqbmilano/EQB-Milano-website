@@ -14,7 +14,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: #1e100e8c;
+  background: #3026248c;
 }
 
 .pi-tag {
@@ -42,7 +42,7 @@
 .pi-tag__note {
   font-size: .72rem;
   font-weight: 400;
-  color: #3c281eb3;
+  color: #302624b3;
 }
 
 /* ---- navbar simulata ---- */
@@ -135,7 +135,7 @@
   font-weight: 600;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: #3c281e73;
+  color: #30262473;
 }
 
 .pi-popA__label {
@@ -254,7 +254,7 @@
   font-weight: 600;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: #3c281e73;
+  color: #30262473;
 }
 
 .pi-popD__label {
@@ -269,7 +269,7 @@
   font-size: .85rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #3c281e99;
+  color: #30262499;
 }
 
 /* ============ E — Fascia a tutta larghezza ============ */
@@ -297,7 +297,7 @@
 }
 
 .pi-popE__cell + .pi-popE__cell {
-  border-left: 1px solid #3c281e1f;
+  border-left: 1px solid #3026241f;
 }
 
 .pi-popE__cell:hover {
@@ -310,7 +310,7 @@
   font-weight: 600;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: #3c281e73;
+  color: #30262473;
 }
 
 .pi-popE__label {
@@ -331,6 +331,6 @@
 
   .pi-popE__cell + .pi-popE__cell {
     border-left: none;
-    border-top: 1px solid #3c281e1f;
+    border-top: 1px solid #3026241f;
   }
 }

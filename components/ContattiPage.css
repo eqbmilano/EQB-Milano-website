@@ -1,7 +1,7 @@
-/* Pagina Contatti — skin crema + marrone #322523, Manrope */
+/* Pagina Contatti — skin crema + marrone #302624, Manrope */
 .cnt-page {
   background: var(--color-bg-light, #f4efe9);
-  color: var(--color-brown-primary, #322523);
+  color: var(--color-brown-primary, #302624);
   font-family: var(--font-manrope, system-ui, sans-serif);
 }
 
@@ -22,10 +22,10 @@
 }
 .cnt-card {
   display: flex; flex-direction: column; align-items: flex-start;
-  background: #fffdfa; border: 1px solid #32252314; border-radius: 18px; padding: 1.8rem;
+  background: #fffdfa; border: 1px solid #30262414; border-radius: 18px; padding: 1.8rem;
   transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s, border-color .4s;
 }
-.cnt-card:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(50,37,35,.1); border-color: #32252333; }
+.cnt-card:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(50,37,35,.1); border-color: #30262433; }
 .cnt-card__ico { width: 42px; height: 42px; border-radius: 12px; background: #f1e9e0; color: var(--color-brown-primary); display: grid; place-items: center; margin-bottom: 1.1rem; }
 .cnt-card__ico svg { width: 22px; height: 22px; }
 .cnt-card--wa .cnt-card__ico { background: var(--color-brown-primary); color: #fff; }
@@ -45,7 +45,7 @@
 .cnt-where__title { font-size: clamp(1.9rem, 3.6vw, 2.7rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.1; margin: .4rem 0 1.6rem; }
 .cnt-where__list { list-style: none; margin: 0 0 2rem; padding: 0; display: flex; flex-direction: column; gap: 1.3rem; }
 .cnt-where__list li { display: flex; gap: 1rem; align-items: flex-start; }
-.cnt-where__ico { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 11px; background: #fffdfa; border: 1px solid #32252318; color: var(--color-brown-primary); display: grid; place-items: center; }
+.cnt-where__ico { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 11px; background: #fffdfa; border: 1px solid #30262418; color: var(--color-brown-primary); display: grid; place-items: center; }
 .cnt-where__ico svg { width: 20px; height: 20px; }
 .cnt-where__list strong { display: block; font-size: .95rem; margin-bottom: .15rem; }
 .cnt-where__list a, .cnt-where__list span { color: #5a4f48; font-size: 1rem; line-height: 1.5; text-decoration: none; }

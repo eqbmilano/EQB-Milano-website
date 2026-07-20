@@ -13,12 +13,7 @@
   z-index: 0;
   position: absolute;
   inset: 0;
-}
-
-.menu-overlay__bg-overlay {
-  background-color: #1e100e8c;
-  position: absolute;
-  inset: 0;
+  background-color: #302624;
 }
 
 .menu-overlay--open {

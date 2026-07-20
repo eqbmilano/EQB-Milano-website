@@ -55,7 +55,7 @@
   text-transform: uppercase;
   color: var(--color-brown-primary);
   opacity: .5;
-  border-bottom: 1px solid #3225231f;
+  border-bottom: 1px solid #3026241f;
   padding-bottom: 1rem;
   font-size: .78rem;
   font-weight: 700;
@@ -75,7 +75,7 @@
   gap: 1.5rem;
   padding: 2rem;
   display: flex;
-  box-shadow: 0 2px 12px #3225230d;
+  box-shadow: 0 2px 12px #3026240d;
 }
 
 .review-card__quote {
