@@ -32,9 +32,9 @@
   font-family: var(--font-manrope);
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: #322319a6;
+  color: #ffffffe0;
   z-index: 2;
-  background: linear-gradient(to top, #f0e1d299 0%, #0000 100%);
+  background: linear-gradient(to top, #140a0561 0%, #0000 100%);
   position: absolute; inset: auto 0 0 0;
   padding: 2rem 1.4rem 1rem;
   display: flex; flex-direction: column; gap: .2rem;
@@ -63,7 +63,11 @@
 .az-section__body:last-child { margin-bottom: 0; }
 
 /* Form finale */
-.az-form { background: var(--color-brown-primary); color: #f4efe9; padding: clamp(4rem, 8vw, 6.5rem) 1.5rem; margin-top: clamp(1rem, 3vw, 2rem); }
+.az-form {
+  background: var(--color-brown-primary); color: #f4efe9;
+  padding: clamp(4rem, 8vw, 6.5rem) 1.5rem; margin-top: clamp(1rem, 3vw, 2rem);
+  border-bottom: 1px solid #ffffff1a;
+}
 .az-form__inner { max-width: 720px; margin: 0 auto; }
 .az-form .az-eyebrow { color: #d8c3ad; opacity: 1; }
 .az-form__head { text-align: center; margin-bottom: 2.5rem; }
