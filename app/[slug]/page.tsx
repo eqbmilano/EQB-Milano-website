@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { professionisti, EQB_MAPS } from "./data";
-import { LinkButton } from "./link-button";
+import { professionisti } from "./data";
+import "./linktree.css";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -31,237 +31,108 @@ export default async function LinktreePage({ params }: Props) {
   if (!p) notFound();
 
   const initials = `${p.nome[0]}${p.cognome[0]}`;
+  const r = (canale: string) => `/r/${p.slug}/${canale}`;
 
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        background: "#F8F7F4",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "40px 20px 60px",
-        fontFamily: "var(--font-poppins), sans-serif",
-      }}
-    >
-      {/* Logo EQB */}
+    <main className="lt">
       <a
         href="https://eqbmilano.it"
         aria-label="EQB Milano"
-        style={{ marginBottom: "36px", display: "block" }}
+        className="lt-logo lt-in lt-in--1"
       >
-        <div
-          style={{
-            background: "#322523",
-            borderRadius: "10px",
-            padding: "8px 16px",
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <span className="lt-logo__chip">
           <Image
             src="/assets/Logo-Bianco.svg"
             alt="EQB Milano"
             width={64}
             height={32}
           />
-        </div>
+        </span>
       </a>
 
-      {/* Card contenuto */}
-      <div style={{ width: "100%", maxWidth: "400px" }}>
+      <div className="lt-card">
+        <div className="lt-head lt-in lt-in--2">
+          <div className="lt-avatar">
+            {p.foto ? (
+              <div className="lt-avatar__img">
+                <Image
+                  src={p.foto}
+                  fill
+                  alt={`${p.nome} ${p.cognome}`}
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+            ) : (
+              <div className="lt-avatar__initials">{initials}</div>
+            )}
+          </div>
 
-        {/* Avatar + nome */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginBottom: "20px",
-          }}
-        >
-          {p.foto ? (
-            <div
-              style={{
-                width: 96,
-                height: 96,
-                borderRadius: "50%",
-                overflow: "hidden",
-                border: "2px solid #D4CFC9",
-                marginBottom: 16,
-                position: "relative",
-              }}
-            >
-              <Image src={p.foto} fill alt={`${p.nome} ${p.cognome}`} style={{ objectFit: "cover" }} />
-            </div>
-          ) : (
-            <div
-              style={{
-                width: 96,
-                height: 96,
-                borderRadius: "50%",
-                background: "#322523",
-                color: "#F8F7F4",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 28,
-                fontWeight: 600,
-                fontFamily: "var(--font-manrope), sans-serif",
-                marginBottom: 16,
-                letterSpacing: "0.05em",
-              }}
-            >
-              {initials}
-            </div>
-          )}
-
-          <h1
-            style={{
-              fontFamily: "var(--font-manrope), sans-serif",
-              fontSize: 24,
-              fontWeight: 600,
-              color: "#322523",
-              margin: 0,
-              textAlign: "center",
-            }}
-          >
+          <h1 className="lt-name">
             {p.nome} {p.cognome}
           </h1>
-          <p
-            style={{
-              color: "#A09890",
-              fontSize: 13,
-              marginTop: 6,
-              textAlign: "center",
-              letterSpacing: "0.04em",
-            }}
-          >
-            {p.specializzazione}
-          </p>
+          <p className="lt-spec">{p.specializzazione}</p>
+          <span className="lt-badge">
+            <span className="lt-badge__dot">✦</span>
+            Presso EQB Wellness Coworking · Milano
+          </span>
         </div>
 
-        {/* Bio */}
-        <p
-          style={{
-            color: "#322523",
-            fontSize: 14,
-            lineHeight: 1.7,
-            textAlign: "center",
-            marginBottom: 28,
-            opacity: 0.8,
-          }}
-        >
-          {p.bio}
-        </p>
+        <p className="lt-bio lt-in lt-in--3">{p.bio}</p>
 
-        {/* Banner promo */}
         {p.promo && (
           <a
-            href={p.promo.link}
+            href={r("promo")}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: "block",
-              background: "#322523",
-              borderRadius: 16,
-              padding: "16px 20px",
-              marginBottom: 16,
-              textDecoration: "none",
-              position: "relative",
-              overflow: "hidden",
-            }}
+            className="lt-promo lt-in lt-in--4"
           >
-            <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-              <span style={{ fontSize: 24, lineHeight: 1 }}>✦</span>
-              <div>
-                <span
-                  style={{
-                    display: "block",
-                    color: "rgba(255,255,255,0.55)",
-                    fontSize: 10,
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    marginBottom: 4,
-                  }}
-                >
-                  Offerta speciale
-                </span>
-                <span
-                  style={{
-                    display: "block",
-                    fontFamily: "var(--font-manrope), sans-serif",
-                    fontWeight: 600,
-                    fontSize: 17,
-                    color: "#fff",
-                    marginBottom: 4,
-                  }}
-                >
-                  {p.promo.label}
-                </span>
-                <span
-                  style={{
-                    display: "block",
-                    color: "rgba(255,255,255,0.65)",
-                    fontSize: 13,
-                  }}
-                >
-                  {p.promo.descrizione}
-                </span>
-              </div>
-            </div>
+            <span className="lt-promo__row">
+              <span className="lt-promo__star">✦</span>
+              <span>
+                <span className="lt-promo__kicker">Offerta speciale</span>
+                <span className="lt-promo__label">{p.promo.label}</span>
+                <span className="lt-promo__desc">{p.promo.descrizione}</span>
+              </span>
+            </span>
           </a>
         )}
 
-        {/* Bottoni */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <LinkButton
-            href={p.prenotaLink}
-            icon={<IconCalendar />}
-            label="Prenota una seduta"
+        <div className="lt-links lt-in lt-in--5">
+          <LinkRow
+            href={r("prenota")}
+            primary
+            icon={p.prenotaCanale === "whatsapp" ? <IconChat /> : <IconCalendar />}
+            label={
+              p.prenotaCanale === "whatsapp"
+                ? "Prenota su WhatsApp"
+                : "Prenota una seduta"
+            }
           />
           {p.sitoWeb && (
-            <LinkButton
-              href={p.sitoWeb}
-              icon={<IconGlobe />}
-              label="Il mio sito web"
-            />
+            <LinkRow href={r("sito")} icon={<IconGlobe />} label="Il mio sito web" />
           )}
-          <LinkButton
-            href={EQB_MAPS}
-            icon={<IconPin />}
-            label="Dove trovarci"
-          />
+          <LinkRow href={r("maps")} icon={<IconPin />} label="Dove trovarci" />
         </div>
 
-        {/* Social */}
         {(p.social.instagram || p.social.whatsapp || p.social.linkedin) && (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: 20,
-              marginTop: 32,
-            }}
-          >
+          <div className="lt-social lt-in lt-in--6">
             {p.social.instagram && (
               <SocialIcon
-                href={p.social.instagram}
+                href={r("instagram")}
                 src="/assets/Icona-Instagram.svg"
                 alt="Instagram"
               />
             )}
             {p.social.whatsapp && (
               <SocialIcon
-                href={p.social.whatsapp}
+                href={r("whatsapp")}
                 src="/assets/Icona-Whatsapp.svg"
                 alt="WhatsApp"
               />
             )}
             {p.social.linkedin && (
               <SocialIcon
-                href={p.social.linkedin}
+                href={r("linkedin")}
                 src="/assets/Icona-LinkedIn.svg"
                 alt="LinkedIn"
               />
@@ -269,35 +140,16 @@ export default async function LinktreePage({ params }: Props) {
           </div>
         )}
 
-        {/* Footer */}
-        <div
-          style={{
-            marginTop: 48,
-            paddingTop: 24,
-            borderTop: "1px solid #D4CFC9",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 10,
-          }}
-        >
-          <div
-            style={{
-              background: "#322523",
-              borderRadius: 6,
-              padding: "4px 10px",
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-          >
+        <div className="lt-footer lt-in lt-in--7">
+          <span className="lt-footer__chip">
             <Image
               src="/assets/Logo-Bianco.svg"
               alt="EQB Milano"
               width={40}
               height={20}
             />
-          </div>
-          <span style={{ color: "#A09890", fontSize: 12 }}>
+          </span>
+          <span className="lt-footer__text">
             Wellness &amp; Fitness Coworking · Milano
           </span>
         </div>
@@ -307,6 +159,31 @@ export default async function LinktreePage({ params }: Props) {
 }
 
 /* ─── Componenti interni ─── */
+
+function LinkRow({
+  href,
+  icon,
+  label,
+  primary,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  primary?: boolean;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`lt-btn${primary ? " lt-btn--primary" : ""}`}
+    >
+      <span className="lt-btn__icon">{icon}</span>
+      <span>{label}</span>
+      <span className="lt-btn__arrow">→</span>
+    </a>
+  );
+}
 
 function SocialIcon({
   href,
@@ -323,15 +200,7 @@ function SocialIcon({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={alt}
-      style={{
-        width: 44,
-        height: 44,
-        borderRadius: "50%",
-        background: "#322523",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
+      className="lt-social__icon"
     >
       <Image src={src} alt={alt} width={20} height={20} />
     </a>
@@ -345,6 +214,14 @@ function IconCalendar() {
       <line x1="16" y1="2" x2="16" y2="6" />
       <line x1="8" y1="2" x2="8" y2="6" />
       <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
+  );
+}
+
+function IconChat() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
     </svg>
   );
 }
