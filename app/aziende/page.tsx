@@ -3,6 +3,8 @@ import { AziendePage } from "@/components/AziendePage";
 
 export const metadata = {
   title: "Aziende & eventi — EQB Milano",
+  description:
+    "Spazi per workshop, eventi e collaborazioni continuative a Milano: EQB accoglie aziende e brand del benessere in un ambiente curato in zona Cinque Giornate.",
   alternates: { canonical: "/aziende" },
 };
 

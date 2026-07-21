@@ -6,6 +6,8 @@ import "./visione.css";
 
 export const metadata = {
   title: "Visione — EQB Milano",
+  description:
+    "La storia e la missione di EQB Milano: costruire la prima catena di studi in coworking per la terapia, il movimento e il benessere in Italia.",
   alternates: { canonical: "/visione" },
 };
 
