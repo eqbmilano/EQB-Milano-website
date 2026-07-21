@@ -20,6 +20,7 @@ export const Hero: React.FC = () => {
   const bivioRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const scrimRef = useRef<HTMLDivElement>(null);
+  const scrollLineRef = useRef<HTMLDivElement>(null);
 
   // Finché "engaged" è true, lo scroll nativo è intercettato e prevenuto: tutta
   // l'animazione hero->bivio è guidata a mano dal progresso accumulato in JS,
@@ -157,6 +158,24 @@ export const Hero: React.FC = () => {
     };
   }, []);
 
+  // Safari a volte "congela" un'animazione CSS infinite dopo un reload
+  // (tipicamente legato al bfcache) — la lineetta che pulsa sotto l'hero
+  // resta ferma sull'ultimo frame invece di continuare a battere. Forza un
+  // reflow per riavviarla ad ogni mount e ad ogni pageshow (incluso il
+  // ripristino da bfcache, che non rimonta il componente).
+  useEffect(() => {
+    const restartPulse = () => {
+      const el = scrollLineRef.current;
+      if (!el) return;
+      el.style.animation = "none";
+      void el.offsetWidth; // forza il reflow
+      el.style.animation = "";
+    };
+    restartPulse();
+    window.addEventListener("pageshow", restartPulse);
+    return () => window.removeEventListener("pageshow", restartPulse);
+  }, []);
+
   const continua = (e: React.MouseEvent) => {
     e.preventDefault();
     release(); // click diretto sulla card: sblocca comunque lo scroll per il resto della pagina
@@ -204,7 +223,7 @@ export const Hero: React.FC = () => {
           </div>
 
           <div className="hero__scroll" ref={scrollRef} aria-hidden="true">
-            <div className="hero__scroll-line" />
+            <div className="hero__scroll-line" ref={scrollLineRef} />
           </div>
         </section>
       </div>

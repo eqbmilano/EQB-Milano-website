@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Mousewheel } from "swiper/modules";
 import { Reveal } from "./Reveal";
@@ -41,22 +41,49 @@ const slides = [
 
 export const SectionInterno: React.FC = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
 
-  const handleMouseEnter = useCallback(() => {
-    if (cursorRef.current) cursorRef.current.style.opacity = "1";
-  }, []);
+  // Il tooltip "Trascina" non si affida solo a mouseenter/mouseleave sul wrap:
+  // durante un vero swipe (non il semplice hover) Swiper interrompe la
+  // propagazione dei suoi eventi mouse (stopPropagation interno), quindi
+  // mousemove/mouseup non arrivano più nemmeno a un listener su window in
+  // fase di cattura — il tooltip resta bloccato all'ultima posizione.
+  // La fonte di verità affidabile è l'evento touchEnd DI SWIPER stesso (deve
+  // per forza scattare per far scattare lo snap della slide, vedi onTouchEnd
+  // sul componente <Swiper> più sotto), che forza la chiusura del tooltip a
+  // fine gesto indipendentemente da cosa succede ai mouse event nativi.
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    const cursor = cursorRef.current;
+    if (!wrap || !cursor) return;
 
-  const handleMouseLeave = useCallback(() => {
-    if (cursorRef.current) cursorRef.current.style.opacity = "0";
-  }, []);
+    const isInside = (x: number, y: number) => {
+      const r = wrap.getBoundingClientRect();
+      return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+    };
 
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (cursorRef.current) {
-      cursorRef.current.style.left = `${e.clientX}px`;
-      cursorRef.current.style.top = `${e.clientY}px`;
-    }
+    const onMove = (e: MouseEvent) => {
+      const inside = isInside(e.clientX, e.clientY);
+      cursor.style.opacity = inside ? "1" : "0";
+      if (inside) {
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+      }
+    };
+    const hide = () => { cursor.style.opacity = "0"; };
+
+    window.addEventListener("mousemove", onMove, { capture: true });
+    window.addEventListener("mouseup", hide, { capture: true });
+    window.addEventListener("blur", hide);
+    document.addEventListener("mouseleave", hide);
+    return () => {
+      window.removeEventListener("mousemove", onMove, { capture: true });
+      window.removeEventListener("mouseup", hide, { capture: true });
+      window.removeEventListener("blur", hide);
+      document.removeEventListener("mouseleave", hide);
+    };
   }, []);
 
   return (
@@ -101,12 +128,7 @@ export const SectionInterno: React.FC = () => {
       </div>
 
       {/* Carousel */}
-      <div
-        className="section-interno__carousel-wrap"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onMouseMove={handleMouseMove}
-      >
+      <div className="section-interno__carousel-wrap" ref={wrapRef}>
         <Swiper
           modules={[Navigation, Mousewheel]}
           navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
@@ -124,6 +146,7 @@ export const SectionInterno: React.FC = () => {
           }}
           mousewheel={{ forceToAxis: true }}
           grabCursor
+          onTouchEnd={() => { if (cursorRef.current) cursorRef.current.style.opacity = "0"; }}
           className="interno-swiper"
         >
           {slides.map((slide, i) => (

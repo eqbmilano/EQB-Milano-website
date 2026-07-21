@@ -222,6 +222,19 @@
   .hero__title {
     white-space: normal;
   }
+
+  /* "Spazio · Relazioni · Crescita" con le spaziature desktop non ci sta in
+     larghezza sotto i 768px: veniva tagliata a sinistra/destra dall'overflow
+     nascosto di .hero (bordo delle prime/ultime lettere invisibile). */
+  .hero__vision {
+    letter-spacing: .12em;
+    gap: .5rem;
+    font-size: .7rem;
+  }
+
+  .hero__vision-sep {
+    width: 12px;
+  }
 }
 
 /* ════════ Hero pinned con bivio (integrato dal preview 15/07) ════════

@@ -790,6 +790,7 @@
   font-size: 1.3rem;
   font-weight: 700;
   line-height: 1.15;
+  overflow-wrap: break-word;
 }
 
 .hc-front__btn {
@@ -858,6 +859,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.15;
+  overflow-wrap: break-word;
 }
 
 .hc-back__desc {

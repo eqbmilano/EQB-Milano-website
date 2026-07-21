@@ -194,15 +194,25 @@
   }
 
   .menu-overlay__left {
-    flex-flow: row;
+    /* logo+social in riga, ma i contatti (indirizzo compreso) non ci stanno
+       affiancati sulla stessa riga sotto i 390px: wrap li fa scendere sotto
+       invece di sfondare a destra fuori dallo schermo. */
+    flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
   }
 
+  .menu-overlay__contacts {
+    flex-basis: 100%;
+  }
+
   .menu-overlay__socials {
     flex-direction: row;
     gap: .65rem;
+    /* altrimenti l'ultima icona (WhatsApp) finisce sotto il bottone
+       hamburger/X, fisso in alto a destra sopra l'overlay */
+    margin-right: 2.5rem;
   }
 
   .menu-overlay__social-icon {

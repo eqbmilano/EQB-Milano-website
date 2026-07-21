@@ -313,7 +313,12 @@
 .cand-field input:focus, .cand-field textarea:focus { border-color: var(--color-brown-primary); outline: none; }
 .cand-field input::placeholder, .cand-field textarea::placeholder { color: #a0989080; }
 
-.cand-file {
+/* selettore .cand-field .cand-file (non solo .cand-file): deve battere in
+   specificita' la regola generica ".cand-field label { display: block }" qui
+   sopra, altrimenti questa label (che e' anche la dropzone flex, non solo
+   un'etichetta di campo) torna a un blocco e "Carica il tuo CV (PDF)" e
+   "Sfoglia" collassano l'uno sull'altro senza lo spazio dato da space-between. */
+.cand-field .cand-file {
   display: flex;
   align-items: center;
   justify-content: space-between;
