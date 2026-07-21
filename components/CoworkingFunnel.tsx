@@ -71,12 +71,12 @@ const pillars = [
   {
     n: "01",
     title: "I clienti sono tuoi. Punto.",
-    body: "Costruisci il tuo pacchetto, sotto il tuo nome. Ti diamo spazio e strumenti per farlo crescere — non ci prendiamo i tuoi clienti.",
+    body: "Costruisci il tuo pacchetto, sotto il tuo nome. Ti diamo spazio e strumenti per farlo crescere, non ci prendiamo i tuoi clienti.",
   },
   {
     n: "02",
     title: "Quello che guadagni, resta tuo.",
-    body: "Niente percentuali sulle tue sedute: ogni cliente vale per intero, per te. E il modello premia chi lavora — più ore fai, meno paghi l'ora.",
+    body: "Niente percentuali sulle tue sedute: ogni cliente vale per intero, per te. E il modello premia chi lavora: più ore fai, meno paghi l'ora.",
   },
   {
     n: "03",
@@ -141,7 +141,7 @@ const objections = [
   },
   {
     q: "«Adesso non ho il budget per un altro spazio.»",
-    a: "Non è un altro costo fisso: paghi solo quando lavori, e più cresci meno paghi l'ora. Si parte piccoli — l'investimento segue i tuoi clienti, non li precede.",
+    a: "Non è un altro costo fisso: paghi solo quando lavori, e più cresci meno paghi l'ora. Si parte piccoli: l'investimento segue i tuoi clienti, non li precede.",
   },
 ];
 
@@ -195,10 +195,19 @@ export const CoworkingFunnel: React.FC = () => {
 
   const [showSticky, setShowSticky] = useState(false);
   useEffect(() => {
-    const onScroll = () => setShowSticky(window.scrollY > window.innerHeight * 0.9);
+    const onScroll = () => {
+      const pastHero = window.scrollY > window.innerHeight * 0.9;
+      const closing = sCta.ref.current;
+      const beforeClosing = !closing || closing.getBoundingClientRect().top > window.innerHeight * 0.85;
+      setShowSticky(pastHero && beforeClosing);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
@@ -327,7 +336,7 @@ export const CoworkingFunnel: React.FC = () => {
             </p>
             <p className="cw-community__body cw-anim cw-anim--4">
               Non è un vantaggio secondario. È il cuore del modello.
-              Il cliente del tuo collega è il tuo cliente potenziale —
+              Il cliente del tuo collega è il tuo cliente potenziale,
               e viceversa. La rete vale quanto lo spazio.
             </p>
           </div>
@@ -365,29 +374,21 @@ export const CoworkingFunnel: React.FC = () => {
         <div className="cw-cta__inner">
           <span className="cw-label cw-anim cw-anim--1">Il prossimo passo</span>
           <h2 className="cw-cta__title cw-anim cw-anim--2">
-            Vieni a vederlo<br />di persona.
+            Raccontaci di te.<br />Al resto pensiamo noi.
           </h2>
           <p className="cw-cta__sub cw-anim cw-anim--3">
-            Trenta minuti. Zero presentazioni. Lo spazio parla da solo.
-            <br />Nessun impegno — solo una visita.
+            Cinque minuti per la tua candidatura.
+            <br />La leggiamo di persona, poi ti chiamiamo noi.
           </p>
-          <p className="cw-cta__urgency cw-anim cw-anim--4">
-            Lo spazio è fisico: i posti non sono infiniti.
-          </p>
+          <div className="cw-scarcity cw-anim cw-anim--4">
+            <span className="cw-scarcity__rule" aria-hidden="true" />
+            <span>Lo spazio è fisico: i posti non sono infiniti.</span>
+          </div>
           <div className="cw-cta__actions cw-anim cw-anim--5">
             <CTAButton href="/candidatura" variant="filled">
-              Candidati per lavorare da EQB →
-            </CTAButton>
-            <CTAButton href="tel:+393755153273" variant="light">
-              Chiama ora — +39 375 515 3273
-            </CTAButton>
-            <CTAButton href="mailto:info@eqbmilano.it" variant="light">
-              Scrivi per prenotare una visita
+              Candidati per lavorare in EQB →
             </CTAButton>
           </div>
-          <p className="cw-cta__note cw-anim cw-anim--6">
-            Rispondiamo entro poche ore. Di persona, non con un bot.
-          </p>
         </div>
       </section>
 

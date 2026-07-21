@@ -76,7 +76,7 @@
 }
 
 .cw-opening {
-  background: var(--color-brown-primary);
+  background: #080503;
   align-items: center;
   min-height: 100vh; min-height: 100dvh;
   padding: 12rem 2rem;
@@ -571,14 +571,6 @@
   border-color: #ffffffe0;
 }
 
-.cw-cta__note {
-  font-family: var(--font-manrope);
-  color: #ffffff40;
-  letter-spacing: .06em;
-  margin: 0;
-  font-size: .72rem;
-}
-
 /* ════════ Solution: header + pilastri + pratica ════════ */
 .cw-sol__inner {
   max-width: 1040px;
@@ -839,13 +831,12 @@
 }
 
 .cw-diff__title {
-  font-family: var(--font-playfair);
+  font-family: var(--font-manrope);
   color: #fff;
   letter-spacing: -.02em;
   margin: 0;
   font-size: clamp(2.8rem, 6vw, 5rem);
-  font-style: italic;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.12;
   white-space: nowrap;
 }
@@ -963,14 +954,28 @@
   font-weight: 500;
 }
 
-/* ════════ CTA urgency ════════ */
-.cw-cta__urgency {
+/* ════════ CTA scarcity (rigo + etichetta, stile divisori /spazio) ════════ */
+.cw-scarcity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+  margin: .2rem 0 0;
+}
+
+.cw-scarcity span:last-child {
   font-family: var(--font-manrope);
-  color: #ffffff66;
-  letter-spacing: .02em;
-  margin: -1rem 0 0;
-  font-size: .85rem;
-  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .24em;
+  color: #ffffff70;
+  font-size: .74rem;
+  font-weight: 700;
+}
+
+.cw-scarcity__rule {
+  width: 40px;
+  height: 1px;
+  background: #ffffff40;
 }
 
 /* ════════ Sticky CTA ════════ */

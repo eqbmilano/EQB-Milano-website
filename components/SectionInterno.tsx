@@ -76,7 +76,7 @@ export const SectionInterno: React.FC = () => {
           <Reveal delay={160}>
             <p className="section-interno__body">
               Un unico luogo dove trattamento, movimento e recupero non si alternano,
-              ma si incontrano — perché il benessere vero nasce quando tutto lavora insieme.
+              ma si incontrano, perché il benessere vero nasce quando tutto lavora insieme.
             </p>
           </Reveal>
           <Reveal delay={240}>

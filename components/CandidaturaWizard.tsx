@@ -178,13 +178,17 @@ export const CandidaturaWizard: React.FC = () => {
             Non è un modulo da compilare. Leggiamo ogni candidatura di persona: se il tuo profilo è in linea
             con EQB, ti chiamiamo noi.
           </p>
+          <div className="cand-scarcity">
+            <span className="cand-scarcity__rule" aria-hidden="true" />
+            <span>Lo spazio è fisico: i posti non sono infiniti.</span>
+          </div>
           <button className="cand-btn" onClick={next}>
             Inizia <span aria-hidden="true">&#8594;</span>
           </button>
           <p className="cand-step__foot">Tieni a portata di mano il tuo CV.</p>
         </section>
 
-        <section className={`cand-step${key === "categoria" ? " is-active" : ""}`}>
+        <section className={`cand-step cand-step--categoria${key === "categoria" ? " is-active" : ""}`}>
           <p className="cand-step__eyebrow">1 di 7</p>
           <h2 className="cand-step__title">Di cosa ti occupi?</h2>
           <p className="cand-step__sub">Puoi selezionare più opzioni.</p>

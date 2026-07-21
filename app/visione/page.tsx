@@ -65,7 +65,7 @@ export default function VisionePage() {
             <p className="vis-missione__body">
               ...creare la prima, vera, catena di studi polifunzionali in coworking
               per la terapia, il movimento e il benessere in Italia. Uno spazio curato,
-              selezionato, dove crescere davvero — non solo affittare una stanza.
+              selezionato, dove crescere davvero, non solo affittare una stanza.
             </p>
           </Reveal>
         </div>

@@ -400,6 +400,10 @@ export const SpazioPage: React.FC = () => {
             <p className="spazio-cta__body">
               Zero costi fissi e un ambiente pensato per farti lavorare al meglio, ogni giorno.
             </p>
+            <div className="spazio-scarcity">
+              <span className="spazio-scarcity__rule" aria-hidden="true" />
+              <span>Lo spazio è fisico: i posti non sono infiniti.</span>
+            </div>
             <a href="/coworking" className="spazio-cta__btn">Scopri il coworking →</a>
           </div>
           <div className="spazio-cta__mosaic spazio-up spazio-up--2">

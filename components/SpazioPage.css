@@ -75,12 +75,12 @@
 }
 
 .spazio-section__title {
-  font-family: var(--font-playfair);
+  font-family: var(--font-manrope);
   color: var(--color-brown-primary);
   letter-spacing: -.01em;
   margin: 0 0 2.5rem;
   font-size: clamp(2.8rem, 4.8vw, 4.4rem);
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.08;
 }
 
@@ -794,6 +794,28 @@
   font-size: 1.2rem;
   font-weight: 400;
   line-height: 1.7;
+}
+
+.spazio-scarcity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .9rem;
+}
+
+.spazio-scarcity span:last-child {
+  font-family: var(--font-manrope);
+  text-transform: uppercase;
+  letter-spacing: .24em;
+  color: #ffffff70;
+  font-size: .74rem;
+  font-weight: 700;
+}
+
+.spazio-scarcity__rule {
+  width: 40px;
+  height: 1px;
+  background: #ffffff40;
 }
 
 .spazio-cta__btn {

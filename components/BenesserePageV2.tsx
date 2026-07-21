@@ -309,8 +309,8 @@ export const BenesserePageV2: React.FC = () => {
               Valutazione<br />Posturale
             </h2>
             <div className="ben-ad-section__body ben-up ben-up--3">
-              <p>Un primo incontro per capire <strong>da dove nasce il tuo problema</strong> — non solo dove fa male.</p>
-              <p>Se il dolore continua a tornare, spesso <strong>non è sfortuna</strong>: finora si è agito sul sintomo, <strong>non sulla causa</strong>. Insieme analizziamo la tua situazione e ne usciamo con <strong>una direzione chiara su cosa fare</strong> — non con l&apos;ennesimo trattamento da provare.</p>
+              <p>Un primo incontro per capire <strong>da dove nasce il tuo problema</strong>, non solo dove fa male.</p>
+              <p>Se il dolore continua a tornare, spesso <strong>non è sfortuna</strong>: finora si è agito sul sintomo, <strong>non sulla causa</strong>. Insieme analizziamo la tua situazione e ne usciamo con <strong>una direzione chiara su cosa fare</strong>, non con l&apos;ennesimo trattamento da provare.</p>
             </div>
             <p className="ben-ad-section__firma ben-up ben-up--4">
               Federico Mondin<br />
@@ -340,7 +340,7 @@ export const BenesserePageV2: React.FC = () => {
               Percorso<br />Posturale
             </h2>
             <p className="ben-feature__micro ben-up ben-up--3">
-              Per chi è stanco di ripartire da capo ogni volta. Andiamo alla causa del dolore che torna — non al sintomo — fino a renderti autonomo nel gestirlo.
+              Per chi è stanco di ripartire da capo ogni volta. Andiamo alla causa del dolore che torna, non al sintomo, fino a renderti autonomo nel gestirlo.
             </p>
             <div className="ben-feature__tags ben-up ben-up--4">
               <span className="ben-feature__tag">Osteopatia</span>

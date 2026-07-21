@@ -65,13 +65,13 @@
 }
 
 .visione__title {
-  font-family: var(--font-playfair);
+  font-family: var(--font-manrope);
   color: #fff;
   letter-spacing: -.02em;
   margin: 0;
   font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 300;
   font-style: italic;
-  font-weight: 400;
   line-height: 1.05;
 }
 

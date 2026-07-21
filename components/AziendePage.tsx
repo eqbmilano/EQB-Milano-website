@@ -22,6 +22,8 @@ export const AziendePage: React.FC = () => {
 
   const composed = `Ciao! Sono ${nome.trim() || "[nome]"}. Vi scrivo per ${TIPO_LABEL[tipo]}. ${msg.trim() || ""}`.trim();
   const formWa = `${WA}${encodeURIComponent(composed)}`;
+  const mailSubject = `Richiesta EQB: ${TIPO_LABEL[tipo]}`;
+  const formMail = `mailto:${EMAIL}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(composed)}`;
 
   return (
     <div className="az-page">
@@ -64,7 +66,7 @@ export const AziendePage: React.FC = () => {
             <h2 className="az-section__title">Partnership e Collaborazioni</h2>
             <p className="az-tagline">Una casa per chi lavora con continuità.</p>
             <p className="az-section__body">
-              Lavoriamo con realtà che condividono il nostro modo di intendere il benessere. Brand, professionisti e progetti che vogliono crescere in un contesto costruito sulla qualità e sulla fiducia.
+              Lavoriamo con realtà che condividono il nostro modo di intendere il benessere. Il benessere psicofisico vero nasce quando corpo, movimento e recupero lavorano insieme. Brand, professionisti e progetti che vogliono crescere in un contesto costruito sulla qualità e sulla fiducia.
             </p>
           </Reveal>
           <Reveal as="div" className="az-section__media">
@@ -115,10 +117,14 @@ export const AziendePage: React.FC = () => {
               <span>Il tuo messaggio</span>
               <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={4} placeholder="Di cosa hai bisogno? Quando vorresti fare tutto questo?" />
             </label>
-            <a className="az-form__btn" href={formWa} target="_blank" rel="noopener noreferrer">
-              Scrivici su WhatsApp →
-            </a>
-            <p className="az-form__alt">Preferisci la mail? <a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+            <div className="az-form__actions">
+              <a className="az-form__btn" href={formWa} target="_blank" rel="noopener noreferrer">
+                Scrivici su WhatsApp →
+              </a>
+              <a className="az-form__btn az-form__btn--alt" href={formMail}>
+                Scrivici via mail
+              </a>
+            </div>
           </div>
         </div>
       </section>

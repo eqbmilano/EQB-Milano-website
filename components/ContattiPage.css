@@ -82,14 +82,19 @@
 }
 .cnt-field input::placeholder, .cnt-field textarea::placeholder { color: #f4efe966; }
 .cnt-field input:focus, .cnt-field textarea:focus { outline: none; border-color: #d8c3ad; background: #ffffff1f; }
+.cnt-form__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem; margin-top: .5rem; }
 .cnt-form__btn {
   align-self: flex-start; background: #fff; color: var(--color-brown-primary); border-radius: 100px;
-  padding: .95rem 2rem; font-size: .92rem; font-weight: 700; margin-top: .5rem;
+  padding: .95rem 2rem; font-size: .92rem; font-weight: 700;
   transition: transform .25s, background .25s;
 }
 .cnt-form__btn:hover { transform: translateY(-2px); background: #ffffffe6; }
-.cnt-form__alt { font-size: .9rem; color: #f4efe9b3; margin: .4rem 0 0; }
-.cnt-form__alt a { color: #f4efe9; text-decoration: underline; }
+.cnt-form__btn--alt {
+  background: transparent; color: #f4efe9; border: 1px solid #ffffff33;
+  padding: .85rem 1.8rem; font-size: .88rem; font-weight: 600;
+  transition: border-color .25s, background .25s, transform .25s;
+}
+.cnt-form__btn--alt:hover { border-color: #f4efe9; background: #ffffff0d; transform: translateY(-2px); }
 
 @media (max-width: 860px) {
   .cnt-quick { grid-template-columns: 1fr; }

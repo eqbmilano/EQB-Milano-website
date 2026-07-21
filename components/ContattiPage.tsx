@@ -27,6 +27,7 @@ export const ContattiPage: React.FC = () => {
   const [mapOn, setMapOn] = useState(false);
   const composed = `Ciao! Sono ${nome.trim() || "[nome]"}. ${msg.trim() || "Vorrei avere informazioni."}`;
   const formWa = `${WA}${encodeURIComponent(composed)}`;
+  const formMail = `mailto:${EMAIL}?subject=${encodeURIComponent("Richiesta EQB Milano")}&body=${encodeURIComponent(composed)}`;
 
   return (
     <div className="cnt-page">
@@ -85,7 +86,7 @@ export const ContattiPage: React.FC = () => {
               <span className="cnt-where__ico"><Ico name="clock" /></span>
               <div>
                 <strong>Orari</strong>
-                <span>Su appuntamento — scrivici per fissare il tuo.</span>
+                <span>Su appuntamento, scrivici per fissare il tuo.</span>
               </div>
             </li>
           </ul>
@@ -130,10 +131,14 @@ export const ContattiPage: React.FC = () => {
               <span>Il tuo messaggio</span>
               <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={4} placeholder="Cosa cerchi? Un percorso, un trattamento, uno spazio di lavoro…" />
             </label>
-            <a className="cnt-form__btn" href={formWa} target="_blank" rel="noopener noreferrer">
-              Invia su WhatsApp →
-            </a>
-            <p className="cnt-form__alt">Preferisci la mail? <a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+            <div className="cnt-form__actions">
+              <a className="cnt-form__btn" href={formWa} target="_blank" rel="noopener noreferrer">
+                Invia su WhatsApp →
+              </a>
+              <a className="cnt-form__btn cnt-form__btn--alt" href={formMail}>
+                Scrivici via mail
+              </a>
+            </div>
           </div>
         </div>
       </section>
