@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { professionisti } from "./data";
+import { FEDERICO_SEO, ORG, SITE_URL } from "@/lib/site";
 import "./linktree.css";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -10,15 +11,49 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const p = professionisti.find((x) => x.slug === slug);
   if (!p) return {};
+
+  const isFederico = slug === "Federico-Mondin";
+  const title = isFederico ? FEDERICO_SEO.title : `${p.nome} ${p.cognome} — EQB Milano`;
+  const description = isFederico ? FEDERICO_SEO.description : p.bio;
+
   return {
-    title: `${p.nome} ${p.cognome} — EQB Milano`,
-    description: p.bio,
+    title,
+    description,
+    keywords: isFederico ? [...FEDERICO_SEO.keywords] : undefined,
+    alternates: { canonical: `/${slug}` },
     openGraph: {
-      title: `${p.nome} ${p.cognome} — EQB Milano`,
-      description: p.bio,
-      url: `https://eqbmilano.it/${slug}`,
+      title,
+      description,
+      url: `${SITE_URL}/${slug}`,
     },
   };
+}
+
+function PersonJsonLd({ p, isFederico }: { p: (typeof professionisti)[number]; isFederico: boolean }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${SITE_URL}/${p.slug}/#person`,
+    name: `${p.nome} ${p.cognome}`,
+    url: `${SITE_URL}/${p.slug}`,
+    jobTitle: p.specializzazione,
+    description: p.bio,
+    image: p.foto ? `${SITE_URL}${p.foto}` : undefined,
+    affiliation: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: ORG.name,
+    },
+    ...(isFederico ? { knowsAbout: [...FEDERICO_SEO.knowsAbout] } : {}),
+    sameAs: Object.values(p.social).filter((v): v is string => Boolean(v)),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
 }
 
 export function generateStaticParams() {
@@ -35,6 +70,7 @@ export default async function LinktreePage({ params }: Props) {
 
   return (
     <main className="lt">
+      <PersonJsonLd p={p} isFederico={slug === "Federico-Mondin"} />
       <a
         href="https://eqbmilano.it"
         aria-label="EQB Milano"

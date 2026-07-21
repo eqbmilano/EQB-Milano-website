@@ -1,7 +1,10 @@
 import { Navbar, Footer, FixedBackground } from "@/components";
 import { SpazioPage } from "@/components/SpazioPage";
 
-export const metadata = { title: "Spazio — EQB Milano" };
+export const metadata = {
+  title: "Spazio — EQB Milano",
+  alternates: { canonical: "/spazio" },
+};
 
 export default function SpazioRoute() {
   return (
