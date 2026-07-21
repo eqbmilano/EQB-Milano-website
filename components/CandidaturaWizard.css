@@ -215,6 +215,26 @@
   margin-top: 1.1rem;
 }
 
+.cand-hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cand-step__error {
+  font-family: var(--font-manrope);
+  font-size: .95rem;
+  color: #c0392b;
+  margin-top: 1rem;
+}
+.cand-app--dark .cand-step__error { color: #ff9d8a; }
+
 .cand-options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));

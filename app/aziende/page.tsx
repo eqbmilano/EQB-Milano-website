@@ -1,7 +1,10 @@
 import { Navbar, Footer } from "@/components";
 import { AziendePage } from "@/components/AziendePage";
 
-export const metadata = { title: "Aziende & eventi — EQB Milano" };
+export const metadata = {
+  title: "Aziende & eventi — EQB Milano",
+  alternates: { canonical: "/aziende" },
+};
 
 export default function AziendeRoute() {
   return (

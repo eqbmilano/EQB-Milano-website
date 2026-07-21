@@ -25,6 +25,16 @@ export const AziendePage: React.FC = () => {
   const mailSubject = `Richiesta EQB: ${TIPO_LABEL[tipo]}`;
   const formMail = `mailto:${EMAIL}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(composed)}`;
 
+  // Cattura server best-effort: non blocca il click, il canale primario resta WhatsApp.
+  const notifyServer = () => {
+    fetch("/api/contatto", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ origine: "aziende", nome, tipo: TIPO_LABEL[tipo], messaggio: msg }),
+      keepalive: true,
+    }).catch(() => {});
+  };
+
   return (
     <div className="az-page">
 
@@ -118,10 +128,10 @@ export const AziendePage: React.FC = () => {
               <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={4} placeholder="Di cosa hai bisogno? Quando vorresti fare tutto questo?" />
             </label>
             <div className="az-form__actions">
-              <a className="az-form__btn" href={formWa} target="_blank" rel="noopener noreferrer">
+              <a className="az-form__btn" href={formWa} target="_blank" rel="noopener noreferrer" onClick={notifyServer}>
                 Scrivici su WhatsApp →
               </a>
-              <a className="az-form__btn az-form__btn--alt" href={formMail}>
+              <a className="az-form__btn az-form__btn--alt" href={formMail} onClick={notifyServer}>
                 Scrivici via mail
               </a>
             </div>

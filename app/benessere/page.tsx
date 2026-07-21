@@ -1,7 +1,10 @@
 import { Navbar, Footer } from "@/components";
 import { BenesserePageV2 } from "@/components/BenesserePageV2";
 
-export const metadata = { title: "Benessere — EQB Milano" };
+export const metadata = {
+  title: "Benessere — EQB Milano",
+  alternates: { canonical: "/benessere" },
+};
 
 export default function BenessrerePage() {
   return (

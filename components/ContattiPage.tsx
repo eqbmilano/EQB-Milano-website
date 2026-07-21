@@ -29,6 +29,16 @@ export const ContattiPage: React.FC = () => {
   const formWa = `${WA}${encodeURIComponent(composed)}`;
   const formMail = `mailto:${EMAIL}?subject=${encodeURIComponent("Richiesta EQB Milano")}&body=${encodeURIComponent(composed)}`;
 
+  // Cattura server best-effort: non blocca il click, il canale primario resta WhatsApp.
+  const notifyServer = () => {
+    fetch("/api/contatto", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ origine: "contatti", nome, messaggio: msg }),
+      keepalive: true,
+    }).catch(() => {});
+  };
+
   return (
     <div className="cnt-page">
 
@@ -132,10 +142,10 @@ export const ContattiPage: React.FC = () => {
               <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={4} placeholder="Cosa cerchi? Un percorso, un trattamento, uno spazio di lavoro…" />
             </label>
             <div className="cnt-form__actions">
-              <a className="cnt-form__btn" href={formWa} target="_blank" rel="noopener noreferrer">
+              <a className="cnt-form__btn" href={formWa} target="_blank" rel="noopener noreferrer" onClick={notifyServer}>
                 Invia su WhatsApp →
               </a>
-              <a className="cnt-form__btn cnt-form__btn--alt" href={formMail}>
+              <a className="cnt-form__btn cnt-form__btn--alt" href={formMail} onClick={notifyServer}>
                 Scrivici via mail
               </a>
             </div>

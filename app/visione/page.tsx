@@ -4,7 +4,10 @@ import { Reveal } from "@/components/Reveal";
 import { VisionePillars } from "@/components/VisionePillars";
 import "./visione.css";
 
-export const metadata = { title: "Visione — EQB Milano" };
+export const metadata = {
+  title: "Visione — EQB Milano",
+  alternates: { canonical: "/visione" },
+};
 
 export default function VisionePage() {
   return (
