@@ -10,8 +10,7 @@
 .parallax-divider--own {
   background-size: cover;
   background-position: center;
-  /* niente background-attachment:fixed: stessa lezione di Hero.tsx — impalla
-     lo scroll da trackpad su Chrome/Mac ed è inconsistente su Safari iOS. */
+  background-attachment: fixed;
 }
 
 .parallax-divider__overlay {
