@@ -27,6 +27,19 @@ export const ContattiPage: React.FC = () => {
   const [mapOn, setMapOn] = useState(false);
   const composed = `Ciao! Sono ${nome.trim() || "[nome]"}. ${msg.trim() || "Vorrei avere informazioni."}`;
   const formWa = `${WA}${encodeURIComponent(composed)}`;
+  const formMail = `mailto:${EMAIL}?subject=${encodeURIComponent(
+    `Richiesta informazioni — ${nome.trim() || "sito EQB"}`
+  )}&body=${encodeURIComponent(composed)}`;
+
+  // Cattura server best-effort: non blocca il click, il canale primario resta WhatsApp.
+  const notifyServer = () => {
+    fetch("/api/contatto", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ origine: "contatti", nome, messaggio: msg }),
+      keepalive: true,
+    }).catch(() => {});
+  };
 
   return (
     <div className="cnt-page">
@@ -130,10 +143,10 @@ export const ContattiPage: React.FC = () => {
               <span>Il tuo messaggio</span>
               <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={4} placeholder="Cosa cerchi? Un percorso, un trattamento, uno spazio di lavoro…" />
             </label>
-            <a className="cnt-form__btn" href={formWa} target="_blank" rel="noopener noreferrer">
+            <a className="cnt-form__btn" href={formWa} target="_blank" rel="noopener noreferrer" onClick={notifyServer}>
               Invia su WhatsApp →
             </a>
-            <p className="cnt-form__alt">Preferisci la mail? <a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+            <p className="cnt-form__alt">Preferisci la mail? <a href={formMail} onClick={notifyServer}>{EMAIL}</a></p>
           </div>
         </div>
       </section>

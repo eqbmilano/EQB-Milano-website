@@ -99,6 +99,9 @@ export const CandidaturaWizard: React.FC = () => {
   const [ig, setIg] = useState("");
   const [sito, setSito] = useState("");
   const [cv, setCv] = useState<File | null>(null);
+  const [honeypot, setHoneypot] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -122,6 +125,40 @@ export const CandidaturaWizard: React.FC = () => {
   // domanda 1: selezione multipla, si avanza col bottone, non in automatico
   const toggleCategoria = (value: string) => {
     setCategorie((c) => (c.includes(value) ? c.filter((v) => v !== value) : [...c, value]));
+  };
+
+  const submitCandidatura = async () => {
+    setSending(true);
+    setSendError(null);
+    try {
+      const fd = new FormData();
+      fd.append("categorie", categorie.join(", "));
+      fd.append("categoriaAltro", categoriaAltro);
+      fd.append("portabili", answers.portabili ?? "");
+      fd.append("appuntamenti", answers.appuntamenti ?? "");
+      fd.append("aspettative", answers.aspettative ?? "");
+      fd.append("inizio", answers.inizio ?? "");
+      fd.append("perche", why);
+      fd.append("nome", nome);
+      fd.append("cognome", cognome);
+      fd.append("numero", numero);
+      fd.append("email", email);
+      fd.append("ig", ig);
+      fd.append("sito", sito);
+      fd.append("website", honeypot);
+      if (cv) fd.append("cv", cv);
+
+      const res = await fetch("/api/candidatura", { method: "POST", body: fd });
+      const data = await res.json().catch(() => ({ ok: false }));
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || "Invio non riuscito, riprova.");
+      }
+      next();
+    } catch (err) {
+      setSendError(err instanceof Error ? err.message : "Invio non riuscito, riprova.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const showBack = key !== "intro" && key !== "done";
@@ -328,13 +365,24 @@ export const CandidaturaWizard: React.FC = () => {
               />
             </div>
           </div>
+          <input
+            type="text"
+            name="website"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="cand-hp"
+          />
           <button
             className="cand-btn"
-            disabled={!(nome.trim() && cognome.trim() && (numero.trim() || email.trim()))}
-            onClick={next}
+            disabled={!(nome.trim() && cognome.trim() && (numero.trim() || email.trim())) || sending}
+            onClick={submitCandidatura}
           >
-            Invia candidatura <span aria-hidden="true">&#8594;</span>
+            {sending ? "Invio in corso…" : <>Invia candidatura <span aria-hidden="true">&#8594;</span></>}
           </button>
+          {sendError && <p className="cand-step__error">{sendError}</p>}
         </section>
 
         <section className={`cand-step cand-step--done${key === "done" ? " is-active" : ""}`}>

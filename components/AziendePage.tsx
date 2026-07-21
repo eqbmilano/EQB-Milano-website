@@ -22,6 +22,19 @@ export const AziendePage: React.FC = () => {
 
   const composed = `Ciao! Sono ${nome.trim() || "[nome]"}. Vi scrivo per ${TIPO_LABEL[tipo]}. ${msg.trim() || ""}`.trim();
   const formWa = `${WA}${encodeURIComponent(composed)}`;
+  const formMail = `mailto:${EMAIL}?subject=${encodeURIComponent(
+    `Aziende & eventi — ${TIPO_LABEL[tipo]} (${nome.trim() || "sito EQB"})`
+  )}&body=${encodeURIComponent(composed)}`;
+
+  // Cattura server best-effort: non blocca il click, il canale primario resta WhatsApp.
+  const notifyServer = () => {
+    fetch("/api/contatto", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ origine: "aziende", nome, tipo: TIPO_LABEL[tipo], messaggio: msg }),
+      keepalive: true,
+    }).catch(() => {});
+  };
 
   return (
     <div className="az-page">
@@ -115,10 +128,10 @@ export const AziendePage: React.FC = () => {
               <span>Il tuo messaggio</span>
               <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={4} placeholder="Di cosa hai bisogno? Quando vorresti fare tutto questo?" />
             </label>
-            <a className="az-form__btn" href={formWa} target="_blank" rel="noopener noreferrer">
+            <a className="az-form__btn" href={formWa} target="_blank" rel="noopener noreferrer" onClick={notifyServer}>
               Scrivici su WhatsApp →
             </a>
-            <p className="az-form__alt">Preferisci la mail? <a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+            <p className="az-form__alt">Preferisci la mail? <a href={formMail} onClick={notifyServer}>{EMAIL}</a></p>
           </div>
         </div>
       </section>
