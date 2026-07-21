@@ -61,6 +61,13 @@ export const Hero: React.FC = () => {
   };
 
   useEffect(() => {
+    // Su mobile lo scroll-hijack non si attiva affatto: il gesto touch nativo
+    // non si presta bene alle soglie pensate per le tacche della rotellina
+    // (momentum/inertia diversi tra iOS/Android, preventDefault incoerente).
+    // Il bivio su mobile è la sezione statica in flusso normale qui sotto
+    // (.bivio-mobile): lo scroll nativo resta sempre libero, nessun blocco.
+    if (window.matchMedia("(max-width: 767px)").matches) return;
+
     // Si parte "engaged" solo se la pagina è davvero in cima: al ritorno con
     // la freccia indietro o dopo un reload il browser ripristina lo scroll a
     // metà pagina, e lì l'hero non deve intercettare niente.
@@ -183,6 +190,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
+    <>
     <div className="phh-stage" ref={stageRef}>
       <div className="phh-pin">
         <section className="hero">
@@ -228,5 +236,24 @@ export const Hero: React.FC = () => {
         </section>
       </div>
     </div>
+
+    {/* Bivio statico per mobile: stesso contenuto, ma in flusso normale,
+        niente crossfade JS. Nascosto su desktop (vedi Hero.css). */}
+    <section className="bivio-mobile">
+      <span className="bivio-mobile__eyebrow">A chi è dedicato EQB?</span>
+      <div className="bivio-mobile__cards">
+        <a href="#ecosistema" onClick={continua} className="bivio-mobile__card">
+          <span className="bivio-mobile__kicker">Sei un professionista?</span>
+          <p className="bivio-mobile__text">Scopri come EQB può diventare il tuo spazio di lavoro.</p>
+          <span className="bivio-mobile__cta">Continua a scoprire ↓</span>
+        </a>
+        <Link href="/benessere" className="bivio-mobile__card">
+          <span className="bivio-mobile__kicker">Cerchi un professionista?</span>
+          <p className="bivio-mobile__text">Trova il percorso, l&apos;attività e la persona più adatta a te.</p>
+          <span className="bivio-mobile__cta">Scopri i servizi →</span>
+        </Link>
+      </div>
+    </section>
+    </>
   );
 };
