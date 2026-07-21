@@ -13,7 +13,6 @@ export * from "./SectionInterno";
 export * from "./SectionBenessere";
 export * from "./SectionVisione";
 export * from "./SectionRecensioni";
-export * from "./SectionContatti";
 export * from "./Footer";
 export * from "./MenuOverlay";
 export * from "./FixedBackground";
