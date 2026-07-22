@@ -185,18 +185,23 @@
   opacity: 1;
 }
 
+/* Freccia "reveal": esiste solo su mobile (vedi media query) */
+.menu-overlay__reveal { display: none; }
+
 @media (max-width: 767px) {
-  /* Riordino: logo in cima, poi il menu (contenuto principale), social e
-     contatti in fondo — prima erano tutti ammassati in cima (logo+social+
-     contatti) lasciando vuoto sotto il menu. ".menu-overlay__left" diventa
-     "trasparente" per il layout (display:contents): i suoi 3 figli (logo,
-     social, contatti) diventano item diretti della grid, così ognuno può
-     avere il proprio ordine indipendente senza toccare l'HTML. */
+  /* MENU (idea di Marco): la prima schermata mostra SOLO le voci ingrandite +
+     una freccia minimal in fondo; scorrendo (o toccando la freccia) compaiono
+     social e contatti. ".menu-overlay__left" resta display:contents, così logo,
+     social e contatti sono item diretti della grid con ordine indipendente. */
   .menu-overlay__grid {
-    grid-template-rows: auto auto auto auto;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none;
+    gap: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .menu-overlay__left {
@@ -205,41 +210,82 @@
 
   .menu-overlay__logo {
     order: 1;
+    padding: 1.9rem 2rem 0;
   }
 
+  .menu-overlay__logo a {
+    opacity: .7;
+  }
+
+  /* Voci: riempiono la prima schermata, centrate verticalmente, ingrandite */
   .menu-overlay__right {
     order: 2;
+    min-height: calc(100dvh - 10.5rem);
+    flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding-left: 0;
+    padding: 1.5rem 2rem;
   }
 
-  .menu-overlay__socials {
+  .menu-overlay__nav-groups { gap: 1.6rem; }
+
+  .menu-overlay__nav-label {
+    font-size: .82rem;
+    letter-spacing: .2em;
+    margin-bottom: .5rem;
+  }
+
+  .menu-overlay__nav-item a {
+    font-size: clamp(2.3rem, 11vw, 3.4rem);
+    line-height: 1.2;
+  }
+
+  /* Freccia reveal minimal in fondo alla prima schermata */
+  .menu-overlay__reveal {
     order: 3;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+    padding: .25rem 0 1.9rem;
+    background: none;
+    color: #ffffff8c;
+    animation: menuRevealBounce 2.2s ease-in-out infinite;
   }
 
-  .menu-overlay__social-icon {
-    width: 40px;
-    height: 40px;
+  .menu-overlay__reveal-label {
+    font-family: var(--font-manrope);
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+  }
+
+  @keyframes menuRevealBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+  }
+
+  /* Sezione rivelata: social (stile Contatti) + contatti */
+  .menu-overlay__socials {
+    order: 4;
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 2rem .5rem;
   }
 
   .menu-overlay__contacts {
-    order: 4;
+    order: 5;
     white-space: normal;
     text-align: center;
-    font-size: .65rem;
-    line-height: 1.9;
+    font-size: .82rem;
+    line-height: 2.3;
+    padding: .5rem 2rem 3rem;
     display: block;
   }
 
-  .menu-overlay__nav-groups { gap: 1.4rem; }
-
-  .menu-overlay__nav-item a {
-    font-size: clamp(1.9rem, 8.5vw, 2.8rem);
-    line-height: 1.3;
+  .menu-overlay__contacts a {
+    justify-content: center;
   }
 
   .menu-contact-arrow {

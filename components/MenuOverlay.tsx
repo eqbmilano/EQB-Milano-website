@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { SocialLinks } from "./SocialIcons";
 import "./MenuOverlay.css";
 
 interface MenuOverlayProps {
@@ -62,6 +63,13 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
     if (!(e.target as HTMLElement).closest("a, button")) onClose();
   };
 
+  // Freccia "reveal" (solo mobile): porta alla sezione social/contatti in fondo
+  const scrollToContacts = () => {
+    overlayRef.current
+      ?.querySelector<HTMLElement>(".menu-overlay__socials")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <div
       ref={overlayRef}
@@ -92,18 +100,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
           </div>
 
           <div className="menu-overlay__socials">
-            <a href="https://www.linkedin.com/company/eqbmilano" target="_blank" rel="noopener noreferrer"
-              className="menu-overlay__social-icon" aria-label="LinkedIn">
-              <Image src="/assets/Icona-LinkedIn.svg" alt="LinkedIn" width={52} height={52} />
-            </a>
-            <a href="https://www.instagram.com/eqbmilano/" target="_blank" rel="noopener noreferrer"
-              className="menu-overlay__social-icon" aria-label="Instagram">
-              <Image src="/assets/Icona-Instagram.svg" alt="Instagram" width={52} height={52} />
-            </a>
-            <a href="https://wa.me/message/ZDLNL4HKLOF6H1" target="_blank" rel="noopener noreferrer"
-              className="menu-overlay__social-icon" aria-label="WhatsApp">
-              <Image src="/assets/Icona-Whatsapp.svg" alt="WhatsApp" width={52} height={52} />
-            </a>
+            <SocialLinks variant="light" size={20} iconStyle="circle" />
           </div>
 
           <div className="menu-overlay__contacts">
@@ -125,7 +122,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
             </p>
             <p>
               <a href="https://share.google/bu1nHJ6pAM3LBYwkU" target="_blank" rel="noopener noreferrer">
-                Viale Regina Margherita 43, 20122, Milano
+                Viale Regina Margherita 43, 20122
                 <svg className="menu-contact-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 10L10 1M10 1H3M10 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -164,6 +161,19 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
             })}
           </div>
         </nav>
+
+        {/* Freccia "reveal" minimal (solo mobile): scorre a social + contatti */}
+        <button
+          type="button"
+          className="menu-overlay__reveal"
+          onClick={scrollToContacts}
+          aria-label="Vai a social e contatti"
+        >
+          <span className="menu-overlay__reveal-label">Social e contatti</span>
+          <svg className="menu-overlay__reveal-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
 
       </div>
     </div>
