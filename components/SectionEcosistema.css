@@ -110,6 +110,16 @@
 }
 
 @media (max-width: 768px) {
+  /* Niente animazione di comparsa su mobile: il reveal si basa su una
+     soglia di scroll che puo' anche disattivarsi di nuovo (non e' "una
+     volta sola"), rischiando di lasciare il testo invisibile. Testo
+     sempre visibile da subito, piu' semplice e senza questo rischio. */
+  .eco-anim {
+    opacity: 1;
+    filter: blur();
+    transform: translateY(0);
+  }
+
   .section-ecosistema {
     padding: 5.25rem 1.5rem;
   }

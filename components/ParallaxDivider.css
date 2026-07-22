@@ -57,9 +57,15 @@
   /* Niente cover su mobile: cover zooma/taglia i lati quando la foto non ha
      le stesse proporzioni della finestra di 35vh. Larghezza sempre al 100%
      (mai tagliata ai lati), altezza proporzionale: se la foto è più alta
-     della finestra viene tagliata solo sopra/sotto, mai in larghezza. */
+     della finestra viene tagliata solo sopra/sotto, mai in larghezza.
+     Niente nemmeno background-attachment:fixed: per restare "ferma" durante
+     lo scroll servirebbe una foto molto più alta di quella disponibile
+     (l'effetto richiede spazio in più da "scoprire" scorrendo). Su mobile la
+     foto scorre semplicemente insieme al resto della pagina, come una
+     foto normale. Il desktop non cambia. */
   .parallax-divider--own {
     background-size: 100% auto;
+    background-attachment: scroll;
   }
 
   .parallax-divider__text {

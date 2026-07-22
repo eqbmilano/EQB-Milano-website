@@ -186,33 +186,39 @@
 }
 
 @media (max-width: 767px) {
+  /* Riordino: logo in cima, poi il menu (contenuto principale), social e
+     contatti in fondo — prima erano tutti ammassati in cima (logo+social+
+     contatti) lasciando vuoto sotto il menu. ".menu-overlay__left" diventa
+     "trasparente" per il layout (display:contents): i suoi 3 figli (logo,
+     social, contatti) diventano item diretti della grid, così ognuno può
+     avere il proprio ordine indipendente senza toccare l'HTML. */
   .menu-overlay__grid {
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto auto auto auto;
     grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 1.5rem 2rem 3rem;
   }
 
   .menu-overlay__left {
-    /* logo+social in riga, ma i contatti (indirizzo compreso) non ci stanno
-       affiancati sulla stessa riga sotto i 390px: wrap li fa scendere sotto
-       invece di sfondare a destra fuori dallo schermo. */
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+    display: contents;
   }
 
-  .menu-overlay__contacts {
-    flex-basis: 100%;
+  .menu-overlay__logo {
+    order: 1;
+  }
+
+  .menu-overlay__right {
+    order: 2;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 0;
   }
 
   .menu-overlay__socials {
+    order: 3;
     flex-direction: row;
-    gap: .65rem;
-    /* altrimenti l'ultima icona (WhatsApp) finisce sotto il bottone
-       hamburger/X, fisso in alto a destra sopra l'overlay */
-    margin-right: 2.5rem;
+    justify-content: center;
+    gap: 1rem;
   }
 
   .menu-overlay__social-icon {
@@ -220,10 +226,13 @@
     height: 40px;
   }
 
-  .menu-overlay__right {
-    justify-content: center;
-    align-items: flex-start;
-    padding-left: 0;
+  .menu-overlay__contacts {
+    order: 4;
+    white-space: normal;
+    text-align: center;
+    font-size: .65rem;
+    line-height: 1.9;
+    display: block;
   }
 
   .menu-overlay__nav-groups { gap: 1.4rem; }
@@ -231,13 +240,6 @@
   .menu-overlay__nav-item a {
     font-size: clamp(1.9rem, 8.5vw, 2.8rem);
     line-height: 1.3;
-  }
-
-  .menu-overlay__contacts {
-    white-space: normal;
-    font-size: .65rem;
-    line-height: 1.9;
-    display: block;
   }
 
   .menu-contact-arrow {

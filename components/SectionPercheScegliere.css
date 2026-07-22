@@ -223,6 +223,18 @@
   opacity: 1;
 }
 
+@media (max-width: 767px) {
+  /* Niente animazione di comparsa su mobile: il reveal si basa su una
+     soglia di scroll che puo' anche disattivarsi di nuovo (non e' "una
+     volta sola"), rischiando di lasciare "Nessuno lo fa come noi"
+     invisibile. Testo sempre visibile da subito, piu' semplice. */
+  .perche-anim {
+    opacity: 1;
+    filter: blur();
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 640px) {
   .section-perche {
     padding: 5rem 1.25rem;
