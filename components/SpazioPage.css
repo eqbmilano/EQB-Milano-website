@@ -893,7 +893,7 @@
   }
 
   .spazio-opening__scroll {
-    right: 1.5rem;
+    display: none;
   }
 
   .spazio-v4__inner, .spazio-sala__inner, .spazio-terra__inner, .spazio-duo__inner,

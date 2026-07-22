@@ -1029,6 +1029,7 @@
 }
 
 @media (max-width: 768px) {
+  .cw-opening__scroll { display: none; }
   .cw-sol__inner { gap: 3.5rem; }
   .cw-sol__pillars { grid-template-columns: 1fr; }
   .cw-pillar { padding: 2rem; }

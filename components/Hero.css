@@ -215,8 +215,15 @@
 
 @media (max-width: 767px) {
   .hero__content {
-    gap: .75rem;
+    gap: 1.1rem;
     padding: 0 1.25rem 5rem;
+  }
+
+  /* HOME 1: le tre righe (MILANO / titolo / vision) erano troppo attaccate su
+     mobile — i margini negativi ereditati dal desktop (label -.75rem, vision
+     -.5rem) le stringevano ancora di più. Su mobile li rilassiamo. */
+  .hero__label {
+    margin-bottom: 0;
   }
 
   .hero__title {
@@ -230,10 +237,16 @@
     letter-spacing: .12em;
     gap: .5rem;
     font-size: .7rem;
+    margin-top: .35rem;
   }
 
   .hero__vision-sep {
     width: 12px;
+  }
+
+  /* SITO 2: lineetta scroll pulsante via solo su mobile (glitch Safari iOS) */
+  .hero__scroll {
+    display: none;
   }
 }
 

@@ -64,7 +64,7 @@ export const Footer: React.FC = () => {
             </p>
             <p>
               <a href="https://share.google/bu1nHJ6pAM3LBYwkU" target="_blank" rel="noopener noreferrer">
-                Viale Regina Margherita 43, 20122, Milano
+                Viale Regina Margherita 43, 20122 Milano
                 <svg className="footer-contact-arrow" width="10" height="10" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 10L10 1M10 1H3M10 1V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>

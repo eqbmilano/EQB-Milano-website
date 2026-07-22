@@ -155,8 +155,8 @@ export default function VisionePage() {
               </p>
             </Reveal>
             <Reveal delay={200}>
-              <a href="/contatti" className="vis-cta__btn">
-                Richiedi un incontro in studio →
+              <a href="/candidatura" className="vis-cta__btn">
+                Candidati per lavorare in EQB →
               </a>
             </Reveal>
           </div>

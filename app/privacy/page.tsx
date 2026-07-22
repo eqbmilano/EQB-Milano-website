@@ -71,9 +71,9 @@ export default function PrivacyPage() {
 
           <h3>4. Mappa di Google</h3>
           <p>
-            Nella pagina Contatti la mappa di Google Maps non si carica
-            automaticamente: compare solo se scegli di attivarla. Attivandola,
-            Google può installare propri cookie e trattare dati secondo la sua{" "}
+            Nella pagina Contatti è presente una mappa di Google Maps che si
+            carica insieme alla pagina. Tramite questa mappa Google può installare
+            propri cookie e trattare dati secondo la sua{" "}
             <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
               informativa privacy
             </a>.
@@ -82,9 +82,9 @@ export default function PrivacyPage() {
           <h2>Cookie</h2>
           <p>
             Il sito non utilizza cookie di profilazione né cookie analitici di
-            terze parti. Gli unici cookie eventualmente presenti sono tecnici,
-            necessari al funzionamento, oppure quelli di Google Maps se decidi di
-            attivare la mappa (vedi sopra).
+            terze parti. Gli unici cookie presenti sono tecnici, necessari al
+            funzionamento, e quelli di Google Maps, caricati insieme alla mappa
+            nella pagina Contatti (vedi sopra).
           </p>
 
           <h2>Comunicazione dei dati</h2>

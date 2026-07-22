@@ -55,26 +55,28 @@ export const SpazioPage: React.FC = () => {
   const s8 = useVisible("-60px");
   const sServizi = useVisible("-60px");
 
-  const [scrolledPastHero, setScrolledPastHero] = useState(false);
-  const [ctaVisible, setCtaVisible] = useState(false);
+  // Sticky: stessa logica di CoworkingFunnel/BenesserePageV2. Prima si usava
+  // `!ctaVisible` (IntersectionObserver sulla CTA finale): quando si scrollava
+  // OLTRE la CTA nel footer, la CTA non intersecava più e lo sticky RIAPPARIVA
+  // sopra il footer. Ora si nasconde quando la CTA di chiusura arriva in alto e
+  // resta nascosto per tutto il resto della pagina (footer incluso).
+  const [showSticky, setShowSticky] = useState(false);
   const ctaRef = useRef<HTMLElement>(null);
-  const showSticky = scrolledPastHero && !ctaVisible;
 
   useEffect(() => {
-    const onScroll = () => setScrolledPastHero(window.scrollY > window.innerHeight * 0.9);
+    const onScroll = () => {
+      const pastHero = window.scrollY > window.innerHeight * 0.9;
+      const closing = ctaRef.current;
+      const beforeClosing = !closing || closing.getBoundingClientRect().top > window.innerHeight * 0.85;
+      setShowSticky(pastHero && beforeClosing);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const el = ctaRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(([e]) => setCtaVisible(e.isIntersecting), {
-      rootMargin: "0px 0px -20% 0px",
-    });
-    obs.observe(el);
-    return () => obs.disconnect();
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (

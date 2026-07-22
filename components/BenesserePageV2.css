@@ -636,6 +636,7 @@
 }
 .ben-sticky__btn:hover { background: #ffffffe0; transform: translateY(-1px); }
 @media (max-width: 768px) {
+  .ben-opening__scroll { display: none; }
   .ben-sticky { left: 1rem; right: 1rem; bottom: 1rem; max-width: none; justify-content: space-between; gap: .75rem; padding-left: 1.2rem; transform: translateY(200%); }
   .ben-sticky.is-shown { transform: translateY(0); }
   .ben-sticky__text { display: none; }
