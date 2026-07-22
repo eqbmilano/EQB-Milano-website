@@ -1,45 +1,13 @@
 "use client";
 import React from "react";
+import { useTranslations } from "next-intl";
 import { Reveal } from "./Reveal";
+import { Multiline } from "./Multiline";
 import "./SectionRecensioni.css";
 
-const professionisti = [
-  {
-    quote: "Ho finalmente uno spazio professionale senza il peso di un affitto fisso. EQB mi ha permesso di concentrarmi sui miei clienti invece che sui costi.",
-    name: "Marco R.",
-    role: "Osteopata",
-  },
-  {
-    quote: "La community è il vero valore aggiunto. Ho trovato colleghi con cui collaborare e i clienti iniziano ad arrivare anche per passaparola interno.",
-    name: "Sara M.",
-    role: "Personal Trainer",
-  },
-  {
-    quote: "Lavoro meglio, guadagno di più, senza l'ansia del canone mensile. EQB è il modello che cercavo da anni.",
-    name: "Luca P.",
-    role: "Fisioterapista",
-  },
-];
+type Review = { quote: string; name: string; role: string };
 
-const clienti = [
-  {
-    quote: "Ambiente curato, professionisti competenti. Ho trovato in un unico posto il trainer, l'osteopata e il nutrizionista. Non cercherò altro.",
-    name: "Giulia F.",
-    role: "Cliente",
-  },
-  {
-    quote: "Ho iniziato con il pilates e poi ho scoperto la fisioterapia. Un percorso integrato che non avevo mai trovato altrove, in un posto bello e accogliente.",
-    name: "Andrea B.",
-    role: "Cliente",
-  },
-  {
-    quote: "La qualità dei professionisti è evidente già al primo appuntamento. Spazio pulito, organizzato, e si respira un'atmosfera diversa.",
-    name: "Valentina C.",
-    role: "Cliente",
-  },
-];
-
-function ReviewCard({ quote, name, role }: { quote: string; name: string; role: string }) {
+function ReviewCard({ quote, name, role }: Review) {
   return (
     <div className="review-card">
       <p className="review-card__quote">&ldquo;{quote}&rdquo;</p>
@@ -51,45 +19,51 @@ function ReviewCard({ quote, name, role }: { quote: string; name: string; role: 
   );
 }
 
-export const SectionRecensioni: React.FC = () => (
-  <section id="recensioni" className="section-recensioni">
-    <div className="recensioni__inner">
+export const SectionRecensioni: React.FC = () => {
+  const t = useTranslations("home.recensioni");
+  const professionisti = t.raw("professionisti") as Review[];
+  const clienti = t.raw("clienti") as Review[];
 
-      <Reveal className="recensioni__header">
-        <span className="recensioni__label">COSA DICONO DI NOI</span>
-        <h2 className="recensioni__title">Due punti di vista,<br />una sola certezza.</h2>
-      </Reveal>
+  return (
+    <section id="recensioni" className="section-recensioni">
+      <div className="recensioni__inner">
 
-      <div className="recensioni__cols">
-        {/* Professionisti */}
-        <div className="recensioni__col">
-          <Reveal>
-            <span className="recensioni__col-label">Professionisti</span>
-          </Reveal>
-          <div className="recensioni__list">
-            {professionisti.map((r, i) => (
-              <Reveal key={r.name} delay={i * 80}>
-                <ReviewCard {...r} />
-              </Reveal>
-            ))}
+        <Reveal className="recensioni__header">
+          <span className="recensioni__label">{t("label")}</span>
+          <h2 className="recensioni__title"><Multiline text={t("title")} /></h2>
+        </Reveal>
+
+        <div className="recensioni__cols">
+          {/* Professionisti */}
+          <div className="recensioni__col">
+            <Reveal>
+              <span className="recensioni__col-label">{t("colProfessionisti")}</span>
+            </Reveal>
+            <div className="recensioni__list">
+              {professionisti.map((r, i) => (
+                <Reveal key={r.name} delay={i * 80}>
+                  <ReviewCard {...r} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          {/* Clienti */}
+          <div className="recensioni__col">
+            <Reveal>
+              <span className="recensioni__col-label">{t("colClienti")}</span>
+            </Reveal>
+            <div className="recensioni__list">
+              {clienti.map((r, i) => (
+                <Reveal key={r.name} delay={i * 80}>
+                  <ReviewCard {...r} />
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Clienti */}
-        <div className="recensioni__col">
-          <Reveal>
-            <span className="recensioni__col-label">Clienti</span>
-          </Reveal>
-          <div className="recensioni__list">
-            {clienti.map((r, i) => (
-              <Reveal key={r.name} delay={i * 80}>
-                <ReviewCard {...r} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
       </div>
-
-    </div>
-  </section>
-);
+    </section>
+  );
+};

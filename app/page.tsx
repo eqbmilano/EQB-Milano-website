@@ -1,38 +1,8 @@
-import type { Metadata } from "next";
-import {
-  Navbar,
-  Hero,
-  SectionEcosistema,
-  SectionSpazio,
-  ParallaxDivider,
-  SectionPercheScegliere,
-  SectionInterno,
-  SectionVisione,
-  SectionRecensioni,
-  Footer,
-  FixedBackground,
-} from "@/components";
+import { redirect } from "next/navigation";
+import { DEFAULT_LOCALE } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
-
+// Fallback di sicurezza: proxy.ts intercetta "/" e fa redirect in base a
+// lingua browser/cookie prima che questa pagina venga raggiunta.
 export default function Home() {
-  return (
-    <>
-      <FixedBackground />
-      <main className="w-full relative">
-        <Navbar />
-        <Hero />
-        <SectionEcosistema />
-        <SectionSpazio />
-        <ParallaxDivider />
-        <SectionPercheScegliere />
-        <SectionInterno />
-        <SectionRecensioni />
-        <SectionVisione />
-        <Footer />
-      </main>
-    </>
-  );
+  redirect(`/${DEFAULT_LOCALE}`);
 }

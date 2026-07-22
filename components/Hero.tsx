@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import "./Hero.css";
 
 // px di "sforzo" scroll per andare da hero puro a bivio completamente a riposo
@@ -15,6 +16,8 @@ const SCROLL_DISTANCE = 900;
 const LOCK_MIN = 700;
 
 export const Hero: React.FC = () => {
+  const locale = useLocale();
+  const t = useTranslations("home.hero");
   const stageRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const bivioRef = useRef<HTMLDivElement>(null);
@@ -175,30 +178,30 @@ export const Hero: React.FC = () => {
 
           {/* Testo hero */}
           <div className="hero__content" ref={heroRef}>
-            <span className="hero__label hero__anim hero__anim--1">MILANO</span>
-            <h1 className="hero__title hero__anim hero__anim--2">Wellness &amp; Fitness Coworking</h1>
+            <span className="hero__label hero__anim hero__anim--1">{t("label")}</span>
+            <h1 className="hero__title hero__anim hero__anim--2">{t("title")}</h1>
             <p className="hero__vision">
-              <span className="hero__vision-word hero__vision-word--1">Spazio</span>
+              <span className="hero__vision-word hero__vision-word--1">{t("vision1")}</span>
               <span className="hero__vision-sep hero__vision-sep--1" />
-              <span className="hero__vision-word hero__vision-word--2">Relazioni</span>
+              <span className="hero__vision-word hero__vision-word--2">{t("vision2")}</span>
               <span className="hero__vision-sep hero__vision-sep--2" />
-              <span className="hero__vision-word hero__vision-word--3">Crescita</span>
+              <span className="hero__vision-word hero__vision-word--3">{t("vision3")}</span>
             </p>
           </div>
 
           {/* Bivio glassy — compare nella stessa posizione del testo */}
           <div className="phh-bivio" ref={bivioRef}>
-            <span className="phh-bivio__eyebrow">A chi è dedicato EQB?</span>
+            <span className="phh-bivio__eyebrow">{t("eyebrow")}</span>
             <div className="phh-bivio__cards">
               <a href="#ecosistema" onClick={continua} className="phh-card">
-                <span className="phh-card__kicker">Sei un professionista?</span>
-                <p className="phh-card__text">Scopri come EQB può diventare il tuo spazio di lavoro.</p>
-                <span className="phh-card__cta">Continua a scoprire ↓</span>
+                <span className="phh-card__kicker">{t("profKicker")}</span>
+                <p className="phh-card__text">{t("profText")}</p>
+                <span className="phh-card__cta">{t("profCta")}</span>
               </a>
-              <Link href="/benessere" className="phh-card">
-                <span className="phh-card__kicker">Cerchi un professionista?</span>
-                <p className="phh-card__text">Trova il percorso, l'attività e la persona più adatta a te.</p>
-                <span className="phh-card__cta">Scopri i servizi →</span>
+              <Link href={`/${locale}/benessere`} className="phh-card">
+                <span className="phh-card__kicker">{t("cercaKicker")}</span>
+                <p className="phh-card__text">{t("cercaText")}</p>
+                <span className="phh-card__cta">{t("cercaCta")}</span>
               </Link>
             </div>
           </div>

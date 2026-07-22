@@ -1,57 +1,34 @@
 "use client";
 import React, { useRef, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Reveal } from "./Reveal";
 
-const pillars = [
-  {
-    title: "Flessibilità reale",
-    body: "Modello ad ore, senza affitti né contratti rigidi.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="3"/>
-        <line x1="16" y1="2" x2="16" y2="6"/>
-        <line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
-        <line x1="8" y1="15" x2="10" y2="15"/>
-        <line x1="14" y1="15" x2="16" y2="15"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Qualità degli spazi",
-    body: "Ambienti curati, reception e servizi inclusi.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 9.5L12 3l9 6.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
-        <path d="M9 22V12h6v10"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Collaborazione",
-    body: "Percorsi integrati e rete reale tra specialisti.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="9" cy="7" r="3"/>
-        <circle cx="17" cy="9" r="2.5"/>
-        <path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/>
-        <path d="M17.5 14c1.9.4 3.5 1.8 3.5 4"/>
-      </svg>
-    ),
-  },
-  {
-    title: "Crescita",
-    body: "Supporto strategico e accesso a nuovi clienti.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
-  },
+const ICONS = [
+  <svg key="flex" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="4" width="18" height="18" rx="3"/>
+    <line x1="16" y1="2" x2="16" y2="6"/>
+    <line x1="8" y1="2" x2="8" y2="6"/>
+    <line x1="3" y1="10" x2="21" y2="10"/>
+    <line x1="8" y1="15" x2="10" y2="15"/>
+    <line x1="14" y1="15" x2="16" y2="15"/>
+  </svg>,
+  <svg key="quality" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 9.5L12 3l9 6.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+    <path d="M9 22V12h6v10"/>
+  </svg>,
+  <svg key="collab" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="9" cy="7" r="3"/>
+    <circle cx="17" cy="9" r="2.5"/>
+    <path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/>
+    <path d="M17.5 14c1.9.4 3.5 1.8 3.5 4"/>
+  </svg>,
+  <svg key="growth" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+    <polyline points="17 6 23 6 23 12"/>
+  </svg>,
 ];
 
-function TiltPillar({ title, body, icon }: typeof pillars[0]) {
+function TiltPillar({ title, body, icon }: { title: string; body: string; icon: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
 
   const onMove = useCallback((e: React.MouseEvent) => {
@@ -86,11 +63,13 @@ function TiltPillar({ title, body, icon }: typeof pillars[0]) {
 }
 
 export function VisionePillars() {
+  const t = useTranslations("visione");
+  const pillars = t.raw("pillars") as { title: string; body: string }[];
   return (
     <div className="vis-pillars__inner">
       {pillars.map((p, i) => (
         <Reveal key={p.title} delay={i * 60}>
-          <TiltPillar {...p} />
+          <TiltPillar title={p.title} body={p.body} icon={ICONS[i]} />
         </Reveal>
       ))}
     </div>

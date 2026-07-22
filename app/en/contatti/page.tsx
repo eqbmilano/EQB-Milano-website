@@ -1,10 +1,9 @@
+import type { Metadata } from "next";
 import { Navbar, Footer } from "@/components";
 import { ContattiPage } from "@/components/ContattiPage";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const metadata = {
-  title: "Contatti — EQB Milano",
-  alternates: { canonical: "/contatti" },
-};
+export const metadata: Metadata = buildPageMetadata("en", "contatti", "Contact — EQB Milano");
 
 export default function ContattiRoute() {
   return (

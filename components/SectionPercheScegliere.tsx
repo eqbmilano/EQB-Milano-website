@@ -1,5 +1,7 @@
 "use client";
 import React, { useRef, useCallback, useEffect, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { Multiline } from "./Multiline";
 import "./SectionPercheScegliere.css";
 
 function useVisible(threshold = 0.2, rootMargin = "-120px") {
@@ -18,14 +20,9 @@ function useVisible(threshold = 0.2, rootMargin = "-120px") {
   return { ref, visible };
 }
 
-const cards = [
-  { value: "0",    title: "Costi fissi",    desc: "Nessun contratto. Nessun affitto mensile. Paghi solo le ore che usi." },
-  { value: "20+",  title: "Professionisti", desc: "Una community di trainer e terapisti che collabora, cresce e costruisce percorsi integrati per i clienti." },
-  { value: "1 km",  title: "Dal Duomo",     desc: "Piazza Cinque Giornate. Un quartiere vivo, centrale, circondato da una Milano che si muove." },
-  { value: "1°",   title: "In Italia",      desc: "Un modello che non esisteva. Abbiamo costruito da zero qualcosa che il settore non aveva mai visto." },
-];
+type Card = { value: string; title: string; desc: string };
 
-function TiltCard({ card }: { card: typeof cards[0] }) {
+function TiltCard({ card }: { card: Card }) {
   const ref = useRef<HTMLDivElement>(null);
 
   const onMove = useCallback((e: React.MouseEvent) => {
@@ -54,10 +51,10 @@ function TiltCard({ card }: { card: typeof cards[0] }) {
   );
 }
 
-function VeroWord({ visible }: { visible: boolean }) {
+function VeroWord({ visible, word }: { visible: boolean; word: string }) {
   return (
     <span className={`perche__vero${visible ? " perche__vero--on" : ""}`}>
-      vero
+      {word}
       <svg className="perche__vero-line" viewBox="0 0 60 8" preserveAspectRatio="none" aria-hidden="true">
         <path d="M1 5 Q10 1 20 5 Q30 9 40 5 Q50 1 59 5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       </svg>
@@ -66,6 +63,9 @@ function VeroWord({ visible }: { visible: boolean }) {
 }
 
 export const SectionPercheScegliere: React.FC = () => {
+  const locale = useLocale();
+  const t = useTranslations("home.percheScegliere");
+  const cards = t.raw("cards") as Card[];
   const sectionRef = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -85,10 +85,10 @@ export const SectionPercheScegliere: React.FC = () => {
       <div className="perche__inner">
 
         <div className="perche__header">
-          <span className="perche__label perche-anim perche-anim--1">COWORKING</span>
-          <h2 className="perche__title perche-anim perche-anim--2">Nessuno lo fa<br />come noi.</h2>
+          <span className="perche__label perche-anim perche-anim--1">{t("label")}</span>
+          <h2 className="perche__title perche-anim perche-anim--2"><Multiline text={t("title")} /></h2>
           <p className="perche__subtitle perche-anim perche-anim--3">
-            Il primo,&nbsp;<VeroWord visible={visible} />,&nbsp;coworking polifunzionale ad ore per trainer e terapisti.
+            {t("subtitlePre")}&nbsp;<VeroWord visible={visible} word={`${t("subtitleVero")},`} />&nbsp;{t("subtitlePost")}
           </p>
         </div>
 
@@ -98,13 +98,13 @@ export const SectionPercheScegliere: React.FC = () => {
 
         <div className="perche__statement perche-anim perche-anim--5">
           <div className="statement__lines">
-            <p className="statement__line">Non è una palestra.</p>
-            <p className="statement__line">Non è uno studio tradizionale.</p>
-            <p className="statement__line">Non è un coworking generico.</p>
+            <p className="statement__line">{t("statement1")}</p>
+            <p className="statement__line">{t("statement2")}</p>
+            <p className="statement__line">{t("statement3")}</p>
           </div>
           <div className="statement__divider" />
-          <p className="statement__coda">EQB.</p>
-          <a href="/coworking" className="statement__cta">UNISCITI AL TEAM</a>
+          <p className="statement__coda">{t("coda")}</p>
+          <a href={`/${locale}/coworking`} className="statement__cta">{t("cta")}</a>
         </div>
 
       </div>

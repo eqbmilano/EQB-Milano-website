@@ -1,10 +1,9 @@
+import type { Metadata } from "next";
 import { Navbar, Footer } from "@/components";
 import { AziendePage } from "@/components/AziendePage";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const metadata = {
-  title: "Aziende & eventi — EQB Milano",
-  alternates: { canonical: "/aziende" },
-};
+export const metadata: Metadata = buildPageMetadata("en", "aziende", "Companies & Events — EQB Milano");
 
 export default function AziendeRoute() {
   return (

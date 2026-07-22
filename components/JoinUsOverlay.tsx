@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { Multiline } from "./Multiline";
 import "./JoinUsOverlay.css";
 
 interface JoinUsOverlayProps {
@@ -9,13 +11,14 @@ interface JoinUsOverlayProps {
 }
 
 export const JoinUsOverlay: React.FC<JoinUsOverlayProps> = ({ isOpen, onClose }) => {
+  const t = useTranslations("joinUs");
   if (!isOpen) return null;
 
   return (
     <div className="joinus-overlay joinus-overlay--open">
 
       {/* Chiudi */}
-      <button className="joinus-close" onClick={onClose} aria-label="Chiudi">
+      <button className="joinus-close" onClick={onClose} aria-label={t("close")}>
         <span className="joinus-close__line" />
         <span className="joinus-close__line" />
       </button>
@@ -25,7 +28,7 @@ export const JoinUsOverlay: React.FC<JoinUsOverlayProps> = ({ isOpen, onClose })
         <div className="joinus-panel__photo">
           <Image
             src="/assets/join-professionista.jpg"
-            alt="Sei un professionista?"
+            alt={t("professionista.title")}
             fill
             sizes="50vw"
             priority
@@ -34,14 +37,11 @@ export const JoinUsOverlay: React.FC<JoinUsOverlayProps> = ({ isOpen, onClose })
         </div>
 
         <div className="joinus-card">
-          <h2 className="joinus-card__title">Sei un<br />professionista?</h2>
-          <p className="joinus-card__body">
-            Spazi pronti all&rsquo;uso, senza costi fissi,
-            in un ecosistema che favorisce collaborazione e crescita.
-          </p>
+          <h2 className="joinus-card__title"><Multiline text={t("professionista.title")} /></h2>
+          <p className="joinus-card__body">{t("professionista.body")}</p>
           <a href="#visione" className="joinus-card__cta" onClick={onClose}>
             <span className="joinus-card__cta-icon">→</span>
-            Scopri di più
+            {t("professionista.cta")}
           </a>
         </div>
       </div>
@@ -54,7 +54,7 @@ export const JoinUsOverlay: React.FC<JoinUsOverlayProps> = ({ isOpen, onClose })
         <div className="joinus-panel__photo">
           <Image
             src="/assets/join-benessere.jpg"
-            alt="Cerchi benessere?"
+            alt={t("benessere.title")}
             fill
             sizes="50vw"
             priority
@@ -63,14 +63,11 @@ export const JoinUsOverlay: React.FC<JoinUsOverlayProps> = ({ isOpen, onClose })
         </div>
 
         <div className="joinus-card">
-          <h2 className="joinus-card__title">Cerchi<br />benessere?</h2>
-          <p className="joinus-card__body">
-            Trattamenti, allenamenti e professionisti selezionati
-            in un ambiente curato e accogliente.
-          </p>
+          <h2 className="joinus-card__title"><Multiline text={t("benessere.title")} /></h2>
+          <p className="joinus-card__body">{t("benessere.body")}</p>
           <a href="#benessere" className="joinus-card__cta" onClick={onClose}>
             <span className="joinus-card__cta-icon">→</span>
-            Scopri di più
+            {t("benessere.cta")}
           </a>
         </div>
       </div>

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { MenuOverlay } from "./MenuOverlay";
 import "./Navbar.css";
 
@@ -11,6 +12,8 @@ export const Navbar: React.FC = () => {
   const [joinOpen, setJoinOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations("nav");
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
@@ -55,9 +58,11 @@ export const Navbar: React.FC = () => {
 
     const update = () => {
       if (menuOpen) return;
-      // Force white navbar on pages where the hero overlay is too transparent for auto-detection
-      const forcedWhitePages = ["/", "/benessere"];
-      if (forcedWhitePages.includes(pathname) && window.scrollY < window.innerHeight * 0.85) {
+      // Force white navbar on pages where the hero overlay is too transparent for auto-detection.
+      // pathname è /it, /en, /it/benessere, /en/benessere: confronto sull'ultimo segmento.
+      const lastSegment = pathname.replace(/^\/(it|en)\/?/, "");
+      const forcedWhitePages = ["", "benessere"];
+      if (forcedWhitePages.includes(lastSegment) && window.scrollY < window.innerHeight * 0.85) {
         setIsDark(false);
         return;
       }
@@ -80,7 +85,7 @@ export const Navbar: React.FC = () => {
     <>
       <nav className={`navbar${menuOpen ? " menu-open" : ""}${darkMode ? " navbar--dark" : ""}`}>
         <div className={`navbar__logo${menuOpen ? " navbar__logo--hidden" : ""}`}>
-          <Link href="/">
+          <Link href={`/${locale}`}>
             <Image
               src={darkMode ? "/assets/Logo-Marrone.svg" : "/assets/Logo-Bianco.svg"}
               alt="EQB Milano"
@@ -99,24 +104,24 @@ export const Navbar: React.FC = () => {
               aria-expanded={joinOpen}
               aria-haspopup="true"
             >
-              UNISCITI
+              {t("unisciti")}
             </button>
             {joinOpen && (
               <div className="navbar__join-pop">
-                <Link href="/candidatura" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
-                  <span className="navbar__join-kicker">Sei un professionista?</span>
-                  <span className="navbar__join-label">Candidati &#8594;</span>
-                  <span className="navbar__join-desc">Spazio a ore, community e supporto.</span>
+                <Link href={`/${locale}/candidatura`} className="navbar__join-item" onClick={() => setJoinOpen(false)}>
+                  <span className="navbar__join-kicker">{t("profSei")}</span>
+                  <span className="navbar__join-label">{t("profLabel")} &#8594;</span>
+                  <span className="navbar__join-desc">{t("profDesc")}</span>
                 </Link>
-                <Link href="/contatti" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
-                  <span className="navbar__join-kicker">Sei un cliente?</span>
-                  <span className="navbar__join-label">Scrivici &#8594;</span>
-                  <span className="navbar__join-desc">Raccontaci di cosa hai bisogno.</span>
+                <Link href={`/${locale}/contatti`} className="navbar__join-item" onClick={() => setJoinOpen(false)}>
+                  <span className="navbar__join-kicker">{t("clienteSei")}</span>
+                  <span className="navbar__join-label">{t("clienteLabel")} &#8594;</span>
+                  <span className="navbar__join-desc">{t("clienteDesc")}</span>
                 </Link>
-                <Link href="/aziende" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
-                  <span className="navbar__join-kicker">Azienda o evento?</span>
-                  <span className="navbar__join-label">Scopri di più &#8594;</span>
-                  <span className="navbar__join-desc">Spazio per workshop, eventi e collaborazioni.</span>
+                <Link href={`/${locale}/aziende`} className="navbar__join-item" onClick={() => setJoinOpen(false)}>
+                  <span className="navbar__join-kicker">{t("aziendaSei")}</span>
+                  <span className="navbar__join-label">{t("aziendaLabel")} &#8594;</span>
+                  <span className="navbar__join-desc">{t("aziendaDesc")}</span>
                 </Link>
               </div>
             )}
@@ -124,7 +129,7 @@ export const Navbar: React.FC = () => {
           <button
             className={`navbar__hamburger${menuOpen ? " navbar__hamburger--open" : ""}`}
             onClick={toggleMenu}
-            aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
+            aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
             aria-expanded={menuOpen}
           >
             <span className="navbar__hamburger-line" />

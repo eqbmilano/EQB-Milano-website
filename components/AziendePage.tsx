@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Reveal } from "./Reveal";
+import { Multiline } from "./Multiline";
 import "./AziendePage.css";
 
 const WA_NUM = "393755153273";
@@ -10,20 +12,21 @@ const EMAIL = "info@eqbmilano.it";
 
 type Tipo = "evento" | "collaborazione";
 
-const TIPO_LABEL: Record<Tipo, string> = {
-  evento: "un evento o un workshop",
-  collaborazione: "una collaborazione stabile",
-};
-
 export const AziendePage: React.FC = () => {
+  const t = useTranslations("aziende");
   const [nome, setNome] = useState("");
   const [tipo, setTipo] = useState<Tipo>("evento");
   const [msg, setMsg] = useState("");
 
-  const composed = `Ciao! Sono ${nome.trim() || "[nome]"}. Vi scrivo per ${TIPO_LABEL[tipo]}. ${msg.trim() || ""}`.trim();
+  const TIPO_LABEL: Record<Tipo, string> = {
+    evento: t("tipoLabelEvento"),
+    collaborazione: t("tipoLabelCollaborazione"),
+  };
+
+  const composed = `${t("waSono")} ${nome.trim() || "[nome]"}. ${t("waScrivo")} ${TIPO_LABEL[tipo]}. ${msg.trim() || ""}`.trim();
   const formWa = `${WA}${encodeURIComponent(composed)}`;
   const formMail = `mailto:${EMAIL}?subject=${encodeURIComponent(
-    `Aziende & eventi — ${TIPO_LABEL[tipo]} (${nome.trim() || "sito EQB"})`
+    `${t("mailOggetto")} — ${TIPO_LABEL[tipo]} (${nome.trim() || "EQB website"})`
   )}&body=${encodeURIComponent(composed)}`;
 
   // Cattura server best-effort: non blocca il click, il canale primario resta WhatsApp.
@@ -41,10 +44,10 @@ export const AziendePage: React.FC = () => {
 
       {/* Hero */}
       <section className="az-hero">
-        <span className="az-eyebrow">Aziende & eventi</span>
-        <h1 className="az-hero__title">Il tuo evento,<br />il nostro spazio.</h1>
+        <span className="az-eyebrow">{t("eyebrow")}</span>
+        <h1 className="az-hero__title"><Multiline text={t("heroTitle")} /></h1>
         <p className="az-hero__sub">
-          Se cerchi un ambiente diverso per un workshop, un evento o una collaborazione continuativa, raccontaci cosa hai in mente.
+          {t("heroSub")}
         </p>
       </section>
 
@@ -61,10 +64,10 @@ export const AziendePage: React.FC = () => {
             />
           </Reveal>
           <Reveal as="div" className="az-section__text" delay={100}>
-            <h2 className="az-section__title">Eventi e Workshop</h2>
-            <p className="az-tagline">Il posto giusto per farlo bene.</p>
+            <h2 className="az-section__title">{t("eventiTitle")}</h2>
+            <p className="az-tagline">{t("eventiTagline")}</p>
             <p className="az-section__body">
-              Ospitiamo esperienze costruite attorno al benessere: workshop, incontri, format dedicati a chi lavora con il corpo e con le persone. Mettiamo a disposizione l'ambiente, la rete di professionisti che vive lo spazio ogni giorno e la cura per ogni dettaglio.
+              {t("eventiBody")}
             </p>
           </Reveal>
         </div>
@@ -74,10 +77,10 @@ export const AziendePage: React.FC = () => {
       <section className="az-section az-section--reverse">
         <div className="az-section__inner">
           <Reveal as="div" className="az-section__text" delay={100}>
-            <h2 className="az-section__title">Partnership e Collaborazioni</h2>
-            <p className="az-tagline">Una casa per chi lavora con continuità.</p>
+            <h2 className="az-section__title">{t("partnershipTitle")}</h2>
+            <p className="az-tagline">{t("partnershipTagline")}</p>
             <p className="az-section__body">
-              Lavoriamo con realtà che condividono il nostro modo di intendere il benessere. Brand, professionisti e progetti che vogliono crescere in un contesto costruito sulla qualità e sulla fiducia.
+              {t("partnershipBody")}
             </p>
           </Reveal>
           <Reveal as="div" className="az-section__media">
@@ -96,42 +99,42 @@ export const AziendePage: React.FC = () => {
       <section className="az-form">
         <div className="az-form__inner">
           <div className="az-form__head">
-            <span className="az-eyebrow">Parliamone</span>
-            <h2 className="az-form__title">Raccontaci la tua idea.</h2>
-            <p className="az-form__sub">Rispondiamo noi, di persona.</p>
+            <span className="az-eyebrow">{t("formEyebrow")}</span>
+            <h2 className="az-form__title">{t("formTitle")}</h2>
+            <p className="az-form__sub">{t("formSub")}</p>
           </div>
           <div className="az-form__fields">
             <label className="az-field">
-              <span>Il tuo nome</span>
-              <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Come ti chiami?" />
+              <span>{t("fieldNome")}</span>
+              <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder={t("fieldNomePlaceholder")} />
             </label>
             <div className="az-field">
-              <span>Di cosa si tratta</span>
+              <span>{t("fieldTipo")}</span>
               <div className="az-toggle">
                 <button
                   type="button"
                   className={`az-toggle__btn${tipo === "evento" ? " is-active" : ""}`}
                   onClick={() => setTipo("evento")}
                 >
-                  Evento o workshop
+                  {t("tipoEvento")}
                 </button>
                 <button
                   type="button"
                   className={`az-toggle__btn${tipo === "collaborazione" ? " is-active" : ""}`}
                   onClick={() => setTipo("collaborazione")}
                 >
-                  Collaborazione stabile
+                  {t("tipoCollaborazione")}
                 </button>
               </div>
             </div>
             <label className="az-field">
-              <span>Il tuo messaggio</span>
-              <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={4} placeholder="Di cosa hai bisogno? Quando vorresti fare tutto questo?" />
+              <span>{t("fieldMsg")}</span>
+              <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={4} placeholder={t("fieldMsgPlaceholder")} />
             </label>
             <a className="az-form__btn" href={formWa} target="_blank" rel="noopener noreferrer" onClick={notifyServer}>
-              Scrivici su WhatsApp →
+              {t("btnWhatsapp")}
             </a>
-            <p className="az-form__alt">Preferisci la mail? <a href={formMail} onClick={notifyServer}>{EMAIL}</a></p>
+            <p className="az-form__alt">{t("altMail")} <a href={formMail} onClick={notifyServer}>{EMAIL}</a></p>
           </div>
         </div>
       </section>

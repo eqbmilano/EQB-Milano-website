@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import "./CandidaturaWizard.css";
 
 const STEPS = [
@@ -16,33 +17,16 @@ const STEPS = [
 type Step = typeof STEPS[number];
 const TOTAL_QUESTIONS = 7;
 
-const CATEGORIE = [
-  { value: "Osteopatia", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><circle cx="9" cy="9" r="5" /><circle cx="15" cy="15" r="5" /></svg> },
-  { value: "Fisioterapia", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 17 9 11 13 15 21 6" /><polyline points="15 6 21 6 21 12" /></svg> },
-  { value: "Pilates", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="8" /><line x1="12" y1="4" x2="12" y2="20" strokeLinecap="round" /></svg> },
-  { value: "All. Funzionale", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="8" x2="4" y2="16" /><line x1="20" y1="8" x2="20" y2="16" /><line x1="7" y1="9" x2="7" y2="15" /><line x1="17" y1="9" x2="17" y2="15" /></svg> },
-  { value: "All. Posturale", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="4" r="2" /><path d="M12 6c-1 3 2 4 1 7s-3 3-2 7" /></svg> },
-  { value: "Massoterapia", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M3 15c2-3 4-3 6 0s4 3 6 0 4-3 6 0" /><path d="M3 9c2-3 4-3 6 0s4 3 6 0 4-3 6 0" /></svg> },
-  { value: "Massaggi", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="3" /><circle cx="12" cy="12" r="7.5" opacity=".5" /></svg> },
-  { value: "Terapie Olistiche", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3c4 3 7 7 7 11a7 7 0 0 1-14 0c0-4 3-8 7-11z" /></svg> },
-  { value: "Nutrizione", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21c-4 0-7-3.5-7-8 0-3.5 2-6 4-8 .5 2 1 3 2 3 1.5 0 1-2.5 1-4 3 2 6 5.5 6 9 0 4.5-3 8-6 8z" /></svg> },
-];
-
-const PORTABILI = [
-  "Sto partendo da zero",
-  "Alcuni mi seguirebbero",
-  "Una base solida che mi segue",
-];
-const APPUNTAMENTI = ["Fino a 5 a settimana", "6 - 10 a settimana", "11 - 20 a settimana", "+20 a settimana"];
-const ASPETTATIVE = [
-  "Solo uno spazio flessibile",
-  "Spazio + collaborazioni",
-  "Spazio + collaborazioni + supporto clienti",
-];
-const INIZIO = [
-  "Anche subito",
-  "Nei prossimi mesi",
-  "Più avanti: sto ancora valutando",
+const CATEGORIE_ICONS = [
+  <svg key="osteopatia" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><circle cx="9" cy="9" r="5" /><circle cx="15" cy="15" r="5" /></svg>,
+  <svg key="fisioterapia" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 17 9 11 13 15 21 6" /><polyline points="15 6 21 6 21 12" /></svg>,
+  <svg key="pilates" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="8" /><line x1="12" y1="4" x2="12" y2="20" strokeLinecap="round" /></svg>,
+  <svg key="funzionale" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="8" x2="4" y2="16" /><line x1="20" y1="8" x2="20" y2="16" /><line x1="7" y1="9" x2="7" y2="15" /><line x1="17" y1="9" x2="17" y2="15" /></svg>,
+  <svg key="posturale" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="4" r="2" /><path d="M12 6c-1 3 2 4 1 7s-3 3-2 7" /></svg>,
+  <svg key="massoterapia" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M3 15c2-3 4-3 6 0s4 3 6 0 4-3 6 0" /><path d="M3 9c2-3 4-3 6 0s4 3 6 0 4-3 6 0" /></svg>,
+  <svg key="massaggi" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><circle cx="12" cy="12" r="3" /><circle cx="12" cy="12" r="7.5" opacity=".5" /></svg>,
+  <svg key="olistiche" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3c4 3 7 7 7 11a7 7 0 0 1-14 0c0-4 3-8 7-11z" /></svg>,
+  <svg key="nutrizione" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21c-4 0-7-3.5-7-8 0-3.5 2-6 4-8 .5 2 1 3 2 3 1.5 0 1-2.5 1-4 3 2 6 5.5 6 9 0 4.5-3 8-6 8z" /></svg>,
 ];
 
 const EqbLogo: React.FC = () => (
@@ -87,6 +71,13 @@ function OptionGroup({
 }
 
 export const CandidaturaWizard: React.FC = () => {
+  const locale = useLocale();
+  const t = useTranslations("candidatura");
+  const CATEGORIE = (t.raw("categorie") as string[]).map((value, i) => ({ value, icon: CATEGORIE_ICONS[i] }));
+  const PORTABILI = t.raw("portabili") as string[];
+  const APPUNTAMENTI = t.raw("appuntamenti") as string[];
+  const ASPETTATIVE = t.raw("aspettative") as string[];
+  const INIZIO = t.raw("inizio") as string[];
   const [idx, setIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [categorie, setCategorie] = useState<string[]>([]);
@@ -151,11 +142,11 @@ export const CandidaturaWizard: React.FC = () => {
       const res = await fetch("/api/candidatura", { method: "POST", body: fd });
       const data = await res.json().catch(() => ({ ok: false }));
       if (!res.ok || !data.ok) {
-        throw new Error(data.error || "Invio non riuscito, riprova.");
+        throw new Error(data.error || t("contatto.erroreGenerico"));
       }
       next();
     } catch (err) {
-      setSendError(err instanceof Error ? err.message : "Invio non riuscito, riprova.");
+      setSendError(err instanceof Error ? err.message : t("contatto.erroreGenerico"));
     } finally {
       setSending(false);
     }
@@ -187,7 +178,7 @@ export const CandidaturaWizard: React.FC = () => {
         <div className="cand-chrome__brand">
           <EqbLogo />
         </div>
-        <button className="cand-chrome__back" aria-label="Torna indietro" hidden={!showBack} onClick={back}>
+        <button className="cand-chrome__back" aria-label={t("back")} hidden={!showBack} onClick={back}>
           &#8592;
         </button>
         <div className="cand-chrome__progress">
@@ -195,46 +186,45 @@ export const CandidaturaWizard: React.FC = () => {
         </div>
         <button
           className="cand-chrome__back cand-chrome__fwd"
-          aria-label="Avanti"
+          aria-label={t("fwd")}
           hidden={!showFwd}
           disabled={!canAdvance}
           onClick={next}
         >
           &#8594;
         </button>
-        <a className="cand-chrome__exit" href="/coworking" aria-label="Esci" title="Torna al coworking">
+        <a className="cand-chrome__exit" href={`/${locale}/coworking`} aria-label={t("exit")} title={t("exitTitle")}>
           &#10005;
         </a>
       </div>
 
       <main className="cand-stage">
         <section className={`cand-step cand-step--intro${key === "intro" ? " is-active" : ""}`}>
-          <p className="cand-step__eyebrow">Candidatura</p>
-          <h1 className="cand-step__title">Raccontaci di te.</h1>
+          <p className="cand-step__eyebrow">{t("intro.eyebrow")}</p>
+          <h1 className="cand-step__title">{t("intro.title")}</h1>
           <p className="cand-step__sub">
-            Non è un modulo da compilare. Leggiamo ogni candidatura di persona: se il tuo profilo è in linea
-            con EQB, ti chiamiamo noi.
+            {t("intro.sub")}
           </p>
           <button className="cand-btn" onClick={next}>
-            Inizia <span aria-hidden="true">&#8594;</span>
+            {t("intro.cta")} <span aria-hidden="true">&#8594;</span>
           </button>
-          <p className="cand-step__foot">Tieni a portata di mano il tuo CV.</p>
+          <p className="cand-step__foot">{t("intro.foot")}</p>
         </section>
 
         <section className={`cand-step${key === "categoria" ? " is-active" : ""}`}>
-          <p className="cand-step__eyebrow">1 di 7</p>
-          <h2 className="cand-step__title">Di cosa ti occupi?</h2>
-          <p className="cand-step__sub">Puoi selezionare più opzioni.</p>
+          <p className="cand-step__eyebrow">{t("categoria.eyebrow")}</p>
+          <h2 className="cand-step__title">{t("categoria.title")}</h2>
+          <p className="cand-step__sub">{t("categoria.sub")}</p>
           <OptionGroup options={CATEGORIE} selected={categorie} onSelect={toggleCategoria} />
           <div className="cand-fields" style={{ marginTop: "1.1rem" }}>
             <div className="cand-field" style={{ maxWidth: "420px" }}>
-              <label htmlFor="cand-categoria-altro">Altro</label>
+              <label htmlFor="cand-categoria-altro">{t("categoria.altroLabel")}</label>
               <input
                 id="cand-categoria-altro"
                 type="text"
                 value={categoriaAltro}
                 onChange={(e) => setCategoriaAltro(e.target.value)}
-                placeholder="Fai altro? Scrivilo qui"
+                placeholder={t("categoria.altroPlaceholder")}
               />
             </div>
           </div>
@@ -243,16 +233,16 @@ export const CandidaturaWizard: React.FC = () => {
             disabled={categorie.length === 0 && categoriaAltro.trim().length === 0}
             onClick={next}
           >
-            Continua <span aria-hidden="true">&#8594;</span>
+            {t("categoria.cta")} <span aria-hidden="true">&#8594;</span>
           </button>
         </section>
 
         <section className={`cand-step${key === "portabili" ? " is-active" : ""}`}>
-          <p className="cand-step__eyebrow">2 di 7</p>
+          <p className="cand-step__eyebrow">{t("portabiliStep.eyebrow")}</p>
           <h2 className="cand-step__title" style={{ maxWidth: "18ch" }}>
-            Hai già clienti tuoi che porteresti da EQB?
+            {t("portabiliStep.title")}
           </h2>
-          <p className="cand-step__sub">Ci interessa il tuo punto di partenza, non un numero perfetto.</p>
+          <p className="cand-step__sub">{t("portabiliStep.sub")}</p>
           <OptionGroup
             narrow
             options={PORTABILI.map((v) => ({ value: v }))}
@@ -262,11 +252,11 @@ export const CandidaturaWizard: React.FC = () => {
         </section>
 
         <section className={`cand-step${key === "appuntamenti" ? " is-active" : ""}`}>
-          <p className="cand-step__eyebrow">3 di 7</p>
+          <p className="cand-step__eyebrow">{t("appuntamentiStep.eyebrow")}</p>
           <h2 className="cand-step__title" style={{ maxWidth: "16ch" }}>
-            Quanti appuntamenti seguiresti da noi?
+            {t("appuntamentiStep.title")}
           </h2>
-          <p className="cand-step__sub">Una stima a settimana: ci serve per capire quanto spazio dedicarti.</p>
+          <p className="cand-step__sub">{t("appuntamentiStep.sub")}</p>
           <OptionGroup
             narrow
             options={APPUNTAMENTI.map((v) => ({ value: v }))}
@@ -276,9 +266,9 @@ export const CandidaturaWizard: React.FC = () => {
         </section>
 
         <section className={`cand-step${key === "aspettative" ? " is-active" : ""}`}>
-          <p className="cand-step__eyebrow">4 di 7</p>
-          <h2 className="cand-step__title">Cosa ti aspetti da EQB?</h2>
-          <p className="cand-step__sub">Non c&rsquo;è una risposta giusta: ci aiuta a capirci.</p>
+          <p className="cand-step__eyebrow">{t("aspettativeStep.eyebrow")}</p>
+          <h2 className="cand-step__title">{t("aspettativeStep.title")}</h2>
+          <p className="cand-step__sub">{t("aspettativeStep.sub")}</p>
           <OptionGroup
             options={ASPETTATIVE.map((v) => ({ value: v }))}
             selected={answers.aspettative}
@@ -287,9 +277,9 @@ export const CandidaturaWizard: React.FC = () => {
         </section>
 
         <section className={`cand-step${key === "inizio" ? " is-active" : ""}`}>
-          <p className="cand-step__eyebrow">5 di 7</p>
-          <h2 className="cand-step__title">Quando ti immagini da EQB?</h2>
-          <p className="cand-step__sub">Così capiamo con che tempi muoverci insieme.</p>
+          <p className="cand-step__eyebrow">{t("inizioStep.eyebrow")}</p>
+          <h2 className="cand-step__title">{t("inizioStep.title")}</h2>
+          <p className="cand-step__sub">{t("inizioStep.sub")}</p>
           <OptionGroup
             narrow
             options={INIZIO.map((v) => ({ value: v }))}
@@ -299,62 +289,62 @@ export const CandidaturaWizard: React.FC = () => {
         </section>
 
         <section className={`cand-step${key === "perche" ? " is-active" : ""}`}>
-          <p className="cand-step__eyebrow">6 di 7</p>
-          <h2 className="cand-step__title">Perché EQB?</h2>
-          <p className="cand-step__sub">Bastano due righe, se dicono la cosa giusta.</p>
+          <p className="cand-step__eyebrow">{t("perche.eyebrow")}</p>
+          <h2 className="cand-step__title">{t("perche.title")}</h2>
+          <p className="cand-step__sub">{t("perche.sub")}</p>
           <div className="cand-fields">
             <div className="cand-field">
               <textarea
                 value={why}
                 onChange={(e) => setWhy(e.target.value)}
-                placeholder="Es. Cerco un ambiente dove crescere insieme ad altri professionisti seri, non solo una stanza in affitto."
+                placeholder={t("perche.placeholder")}
               />
             </div>
           </div>
           <button className="cand-btn" disabled={why.trim().length === 0} onClick={next}>
-            Continua <span aria-hidden="true">&#8594;</span>
+            {t("perche.cta")} <span aria-hidden="true">&#8594;</span>
           </button>
         </section>
 
         <section className={`cand-step${key === "contatto" ? " is-active" : ""}`}>
-          <p className="cand-step__eyebrow">7 di 7</p>
-          <h2 className="cand-step__title">Come ti troviamo?</h2>
+          <p className="cand-step__eyebrow">{t("contatto.eyebrow")}</p>
+          <h2 className="cand-step__title">{t("contatto.title")}</h2>
           <div className="cand-fields cand-fields--grid">
             <div className="cand-field">
-              <label htmlFor="cand-nome">Nome</label>
-              <input id="cand-nome" type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Il tuo nome" />
+              <label htmlFor="cand-nome">{t("contatto.nome")}</label>
+              <input id="cand-nome" type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder={t("contatto.nomePlaceholder")} />
             </div>
             <div className="cand-field">
-              <label htmlFor="cand-cognome">Cognome</label>
-              <input id="cand-cognome" type="text" value={cognome} onChange={(e) => setCognome(e.target.value)} placeholder="Il tuo cognome" />
+              <label htmlFor="cand-cognome">{t("contatto.cognome")}</label>
+              <input id="cand-cognome" type="text" value={cognome} onChange={(e) => setCognome(e.target.value)} placeholder={t("contatto.cognomePlaceholder")} />
             </div>
             <div className="cand-field">
-              <label htmlFor="cand-numero">Numero di telefono</label>
-              <input id="cand-numero" type="tel" value={numero} onChange={(e) => setNumero(e.target.value)} placeholder="Il tuo numero" />
+              <label htmlFor="cand-numero">{t("contatto.numero")}</label>
+              <input id="cand-numero" type="tel" value={numero} onChange={(e) => setNumero(e.target.value)} placeholder={t("contatto.numeroPlaceholder")} />
             </div>
             <div className="cand-field">
-              <label htmlFor="cand-email">Email</label>
-              <input id="cand-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="La tua email" />
+              <label htmlFor="cand-email">{t("contatto.email")}</label>
+              <input id="cand-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t("contatto.emailPlaceholder")} />
             </div>
             <div className="cand-field">
               <label htmlFor="cand-ig">
-                Instagram <span className="cand-field__optional">(facoltativo)</span>
+                {t("contatto.instagram")} <span className="cand-field__optional">{t("contatto.facoltativo")}</span>
               </label>
-              <input id="cand-ig" type="text" value={ig} onChange={(e) => setIg(e.target.value)} placeholder="@tuoprofilo" />
+              <input id="cand-ig" type="text" value={ig} onChange={(e) => setIg(e.target.value)} placeholder={t("contatto.instagramPlaceholder")} />
             </div>
             <div className="cand-field">
               <label htmlFor="cand-sito">
-                Sito <span className="cand-field__optional">(facoltativo)</span>
+                {t("contatto.sito")} <span className="cand-field__optional">{t("contatto.facoltativo")}</span>
               </label>
-              <input id="cand-sito" type="text" value={sito} onChange={(e) => setSito(e.target.value)} placeholder="Il tuo sito" />
+              <input id="cand-sito" type="text" value={sito} onChange={(e) => setSito(e.target.value)} placeholder={t("contatto.sitoPlaceholder")} />
             </div>
             <div className="cand-field cand-field--full">
               <label htmlFor="cand-cv">
-                Il tuo CV <span className="cand-field__optional">(facoltativo)</span>
+                {t("contatto.cv")} <span className="cand-field__optional">{t("contatto.facoltativo")}</span>
               </label>
               <label htmlFor="cand-cv" className="cand-file">
-                <span>{cv ? cv.name : "Carica il tuo CV (PDF)"}</span>
-                <span className="cand-file__cta">{cv ? "Cambia file" : "Sfoglia"}</span>
+                <span>{cv ? cv.name : t("contatto.cvPlaceholder")}</span>
+                <span className="cand-file__cta">{cv ? t("contatto.cvCambia") : t("contatto.cvSfoglia")}</span>
               </label>
               <input
                 id="cand-cv"
@@ -380,7 +370,7 @@ export const CandidaturaWizard: React.FC = () => {
             disabled={!(nome.trim() && cognome.trim() && (numero.trim() || email.trim())) || sending}
             onClick={submitCandidatura}
           >
-            {sending ? "Invio in corso…" : <>Invia candidatura <span aria-hidden="true">&#8594;</span></>}
+            {sending ? t("contatto.inviando") : <>{t("contatto.invia")} <span aria-hidden="true">&#8594;</span></>}
           </button>
           {sendError && <p className="cand-step__error">{sendError}</p>}
         </section>
@@ -389,14 +379,13 @@ export const CandidaturaWizard: React.FC = () => {
           <div className="cand-done-mark">
             <CheckIcon />
           </div>
-          <p className="cand-step__eyebrow">Fatto</p>
-          <h2 className="cand-step__title">La tua candidatura è arrivata.</h2>
+          <p className="cand-step__eyebrow">{t("done.eyebrow")}</p>
+          <h2 className="cand-step__title">{t("done.title")}</h2>
           <p className="cand-step__sub">
-            Leggiamo ogni candidatura di persona. Se il tuo profilo è in linea con EQB, ti chiamiamo noi entro
-            pochi giorni.
+            {t("done.sub")}
           </p>
-          <a className="cand-link-quiet" href="/coworking">
-            Torna al coworking
+          <a className="cand-link-quiet" href={`/${locale}/coworking`}>
+            {t("done.torna")}
           </a>
         </section>
       </main>

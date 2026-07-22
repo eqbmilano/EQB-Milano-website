@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import "./MenuOverlay.css";
 
 interface MenuOverlayProps {
@@ -10,22 +11,25 @@ interface MenuOverlayProps {
   onClose: () => void;
 }
 
-const NAV_GROUPS = [
-  { label: "Per i professionisti", items: [
-    { label: "Coworking", href: "/coworking" },
-    { label: "Spazio", href: "/spazio" },
-    { label: "Visione", href: "/visione" },
-  ] },
-  { label: "Per te", items: [
-    { label: "Benessere", href: "/benessere" },
-  ] },
-  { label: "Info", items: [
-    { label: "Contatti", href: "/contatti" },
-  ] },
-];
-
 export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations("menu");
+
+  const NAV_GROUPS = [
+    { label: t("groupProfessionisti"), items: [
+      { label: t("coworking"), href: `/${locale}/coworking` },
+      { label: t("spazio"), href: `/${locale}/spazio` },
+      { label: t("visione"), href: `/${locale}/visione` },
+    ] },
+    { label: t("groupTe"), items: [
+      { label: t("benessere"), href: `/${locale}/benessere` },
+    ] },
+    { label: t("groupInfo"), items: [
+      { label: t("contatti"), href: `/${locale}/contatti` },
+    ] },
+  ];
+
   const groups = NAV_GROUPS
     .map((g) => ({ ...g, items: g.items.filter((it) => it.href !== pathname) }))
     .filter((g) => g.items.length > 0);
@@ -81,7 +85,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
         <div className="menu-overlay__left">
 
           <div className="menu-overlay__logo">
-            <Link href="/" onClick={onClose} aria-label="Home">
+            <Link href={`/${locale}`} onClick={onClose} aria-label={t("home")}>
               <Image
                 src="/assets/Logo-Bianco.svg"
                 alt="EQB Milano"

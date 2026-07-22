@@ -1,7 +1,9 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import { CTAButton } from "./CTAButton";
+import { Multiline } from "./Multiline";
 import "./CoworkingFunnel.css";
 
 function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -44,108 +46,15 @@ function useVisible(rootMargin = "-100px") {
   return { ref, visible };
 }
 
-const pains = [
-  {
-    n: "01",
-    title: "I clienti non sono mai davvero tuoi.",
-    body: "Lavori nello studio di qualcun altro, e i suoi clienti restano suoi. Il giorno che cambi, riparti da zero. Stai costruendo il pacchetto di un altro, non il tuo.",
-  },
-  {
-    n: "02",
-    title: "Lavori tanto, ti resta poco.",
-    body: "Percentuali sullo studio, trattenute su ogni seduta, condizioni decise da qualcun altro. Più clienti porti, più grande è la fetta che lasci sul tavolo.",
-  },
-  {
-    n: "03",
-    title: "Rincorri spazi, non costruisci una base.",
-    body: "Un po' a domicilio, un po' in una stanzina, un po' in un centro freddo. Nessun posto che senti tuo, nessuna identità professionale stabile.",
-  },
-  {
-    n: "04",
-    title: "Da solo, resti invisibile.",
-    body: "Niente colleghi con cui confrontarti, niente referral spontanei, niente collaborazioni. Il professionista più bravo, isolato, non cresce.",
-  },
-];
+type Pain = { n: string; title: string; body: string };
+type Pillar = { n: string; title: string; body: string };
+type Step = { n: string; title: string; body: string };
+type Testimonial = { name: string; role: string; quote: string };
+type Objection = { q: string; a: string };
 
-const pillars = [
-  {
-    n: "01",
-    title: "I clienti sono tuoi. Punto.",
-    body: "Costruisci il tuo pacchetto, sotto il tuo nome. Ti diamo spazio e strumenti per farlo crescere — non ci prendiamo i tuoi clienti.",
-  },
-  {
-    n: "02",
-    title: "Quello che guadagni, resta tuo.",
-    body: "Niente percentuali sulle tue sedute: ogni cliente vale per intero, per te. E il modello premia chi lavora — più ore fai, meno paghi l'ora.",
-  },
-  {
-    n: "03",
-    title: "Una base, finalmente tua.",
-    body: "Spazio professionale e curato, sempre pronto: reception che accoglie i tuoi clienti, zero utenze, zero pulizie. Un indirizzo vero, non una stanza a ore.",
-  },
-  {
-    n: "04",
-    title: "Visibile, dal primo giorno.",
-    body: "Uno spazio riconoscibile nel cuore di Milano e un nome che ti dà credibilità prima ancora di parlare. Chi entra qui si fida di te dal primo istante.",
-  },
-];
+const TESTI_IMAGES = ["/assets/testi-cristiana.jpg", "/assets/testi-roberta.jpg", "/assets/testi-loris.jpg"];
 
-const steps = [
-  {
-    n: "01",
-    title: "Prenota",
-    body: "Scegli gli spazi e gli orari che ti servono, con un giorno di anticipo o in tempo reale.",
-  },
-  {
-    n: "02",
-    title: "Lavori",
-    body: "Trovi tutto pronto. Spazio attrezzato, ambienti curati. Tu pensi solo ai tuoi clienti.",
-  },
-  {
-    n: "03",
-    title: "Paghi",
-    body: "A fine mese, solo le ore che hai usato. Nessun anticipo: prima lavori e incassi, poi paghi.",
-  },
-];
-
-// NOTA: le citazioni sono BOZZE — da sostituire con le frasi reali dei professionisti.
-const testimonials = [
-  {
-    name: "Cristiana Curioni",
-    role: "Istruttrice di Pilates e ChinesioPilates",
-    img: "/assets/testi-cristiana.jpg",
-    quote: "Qui non affitto una stanza: ho costruito il mio nome. I clienti sono miei, e per la prima volta lo sento davvero.",
-  },
-  {
-    name: "Roberta Boara",
-    role: "Riflessologa Plantare",
-    img: "/assets/testi-roberta.jpg",
-    quote: "Sono entrata che lavoravo da sola. Oggi collaboro, ricevo referral, e il mio lavoro è cresciuto insieme allo spazio.",
-  },
-  {
-    name: "Loris Bonacina",
-    role: "Chinesiologo",
-    img: "/assets/testi-loris.jpg",
-    quote: "Alleno i miei clienti in uno spazio curato, e le collaborazioni con gli altri professionisti nascono da sole.",
-  },
-];
-
-const objections = [
-  {
-    q: "«E se non riesco a portarmi i clienti?»",
-    a: "È proprio qui che ti aiutiamo: personal brand, contenuti e campagne per farti trovare. E intanto sei in uno spazio dove i clienti già girano, tra colleghi che si scambiano referral.",
-  },
-  {
-    q: "«Ho paura a lasciare lo studio dove lavoro ora.»",
-    a: "Non devi lasciare tutto di colpo. Paghi solo le ore che usi: inizi con poche, tieni il resto, e sposti il tuo lavoro qui con il tuo ritmo.",
-  },
-  {
-    q: "«Adesso non ho il budget per un altro spazio.»",
-    a: "Non è un altro costo fisso: paghi solo quando lavori, e più cresci meno paghi l'ora. Si parte piccoli — l'investimento segue i tuoi clienti, non li precede.",
-  },
-];
-
-function PracticeTimeline() {
+function PracticeTimeline({ steps }: { steps: Step[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const [p, setP] = useState(0);
   useEffect(() => {
@@ -184,6 +93,13 @@ function PracticeTimeline() {
 }
 
 export const CoworkingFunnel: React.FC = () => {
+  const locale = useLocale();
+  const t = useTranslations("coworking");
+  const pains = t.raw("pains") as Pain[];
+  const pillars = t.raw("pillars") as Pillar[];
+  const steps = t.raw("steps") as Step[];
+  const testimonials = (t.raw("testimonials") as Testimonial[]).map((tm, i) => ({ ...tm, img: TESTI_IMAGES[i] }));
+  const objections = t.raw("objections") as Objection[];
   const sOpen  = useVisible("-40px");
   const sPain  = useVisible("-80px");
   const sSol   = useVisible("-80px");
@@ -207,8 +123,8 @@ export const CoworkingFunnel: React.FC = () => {
       <section ref={sOpen.ref as React.RefObject<HTMLElement>} className={`cw-opening${sOpen.visible ? " is-on" : ""}`}>
         <div className="cw-opening__inner">
           <h2 className="cw-opening__title cw-anim cw-anim--1">
-            Hai costruito la tua<br />professionalità per anni.
-            <em>Ma non è ancora davvero tua.</em>
+            <Multiline text={t("openingTitle")} />
+            <em>{t("openingEm")}</em>
           </h2>
         </div>
         <div className="cw-opening__scroll" aria-hidden="true">
@@ -220,11 +136,10 @@ export const CoworkingFunnel: React.FC = () => {
       <section ref={sPain.ref as React.RefObject<HTMLElement>} className={`cw-pain${sPain.visible ? " is-on" : ""}`}>
         <div className="cw-pain__inner">
           <div className="cw-pain__header cw-anim cw-anim--1">
-            <span className="cw-label cw-label--dark">Il problema</span>
-            <h2 className="cw-pain__title">Lo sai già.</h2>
+            <span className="cw-label cw-label--dark">{t("painLabel")}</span>
+            <h2 className="cw-pain__title">{t("painTitle")}</h2>
             <p className="cw-pain__intro">
-              Chi vuole lavorare in proprio, nel benessere, finisce sempre
-              nelle stesse quattro trappole. Ogni giorno.
+              {t("painIntro")}
             </p>
           </div>
           <div className="cw-pain__grid">
@@ -237,7 +152,7 @@ export const CoworkingFunnel: React.FC = () => {
             ))}
           </div>
           <p className="cw-pain__close cw-anim cw-anim--6">
-            Non è colpa tua. È un sistema che ti tiene dipendente.
+            {t("painClose")}
           </p>
         </div>
       </section>
@@ -246,11 +161,10 @@ export const CoworkingFunnel: React.FC = () => {
       <section ref={sSol.ref as React.RefObject<HTMLElement>} className={`cw-solution${sSol.visible ? " is-on" : ""}`}>
         <div className="cw-sol__inner">
           <div className="cw-sol__header">
-            <span className="cw-label cw-anim cw-anim--1">La soluzione</span>
-            <h2 className="cw-sol__title cw-anim cw-anim--2">C&apos;è un altro modo.</h2>
+            <span className="cw-label cw-anim cw-anim--1">{t("solutionLabel")}</span>
+            <h2 className="cw-sol__title cw-anim cw-anim--2">{t("solutionTitle")}</h2>
             <p className="cw-sol__intro cw-anim cw-anim--3">
-              EQB è un ecosistema pensato per renderti autonomo, non per ospitarti.
-              Una risposta precisa per ognuno dei tuoi problemi.
+              {t("solutionIntro")}
             </p>
           </div>
           <div className="cw-sol__pillars">
@@ -263,8 +177,8 @@ export const CoworkingFunnel: React.FC = () => {
             ))}
           </div>
           <div className="cw-practice">
-            <span className="cw-practice__label cw-anim cw-anim--1">E in pratica funziona così</span>
-            <PracticeTimeline />
+            <span className="cw-practice__label cw-anim cw-anim--1">{t("practiceLabel")}</span>
+            <PracticeTimeline steps={steps} />
           </div>
         </div>
       </section>
@@ -273,17 +187,15 @@ export const CoworkingFunnel: React.FC = () => {
       <section ref={sDiff.ref as React.RefObject<HTMLElement>} className={`cw-diff${sDiff.visible ? " is-on" : ""}`}>
         <div className="cw-diff__glow" aria-hidden="true" />
         <div className="cw-diff__inner">
-          <span className="cw-label cw-anim cw-anim--1">Il nostro tratto distintivo</span>
+          <span className="cw-label cw-anim cw-anim--1">{t("diffLabel")}</span>
           <h2 className="cw-diff__title cw-anim cw-anim--2">
-            Non ti diamo solo uno spazio.<br />Ti aiutiamo a riempirlo.
+            <Multiline text={t("diffTitle")} />
           </h2>
           <p className="cw-diff__body cw-anim cw-anim--3">
-            Personal brand, contenuti, campagne: mettiamo le nostre competenze
-            di marketing al servizio della tua crescita, per farti trovare dai
-            clienti giusti. Tu porti il talento, noi l&apos;amplificatore.
+            {t("diffBody")}
           </p>
           <p className="cw-diff__proof cw-anim cw-anim--4">
-            Chi è entrato in questo percorso è cresciuto. È così che nasce un nome.
+            {t("diffProof")}
           </p>
         </div>
       </section>
@@ -292,8 +204,8 @@ export const CoworkingFunnel: React.FC = () => {
       <section ref={sTesti.ref as React.RefObject<HTMLElement>} className={`cw-testi${sTesti.visible ? " is-on" : ""}`}>
         <div className="cw-testi__inner">
           <div className="cw-testi__header cw-anim cw-anim--1">
-            <span className="cw-label">Chi è già dentro</span>
-            <h2 className="cw-testi__title">Nomi, non numeri.</h2>
+            <span className="cw-label">{t("testiLabel")}</span>
+            <h2 className="cw-testi__title">{t("testiTitle")}</h2>
           </div>
           <div className="cw-testi__grid">
             {testimonials.map((t, i) => (
@@ -316,19 +228,15 @@ export const CoworkingFunnel: React.FC = () => {
       <section ref={sComm.ref as React.RefObject<HTMLElement>} className={`cw-community${sComm.visible ? " is-on" : ""}`}>
         <div className="cw-community__inner">
           <div className="cw-community__text">
-            <span className="cw-label cw-label--dark cw-anim cw-anim--1">La rete</span>
+            <span className="cw-label cw-label--dark cw-anim cw-anim--1">{t("communityLabel")}</span>
             <h2 className="cw-community__title cw-anim cw-anim--2">
-              Non sei un ospite.<br />Sei parte di qualcosa.
+              <Multiline text={t("communityTitle")} />
             </h2>
             <p className="cw-community__body cw-anim cw-anim--3">
-              In EQB lavorano fisioterapisti, trainer, osteopati, nutrizionisti,
-              psicologi. Professionisti che si conoscono, si referenziano,
-              costruiscono percorsi integrati per i propri clienti.
+              {t("communityBody1")}
             </p>
             <p className="cw-community__body cw-anim cw-anim--4">
-              Non è un vantaggio secondario. È il cuore del modello.
-              Il cliente del tuo collega è il tuo cliente potenziale —
-              e viceversa. La rete vale quanto lo spazio.
+              {t("communityBody2")}
             </p>
           </div>
           <div className="cw-community__image">
@@ -347,7 +255,7 @@ export const CoworkingFunnel: React.FC = () => {
       <section ref={sObj.ref as React.RefObject<HTMLElement>} className={`cw-obj${sObj.visible ? " is-on" : ""}`}>
         <div className="cw-obj__inner">
           <h2 className="cw-obj__title cw-anim cw-anim--1">
-            Ci siamo già sentiti dire:
+            {t("objTitle")}
           </h2>
           <div className="cw-obj__list">
             {objections.map((o, i) => (
@@ -363,38 +271,37 @@ export const CoworkingFunnel: React.FC = () => {
       {/* ── 8. Final CTA ── */}
       <section ref={sCta.ref as React.RefObject<HTMLElement>} className={`cw-cta${sCta.visible ? " is-on" : ""}`}>
         <div className="cw-cta__inner">
-          <span className="cw-label cw-anim cw-anim--1">Il prossimo passo</span>
+          <span className="cw-label cw-anim cw-anim--1">{t("ctaLabel")}</span>
           <h2 className="cw-cta__title cw-anim cw-anim--2">
-            Vieni a vederlo<br />di persona.
+            <Multiline text={t("ctaTitle")} />
           </h2>
           <p className="cw-cta__sub cw-anim cw-anim--3">
-            Trenta minuti. Zero presentazioni. Lo spazio parla da solo.
-            <br />Nessun impegno — solo una visita.
+            <Multiline text={t("ctaSub")} />
           </p>
           <p className="cw-cta__urgency cw-anim cw-anim--4">
-            Lo spazio è fisico: i posti non sono infiniti.
+            {t("ctaUrgency")}
           </p>
           <div className="cw-cta__actions cw-anim cw-anim--5">
-            <CTAButton href="/candidatura" variant="filled">
-              Candidati per lavorare da EQB →
+            <CTAButton href={`/${locale}/candidatura`} variant="filled">
+              {t("ctaCandidati")}
             </CTAButton>
             <CTAButton href="tel:+393755153273" variant="light">
-              Chiama ora — +39 375 515 3273
+              {t("ctaChiama")}
             </CTAButton>
             <CTAButton href="mailto:info@eqbmilano.it" variant="light">
-              Scrivi per prenotare una visita
+              {t("ctaScrivi")}
             </CTAButton>
           </div>
           <p className="cw-cta__note cw-anim cw-anim--6">
-            Rispondiamo entro poche ore. Di persona, non con un bot.
+            {t("ctaNote")}
           </p>
         </div>
       </section>
 
       {/* ── Sticky CTA ── */}
       <div className={`cw-sticky${showSticky ? " is-shown" : ""}`}>
-        <span className="cw-sticky__text">Pronto a renderlo tuo?</span>
-        <a href="/candidatura" className="cw-sticky__btn">Candidati →</a>
+        <span className="cw-sticky__text">{t("stickyText")}</span>
+        <a href={`/${locale}/candidatura`} className="cw-sticky__btn">{t("stickyCta")}</a>
       </div>
     </>
   );

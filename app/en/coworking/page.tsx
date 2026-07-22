@@ -1,12 +1,11 @@
+import type { Metadata } from "next";
 import { Navbar, Footer } from "@/components";
 import { CoworkingFunnel } from "@/components/CoworkingFunnel";
+import { buildPageMetadata } from "@/lib/metadata";
 
-export const metadata = {
-  title: "Coworking — EQB Milano",
-  alternates: { canonical: "/coworking" },
-};
+export const metadata: Metadata = buildPageMetadata("en", "coworking", "Coworking — EQB Milano");
 
-export default function CoworkingPage() {
+export default function CoworkingRoute() {
   return (
     <main className="w-full relative">
       <Navbar />

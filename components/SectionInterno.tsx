@@ -2,44 +2,25 @@
 import React, { useRef, useCallback } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Mousewheel } from "swiper/modules";
+import { useLocale, useTranslations } from "next-intl";
 import { Reveal } from "./Reveal";
 import "swiper/css";
 import "./SectionInterno.css";
 
-const slides = [
-  {
-    src: "/assets/01_Terapia_Manuale.jpeg",
-    label: "Terapia Manuale",
-    href: "#terapia-manuale",
-    items: ["OSTEOPATIA", "FISIOTERAPIA", "MASSOTERAPIA"],
-  },
-  {
-    src: "/assets/02_Pilates_e_Yoga.jpeg",
-    label: "Pilates e Yoga",
-    href: "#pilates-yoga",
-    items: ["INDIVIDUALI", "DUETTI", "GRUPPI"],
-  },
-  {
-    src: "/assets/03_Personal_Training.jpeg",
-    label: "Personal Training",
-    href: "#personal-training",
-    items: ["ALL. POSTURALE", "ALL. FUNZIONALE", "CALISTHENICS"],
-  },
-  {
-    src: "/assets/04_Relax.jpeg",
-    label: "Relax",
-    href: "#relax",
-    items: ["MASSAGGI", "RIFLESSOLOGIA", "AROMATOUCH"],
-  },
-  {
-    src: "/assets/05_Consulenza.jpeg",
-    label: "Consulenza",
-    href: "#consulenza",
-    items: ["NUTRIZIONE", "PSICOTERAPIA", "MENTAL COACH"],
-  },
+const SLIDE_ASSETS = [
+  "/assets/01_Terapia_Manuale.jpeg",
+  "/assets/02_Pilates_e_Yoga.jpeg",
+  "/assets/03_Personal_Training.jpeg",
+  "/assets/04_Relax.jpeg",
+  "/assets/05_Consulenza.jpeg",
 ];
 
+type Slide = { label: string; items: string[] };
+
 export const SectionInterno: React.FC = () => {
+  const locale = useLocale();
+  const t = useTranslations("home.interno");
+  const slides = (t.raw("slides") as Slide[]).map((s, i) => ({ ...s, src: SLIDE_ASSETS[i] }));
   const cursorRef = useRef<HTMLDivElement>(null);
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -66,32 +47,31 @@ export const SectionInterno: React.FC = () => {
       <div className="section-interno__header">
         <div className="section-interno__header-text">
           <Reveal>
-            <span className="section-interno__label">BENESSERE</span>
+            <span className="section-interno__label">{t("label")}</span>
           </Reveal>
           <Reveal delay={80}>
             <h2 className="section-interno__title">
-              All&rsquo;interno di EQB
+              {t("title")}
             </h2>
           </Reveal>
           <Reveal delay={160}>
             <p className="section-interno__body">
-              Un unico luogo dove trattamento, movimento e recupero non si alternano,
-              ma si incontrano — perché il benessere vero nasce quando tutto lavora insieme.
+              {t("body")}
             </p>
           </Reveal>
           <Reveal delay={240}>
-            <a href="/benessere" className="interno-cta">Scopri i nostri servizi</a>
+            <a href={`/${locale}/benessere`} className="interno-cta">{t("cta")}</a>
           </Reveal>
         </div>
 
         <div className="section-interno__nav">
           <div className="interno-nav-arrows">
-            <button ref={prevRef} className="interno-nav-btn interno-nav-btn--prev" aria-label="Slide precedente">
+            <button ref={prevRef} className="interno-nav-btn interno-nav-btn--prev" aria-label={t("prevSlide")}>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M2.19571 8.57143L8.81543 15.1911L8 16L0 8L8 0L8.81543 0.808857L2.19571 7.42857L16 7.42857V8.57143L2.19571 8.57143Z" fill="currentColor"/>
               </svg>
             </button>
-            <button ref={nextRef} className="interno-nav-btn interno-nav-btn--next" aria-label="Slide successiva">
+            <button ref={nextRef} className="interno-nav-btn interno-nav-btn--next" aria-label={t("nextSlide")}>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M13.8043 7.42857L7.18457 0.808857L8 0L16 8L8 16L7.18457 15.1911L13.8043 8.57143H0V7.42857L13.8043 7.42857Z" fill="currentColor"/>
               </svg>
@@ -154,7 +134,7 @@ export const SectionInterno: React.FC = () => {
         </Swiper>
 
         {/* Cursore drag custom */}
-        <div ref={cursorRef} className="interno-cursor">Trascina</div>
+        <div ref={cursorRef} className="interno-cursor">{t("trascina")}</div>
       </div>
 
     </section>
