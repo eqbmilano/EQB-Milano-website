@@ -4,16 +4,10 @@ import "./ParallaxDivider.css";
 
 interface ParallaxDividerProps {
   src?: string;
-  /** Rapporto larghezza/altezza reale della foto (es. "1999 / 1335"): l'altezza
-   * del divisore si adatta a questo invece di essere fissa, così l'immagine
-   * riempie sempre la larghezza intera dello schermo senza mai croppare o
-   * zoomare (a differenza di un height fisso in vh, che con foto di
-   * proporzioni diverse forzava cover a tagliare pezzi di immagine). */
-  ratio?: string;
   text?: string;
 }
 
-export const ParallaxDivider: React.FC<ParallaxDividerProps> = ({ src, ratio, text }) => {
+export const ParallaxDivider: React.FC<ParallaxDividerProps> = ({ src, text }) => {
   if (!src) {
     return (
       <div className="parallax-divider" aria-hidden={!text}>
@@ -33,7 +27,7 @@ export const ParallaxDivider: React.FC<ParallaxDividerProps> = ({ src, ratio, te
   return (
     <div
       className="parallax-divider parallax-divider--own"
-      style={{ backgroundImage: `url('${src}')`, aspectRatio: ratio }}
+      style={{ backgroundImage: `url('${src}')` }}
       aria-hidden={!text}
     >
       <div className="parallax-divider__overlay" />

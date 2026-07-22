@@ -218,7 +218,7 @@ export const SpazioPage: React.FC = () => {
       </section>
 
       {/* ── 4. Intermezzo Piano Nobile ── */}
-      <ParallaxDivider src="/assets/Spazi-ingresso-frontale.jpg" ratio="1999 / 1335" text="Piano nobile · Terapia e allenamento" />
+      <ParallaxDivider src="/assets/Spazi-ingresso-frontale.jpg" text="Piano nobile · Terapia e allenamento" />
 
       {/* ── 5. Sala Allenamento ── */}
       <section ref={s2.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-sala${s2.visible ? " is-on" : ""}`}>

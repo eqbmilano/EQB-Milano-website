@@ -440,7 +440,6 @@ export const BenesserePageV2: React.FC = () => {
       {/* ── Parallax Divider ── */}
       <ParallaxDivider
         src="/assets/Osteopatia-cranio.jpg"
-        ratio="3333 / 5000"
         text="Ogni percorso nasce dall'incontro tra le tue esigenze e le competenze del professionista più adatto a te."
       />
 

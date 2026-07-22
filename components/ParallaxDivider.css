@@ -8,10 +8,6 @@
 }
 
 .parallax-divider--own {
-  /* niente altezza fissa: l'aspect-ratio (calcolato dalla foto reale, vedi
-     prop "ratio") decide l'altezza in base alla larghezza piena dello
-     schermo, cosi' la foto si vede intera, mai croppata o zoomata. */
-  height: auto;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -55,11 +51,15 @@
 
 @media (max-width: 767px) {
   .parallax-divider {
-    height: 50vh;
+    height: 35vh;
   }
 
+  /* Niente cover su mobile: cover zooma/taglia i lati quando la foto non ha
+     le stesse proporzioni della finestra di 35vh. Larghezza sempre al 100%
+     (mai tagliata ai lati), altezza proporzionale: se la foto è più alta
+     della finestra viene tagliata solo sopra/sotto, mai in larghezza. */
   .parallax-divider--own {
-    height: auto;
+    background-size: 100% auto;
   }
 
   .parallax-divider__text {
