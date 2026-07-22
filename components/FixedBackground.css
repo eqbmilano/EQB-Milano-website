@@ -1,0 +1,10 @@
+/* Su mobile ogni ParallaxDivider porta ormai la propria foto (vedi
+   ParallaxDivider.tsx/css), quindi questo layer fisso a schermo intero non
+   serve più: era anche la causa del flash a foto intera/zoomata visibile
+   per un istante al refresh, prima che il resto della pagina la coprisse.
+   Desktop invariato. */
+@media (max-width: 767px) {
+  .eqb-fixed-bg {
+    display: none;
+  }
+}

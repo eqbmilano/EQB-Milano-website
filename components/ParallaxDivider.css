@@ -13,6 +13,10 @@
   background-attachment: fixed;
 }
 
+.parallax-divider__mobile-img {
+  display: none;
+}
+
 .parallax-divider__overlay {
   position: absolute;
   inset: 0;
@@ -52,20 +56,35 @@
 @media (max-width: 767px) {
   .parallax-divider {
     height: 35vh;
+    overflow: hidden;
   }
 
-  /* Niente cover su mobile: cover zooma/taglia i lati quando la foto non ha
-     le stesse proporzioni della finestra di 35vh. Larghezza sempre al 100%
-     (mai tagliata ai lati), altezza proporzionale: se la foto è più alta
-     della finestra viene tagliata solo sopra/sotto, mai in larghezza.
-     Niente nemmeno background-attachment:fixed: per restare "ferma" durante
-     lo scroll servirebbe una foto molto più alta di quella disponibile
-     (l'effetto richiede spazio in più da "scoprire" scorrendo). Su mobile la
-     foto scorre semplicemente insieme al resto della pagina, come una
-     foto normale. Il desktop non cambia. */
+  /* Niente più parallasse/sfondo fisso su mobile: il divisorio diventa una
+     semplice foto in flusso normale (stile thriom.com), stesso trattamento
+     per tutti i divider, sia quelli con src propria sia quelli che su
+     desktop rivelano il FixedBackground della pagina. Niente CSS
+     background-image: elimina anche il flash a foto intera/zoomata visto
+     al refresh (era il FixedBackground, ora spento su mobile, vedi
+     FixedBackground.css). Il desktop non cambia. */
   .parallax-divider--own {
-    background-size: 100% auto;
-    background-attachment: scroll;
+    background-image: none !important;
+  }
+
+  /* object-fit:cover qui, non "niente crop orizzontale": con width:100%
+     height:auto molte foto restavano più basse di 35vh, lasciando due
+     bande vuote sopra/sotto (visibili, sembrava un bug). Marco ha chiesto
+     esplicitamente di riempire sempre il riquadro anche a costo di un
+     lieve crop laterale — decisione presa oggi, diversa dalla regola del
+     21/07 per lo sfondo CSS del ParallaxDivider (quella riguardava un
+     meccanismo diverso, background-size). */
+  .parallax-divider__mobile-img {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .parallax-divider__text {

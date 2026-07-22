@@ -26,7 +26,7 @@ export default function Home() {
         <Hero />
         <SectionEcosistema />
         <SectionSpazio />
-        <ParallaxDivider />
+        <ParallaxDivider mobileSrc="/assets/Massaggio-viso.jpg" />
         <SectionPercheScegliere />
         <SectionInterno />
         <SectionRecensioni />

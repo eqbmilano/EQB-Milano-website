@@ -213,7 +213,7 @@ export const CoworkingFunnel: React.FC = () => {
   return (
     <>
       {/* ── 1. Opening ── */}
-      <section ref={sOpen.ref as React.RefObject<HTMLElement>} className={`cw-opening${sOpen.visible ? " is-on" : ""}`}>
+      <section ref={sOpen.ref as React.RefObject<HTMLElement>} className={`cw-opening${sOpen.visible ? " is-on" : ""}`} data-navbar-hero>
         <div className="cw-opening__inner">
           <h2 className="cw-opening__title cw-anim cw-anim--1">
             Hai costruito la tua<br />professionalità per anni.

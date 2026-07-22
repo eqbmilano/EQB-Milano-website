@@ -10,6 +10,7 @@ export const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [joinOpen, setJoinOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [showScrim, setShowScrim] = useState(false);
   const pathname = usePathname();
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
@@ -54,6 +55,15 @@ export const Navbar: React.FC = () => {
     };
 
     const update = () => {
+      // Scrim mobile: nascosto sopra l'hero fotografico della pagina (se
+      // c'è, marcato con data-navbar-hero) e col menu aperto; compare non
+      // appena l'hero è scrollato oltre. Sulle pagine senza un hero così
+      // (es. /visione, /aziende) non c'è nulla da proteggere: visibile da
+      // subito.
+      const heroEl = document.querySelector("[data-navbar-hero]") as HTMLElement | null;
+      const pastHero = !heroEl || heroEl.getBoundingClientRect().bottom <= 80;
+      setShowScrim(pastHero && !menuOpen);
+
       if (menuOpen) return;
       // Force white navbar on pages where the hero overlay is too transparent for auto-detection
       const forcedWhitePages = ["/", "/benessere"];
@@ -78,7 +88,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`navbar${menuOpen ? " menu-open" : ""}${darkMode ? " navbar--dark" : ""}`}>
+      <nav className={`navbar${menuOpen ? " menu-open" : ""}${darkMode ? " navbar--dark" : ""}${showScrim ? " navbar--scrim" : ""}`}>
         <div className={`navbar__logo${menuOpen ? " navbar__logo--hidden" : ""}`}>
           <Link href="/">
             <Image

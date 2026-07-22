@@ -81,7 +81,7 @@ export const SpazioPage: React.FC = () => {
     <div className="spazio-page">
 
       {/* ── 1. Opening — full viewport ── */}
-      <section ref={s0.ref as React.RefObject<HTMLElement>} className={`spazio-opening${s0.visible ? " is-on" : ""}`}>
+      <section ref={s0.ref as React.RefObject<HTMLElement>} className={`spazio-opening${s0.visible ? " is-on" : ""}`} data-navbar-hero>
         <Image
           src="/assets/Spazi-corridoio.jpg"
           alt="EQB Milano — corridoio con stampe anatomiche"
@@ -303,7 +303,7 @@ export const SpazioPage: React.FC = () => {
 
       {/* ── 6. Intermezzo: la foto ora vive nel FixedBackground della pagina,
              qui c'è solo il varco trasparente che la rivela (come in home) ── */}
-      <ParallaxDivider text="Piano inferiore · Relax & Recovery" />
+      <ParallaxDivider text="Piano inferiore · Relax & Recovery" mobileSrc="/assets/Spazi-sole-luna-ingresso.jpg" />
 
       {/* ── 6. Stanza Sole ── */}
       <section ref={s5.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-sole${s5.visible ? " is-on" : ""}`}>

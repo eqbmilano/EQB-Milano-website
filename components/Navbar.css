@@ -282,6 +282,24 @@
 @media (max-width: 767px) {
   .navbar {
     padding: 1.25rem;
+    background: none;
+    transition: background-color .4s, backdrop-filter .4s;
+  }
+
+  /* Sfondo semitrasparente sfocato: il contenuto che scorre sotto la
+     navbar fissa non deve leggersi in trasparenza (confonde logo/testi).
+     Il tono resta comunque adattivo (chiaro/scuro) come il colore del
+     logo, via .navbar--dark. Niente scrim sopra l'hero fotografico di
+     apertura (data-navbar-hero in Navbar.tsx) né col menu aperto — lì il
+     transparente puro è quello voluto. */
+  .navbar--scrim {
+    background: rgba(28, 20, 18, .4);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .navbar--scrim.navbar--dark {
+    background: rgba(255, 255, 255, .72);
   }
 
   .navbar__right {

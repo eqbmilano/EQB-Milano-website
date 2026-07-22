@@ -193,7 +193,7 @@ export const Hero: React.FC = () => {
     <>
     <div className="phh-stage" ref={stageRef}>
       <div className="phh-pin">
-        <section className="hero">
+        <section className="hero" data-navbar-hero>
           <video className="hero__video" autoPlay loop muted playsInline preload="auto" poster="/assets/Hero-Poster.jpg">
             <source src="/assets/Video-Home.mp4" type="video/mp4" />
           </video>

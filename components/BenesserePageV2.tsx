@@ -269,6 +269,7 @@ export const BenesserePageV2: React.FC = () => {
       <section
         ref={s0.ref as React.RefObject<HTMLElement>}
         className={`ben-opening${s0.visible ? " is-on" : ""}`}
+        data-navbar-hero
       >
         <Image
           src="/assets/Dettagli-accoglienza.png"

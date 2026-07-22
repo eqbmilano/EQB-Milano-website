@@ -1056,7 +1056,8 @@
 
 @media (max-width: 768px) {
   .cw-opening {
-    min-height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
     padding: 9rem 1.5rem 8rem;
   }
 
