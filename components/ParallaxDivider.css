@@ -8,6 +8,10 @@
 }
 
 .parallax-divider--own {
+  /* niente altezza fissa: l'aspect-ratio (calcolato dalla foto reale, vedi
+     prop "ratio") decide l'altezza in base alla larghezza piena dello
+     schermo, cosi' la foto si vede intera, mai croppata o zoomata. */
+  height: auto;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -52,6 +56,10 @@
 @media (max-width: 767px) {
   .parallax-divider {
     height: 50vh;
+  }
+
+  .parallax-divider--own {
+    height: auto;
   }
 
   .parallax-divider__text {
