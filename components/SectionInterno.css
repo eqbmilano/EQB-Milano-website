@@ -227,26 +227,36 @@
   display: none;
   z-index: 4;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 64px;
+  height: 64px;
   transition: opacity .35s;
   position: absolute;
-  bottom: .85rem;
-  right: .85rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   pointer-events: none;
+}
+
+.interno-tap-hint:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00000047 0%, #0000 72%);
 }
 
 .interno-tap-hint__ring {
   background: #fffffff2;
   border-radius: 50%;
-  width: 11px;
-  height: 11px;
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 1px 6px #00000059;
   position: relative;
 }
 
 .interno-tap-hint__ring:before, .interno-tap-hint__ring:after {
   content: "";
-  border: 1.5px solid #ffffffb3;
+  border: 2px solid #ffffffcc;
   border-radius: 50%;
   position: absolute;
   inset: -1px;
