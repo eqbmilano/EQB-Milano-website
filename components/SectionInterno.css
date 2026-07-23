@@ -221,14 +221,22 @@
   }
 }
 
-/* Indicatore "tocca": un punto con anelli che si espandono. Solo su touch
-   (su desktop c'e' l'hover + il cursore Trascina). Sparisce a card aperta. */
+/* Indicatore "tocca": cerchio vetro (stesso linguaggio dei play button del
+   sito, es. .ben-video-play) con un piccolo punto e una sola onda delicata.
+   Solo su touch (su desktop c'e' l'hover + il cursore Trascina). Sparisce a
+   card aperta. */
 .interno-tap-hint {
   display: none;
   z-index: 4;
   place-items: center;
-  width: 64px;
-  height: 64px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #ffffff1a;
+  border: 1px solid #ffffff66;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 14px #00000026;
   transition: opacity .35s;
   position: absolute;
   top: 50%;
@@ -237,39 +245,26 @@
   pointer-events: none;
 }
 
-.interno-tap-hint:before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle, #00000047 0%, #0000 72%);
-}
-
 .interno-tap-hint__ring {
-  background: #fffffff2;
+  background: #fff;
   border-radius: 50%;
-  width: 16px;
-  height: 16px;
-  box-shadow: 0 1px 6px #00000059;
+  width: 7px;
+  height: 7px;
   position: relative;
 }
 
-.interno-tap-hint__ring:before, .interno-tap-hint__ring:after {
+.interno-tap-hint__ring:before {
   content: "";
-  border: 2px solid #ffffffcc;
+  border: 1px solid #ffffffb3;
   border-radius: 50%;
   position: absolute;
   inset: -1px;
-  animation: internoTapRipple 2.4s cubic-bezier(.22, 1, .36, 1) infinite;
-}
-
-.interno-tap-hint__ring:after {
-  animation-delay: 1.2s;
+  animation: internoTapRipple 2.6s cubic-bezier(.22, 1, .36, 1) infinite;
 }
 
 @keyframes internoTapRipple {
-  0% { transform: scale(1); opacity: .8; }
-  100% { transform: scale(3.4); opacity: 0; }
+  0% { transform: scale(1); opacity: .7; }
+  100% { transform: scale(2.6); opacity: 0; }
 }
 
 .interno-slide.is-flipped .interno-tap-hint {
