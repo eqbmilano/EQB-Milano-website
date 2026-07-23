@@ -871,5 +871,20 @@
     "dirittiLink": "Italian Data Protection Authority",
     "aggiornamentiH2": "Updates",
     "aggiornamentiBody": "This policy may be updated: the version published on this page is the current one.\nLast updated: 13 July 2026."
+  },
+  "scrivici": {
+    "eyebrow": "Get in touch",
+    "title": "Tell us what you need.",
+    "sub": "We reply ourselves, in person.",
+    "fieldNome": "Your name",
+    "fieldNomePlaceholder": "What's your name?",
+    "fieldMsg": "Your message",
+    "fieldMsgPlaceholder": "What are you looking for? A path, a treatment, a workspace…",
+    "btnWhatsapp": "Send on WhatsApp",
+    "btnMail": "Write to us by email",
+    "waSono": "Hi! I'm",
+    "waDefaultMsg": "I'd like some information.",
+    "mailOggetto": "EQB Milano request",
+    "exit": "Close"
   }
 }

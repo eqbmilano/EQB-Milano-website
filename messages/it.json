@@ -871,5 +871,20 @@
     "dirittiLink": "Garante per la protezione dei dati personali",
     "aggiornamentiH2": "Aggiornamenti",
     "aggiornamentiBody": "Questa informativa può essere aggiornata: la versione pubblicata su questa pagina è quella vigente.\nUltimo aggiornamento: 13 luglio 2026."
+  },
+  "scrivici": {
+    "eyebrow": "Scrivici",
+    "title": "Raccontaci di cosa hai bisogno.",
+    "sub": "Ti rispondiamo noi, di persona.",
+    "fieldNome": "Il tuo nome",
+    "fieldNomePlaceholder": "Come ti chiami?",
+    "fieldMsg": "Il tuo messaggio",
+    "fieldMsgPlaceholder": "Cosa cerchi? Un percorso, un trattamento, uno spazio di lavoro…",
+    "btnWhatsapp": "Invia su WhatsApp",
+    "btnMail": "Scrivici via mail",
+    "waSono": "Ciao! Sono",
+    "waDefaultMsg": "Vorrei avere informazioni.",
+    "mailOggetto": "Richiesta EQB Milano",
+    "exit": "Chiudi"
   }
 }

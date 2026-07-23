@@ -125,7 +125,7 @@ export const Navbar: React.FC = () => {
                   <span className="navbar__join-label">{t("profLabel")} &#8594;</span>
                   <span className="navbar__join-desc">{t("profDesc")}</span>
                 </Link>
-                <Link href={`/${locale}/contatti`} className="navbar__join-item" onClick={() => setJoinOpen(false)}>
+                <Link href={`/${locale}/scrivici`} className="navbar__join-item" onClick={() => setJoinOpen(false)}>
                   <span className="navbar__join-kicker">{t("clienteSei")}</span>
                   <span className="navbar__join-label">{t("clienteLabel")} &#8594;</span>
                   <span className="navbar__join-desc">{t("clienteDesc")}</span>
