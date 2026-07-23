@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Mousewheel } from "swiper/modules";
 import { Reveal } from "./Reveal";
@@ -44,6 +44,8 @@ export const SectionInterno: React.FC = () => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
+  // Slide con l'overlay attivita' aperto (tap-to-reveal su mobile).
+  const [flipped, setFlipped] = useState<number | null>(null);
 
   // Il tooltip "Trascina" non si affida solo a mouseenter/mouseleave sul wrap:
   // durante un vero swipe (non il semplice hover) Swiper interrompe la
@@ -151,10 +153,13 @@ export const SectionInterno: React.FC = () => {
           className="interno-swiper"
         >
           {slides.map((slide, i) => (
-            <SwiperSlide key={slide.src} className="interno-slide">
+            <SwiperSlide key={slide.src} className={`interno-slide${flipped === i ? " is-flipped" : ""}`}>
               <span className="interno-slide__number">{String(i + 1).padStart(2, "0")}</span>
 
-              <div className="interno-slide__image-wrap">
+              <div
+                className="interno-slide__image-wrap"
+                onClick={() => setFlipped(flipped === i ? null : i)}
+              >
                 <div
                   className="interno-slide__image"
                   style={{ backgroundImage: `url('${slide.src}')` }}
@@ -170,6 +175,7 @@ export const SectionInterno: React.FC = () => {
                     </ul>
                   </div>
                 </div>
+                <span className="interno-tap-hint" aria-hidden="true"><span className="interno-tap-hint__ring" /></span>
               </div>
 
               <span className="interno-slide__label">{slide.label}</span>

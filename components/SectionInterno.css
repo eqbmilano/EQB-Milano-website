@@ -195,6 +195,89 @@
   transform: translateY(0);
 }
 
+/* Tap-to-reveal: il tocco apre/chiude l'overlay attivita' come l'hover su
+   desktop. Su touch l'hover "sticky" viene neutralizzato, cosi' il ri-tocco
+   richiude davvero (is-flipped ridichiarato dopo, per vincere sull'hover). */
+.interno-slide.is-flipped .interno-overlay {
+  opacity: 1;
+}
+
+.interno-slide.is-flipped .interno-overlay__content {
+  transform: translateY(0);
+}
+
+@media (hover: none) {
+  .interno-slide:hover .interno-overlay {
+    opacity: 0;
+  }
+  .interno-slide:hover .interno-overlay__content {
+    transform: translateY(8px);
+  }
+  .interno-slide.is-flipped .interno-overlay {
+    opacity: 1;
+  }
+  .interno-slide.is-flipped .interno-overlay__content {
+    transform: translateY(0);
+  }
+}
+
+/* Indicatore "tocca": un punto con anelli che si espandono. Solo su touch
+   (su desktop c'e' l'hover + il cursore Trascina). Sparisce a card aperta. */
+.interno-tap-hint {
+  display: none;
+  z-index: 4;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  transition: opacity .35s;
+  position: absolute;
+  bottom: .85rem;
+  right: .85rem;
+  pointer-events: none;
+}
+
+.interno-tap-hint__ring {
+  background: #fffffff2;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  position: relative;
+}
+
+.interno-tap-hint__ring:before, .interno-tap-hint__ring:after {
+  content: "";
+  border: 1.5px solid #ffffffb3;
+  border-radius: 50%;
+  position: absolute;
+  inset: -1px;
+  animation: internoTapRipple 2.4s cubic-bezier(.22, 1, .36, 1) infinite;
+}
+
+.interno-tap-hint__ring:after {
+  animation-delay: 1.2s;
+}
+
+@keyframes internoTapRipple {
+  0% { transform: scale(1); opacity: .8; }
+  100% { transform: scale(3.4); opacity: 0; }
+}
+
+.interno-slide.is-flipped .interno-tap-hint {
+  opacity: 0;
+}
+
+@media (hover: none), (max-width: 768px) {
+  .interno-tap-hint {
+    display: grid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interno-tap-hint__ring:before, .interno-tap-hint__ring:after {
+    animation: none;
+  }
+}
+
 .interno-overlay__list {
   flex-direction: column;
   align-items: center;
