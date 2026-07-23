@@ -618,7 +618,8 @@
       "title": "Raccontaci di te.",
       "sub": "Non è un modulo da compilare. Leggiamo ogni candidatura di persona: se il tuo profilo è in linea con EQB, ti chiamiamo noi.",
       "cta": "Inizia",
-      "foot": "Tieni a portata di mano il tuo CV."
+      "foot": "Tieni a portata di mano il tuo CV.",
+      "scarcity": "Lo spazio è fisico: i posti non sono infiniti."
     },
     "categoria": {
       "eyebrow": "1 di 7",
@@ -858,10 +859,10 @@
     "dati3H3": "3. Dati che ci comunichi tu",
     "dati3Body": "Il form nella pagina Contatti non invia nulla ai nostri server: prepara un messaggio WhatsApp sul tuo dispositivo, che decidi tu se inviare. Se ci contatti via telefono, email o WhatsApp, i dati che ci fornisci (nome, recapito, contenuto del messaggio) vengono usati solo per risponderti e gestire la tua richiesta. Base giuridica: esecuzione di misure precontrattuali richieste dall'interessato (art. 6.1.b GDPR). Conserviamo queste comunicazioni per il tempo necessario a gestire la richiesta e gli eventuali obblighi che ne derivano.",
     "dati4H3": "4. Mappa di Google",
-    "dati4BodyPre": "Nella pagina Contatti la mappa di Google Maps non si carica automaticamente: compare solo se scegli di attivarla. Attivandola, Google può installare propri cookie e trattare dati secondo la sua",
+    "dati4BodyPre": "Nella pagina Contatti è presente una mappa di Google Maps che si carica insieme alla pagina. Tramite questa mappa Google può installare propri cookie e trattare dati secondo la sua",
     "dati4Link": "informativa privacy",
     "cookieH2": "Cookie",
-    "cookieBody": "Il sito non utilizza cookie di profilazione né cookie analitici di terze parti. Gli unici cookie eventualmente presenti sono tecnici, necessari al funzionamento, oppure quelli di Google Maps se decidi di attivare la mappa (vedi sopra).",
+    "cookieBody": "Il sito non utilizza cookie di profilazione né cookie analitici di terze parti. Gli unici cookie presenti sono tecnici, necessari al funzionamento, e quelli di Google Maps, caricati insieme alla mappa nella pagina Contatti (vedi sopra).",
     "comunicazioneH2": "Comunicazione dei dati",
     "comunicazioneBody": "I dati non vengono venduti né ceduti a terzi. Possono venirne a conoscenza solo i soggetti che collaborano con il Titolare alla gestione del sito e dell'attività (fornitori tecnici, consulenti), nominati responsabili del trattamento ove necessario.",
     "dirittiH2": "I tuoi diritti",

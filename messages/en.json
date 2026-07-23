@@ -618,7 +618,8 @@
       "title": "Tell us about yourself.",
       "sub": "This isn't a form to fill in. We read every application in person: if your profile fits EQB, we'll call you.",
       "cta": "Start",
-      "foot": "Keep your CV handy."
+      "foot": "Keep your CV handy.",
+      "scarcity": "The space is physical: spots are not unlimited."
     },
     "categoria": {
       "eyebrow": "1 of 7",
@@ -858,10 +859,10 @@
     "dati3H3": "3. Data you provide us",
     "dati3Body": "The form on the Contact page doesn't send anything to our servers: it prepares a WhatsApp message on your device, which you decide whether to send. If you contact us by phone, email or WhatsApp, the data you provide (name, contact details, message content) is used only to reply to you and handle your request. Legal basis: performance of pre-contractual measures requested by the data subject (Art. 6.1.b GDPR). We keep these communications for as long as necessary to handle the request and any resulting obligations.",
     "dati4H3": "4. Google Maps",
-    "dati4BodyPre": "On the Contact page, the Google Maps map doesn't load automatically: it only appears if you choose to activate it. By activating it, Google may set its own cookies and process data according to its",
+    "dati4BodyPre": "The Contact page includes a Google Maps map that loads together with the page. Through this map, Google may set its own cookies and process data according to its",
     "dati4Link": "privacy policy",
     "cookieH2": "Cookies",
-    "cookieBody": "The site doesn't use profiling cookies or third-party analytics cookies. The only cookies that may be present are technical ones, necessary for operation, or those from Google Maps if you choose to activate the map (see above).",
+    "cookieBody": "The site doesn't use profiling cookies or third-party analytics cookies. The only cookies present are technical ones, necessary for operation, and those from Google Maps, loaded together with the map on the Contact page (see above).",
     "comunicazioneH2": "Data disclosure",
     "comunicazioneBody": "Data is never sold or transferred to third parties. It may only be accessed by parties who collaborate with the Data Controller in managing the site and the business (technical providers, consultants), appointed as data processors where necessary.",
     "dirittiH2": "Your rights",
