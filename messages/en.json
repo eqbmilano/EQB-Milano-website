@@ -221,7 +221,7 @@
     "eventiBody": "We host experiences built around wellness: workshops, gatherings, formats dedicated to people who work with the body and with people. We provide the setting, the network of professionals who live the space every day, and care for every detail.",
     "partnershipTitle": "Partnerships and Collaborations",
     "partnershipTagline": "A home for those who work with continuity.",
-    "partnershipBody": "We work with businesses that share our approach to wellness. Brands, professionals and projects who want to grow in a setting built on quality and trust.",
+    "partnershipBody": "We work with businesses that share our approach to wellness. True psychophysical wellness happens when body, movement and recovery work together. Brands, professionals and projects who want to grow in a setting built on quality and trust.",
     "formEyebrow": "Let's talk",
     "formTitle": "Tell us your idea.",
     "formSub": "We reply ourselves, in person.",
@@ -238,7 +238,8 @@
     "tipoLabelCollaborazione": "an ongoing collaboration",
     "waSono": "Hi! I'm",
     "waScrivo": "I'm writing about",
-    "mailOggetto": "Companies & events"
+    "mailOggetto": "EQB request",
+    "btnMail": "Write to us by email"
   },
   "benessere": {
     "openingLabel": "Wellness",
@@ -433,7 +434,7 @@
     "doveSiamoTitle": "Come visit us\nin the studio.",
     "indirizzoLabel": "Address",
     "orariLabel": "Hours",
-    "orariValue": "By appointment — write to us to book yours.",
+    "orariValue": "By appointment, write to us to book yours.",
     "mapsBtn": "Open in Google Maps →",
     "mapGateTitle": "Show the map",
     "mapGateNote": "The map is provided by Google Maps: loading it means accepting its cookies.",
@@ -450,7 +451,8 @@
     "waGenerico": "Hi! I'd like information about EQB Milano",
     "waSono": "Hi! I'm",
     "waDefaultMsg": "I'd like some information.",
-    "mailOggetto": "Information request"
+    "mailOggetto": "EQB Milano request",
+    "btnMail": "Write to us by email"
   },
   "coworking": {
     "openingTitle": "You've built your\nprofessional skills for years.",
@@ -807,7 +809,7 @@
     "chiSiamoBody": "It's an innovative venture in the psychophysical wellness industry, dedicated to wellness and movement professionals. An ecosystem that brings together spaces, people and opportunities.",
     "missioneLabel": "Our vision",
     "missioneTitle": "We have a mission...",
-    "missioneBody": "...to create Italy's first, real, chain of multi-purpose coworking studios for therapy, movement and wellness. A curated, selected space where you can truly grow — not just rent a room.",
+    "missioneBody": "...to create Italy's first, real, chain of multi-purpose coworking studios for therapy, movement and wellness. A curated, selected space where you can truly grow, not just rent a room.",
     "pillars": [
       {
         "title": "Real flexibility",
@@ -840,7 +842,7 @@
     },
     "ctaTitle": "Join\nour team.",
     "ctaBody": "Start working in a curated space, with no constraints, inside an ecosystem that supports your growth.",
-    "ctaBtn": "Request a meeting at the studio →"
+    "ctaBtn": "Apply to work at EQB →"
   },
   "privacy": {
     "label": "Privacy",

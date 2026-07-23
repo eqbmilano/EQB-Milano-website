@@ -1,17 +1,16 @@
+"use client";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import { Navbar, Footer } from "@/components";
 import { Reveal } from "@/components/Reveal";
 import { VisionePillars } from "@/components/VisionePillars";
-import "./visione.css";
+import { Multiline } from "@/components/Multiline";
+import "./VisionePageContent.css";
 
-export const metadata = {
-  title: "Visione — EQB Milano",
-  description:
-    "La storia e la missione di EQB Milano: costruire la prima catena di studi in coworking per la terapia, il movimento e il benessere in Italia.",
-  alternates: { canonical: "/visione" },
-};
+export function VisionePageContent() {
+  const locale = useLocale();
+  const t = useTranslations("visione");
 
-export default function VisionePage() {
   return (
     <main className="w-full relative">
       <Navbar />
@@ -19,12 +18,12 @@ export default function VisionePage() {
       {/* ── 1. HERO ── */}
       <section className="vis-hero">
         <div className="vis-hero__inner">
-          <Reveal><span className="vis-label">Visione</span></Reveal>
+          <Reveal><span className="vis-label">{t("heroLabel")}</span></Reveal>
           <Reveal delay={80}>
-            <h1 className="vis-hero__title">La nostra storia</h1>
+            <h1 className="vis-hero__title">{t("heroTitle")}</h1>
           </Reveal>
           <Reveal delay={160}>
-            <p className="vis-hero__sub">Conosci il team e scopri la nostra missione.</p>
+            <p className="vis-hero__sub">{t("heroSub")}</p>
           </Reveal>
         </div>
       </section>
@@ -33,17 +32,15 @@ export default function VisionePage() {
       <section className="vis-chisiamo">
         <div className="vis-chisiamo__inner">
           <div className="vis-chisiamo__text">
-            <Reveal><span className="vis-label">Chi siamo</span></Reveal>
+            <Reveal><span className="vis-label">{t("chiSiamoLabel")}</span></Reveal>
             <Reveal delay={80}>
               <h2 className="vis-chisiamo__title">
-                EQB non è solo<br />uno spazio fisico.
+                <Multiline text={t("chiSiamoTitle")} />
               </h2>
             </Reveal>
             <Reveal delay={160}>
               <p className="vis-chisiamo__body">
-                È una realtà innovativa nel settore del benessere psicofisico,
-                dedicata a professionisti del benessere e del movimento.
-                Un ecosistema che unisce spazi, persone e opportunità.
+                {t("chiSiamoBody")}
               </p>
             </Reveal>
           </div>
@@ -62,15 +59,13 @@ export default function VisionePage() {
       {/* ── 3. MISSIONE ── */}
       <section className="vis-missione">
         <div className="vis-missione__inner">
-          <Reveal><span className="vis-label vis-label--center">La nostra visione</span></Reveal>
+          <Reveal><span className="vis-label vis-label--center">{t("missioneLabel")}</span></Reveal>
           <Reveal delay={80}>
-            <h2 className="vis-missione__title">Abbiamo una missione...</h2>
+            <h2 className="vis-missione__title">{t("missioneTitle")}</h2>
           </Reveal>
           <Reveal delay={160}>
             <p className="vis-missione__body">
-              ...creare la prima, vera, catena di studi polifunzionali in coworking
-              per la terapia, il movimento e il benessere in Italia. Uno spazio curato,
-              selezionato, dove crescere davvero, non solo affittare una stanza.
+              {t("missioneBody")}
             </p>
           </Reveal>
         </div>
@@ -85,10 +80,10 @@ export default function VisionePage() {
       <section className="vis-team">
         <div className="vis-team__inner">
           <Reveal>
-            <span className="vis-label vis-label--center">Team</span>
+            <span className="vis-label vis-label--center">{t("teamLabel")}</span>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="vis-team__title">Conosci i fondatori</h2>
+            <h2 className="vis-team__title">{t("teamTitle")}</h2>
           </Reveal>
 
           {/* Marco */}
@@ -96,21 +91,17 @@ export default function VisionePage() {
             <Reveal className="vis-founder__photo">
               <Image
                 src="/assets/visione-marco.jpg"
-                alt="Marco Adinolfi, co-fondatore di EQB Milano"
+                alt={`${t("marco.name")}, ${t("marco.role")}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 style={{ objectFit: "cover" }}
               />
             </Reveal>
             <Reveal delay={100} className="vis-founder__text">
-              <h3 className="vis-founder__name">Marco Adinolfi</h3>
-              <p className="vis-founder__role">Co-fondatore · Direzione Strategica &amp; Sviluppo Attività</p>
+              <h3 className="vis-founder__name">{t("marco.name")}</h3>
+              <p className="vis-founder__role">{t("marco.role")}</p>
               <p className="vis-founder__bio">
-                Marco si occupa dello sviluppo imprenditoriale e della gestione strategica
-                di EQB. Coordina l&rsquo;organizzazione dello studio, il posizionamento
-                del brand e la crescita del progetto, con l&rsquo;obiettivo di creare uno
-                spazio in cui i professionisti del movimento e della salute possano
-                lavorare al meglio.
+                {t("marco.bio")}
               </p>
             </Reveal>
           </div>
@@ -118,20 +109,16 @@ export default function VisionePage() {
           {/* Federico */}
           <div className="vis-founder vis-founder--reverse">
             <Reveal delay={100} className="vis-founder__text">
-              <h3 className="vis-founder__name">Federico Mondin</h3>
-              <p className="vis-founder__role">Co-fondatore · Direzione Clinica &amp; Coordinamento Professionisti</p>
+              <h3 className="vis-founder__name">{t("federico.name")}</h3>
+              <p className="vis-founder__role">{t("federico.role")}</p>
               <p className="vis-founder__bio">
-                Federico, Osteopata e studente di Fisioterapia, rappresenta il riferimento
-                clinico di EQB. Supervisiona la qualità dei trattamenti e coordina
-                la collaborazione tra i professionisti che operano nello studio,
-                con l&rsquo;obiettivo di costruire percorsi personalizzati e integrati
-                per ogni cliente.
+                {t("federico.bio")}
               </p>
             </Reveal>
             <Reveal className="vis-founder__photo">
               <Image
                 src="/assets/visione-federico.jpg"
-                alt="Federico Mondin, co-fondatore di EQB Milano"
+                alt={`${t("federico.name")}, ${t("federico.role")}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 style={{ objectFit: "cover" }}
@@ -146,17 +133,16 @@ export default function VisionePage() {
         <div className="vis-cta__inner">
           <div className="vis-cta__text">
             <Reveal>
-              <h2 className="vis-cta__title">Entra nel<br />nostro team.</h2>
+              <h2 className="vis-cta__title"><Multiline text={t("ctaTitle")} /></h2>
             </Reveal>
             <Reveal delay={100}>
               <p className="vis-cta__body">
-                Inizia a lavorare in uno spazio curato, senza vincoli,
-                all&rsquo;interno di un ecosistema che supporta la tua crescita.
+                {t("ctaBody")}
               </p>
             </Reveal>
             <Reveal delay={200}>
-              <a href="/candidatura" className="vis-cta__btn">
-                Candidati per lavorare in EQB →
+              <a href={`/${locale}/candidatura`} className="vis-cta__btn">
+                {t("ctaBtn")}
               </a>
             </Reveal>
           </div>

@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import { SocialLinks } from "./SocialIcons";
+import { Multiline } from "./Multiline";
 import "./ContattiPage.css";
 
 const WA_NUM = "393755153273";
@@ -22,11 +24,12 @@ function Ico({ name }: { name: "phone" | "wa" | "mail" | "pin" | "clock" }) {
 }
 
 export const ContattiPage: React.FC = () => {
+  const t = useTranslations("contatti");
   const [nome, setNome] = useState("");
   const [msg, setMsg] = useState("");
-  const composed = `Ciao! Sono ${nome.trim() || "[nome]"}. ${msg.trim() || "Vorrei avere informazioni."}`;
+  const composed = `${t("waSono")} ${nome.trim() || "[nome]"}. ${msg.trim() || t("waDefaultMsg")}`;
   const formWa = `${WA}${encodeURIComponent(composed)}`;
-  const formMail = `mailto:${EMAIL}?subject=${encodeURIComponent("Richiesta EQB Milano")}&body=${encodeURIComponent(composed)}`;
+  const formMail = `mailto:${EMAIL}?subject=${encodeURIComponent(t("mailOggetto"))}&body=${encodeURIComponent(composed)}`;
 
   // Cattura server best-effort: non blocca il click, il canale primario resta WhatsApp.
   const notifyServer = () => {
@@ -43,10 +46,10 @@ export const ContattiPage: React.FC = () => {
 
       {/* Header */}
       <section className="cnt-hero">
-        <span className="cnt-eyebrow">Contatti</span>
-        <h1 className="cnt-hero__title">Parliamone.</h1>
+        <span className="cnt-eyebrow">{t("eyebrow")}</span>
+        <h1 className="cnt-hero__title">{t("heroTitle")}</h1>
         <p className="cnt-hero__sub">
-          Scrivici, chiamaci o passa a trovarci.<br />Ti rispondiamo in fretta e troviamo insieme da dove partire.
+          <Multiline text={t("heroSub")} />
         </p>
       </section>
 
@@ -54,52 +57,52 @@ export const ContattiPage: React.FC = () => {
       <section className="cnt-quick">
         <a className="cnt-card" href={`tel:${PHONE_TEL}`}>
           <span className="cnt-card__ico"><Ico name="phone" /></span>
-          <span className="cnt-card__label">Telefono</span>
+          <span className="cnt-card__label">{t("telefonoLabel")}</span>
           <span className="cnt-card__value">{PHONE_DISPLAY}</span>
-          <span className="cnt-card__cta">Chiama →</span>
+          <span className="cnt-card__cta">{t("telefonoCta")}</span>
         </a>
-        <a className="cnt-card cnt-card--wa" href={`${WA}${encodeURIComponent("Ciao! Vorrei avere informazioni su EQB Milano")}`} target="_blank" rel="noopener noreferrer">
+        <a className="cnt-card cnt-card--wa" href={`${WA}${encodeURIComponent(t("waGenerico"))}`} target="_blank" rel="noopener noreferrer">
           <span className="cnt-card__ico"><Ico name="wa" /></span>
-          <span className="cnt-card__label">WhatsApp</span>
+          <span className="cnt-card__label">{t("whatsappLabel")}</span>
           <span className="cnt-card__value">{PHONE_DISPLAY}</span>
-          <span className="cnt-card__cta">Scrivici →</span>
+          <span className="cnt-card__cta">{t("whatsappCta")}</span>
         </a>
         <a className="cnt-card" href={`mailto:${EMAIL}`}>
           <span className="cnt-card__ico"><Ico name="mail" /></span>
-          <span className="cnt-card__label">Email</span>
+          <span className="cnt-card__label">{t("emailLabel")}</span>
           <span className="cnt-card__value">{EMAIL}</span>
-          <span className="cnt-card__cta">Invia →</span>
+          <span className="cnt-card__cta">{t("emailCta")}</span>
         </a>
       </section>
 
       {/* Seguici */}
       <section className="cnt-social">
-        <span className="cnt-social__label">Seguici</span>
+        <span className="cnt-social__label">{t("seguiciLabel")}</span>
         <SocialLinks variant="dark" size={22} iconStyle="circle" />
       </section>
 
       {/* Dove siamo */}
       <section className="cnt-where">
         <div className="cnt-where__info">
-          <span className="cnt-eyebrow">Dove siamo</span>
-          <h2 className="cnt-where__title">Vieni a trovarci<br />in studio.</h2>
+          <span className="cnt-eyebrow">{t("doveSiamoEyebrow")}</span>
+          <h2 className="cnt-where__title"><Multiline text={t("doveSiamoTitle")} /></h2>
           <ul className="cnt-where__list">
             <li>
               <span className="cnt-where__ico"><Ico name="pin" /></span>
               <div>
-                <strong>Indirizzo</strong>
+                <strong>{t("indirizzoLabel")}</strong>
                 <a href={MAPS_LINK} target="_blank" rel="noopener noreferrer">{ADDRESS}</a>
               </div>
             </li>
             <li>
               <span className="cnt-where__ico"><Ico name="clock" /></span>
               <div>
-                <strong>Orari</strong>
-                <span>Su appuntamento, scrivici per fissare il tuo.</span>
+                <strong>{t("orariLabel")}</strong>
+                <span>{t("orariValue")}</span>
               </div>
             </li>
           </ul>
-          <a className="cnt-where__btn" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">Apri in Google Maps →</a>
+          <a className="cnt-where__btn" href={MAPS_LINK} target="_blank" rel="noopener noreferrer">{t("mapsBtn")}</a>
         </div>
         <div className="cnt-where__map">
           <iframe
@@ -116,25 +119,25 @@ export const ContattiPage: React.FC = () => {
       <section className="cnt-form">
         <div className="cnt-form__inner">
           <div className="cnt-form__head">
-            <span className="cnt-eyebrow">Scrivici</span>
-            <h2 className="cnt-form__title">Raccontaci di cosa hai bisogno.</h2>
-            <p className="cnt-form__sub">Ti rispondiamo noi, di persona.</p>
+            <span className="cnt-eyebrow">{t("formEyebrow")}</span>
+            <h2 className="cnt-form__title">{t("formTitle")}</h2>
+            <p className="cnt-form__sub">{t("formSub")}</p>
           </div>
           <div className="cnt-form__fields">
             <label className="cnt-field">
-              <span>Il tuo nome</span>
-              <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Come ti chiami?" />
+              <span>{t("fieldNome")}</span>
+              <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder={t("fieldNomePlaceholder")} />
             </label>
             <label className="cnt-field">
-              <span>Il tuo messaggio</span>
-              <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={4} placeholder="Cosa cerchi? Un percorso, un trattamento, uno spazio di lavoro…" />
+              <span>{t("fieldMsg")}</span>
+              <textarea value={msg} onChange={(e) => setMsg(e.target.value)} rows={4} placeholder={t("fieldMsgPlaceholder")} />
             </label>
             <div className="cnt-form__actions">
               <a className="cnt-form__btn" href={formWa} target="_blank" rel="noopener noreferrer" onClick={notifyServer}>
-                Invia su WhatsApp →
+                {t("btnWhatsapp")}
               </a>
               <a className="cnt-form__btn cnt-form__btn--alt" href={formMail} onClick={notifyServer}>
-                Scrivici via mail
+                {t("btnMail")}
               </a>
             </div>
           </div>

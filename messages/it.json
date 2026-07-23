@@ -221,7 +221,7 @@
     "eventiBody": "Ospitiamo esperienze costruite attorno al benessere: workshop, incontri, format dedicati a chi lavora con il corpo e con le persone. Mettiamo a disposizione l'ambiente, la rete di professionisti che vive lo spazio ogni giorno e la cura per ogni dettaglio.",
     "partnershipTitle": "Partnership e Collaborazioni",
     "partnershipTagline": "Una casa per chi lavora con continuità.",
-    "partnershipBody": "Lavoriamo con realtà che condividono il nostro modo di intendere il benessere. Brand, professionisti e progetti che vogliono crescere in un contesto costruito sulla qualità e sulla fiducia.",
+    "partnershipBody": "Lavoriamo con realtà che condividono il nostro modo di intendere il benessere. Il benessere psicofisico vero nasce quando corpo, movimento e recupero lavorano insieme. Brand, professionisti e progetti che vogliono crescere in un contesto costruito sulla qualità e sulla fiducia.",
     "formEyebrow": "Parliamone",
     "formTitle": "Raccontaci la tua idea.",
     "formSub": "Rispondiamo noi, di persona.",
@@ -238,7 +238,8 @@
     "tipoLabelCollaborazione": "una collaborazione stabile",
     "waSono": "Ciao! Sono",
     "waScrivo": "Vi scrivo per",
-    "mailOggetto": "Aziende & eventi"
+    "mailOggetto": "Richiesta EQB",
+    "btnMail": "Scrivici via mail"
   },
   "benessere": {
     "openingLabel": "Benessere",
@@ -433,7 +434,7 @@
     "doveSiamoTitle": "Vieni a trovarci\nin studio.",
     "indirizzoLabel": "Indirizzo",
     "orariLabel": "Orari",
-    "orariValue": "Su appuntamento — scrivici per fissare il tuo.",
+    "orariValue": "Su appuntamento, scrivici per fissare il tuo.",
     "mapsBtn": "Apri in Google Maps →",
     "mapGateTitle": "Mostra la mappa",
     "mapGateNote": "La mappa è di Google Maps: caricandola accetti i suoi cookie.",
@@ -450,7 +451,8 @@
     "waGenerico": "Ciao! Vorrei avere informazioni su EQB Milano",
     "waSono": "Ciao! Sono",
     "waDefaultMsg": "Vorrei avere informazioni.",
-    "mailOggetto": "Richiesta informazioni"
+    "mailOggetto": "Richiesta EQB Milano",
+    "btnMail": "Scrivici via mail"
   },
   "coworking": {
     "openingTitle": "Hai costruito la tua\nprofessionalità per anni.",
@@ -807,7 +809,7 @@
     "chiSiamoBody": "È una realtà innovativa nel settore del benessere psicofisico, dedicata a professionisti del benessere e del movimento. Un ecosistema che unisce spazi, persone e opportunità.",
     "missioneLabel": "La nostra visione",
     "missioneTitle": "Abbiamo una missione...",
-    "missioneBody": "...creare la prima, vera, catena di studi polifunzionali in coworking per la terapia, il movimento e il benessere in Italia. Uno spazio curato, selezionato, dove crescere davvero — non solo affittare una stanza.",
+    "missioneBody": "...creare la prima, vera, catena di studi polifunzionali in coworking per la terapia, il movimento e il benessere in Italia. Uno spazio curato, selezionato, dove crescere davvero, non solo affittare una stanza.",
     "pillars": [
       {
         "title": "Flessibilità reale",
@@ -840,7 +842,7 @@
     },
     "ctaTitle": "Entra nel\nnostro team.",
     "ctaBody": "Inizia a lavorare in uno spazio curato, senza vincoli, all'interno di un ecosistema che supporta la tua crescita.",
-    "ctaBtn": "Richiedi un incontro in studio →"
+    "ctaBtn": "Candidati per lavorare in EQB →"
   },
   "privacy": {
     "label": "Privacy",
