@@ -265,8 +265,8 @@
     "postura": {
       "eyebrow": "Hai un obiettivo ma non sai da dove partire?",
       "title": "Valutazione\nPosturale",
-      "body1": "Un primo incontro per capire da dove nasce il tuo problema — non solo dove fa male.",
-      "body2": "Se il dolore continua a tornare, spesso non è sfortuna: finora si è agito sul sintomo, non sulla causa. Insieme analizziamo la tua situazione e ne usciamo con una direzione chiara su cosa fare — non con l'ennesimo trattamento da provare.",
+      "body1": "Un primo incontro per capire da dove nasce il tuo problema, non solo dove fa male.",
+      "body2": "Se il dolore continua a tornare, spesso non è sfortuna: finora si è agito sul sintomo, non sulla causa. Insieme analizziamo la tua situazione e ne usciamo con una direzione chiara su cosa fare, non con l'ennesimo trattamento da provare.",
       "firmaName": "Federico Mondin",
       "firmaRole": "Osteopata · Co-fondatore EQB Milano",
       "tiltSub": "Dalla prima visita capisci perché finora non ha funzionato.",
@@ -277,7 +277,7 @@
         "num": "01",
         "label": "Comprendere",
         "title": "Percorso\nPosturale",
-        "micro": "Per chi è stanco di ripartire da capo ogni volta. Andiamo alla causa del dolore che torna — non al sintomo — fino a renderti autonomo nel gestirlo.",
+        "micro": "Per chi è stanco di ripartire da capo ogni volta. Andiamo alla causa del dolore che torna, non al sintomo, fino a renderti autonomo nel gestirlo.",
         "tags": [
           "Osteopatia",
           "Fisioterapia",
@@ -490,12 +490,12 @@
       {
         "n": "01",
         "title": "I clienti sono tuoi. Punto.",
-        "body": "Costruisci il tuo pacchetto, sotto il tuo nome. Ti diamo spazio e strumenti per farlo crescere — non ci prendiamo i tuoi clienti."
+        "body": "Costruisci il tuo pacchetto, sotto il tuo nome. Ti diamo spazio e strumenti per farlo crescere, non ci prendiamo i tuoi clienti."
       },
       {
         "n": "02",
         "title": "Quello che guadagni, resta tuo.",
-        "body": "Niente percentuali sulle tue sedute: ogni cliente vale per intero, per te. E il modello premia chi lavora — più ore fai, meno paghi l'ora."
+        "body": "Niente percentuali sulle tue sedute: ogni cliente vale per intero, per te. E il modello premia chi lavora: più ore fai, meno paghi l'ora."
       },
       {
         "n": "03",
@@ -552,7 +552,7 @@
     "communityLabel": "La rete",
     "communityTitle": "Non sei un ospite.\nSei parte di qualcosa.",
     "communityBody1": "In EQB lavorano fisioterapisti, trainer, osteopati, nutrizionisti, psicologi. Professionisti che si conoscono, si referenziano, costruiscono percorsi integrati per i propri clienti.",
-    "communityBody2": "Non è un vantaggio secondario. È il cuore del modello. Il cliente del tuo collega è il tuo cliente potenziale — e viceversa. La rete vale quanto lo spazio.",
+    "communityBody2": "Non è un vantaggio secondario. È il cuore del modello. Il cliente del tuo collega è il tuo cliente potenziale, e viceversa. La rete vale quanto lo spazio.",
     "objTitle": "Ci siamo già sentiti dire:",
     "objections": [
       {
@@ -565,17 +565,14 @@
       },
       {
         "q": "«Adesso non ho il budget per un altro spazio.»",
-        "a": "Non è un altro costo fisso: paghi solo quando lavori, e più cresci meno paghi l'ora. Si parte piccoli — l'investimento segue i tuoi clienti, non li precede."
+        "a": "Non è un altro costo fisso: paghi solo quando lavori, e più cresci meno paghi l'ora. Si parte piccoli: l'investimento segue i tuoi clienti, non li precede."
       }
     ],
     "ctaLabel": "Il prossimo passo",
-    "ctaTitle": "Vieni a vederlo\ndi persona.",
-    "ctaSub": "Trenta minuti. Zero presentazioni. Lo spazio parla da solo.\nNessun impegno — solo una visita.",
+    "ctaTitle": "Raccontaci di te.\nAl resto pensiamo noi.",
+    "ctaSub": "Cinque minuti per la tua candidatura.\nLa leggiamo di persona, poi ti chiamiamo noi.",
     "ctaUrgency": "Lo spazio è fisico: i posti non sono infiniti.",
-    "ctaCandidati": "Candidati per lavorare da EQB →",
-    "ctaChiama": "Chiama ora — +39 375 515 3273",
-    "ctaScrivi": "Scrivi per prenotare una visita",
-    "ctaNote": "Rispondiamo entro poche ore. Di persona, non con un bot.",
+    "ctaCandidati": "Candidati per lavorare in EQB →",
     "stickyText": "Pronto a renderlo tuo?",
     "stickyCta": "Candidati →"
   },
@@ -798,7 +795,8 @@
     "ctaBody": "Zero costi fissi e un ambiente pensato per farti lavorare al meglio, ogni giorno.",
     "ctaBtn": "Scopri il coworking →",
     "stickyText": "Vuoi lavorare in questo spazio?",
-    "stickyBtn": "Scopri il coworking →"
+    "stickyBtn": "Scopri il coworking →",
+    "scarcityText": "Lo spazio è fisico: i posti non sono infiniti."
   },
   "visione": {
     "heroLabel": "Visione",

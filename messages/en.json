@@ -265,8 +265,8 @@
     "postura": {
       "eyebrow": "You have a goal but don't know where to start?",
       "title": "Postural\nAssessment",
-      "body1": "A first meeting to understand where your problem really comes from — not just where it hurts.",
-      "body2": "If the pain keeps coming back, it's often not bad luck: so far the symptom has been treated, not the cause. Together we look at your situation and come out of it with a clear direction on what to do — not with yet another treatment to try.",
+      "body1": "A first meeting to understand where your problem really comes from, not just where it hurts.",
+      "body2": "If the pain keeps coming back, it's often not bad luck: so far the symptom has been treated, not the cause. Together we look at your situation and come out of it with a clear direction on what to do, not with yet another treatment to try.",
       "firmaName": "Federico Mondin",
       "firmaRole": "Osteopath · Co-founder, EQB Milano",
       "tiltSub": "From the first visit you'll understand why it hasn't worked so far.",
@@ -277,7 +277,7 @@
         "num": "01",
         "label": "Understand",
         "title": "Postural\nPath",
-        "micro": "For those tired of starting over every time. We go to the root of the pain that keeps coming back — not just the symptom — until you can manage it on your own.",
+        "micro": "For those tired of starting over every time. We go to the root of the pain that keeps coming back, not just the symptom, until you can manage it on your own.",
         "tags": [
           "Osteopathy",
           "Physiotherapy",
@@ -490,12 +490,12 @@
       {
         "n": "01",
         "title": "The clients are yours. Full stop.",
-        "body": "You build your own book of clients, under your own name. We give you space and tools to grow it — we don't take your clients."
+        "body": "You build your own book of clients, under your own name. We give you space and tools to grow it, we don't take your clients."
       },
       {
         "n": "02",
         "title": "What you earn stays yours.",
-        "body": "No percentages on your sessions: every client is worth the full amount, for you. And the model rewards those who work — the more hours you do, the less you pay per hour."
+        "body": "No percentages on your sessions: every client is worth the full amount, for you. And the model rewards those who work: the more hours you do, the less you pay per hour."
       },
       {
         "n": "03",
@@ -552,7 +552,7 @@
     "communityLabel": "The network",
     "communityTitle": "You're not a guest.\nYou're part of something.",
     "communityBody1": "At EQB, physiotherapists, trainers, osteopaths, nutritionists and psychologists all work together. Professionals who know each other, refer each other, and build integrated paths for their clients.",
-    "communityBody2": "It's not a side benefit. It's the heart of the model. Your colleague's client is your potential client — and vice versa. The network is worth as much as the space.",
+    "communityBody2": "It's not a side benefit. It's the heart of the model. Your colleague's client is your potential client, and vice versa. The network is worth as much as the space.",
     "objTitle": "We've already heard people say:",
     "objections": [
       {
@@ -565,17 +565,14 @@
       },
       {
         "q": "“Right now I don't have the budget for another space.”",
-        "a": "It's not another fixed cost: you only pay when you work, and the more you grow the less you pay per hour. You start small — the investment follows your clients, it doesn't come before them."
+        "a": "It's not another fixed cost: you only pay when you work, and the more you grow the less you pay per hour. You start small: the investment follows your clients, it doesn't come before them."
       }
     ],
     "ctaLabel": "The next step",
-    "ctaTitle": "Come see it\nin person.",
-    "ctaSub": "Thirty minutes. Zero presentations. The space speaks for itself.\nNo commitment — just a visit.",
+    "ctaTitle": "Tell us about you.\nWe'll take care of the rest.",
+    "ctaSub": "Five minutes for your application.\nWe read it in person, then we call you.",
     "ctaUrgency": "The space is physical: spots aren't unlimited.",
     "ctaCandidati": "Apply to work at EQB →",
-    "ctaChiama": "Call now — +39 375 515 3273",
-    "ctaScrivi": "Write to us to book a visit",
-    "ctaNote": "We reply within a few hours. In person, not with a bot.",
     "stickyText": "Ready to make it yours?",
     "stickyCta": "Apply →"
   },
@@ -798,7 +795,8 @@
     "ctaBody": "Zero fixed costs and a setting designed to help you work at your best, every day.",
     "ctaBtn": "Discover coworking →",
     "stickyText": "Want to work in this space?",
-    "stickyBtn": "Discover coworking →"
+    "stickyBtn": "Discover coworking →",
+    "scarcityText": "The space is physical: spots are not unlimited."
   },
   "visione": {
     "heroLabel": "Vision",

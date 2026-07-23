@@ -1,6 +1,8 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { ParallaxDivider } from "./ParallaxDivider";
 import "./SpazioPage.css";
 
@@ -44,7 +46,22 @@ function TiltCard({ children, className }: { children: React.ReactNode; classNam
   );
 }
 
+const CHECK = (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+);
+const CHECK_SM = (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+);
+
+type Room = { label: string; title: string; body: string; caratteristicheLabel: string; features: string[]; tags: string[]; caption: string };
+
 export const SpazioPage: React.FC = () => {
+  const t = useTranslations("spazio");
+  const locale = usePathname().split("/")[1] || "it";
   const s0 = useVisible("-20px");
   const s1 = useVisible("-60px");
   const s2 = useVisible("-60px");
@@ -54,6 +71,14 @@ export const SpazioPage: React.FC = () => {
   const s7 = useVisible("-60px");
   const s8 = useVisible("-60px");
   const sServizi = useVisible("-60px");
+
+  const sala = t.raw("sala") as Room;
+  const terra = t.raw("terra") as Room;
+  const sole = t.raw("sole") as Room;
+  const luna = t.raw("luna") as Room;
+  const comuniFeatures = t.raw("comuni.features") as string[];
+  const servizi = t.raw("servizi") as string[];
+  const [openingTitle1, openingTitle2] = t("openingTitle").split("\n");
 
   // Sticky: stessa logica di CoworkingFunnel/BenesserePageV2. Prima si usava
   // `!ctaVisible` (IntersectionObserver sulla CTA finale): quando si scrollava
@@ -92,12 +117,12 @@ export const SpazioPage: React.FC = () => {
         />
         <div className="spazio-opening__overlay" />
         <div className="spazio-opening__content">
-          <span className="spazio-opening__label spazio-fade spazio-fade--1">Lo spazio</span>
+          <span className="spazio-opening__label spazio-fade spazio-fade--1">{t("openingLabel")}</span>
           <h1 className="spazio-opening__title spazio-fade spazio-fade--2">
-            Un appartamento<br />del '900 milanese.
+            {openingTitle1}<br />{openingTitle2}
           </h1>
           <p className="spazio-opening__sub spazio-fade spazio-fade--3">
-            Pensato per chi lavora sul corpo.
+            {t("openingSub")}
           </p>
         </div>
         <div className="spazio-opening__scroll" aria-hidden="true">
@@ -113,18 +138,18 @@ export const SpazioPage: React.FC = () => {
               sizes="(max-width: 900px) 100vw, 55vw"
               style={{ objectFit: "cover", objectPosition: "center" }} />
             <div className="spazio-photo-caption">
-              <span>Accoglienza e Reception</span>
+              <span>{t("reception.captionTitle")}</span>
               <span>EQB Milano</span>
             </div>
           </div>
           <div className="spazio-v4__text spazio-up spazio-up--2">
-            <span className="spazio-label">L'ingresso</span>
+            <span className="spazio-label">{t("reception.label")}</span>
             <h2 className="spazio-section__title">
-              Reception
+              {t("reception.title")}
             </h2>
-            <p className="spazio-tagline">L'accoglienza che il tuo cliente si merita.</p>
+            <p className="spazio-tagline">{t("reception.tagline")}</p>
             <p className="spazio-section__body">
-              La reception accoglie i tuoi clienti, la sala d'attesa li mette a proprio agio. Il biglietto da visita perfetto, prima ancora che entrino nella tua stanza.
+              {t("reception.body")}
             </p>
           </div>
         </div>
@@ -134,35 +159,20 @@ export const SpazioPage: React.FC = () => {
       <section ref={s7.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-comuni${s7.visible ? " is-on" : ""}`}>
         <div className="spazio-comuni__inner">
           <div className="spazio-comuni__text spazio-up spazio-up--1">
-            <span className="spazio-label">Spazi comuni</span>
+            <span className="spazio-label">{t("comuni.label")}</span>
             <h2 className="spazio-section__title">
-              Aree Comuni
+              {t("comuni.title")}
             </h2>
-            <p className="spazio-tagline">Tutto quello che serve, a portata di mano.</p>
+            <p className="spazio-tagline">{t("comuni.tagline")}</p>
             <p className="spazio-section__body">
-              Un angolo snack per una pausa tra un cliente e l'altro. Bagni con doccia per chi arriva di corsa o si allena prima di lavorare.
+              {t("comuni.body")}
             </p>
             <TiltCard className="spazio-card spazio-card--featured spazio-up spazio-up--3">
-              <span className="spazio-label">Caratteristiche</span>
+              <span className="spazio-label">{t("comuni.caratteristicheLabel")}</span>
               <ul>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  Area snack e relax
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  2 spogliatoi
-                </li>
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  2 bagni con doccia
-                </li>
+                {comuniFeatures.map((f) => (
+                  <li key={f}>{CHECK}{f}</li>
+                ))}
               </ul>
             </TiltCard>
           </div>
@@ -172,7 +182,7 @@ export const SpazioPage: React.FC = () => {
                 sizes="(max-width: 900px) 100vw, 45vw"
                 style={{ objectFit: "cover", objectPosition: "center" }} />
               <div className="spazio-photo-caption">
-                <span>Area Snack</span>
+                <span>{t("comuni.snackCaption")}</span>
                 <span>EQB Milano</span>
               </div>
             </div>
@@ -195,52 +205,33 @@ export const SpazioPage: React.FC = () => {
       {/* ── 3b. Servizi inclusi — piccola sezione a parte ── */}
       <section ref={sServizi.ref as React.RefObject<HTMLElement>} className={`spazio-servizi${sServizi.visible ? " is-on" : ""}`}>
         <div className="spazio-servizi__inner spazio-up spazio-up--1">
-          <span className="spazio-label">Servizi inclusi</span>
+          <span className="spazio-label">{t("serviziLabel")}</span>
           <ul className="spazio-servizi__list">
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Pulizie incluse
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Asciugamani brandizzati (grandi, medi, piccoli)
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              Rotolo lettino incluso
-            </li>
+            {servizi.map((s) => (
+              <li key={s}>{CHECK_SM}{s}</li>
+            ))}
           </ul>
         </div>
       </section>
 
       {/* ── 4. Intermezzo Piano Nobile ── */}
-      <ParallaxDivider src="/assets/Spazi-ingresso-frontale.jpg" text="Piano nobile · Terapia e allenamento" />
+      <ParallaxDivider src="/assets/Spazi-ingresso-frontale.jpg" text={t("dividerPianoNobile")} />
 
       {/* ── 5. Sala Allenamento ── */}
       <section ref={s2.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-sala${s2.visible ? " is-on" : ""}`}>
         <div className="spazio-sala__inner">
           <div className="spazio-sala__text">
-            <span className="spazio-label spazio-up spazio-up--1">Piano nobile</span>
+            <span className="spazio-label spazio-up spazio-up--1">{sala.label}</span>
             <h2 className="spazio-section__title spazio-up spazio-up--2">
-              Sala Allenamento
+              {sala.title}
             </h2>
             <p className="spazio-section__body spazio-up spazio-up--3">
-              Rack a muro in ferro, 2 Reformer Merrithew con spalliera, 2 Chair, dischi e manubri liberi, panca in legno. Luce naturale da tre finestre, parquet a lisca di pesce.
+              {sala.body}
             </p>
             <TiltCard className="spazio-card spazio-up spazio-up--4">
-              <span className="spazio-label">Caratteristiche</span>
+              <span className="spazio-label">{sala.caratteristicheLabel}</span>
               <ul>
-                <li>Sala da 45 mq</li>
-                <li>Rack a muro in ferro</li>
-                <li>2 Reformer + 2 Chair Merrithew</li>
-                <li>Dischi e manubri liberi, panca</li>
-                <li>Attrezzatura pilates e corpo libero</li>
+                {sala.features.map((f) => <li key={f}>{f}</li>)}
               </ul>
             </TiltCard>
           </div>
@@ -250,14 +241,12 @@ export const SpazioPage: React.FC = () => {
                 sizes="(max-width: 900px) 100vw, 55vw"
                 style={{ objectFit: "cover", objectPosition: "center" }} />
               <div className="spazio-photo-caption">
-                <span>Sala Allenamento</span>
+                <span>{sala.caption}</span>
                 <span>EQB Milano</span>
               </div>
             </div>
             <div className="spazio-tags">
-              <span className="spazio-tag">Pilates</span>
-              <span className="spazio-tag">Personal Training</span>
-              <span className="spazio-tag">Functional Training</span>
+              {sala.tags.map((tag) => <span key={tag} className="spazio-tag">{tag}</span>)}
             </div>
           </div>
         </div>
@@ -272,31 +261,26 @@ export const SpazioPage: React.FC = () => {
                 sizes="(max-width: 900px) 100vw, 55vw"
                 style={{ objectFit: "cover", objectPosition: "center" }} />
               <div className="spazio-photo-caption">
-                <span>Stanza Terra</span>
+                <span>{terra.caption}</span>
                 <span>EQB Milano</span>
               </div>
             </div>
             <div className="spazio-tags">
-              <span className="spazio-tag">Osteopatia</span>
-              <span className="spazio-tag">Fisioterapia</span>
-              <span className="spazio-tag">Nutrizione</span>
-              <span className="spazio-tag">Psicoterapia</span>
+              {terra.tags.map((tag) => <span key={tag} className="spazio-tag">{tag}</span>)}
             </div>
           </div>
           <div className="spazio-terra__text spazio-up spazio-up--2">
-            <span className="spazio-label">Piano nobile</span>
+            <span className="spazio-label">{terra.label}</span>
             <h2 className="spazio-section__title">
-              Stanza Terra
+              {terra.title}
             </h2>
             <p className="spazio-section__body">
-              20 mq luminosi con lettino regolabile, spalliera a muro e ampia scrivania. Lo spazio giusto per chi lavora con metodo, seduta dopo seduta.
+              {terra.body}
             </p>
             <TiltCard className="spazio-card spazio-up spazio-up--3">
-              <span className="spazio-label">Caratteristiche</span>
+              <span className="spazio-label">{terra.caratteristicheLabel}</span>
               <ul>
-                <li>Stanza da 20 mq</li>
-                <li>Lettino regolabile + spalliera a muro</li>
-                <li>Scrivania, sedie, sgabelli</li>
+                {terra.features.map((f) => <li key={f}>{f}</li>)}
               </ul>
             </TiltCard>
           </div>
@@ -305,7 +289,7 @@ export const SpazioPage: React.FC = () => {
 
       {/* ── 6. Intermezzo: la foto ora vive nel FixedBackground della pagina,
              qui c'è solo il varco trasparente che la rivela (come in home) ── */}
-      <ParallaxDivider text="Piano inferiore · Relax & Recovery" mobileSrc="/assets/Spazi-sole-luna-ingresso.jpg" />
+      <ParallaxDivider text={t("dividerPianoInferiore")} mobileSrc="/assets/Spazi-sole-luna-ingresso.jpg" />
 
       {/* ── 6. Stanza Sole ── */}
       <section ref={s5.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-sole${s5.visible ? " is-on" : ""}`}>
@@ -316,31 +300,26 @@ export const SpazioPage: React.FC = () => {
                 sizes="(max-width: 900px) 100vw, 55vw"
                 style={{ objectFit: "cover", objectPosition: "center" }} />
               <div className="spazio-photo-caption">
-                <span>Stanza Sole</span>
+                <span>{sole.caption}</span>
                 <span>EQB Milano</span>
               </div>
             </div>
             <div className="spazio-tags">
-              <span className="spazio-tag">Massaggi</span>
-              <span className="spazio-tag">Olistica</span>
-              <span className="spazio-tag">Terapie rilassanti</span>
-              <span className="spazio-tag">Recovery</span>
+              {sole.tags.map((tag) => <span key={tag} className="spazio-tag">{tag}</span>)}
             </div>
           </div>
           <div className="spazio-sole__text spazio-up spazio-up--2">
-            <span className="spazio-label">Piano inferiore · Relax &amp; Recovery</span>
+            <span className="spazio-label">{sole.label}</span>
             <h2 className="spazio-section__title">
-              Stanza Sole
+              {sole.title}
             </h2>
             <p className="spazio-section__body">
-              15 mq luminosi con la propria carta da parati originale, lettino regolabile e scrivania. Pensata per chi lavora con calma e continuità.
+              {sole.body}
             </p>
             <TiltCard className="spazio-card spazio-up spazio-up--3">
-              <span className="spazio-label">Caratteristiche</span>
+              <span className="spazio-label">{sole.caratteristicheLabel}</span>
               <ul>
-                <li>Stanza da 15 mq</li>
-                <li>Lettino regolabile</li>
-                <li>Scrivania con sgabelli</li>
+                {sole.features.map((f) => <li key={f}>{f}</li>)}
               </ul>
             </TiltCard>
           </div>
@@ -351,20 +330,18 @@ export const SpazioPage: React.FC = () => {
       <section ref={s6.ref as React.RefObject<HTMLElement>} className={`spazio-section spazio-luna${s6.visible ? " is-on" : ""}`}>
         <div className="spazio-luna__inner">
           <div className="spazio-luna__text spazio-up spazio-up--1">
-            <span className="spazio-label">Piano inferiore · Relax &amp; Recovery</span>
+            <span className="spazio-label">{luna.label}</span>
             <h2 className="spazio-section__title">
-              Stanza Luna
+              {luna.title}
             </h2>
             <p className="spazio-section__body">
               {/* TODO: mq da confermare con Marco - Luna sarebbe più grande di Sole ma il codice le ha entrambe a 15 mq */}
-              15 mq con la propria carta da parati originale, lettino regolabile e scrivania. Il rifugio ideale per chi ha bisogno di riservatezza.
+              {luna.body}
             </p>
             <TiltCard className="spazio-card spazio-up spazio-up--2">
-              <span className="spazio-label">Caratteristiche</span>
+              <span className="spazio-label">{luna.caratteristicheLabel}</span>
               <ul>
-                <li>Stanza da 15 mq</li>
-                <li>Lettino regolabile</li>
-                <li>Scrivania con sgabelli</li>
+                {luna.features.map((f) => <li key={f}>{f}</li>)}
               </ul>
             </TiltCard>
           </div>
@@ -374,15 +351,12 @@ export const SpazioPage: React.FC = () => {
                 sizes="(max-width: 900px) 100vw, 55vw"
                 style={{ objectFit: "cover", objectPosition: "center" }} />
               <div className="spazio-photo-caption">
-                <span>Stanza Luna</span>
+                <span>{luna.caption}</span>
                 <span>EQB Milano</span>
               </div>
             </div>
             <div className="spazio-tags">
-              <span className="spazio-tag">Massaggi</span>
-              <span className="spazio-tag">Olistica</span>
-              <span className="spazio-tag">Terapie rilassanti</span>
-              <span className="spazio-tag">Recovery</span>
+              {luna.tags.map((tag) => <span key={tag} className="spazio-tag">{tag}</span>)}
             </div>
           </div>
         </div>
@@ -398,15 +372,15 @@ export const SpazioPage: React.FC = () => {
       >
         <div className="spazio-cta__inner">
           <div className="spazio-cta__text spazio-up spazio-up--1">
-            <h2 className="spazio-cta__title">Scopri come rendere tuo<br />questo spazio.</h2>
+            <h2 className="spazio-cta__title">{t("ctaTitle").split("\n")[0]}<br />{t("ctaTitle").split("\n")[1]}</h2>
             <p className="spazio-cta__body">
-              Zero costi fissi e un ambiente pensato per farti lavorare al meglio, ogni giorno.
+              {t("ctaBody")}
             </p>
             <div className="spazio-scarcity">
               <span className="spazio-scarcity__rule" aria-hidden="true" />
-              <span>Lo spazio è fisico: i posti non sono infiniti.</span>
+              <span>{t("scarcityText")}</span>
             </div>
-            <a href="/coworking" className="spazio-cta__btn">Scopri il coworking →</a>
+            <a href={`/${locale}/coworking`} className="spazio-cta__btn">{t("ctaBtn")}</a>
           </div>
           <div className="spazio-cta__mosaic spazio-up spazio-up--2">
             <div className="spazio-cta__grid">
@@ -429,8 +403,8 @@ export const SpazioPage: React.FC = () => {
 
       {/* ── Sticky CTA verso il coworking ── */}
       <div className={`sp-sticky${showSticky ? " is-shown" : ""}`}>
-        <span className="sp-sticky__text">Vuoi lavorare in questo spazio?</span>
-        <a href="/coworking" className="sp-sticky__btn">Scopri il coworking →</a>
+        <span className="sp-sticky__text">{t("stickyText")}</span>
+        <a href={`/${locale}/coworking`} className="sp-sticky__btn">{t("stickyBtn")}</a>
       </div>
 
     </div>

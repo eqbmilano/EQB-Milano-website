@@ -1,50 +1,30 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { ParallaxDivider } from "./ParallaxDivider";
 import LazyVideo from "./LazyVideo";
 import { Reveal } from "./Reveal";
+import { Multiline } from "./Multiline";
 import "./BenesserePageV2.css";
 
 const WA = "https://wa.me/393755153273?text=";
 
-const groups = [
-  {
-    label: "Trattamenti",
-    services: [
-      { name: "Osteopatia",            img: "/assets/Osteopatia-v2.jpg",               desc: "Un approccio globale per migliorare movimento, funzionalità ed equilibrio nella vita quotidiana.",          msg: "Ciao! Vorrei info sull'osteopatia" },
-      { name: "Osteopatia Pediatrica", img: "/assets/Osteopatia-pediatrica-v2.jpg",      desc: "Un approccio delicato dedicato a neonati e bambini, per accompagnarne la crescita in modo armonioso.",            msg: "Ciao! Vorrei info sull'osteopatia pediatrica" },
-      { name: "Fisioterapia",          img: "/assets/Fisioterapia-v4.jpg",              desc: "Un percorso personalizzato per recuperare funzionalità e tornare alle attività quotidiane con serenità.",          msg: "Ciao! Vorrei info sulla fisioterapia" },
-      { name: "Massoterapia Sportiva", img: "/assets/Massaggio-Decontratturante-Sportivo-v2.jpg",   desc: "Per favorire il recupero muscolare, sciogliere le tensioni e ritrovare energia e libertà di movimento.",          msg: "Ciao! Vorrei info sulla massoterapia sportiva" },
-    ],
-  },
-  {
-    label: "Movimento",
-    services: [
-      { name: "Pilates",    img: "/assets/Pilates.jpg",             desc: "Un metodo che migliora forza, mobilità e controllo del movimento, con un approccio personalizzato.",     msg: "Ciao! Vorrei info sul Pilates" },      { name: "Rinforzo Posturale",  img: "/assets/Rinforzo-Posturale-v2.jpg",   desc: "Esercizi mirati per migliorare la postura, ridurre i compensi e muoversi con più libertà.",             msg: "Ciao! Vorrei info sul rinforzo posturale" },
-      { name: "Functional Training", img: "/assets/Functional-Training-v3.jpg",    desc: "Un allenamento costruito intorno a te per sviluppare forza, mobilità e resistenza.",                    msg: "Ciao! Vorrei info sul Functional Training" },
-    ],
-  },
-  {
-    label: "Recupero & Benessere",
-    services: [
-      { name: "Massaggio Rilassante",    img: "/assets/Massaggi-Rilassanti-v2.jpg",        desc: "Un momento dedicato a rallentare, recuperare energie e concedersi uno spazio per sé.",                  msg: "Ciao! Vorrei prenotare un massaggio rilassante" },
-      { name: "Massaggio Linfodrenante", img: "/assets/Linfodrenante-v2.jpg",     desc: "Per alleggerire il corpo, ridurre gonfiore e favorire una piacevole sensazione di leggerezza.",          msg: "Ciao! Vorrei info sul linfodrenante" },
-      { name: "Riflessologia Plantare", img: "/assets/Riflessologia-v2.jpg",  desc: "Una pratica che favorisce il rilassamento profondo e aiuta il corpo a ritrovare equilibrio.",            msg: "Ciao! Vorrei info sulla riflessologia plantare" },
-      { name: "Coppettazione",          img: "/assets/Coppettazione-v2.jpg",     desc: "Per sciogliere le tensioni, migliorare la circolazione e favorire il recupero dei tessuti.",            msg: "Ciao! Vorrei info sulla coppettazione" },
-    ],
-  },
-  {
-    label: "Consulenza",
-    services: [
-      { name: "Nutrizione e Analisi BIA",   img: "/assets/Nutrizione-BIA-v3.jpg",   desc: "Analisi della composizione corporea con BIA e un percorso personalizzato per costruire abitudini sostenibili nel tempo.",      msg: "Ciao! Vorrei info su Nutrizione e Analisi BIA" },
-      { name: "Mental Coach", img: "/assets/Mental-Coach-v2.jpg",           desc: "Per acquisire maggiore consapevolezza, definire obiettivi e sviluppare nuove risorse personali.",        msg: "Ciao! Vorrei info sul mental coaching" },
-    ],
-  },
-];
+const GROUP_IMAGES: Record<string, string[]> = {
+  Trattamenti: ["/assets/Osteopatia-v2.jpg", "/assets/Osteopatia-pediatrica-v2.jpg", "/assets/Fisioterapia-v4.jpg", "/assets/Massaggio-Decontratturante-Sportivo-v2.jpg"],
+  Movimento: ["/assets/Pilates.jpg", "/assets/Rinforzo-Posturale-v2.jpg", "/assets/Functional-Training-v3.jpg"],
+  "Recupero & Benessere": ["/assets/Massaggi-Rilassanti-v2.jpg", "/assets/Linfodrenante-v2.jpg", "/assets/Riflessologia-v2.jpg", "/assets/Coppettazione-v2.jpg"],
+  Consulenza: ["/assets/Nutrizione-BIA-v3.jpg", "/assets/Mental-Coach-v2.jpg"],
+};
 
-function HoverCard({ name, img, desc, cat, msg }: {
-  name: string; img: string; desc: string; cat: string; msg: string;
+type Service = { name: string; desc: string; msg: string };
+type Group = { label: string; services: Service[] };
+type Feature = { num: string; label: string; title: string; micro: string; tags: string[] };
+type AccPillar = { t: string; d: string };
+
+function HoverCard({ name, img, desc, cat, msg, prenotaLabel, prenotaWa }: {
+  name: string; img: string; desc: string; cat: string; msg: string; prenotaLabel: string; prenotaWa: string;
 }) {
   const [flipped, setFlipped] = useState(false);
   return (
@@ -59,7 +39,7 @@ function HoverCard({ name, img, desc, cat, msg }: {
         <div className="hc-front__overlay" />
         <div className="hc-front__body">
           <span className="hc-front__name">{name}</span>
-          <span className="hc-front__btn">Prenota →</span>
+          <span className="hc-front__btn">{prenotaLabel}</span>
         </div>
       </div>
       <div className="hc-back">
@@ -72,7 +52,7 @@ function HoverCard({ name, img, desc, cat, msg }: {
           className="hc-back__btn"
           onClick={(e) => e.stopPropagation()}
         >
-          Prenota su WhatsApp
+          {prenotaWa}
         </a>
       </div>
     </div>
@@ -192,12 +172,6 @@ function useVisible(rootMargin = "-60px") {
   return { ref, visible };
 }
 
-const ACC_PILLARS = [
-  { k: "01", t: "Ascoltare", d: "Ascoltare le tue esigenze e individuare il punto di partenza." },
-  { k: "02", t: "Accompagnare", d: "Disegnare un percorso personalizzato intorno a te." },
-  { k: "03", t: "Evolvere", d: "Rendere la cura di sé una parte della tua quotidianità." },
-];
-
 function AccIcon({ i }: { i: number }) {
   const common = {
     viewBox: "0 0 24 24", fill: "none", stroke: "currentColor",
@@ -210,22 +184,22 @@ function AccIcon({ i }: { i: number }) {
   return (<svg {...common}><path d="M3 17l6-6 4 4 7-7" /><path d="M17 7h4v4" /></svg>);
 }
 
-function BenAccompagna() {
+function BenAccompagna({ eyebrow, title, intro, pillars }: { eyebrow: string; title: string; intro: string; pillars: AccPillar[] }) {
   const { ref, visible } = useVisible("-15%");
   return (
     <section ref={ref as React.RefObject<HTMLElement>} className={`ben-acc${visible ? " is-on" : ""}`}>
       <div className="ben-acc__head">
-        <span className="ben-acc__eyebrow ben-acc-rise ben-acc-rise--0">Il nostro modo di accompagnarti</span>
-        <h2 className="ben-acc__title ben-acc-rise ben-acc-rise--1">Non esiste un percorso uguale per tutti.</h2>
+        <span className="ben-acc__eyebrow ben-acc-rise ben-acc-rise--0">{eyebrow}</span>
+        <h2 className="ben-acc__title ben-acc-rise ben-acc-rise--1">{title}</h2>
         <p className="ben-acc__intro ben-acc-rise ben-acc-rise--2">
-          In EQB trovi professionisti, percorsi e attività che lavorano insieme per accompagnarti nel modo più adatto alle tue esigenze. Che tu abbia un obiettivo preciso o non sappia ancora da dove partire, troviamo insieme la direzione giusta.
+          {intro}
         </p>
       </div>
       <div className="ben-acc__row">
-        {ACC_PILLARS.map((p, i) => (
-          <Reveal key={p.k} className="reveal-cell" delay={i * 90}>
+        {pillars.map((p, i) => (
+          <Reveal key={p.t} className="reveal-cell" delay={i * 90}>
             <div className="ben-acc__pill">
-              <span className="ben-acc__k">{p.k}</span>
+              <span className="ben-acc__k">{String(i + 1).padStart(2, "0")}</span>
               <span className="ben-acc__icon"><AccIcon i={i} /></span>
               <h3 className="ben-acc__t">{p.t}</h3>
               <p className="ben-acc__d">{p.d}</p>
@@ -239,6 +213,15 @@ function BenAccompagna() {
 }
 
 export const BenesserePageV2: React.FC = () => {
+  const t = useTranslations("benessere");
+  const locale = usePathname().split("/")[1] || "it";
+
+  const accPillars = t.raw("accPillars") as AccPillar[];
+  const features = t.raw("features") as Feature[];
+  const groups = t.raw("groups") as Group[];
+  const [openingTitle1, openingTitle2, openingTitle3] = t("openingTitle").split("\n");
+  const [closingTitle1, closingTitle2, closingTitle3] = t("closingTitle").split("\n");
+
   const s0   = useVisible("-20px");
   const s7   = useVisible("-60px");
   const sf1  = useVisible("-60px");
@@ -282,12 +265,12 @@ export const BenesserePageV2: React.FC = () => {
         />
         <div className="ben-opening__overlay" />
         <div className="ben-opening__content">
-          <span className="ben-opening__label ben-fade ben-fade--1">Benessere</span>
+          <span className="ben-opening__label ben-fade ben-fade--1">{t("openingLabel")}</span>
           <h1 className="ben-opening__title ben-fade ben-fade--2">
-            Cura.<br />Movimento.<br />Equilibrio.
+            {openingTitle1}<br />{openingTitle2}<br />{openingTitle3}
           </h1>
           <p className="ben-opening__sub ben-fade ben-fade--3">
-            Trova il professionista, il percorso o l&apos;attività<br />più adatta alle tue esigenze.
+            <Multiline text={t("openingSub")} />
           </p>
         </div>
         <div className="ben-opening__scroll" aria-hidden="true">
@@ -296,7 +279,7 @@ export const BenesserePageV2: React.FC = () => {
       </section>
 
       {/* ── 1b. Il nostro modo di accompagnarti ── */}
-      <BenAccompagna />
+      <BenAccompagna eyebrow={t("accEyebrow")} title={t("accTitle")} intro={t("accIntro")} pillars={accPillars} />
 
       {/* ── 2. Valutazione Posturale — Federico ── */}
       <section
@@ -308,21 +291,21 @@ export const BenesserePageV2: React.FC = () => {
             <BenVideoPlayer src="/assets/Campagna-Fede-1.mp4" poster="/assets/poster-Campagna-Fede-1.jpg" />
           </div>
           <div className="ben-ad-section__content">
-            <span className="ben-label ben-up ben-up--1">Hai un obiettivo ma non sai da dove partire?</span>
+            <span className="ben-label ben-up ben-up--1">{t("postura.eyebrow")}</span>
             <h2 className="ben-ad-section__title ben-up ben-up--2">
-              Valutazione<br />Posturale
+              <Multiline text={t("postura.title")} />
             </h2>
             <div className="ben-ad-section__body ben-up ben-up--3">
-              <p>Un primo incontro per capire <strong>da dove nasce il tuo problema</strong>, non solo dove fa male.</p>
-              <p>Se il dolore continua a tornare, spesso <strong>non è sfortuna</strong>: finora si è agito sul sintomo, <strong>non sulla causa</strong>. Insieme analizziamo la tua situazione e ne usciamo con <strong>una direzione chiara su cosa fare</strong>, non con l&apos;ennesimo trattamento da provare.</p>
+              <p>{t("postura.body1")}</p>
+              <p>{t("postura.body2")}</p>
             </div>
             <p className="ben-ad-section__firma ben-up ben-up--4">
-              Federico Mondin<br />
-              <span>Osteopata · Co-fondatore EQB Milano</span>
+              {t("postura.firmaName")}<br />
+              <span>{t("postura.firmaRole")}</span>
             </p>
             <BenTiltCard variant="dark">
-              <p className="ben-tilt-card__sub">Dalla prima visita capisci perché finora non ha funzionato.</p>
-              <a href="https://tinyurl.com/valutazioneposturale" target="_blank" rel="noopener noreferrer" className="ben-tilt-card__btn">Prenota subito</a>
+              <p className="ben-tilt-card__sub">{t("postura.tiltSub")}</p>
+              <a href="https://tinyurl.com/valutazioneposturale" target="_blank" rel="noopener noreferrer" className="ben-tilt-card__btn">{t("postura.tiltBtn")}</a>
             </BenTiltCard>
           </div>
         </div>
@@ -338,18 +321,16 @@ export const BenesserePageV2: React.FC = () => {
             <LazyVideo src="/assets/Feature-Pilates-v2.mp4" poster="/assets/poster-Feature-Pilates-v2.jpg" />
           </div>
           <div className="ben-feature__content">
-            <span className="ben-feature__num">01</span>
-            <span className="ben-label ben-up ben-up--1">Comprendere</span>
+            <span className="ben-feature__num">{features[0].num}</span>
+            <span className="ben-label ben-up ben-up--1">{features[0].label}</span>
             <h2 className="ben-feature__title ben-up ben-up--2">
-              Percorso<br />Posturale
+              <Multiline text={features[0].title} />
             </h2>
             <p className="ben-feature__micro ben-up ben-up--3">
-              Per chi è stanco di ripartire da capo ogni volta. Andiamo alla causa del dolore che torna, non al sintomo, fino a renderti autonomo nel gestirlo.
+              {features[0].micro}
             </p>
             <div className="ben-feature__tags ben-up ben-up--4">
-              <span className="ben-feature__tag">Osteopatia</span>
-              <span className="ben-feature__tag">Fisioterapia</span>
-              <span className="ben-feature__tag">Riabilitazione Posturale</span>
+              {features[0].tags.map((tag) => <span key={tag} className="ben-feature__tag">{tag}</span>)}
             </div>
           </div>
         </div>
@@ -362,18 +343,16 @@ export const BenesserePageV2: React.FC = () => {
       >
         <div className="ben-feature__inner">
           <div className="ben-feature__content">
-            <span className="ben-feature__num">02</span>
-            <span className="ben-label ben-up ben-up--1">Muoversi</span>
+            <span className="ben-feature__num">{features[1].num}</span>
+            <span className="ben-label ben-up ben-up--1">{features[1].label}</span>
             <h2 className="ben-feature__title ben-up ben-up--2">
-              Pilates<br />Reformer
+              <Multiline text={features[1].title} />
             </h2>
             <p className="ben-feature__micro ben-up ben-up--3">
-              Per chi vuole migliorare forza, mobilità e controllo del movimento con un percorso costruito intorno a sé.
+              {features[1].micro}
             </p>
             <div className="ben-feature__tags ben-up ben-up--4">
-              <span className="ben-feature__tag">One to One</span>
-              <span className="ben-feature__tag">Duetto</span>
-              <span className="ben-feature__tag">Chair Pilates</span>
+              {features[1].tags.map((tag) => <span key={tag} className="ben-feature__tag">{tag}</span>)}
             </div>
           </div>
           <div className="ben-feature__image ben-up ben-up--1">
@@ -392,18 +371,16 @@ export const BenesserePageV2: React.FC = () => {
             <LazyVideo src="/assets/Feature-Relax.mp4" poster="/assets/poster-Feature-Relax.jpg" />
           </div>
           <div className="ben-feature__content">
-            <span className="ben-feature__num">03</span>
-            <span className="ben-label ben-up ben-up--1">Recuperare</span>
+            <span className="ben-feature__num">{features[2].num}</span>
+            <span className="ben-label ben-up ben-up--1">{features[2].label}</span>
             <h2 className="ben-feature__title ben-up ben-up--2">
-              Recupero<br />&amp; Benessere
+              <Multiline text={features[2].title} />
             </h2>
             <p className="ben-feature__micro ben-up ben-up--3">
-              Per chi si allena, lavora intensamente o sente il bisogno di rallentare e ritrovare energie.
+              {features[2].micro}
             </p>
             <div className="ben-feature__tags ben-up ben-up--4">
-              <span className="ben-feature__tag">Massoterapia</span>
-              <span className="ben-feature__tag">Linfodrenante</span>
-              <span className="ben-feature__tag">Riflessologia</span>
+              {features[2].tags.map((tag) => <span key={tag} className="ben-feature__tag">{tag}</span>)}
             </div>
           </div>
         </div>
@@ -416,18 +393,16 @@ export const BenesserePageV2: React.FC = () => {
       >
         <div className="ben-feature__inner">
           <div className="ben-feature__content">
-            <span className="ben-feature__num">04</span>
-            <span className="ben-label ben-up ben-up--1">Costruire</span>
+            <span className="ben-feature__num">{features[3].num}</span>
+            <span className="ben-label ben-up ben-up--1">{features[3].label}</span>
             <h2 className="ben-feature__title ben-up ben-up--2">
-              Nutrizione<br />&amp; Forma
+              <Multiline text={features[3].title} />
             </h2>
             <p className="ben-feature__micro ben-up ben-up--3">
-              Per chi vuole costruire abitudini sostenibili e rimettersi in forma con una direzione chiara.
+              {features[3].micro}
             </p>
             <div className="ben-feature__tags ben-up ben-up--4">
-              <span className="ben-feature__tag">Nutrizione</span>
-              <span className="ben-feature__tag">Allenamento Funzionale</span>
-              <span className="ben-feature__tag">Linfodrenante</span>
+              {features[3].tags.map((tag) => <span key={tag} className="ben-feature__tag">{tag}</span>)}
             </div>
           </div>
           <div className="ben-feature__image ben-up ben-up--1">
@@ -444,7 +419,7 @@ export const BenesserePageV2: React.FC = () => {
       {/* ── Parallax Divider ── */}
       <ParallaxDivider
         src="/assets/Osteopatia-cranio.jpg"
-        text="Ogni percorso nasce dall'incontro tra le tue esigenze e le competenze del professionista più adatto a te."
+        text={t("divider")}
       />
 
       {/* ── 7. La nostra offerta ── */}
@@ -454,20 +429,26 @@ export const BenesserePageV2: React.FC = () => {
       >
         <div className="ben-offerta__inner">
           <div className="ben-offerta__header">
-            <span className="ben-label ben-up ben-up--1">Professionisti, percorsi e attività</span>
-            <h2 className="ben-offerta__title ben-up ben-up--2">Tutto quello che trovi in EQB</h2>
+            <span className="ben-label ben-up ben-up--1">{t("offertaLabel")}</span>
+            <h2 className="ben-offerta__title ben-up ben-up--2">{t("offertaTitle")}</h2>
           </div>
           <div className="vb-groups">
             {groups.map((g) => (
               <div key={g.label}>
                 <div className="vb-group__header">
                   <h3 className="vb-group__title">{g.label}</h3>
-                  <span className="vb-group__count">{g.services.length} servizi</span>
+                  <span className="vb-group__count">{g.services.length} {t("serviziCount")}</span>
                 </div>
                 <div className="vb-group__cards">
                   {g.services.map((s, i) => (
                     <Reveal key={s.name} className="reveal-cell" delay={i * 70}>
-                      <HoverCard {...s} cat={g.label} />
+                      <HoverCard
+                        {...s}
+                        img={GROUP_IMAGES[g.label]?.[i] ?? "/assets/Pilates.jpg"}
+                        cat={g.label}
+                        prenotaLabel={t("prenotaCta")}
+                        prenotaWa={t("prenotaWhatsapp")}
+                      />
                     </Reveal>
                   ))}
                 </div>
@@ -480,19 +461,19 @@ export const BenesserePageV2: React.FC = () => {
       {/* ── 8. Closing CTA ── */}
       <section className="ben-closing" ref={closingRef}>
         <div className="ben-closing__text">
-          <span className="ben-closing__label">Inizia da qui</span>
+          <span className="ben-closing__label">{t("closingLabel")}</span>
           <h2 className="ben-closing__title">
-            Il tuo percorso<br />inizia con una<br />conversazione.
+            {closingTitle1}<br />{closingTitle2}<br />{closingTitle3}
           </h2>
           <p className="ben-closing__body">
-            Raccontaci di cosa hai bisogno<br />e troviamo insieme da dove partire.
+            <Multiline text={t("closingBody")} />
           </p>
           <a
-            href={`${WA}${encodeURIComponent("Ciao! Vorrei sapere di più su EQB Milano")}`}
+            href={`${WA}${encodeURIComponent(t("waGenerico"))}`}
             target="_blank" rel="noopener noreferrer"
             className="ben-closing__cta"
           >
-            Scrivici su WhatsApp
+            {t("closingCta")}
           </a>
         </div>
         <div className="ben-closing__photo">
@@ -523,13 +504,13 @@ export const BenesserePageV2: React.FC = () => {
 
       {/* ── Sticky CTA generale ── */}
       <div className={`ben-sticky${showSticky ? " is-shown" : ""}`}>
-        <span className="ben-sticky__text">Vuoi iniziare?</span>
+        <span className="ben-sticky__text">{t("stickyText")}</span>
         <a
-          href={`${WA}${encodeURIComponent("Ciao! Vorrei sapere di più su EQB Milano")}`}
+          href={`${WA}${encodeURIComponent(t("waGenerico"))}`}
           target="_blank" rel="noopener noreferrer"
           className="ben-sticky__btn"
         >
-          Scrivici su WhatsApp →
+          {t("stickyCta")}
         </a>
       </div>
 
