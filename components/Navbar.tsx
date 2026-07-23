@@ -70,9 +70,11 @@ export const Navbar: React.FC = () => {
       setShowScrim(pastHero && !menuOpen);
 
       if (menuOpen) return;
-      // Force white navbar on pages where the hero overlay is too transparent for auto-detection
+      // Force white navbar on pages where the hero overlay is too transparent for auto-detection.
+      // pathname ha il prefisso locale (es. /it, /it/benessere): confrontare la parte dopo la lingua.
+      const pathAfterLocale = pathname.replace(/^\/(it|en)/, "") || "/";
       const forcedWhitePages = ["/", "/benessere"];
-      if (forcedWhitePages.includes(pathname) && window.scrollY < window.innerHeight * 0.85) {
+      if (forcedWhitePages.includes(pathAfterLocale) && window.scrollY < window.innerHeight * 0.85) {
         setIsDark(false);
         return;
       }

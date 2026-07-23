@@ -261,7 +261,10 @@
 }
 
 .ben-video-wrap {
-  aspect-ratio: 4 / 5;
+  /* Video reale girato verticale 9:16 (1080x1920): 4/5 tagliava gran parte
+     dell'inquadratura con object-fit:cover. 3/4 e' il miglior compromesso
+     col layout a due colonne senza rendere la card eccessivamente stretta. */
+  aspect-ratio: 3 / 4;
   cursor: pointer;
   background: #0a0604;
   border-radius: 20px;
@@ -1025,7 +1028,9 @@
   }
 
   .ben-video-wrap {
-    aspect-ratio: 4 / 3;
+    /* Su mobile la card e' a piena larghezza, puo' avvicinarsi molto di
+       piu' al 9:16 reale del video senza far esplodere il layout. */
+    aspect-ratio: 9 / 16;
   }
 
   .ben-feature {

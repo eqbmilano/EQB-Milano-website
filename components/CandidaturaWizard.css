@@ -394,7 +394,16 @@
   .cand-step { padding: clamp(1rem, 5dvh, 1.5rem) 1.25rem clamp(1.25rem, 6dvh, 2.5rem); }
   .cand-options { grid-template-columns: 1fr; }
   .cand-options--narrow { grid-template-columns: 1fr 1fr; }
-  .cand-step--categoria .cand-options { grid-template-columns: 1fr 1fr; }
+  /* grid-auto-rows: 1fr forza ogni riga alla stessa altezza (la piu' alta),
+     cosi' un'etichetta che va a capo (es. testo lungo) non rompe piu'
+     l'uniformita' dei riquadri sulla stessa riga. */
+  .cand-step--categoria .cand-options {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+  }
+  .cand-step--categoria .cand-option {
+    height: 100%;
+  }
   .cand-fields--grid { grid-template-columns: 1fr; }
 }
 
