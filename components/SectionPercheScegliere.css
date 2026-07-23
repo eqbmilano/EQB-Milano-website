@@ -68,7 +68,7 @@
 
 .perche__vero--on .perche__vero-line {
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset .7s cubic-bezier(.4, 0, .2, 1) 1.1s;
+  transition: stroke-dashoffset .6s cubic-bezier(.4, 0, .2, 1) .35s;
 }
 
 .perche__grid-2x2 {
@@ -221,18 +221,6 @@
 
 .statement__cta:hover {
   opacity: 1;
-}
-
-@media (max-width: 767px) {
-  /* Niente animazione di comparsa su mobile: il reveal si basa su una
-     soglia di scroll che puo' anche disattivarsi di nuovo (non e' "una
-     volta sola"), rischiando di lasciare "Nessuno lo fa come noi"
-     invisibile. Testo sempre visibile da subito, piu' semplice. */
-  .perche-anim {
-    opacity: 1;
-    filter: blur();
-    transform: translateY(0);
-  }
 }
 
 @media (max-width: 640px) {

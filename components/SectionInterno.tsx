@@ -129,6 +129,7 @@ export const SectionInterno: React.FC = () => {
 
       {/* Carousel */}
       <div className="section-interno__carousel-wrap" ref={wrapRef}>
+        <Reveal delay={120} className="interno-carousel-reveal">
         <Swiper
           modules={[Navigation, Mousewheel]}
           navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
@@ -175,6 +176,7 @@ export const SectionInterno: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        </Reveal>
 
         {/* Cursore drag custom */}
         <div ref={cursorRef} className="interno-cursor">Trascina</div>

@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { ParallaxDivider } from "./ParallaxDivider";
 import LazyVideo from "./LazyVideo";
+import { Reveal } from "./Reveal";
 import "./BenesserePageV2.css";
 
 const WA = "https://wa.me/393755153273?text=";
@@ -222,13 +223,15 @@ function BenAccompagna() {
       </div>
       <div className="ben-acc__row">
         {ACC_PILLARS.map((p, i) => (
-          <div key={p.k} className={`ben-acc__pill ben-acc-rise ben-acc-rise--${3 + i}`}>
-            <span className="ben-acc__k">{p.k}</span>
-            <span className="ben-acc__icon"><AccIcon i={i} /></span>
-            <h3 className="ben-acc__t">{p.t}</h3>
-            <p className="ben-acc__d">{p.d}</p>
-            <span className="ben-acc__underline" />
-          </div>
+          <Reveal key={p.k} className="reveal-cell" delay={i * 90}>
+            <div className="ben-acc__pill">
+              <span className="ben-acc__k">{p.k}</span>
+              <span className="ben-acc__icon"><AccIcon i={i} /></span>
+              <h3 className="ben-acc__t">{p.t}</h3>
+              <p className="ben-acc__d">{p.d}</p>
+              <span className="ben-acc__underline" />
+            </div>
+          </Reveal>
         ))}
       </div>
     </section>
@@ -462,8 +465,10 @@ export const BenesserePageV2: React.FC = () => {
                   <span className="vb-group__count">{g.services.length} servizi</span>
                 </div>
                 <div className="vb-group__cards">
-                  {g.services.map((s) => (
-                    <HoverCard key={s.name} {...s} cat={g.label} />
+                  {g.services.map((s, i) => (
+                    <Reveal key={s.name} className="reveal-cell" delay={i * 70}>
+                      <HoverCard {...s} cat={g.label} />
+                    </Reveal>
                   ))}
                 </div>
               </div>

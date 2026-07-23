@@ -17,6 +17,13 @@
   transform: translateY(0);
 }
 
+/* Wrapper per animare una card dentro una griglia (grid/flex) senza alterarne
+   l'allineamento: il wrapper e' esso stesso un grid a cella singola, cosi' la
+   card figlia si stretcha come farebbe se fosse grid item diretto. */
+.reveal-cell {
+  display: grid;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .apple-reveal {
     opacity: 1;

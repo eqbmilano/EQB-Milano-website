@@ -10,8 +10,8 @@ export const SectionEcosistema: React.FC = () => {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
-      { rootMargin: "-80px", threshold: 0.15 }
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { rootMargin: "-60px", threshold: 0.1 }
     );
     obs.observe(el);
     return () => obs.disconnect();

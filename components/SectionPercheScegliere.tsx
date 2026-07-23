@@ -1,22 +1,7 @@
 "use client";
-import React, { useRef, useCallback, useEffect, useState } from "react";
+import React, { useRef, useCallback } from "react";
+import { Reveal, useReveal } from "./Reveal";
 import "./SectionPercheScegliere.css";
-
-function useVisible(threshold = 0.2, rootMargin = "-120px") {
-  const ref = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { setVisible(e.isIntersecting); },
-      { threshold, rootMargin }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold, rootMargin]);
-  return { ref, visible };
-}
 
 const cards = [
   { value: "0",    title: "Costi fissi",    desc: "Nessun contratto. Nessun affitto mensile. Paghi solo le ore che usi." },
@@ -54,9 +39,13 @@ function TiltCard({ card }: { card: typeof cards[0] }) {
   );
 }
 
-function VeroWord({ visible }: { visible: boolean }) {
+function VeroWord() {
+  // Self-triggered: la sottolineatura si disegna quando la parola entra in
+  // vista (stesso principio di <Reveal>), senza dipendere da un observer di
+  // sezione.
+  const { ref, visible } = useReveal();
   return (
-    <span className={`perche__vero${visible ? " perche__vero--on" : ""}`}>
+    <span ref={ref as React.RefObject<HTMLSpanElement>} className={`perche__vero${visible ? " perche__vero--on" : ""}`}>
       vero
       <svg className="perche__vero-line" viewBox="0 0 60 8" preserveAspectRatio="none" aria-hidden="true">
         <path d="M1 5 Q10 1 20 5 Q30 9 40 5 Q50 1 59 5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -66,45 +55,42 @@ function VeroWord({ visible }: { visible: boolean }) {
 }
 
 export const SectionPercheScegliere: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => setVisible(e.isIntersecting),
-      { rootMargin: "-180px", threshold: 0.1 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
+  // Linea guida animazioni: NIENTE observer unico di sezione con stagger CSS
+  // (faceva partire tutto insieme, cosi' card e statement erano gia' fermi
+  // quando li scrollavi). Ogni elemento e ogni card e' avvolto nel suo
+  // <Reveal>, con il proprio IntersectionObserver: compare quando entra LUI
+  // in vista. Stesso meccanismo di SectionSpazio.
   return (
-    <section id="coworking" ref={sectionRef} className={`section-perche${visible ? " is-visible" : ""}`}>
+    <section id="coworking" className="section-perche">
       <div className="perche__inner">
 
         <div className="perche__header">
-          <span className="perche__label perche-anim perche-anim--1">COWORKING</span>
-          <h2 className="perche__title perche-anim perche-anim--2">Nessuno lo fa<br />come noi.</h2>
-          <p className="perche__subtitle perche-anim perche-anim--3">
-            Il primo,&nbsp;<VeroWord visible={visible} />,&nbsp;coworking polifunzionale ad ore per trainer e terapisti.
-          </p>
+          <Reveal as="span" className="perche__label">COWORKING</Reveal>
+          <Reveal as="h2" delay={80} className="perche__title">Nessuno lo fa<br />come noi.</Reveal>
+          <Reveal as="p" delay={160} className="perche__subtitle">
+            Il primo,&nbsp;<VeroWord />,&nbsp;coworking polifunzionale ad ore per trainer e terapisti.
+          </Reveal>
         </div>
 
-        <div className="perche__grid-2x2 perche-anim perche-anim--4">
-          {cards.map(c => <TiltCard key={c.title} card={c} />)}
+        <div className="perche__grid-2x2">
+          {cards.map((c, i) => (
+            <Reveal key={c.title} delay={i * 90}>
+              <TiltCard card={c} />
+            </Reveal>
+          ))}
         </div>
 
-        <div className="perche__statement perche-anim perche-anim--5">
-          <div className="statement__lines">
+        <div className="perche__statement">
+          <Reveal className="statement__lines">
             <p className="statement__line">Non è una palestra.</p>
             <p className="statement__line">Non è uno studio tradizionale.</p>
             <p className="statement__line">Non è un coworking generico.</p>
-          </div>
-          <div className="statement__divider" />
-          <p className="statement__coda">EQB.</p>
-          <a href="/coworking" className="statement__cta">UNISCITI AL TEAM</a>
+          </Reveal>
+          <Reveal delay={80}><div className="statement__divider" /></Reveal>
+          <Reveal as="p" delay={140} className="statement__coda">EQB.</Reveal>
+          <Reveal delay={200}>
+            <a href="/coworking" className="statement__cta">UNISCITI AL TEAM</a>
+          </Reveal>
         </div>
 
       </div>

@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { CTAButton } from "./CTAButton";
+import { Reveal } from "./Reveal";
 import "./CoworkingFunnel.css";
 
 function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -238,11 +239,13 @@ export const CoworkingFunnel: React.FC = () => {
           </div>
           <div className="cw-pain__grid">
             {pains.map((p, i) => (
-              <TiltCard key={p.n} className={`cw-pain__card cw-anim cw-anim--${i + 2}`}>
-                <span className="cw-pain__n">{p.n}</span>
-                <h3 className="cw-pain__card-title">{p.title}</h3>
-                <p className="cw-pain__card-body">{p.body}</p>
-              </TiltCard>
+              <Reveal key={p.n} className="reveal-cell" delay={i * 90}>
+                <TiltCard className="cw-pain__card">
+                  <span className="cw-pain__n">{p.n}</span>
+                  <h3 className="cw-pain__card-title">{p.title}</h3>
+                  <p className="cw-pain__card-body">{p.body}</p>
+                </TiltCard>
+              </Reveal>
             ))}
           </div>
           <p className="cw-pain__close cw-anim cw-anim--6">
@@ -264,11 +267,13 @@ export const CoworkingFunnel: React.FC = () => {
           </div>
           <div className="cw-sol__pillars">
             {pillars.map((p, i) => (
-              <TiltCard key={p.n} className={`cw-pillar cw-anim cw-anim--${Math.min(i + 2, 6)}`}>
-                <span className="cw-pillar__n">{p.n}</span>
-                <h3 className="cw-pillar__title">{p.title}</h3>
-                <p className="cw-pillar__body">{p.body}</p>
-              </TiltCard>
+              <Reveal key={p.n} className="reveal-cell" delay={i * 90}>
+                <TiltCard className="cw-pillar">
+                  <span className="cw-pillar__n">{p.n}</span>
+                  <h3 className="cw-pillar__title">{p.title}</h3>
+                  <p className="cw-pillar__body">{p.body}</p>
+                </TiltCard>
+              </Reveal>
             ))}
           </div>
           <div className="cw-practice">
@@ -306,16 +311,18 @@ export const CoworkingFunnel: React.FC = () => {
           </div>
           <div className="cw-testi__grid">
             {testimonials.map((t, i) => (
-              <div key={t.name} className={`cw-testi__card cw-anim cw-anim--${i + 2}`}>
-                <div className="cw-testi__photo">
-                  <Image src={t.img} alt={t.name} fill sizes="(max-width: 768px) 100vw, 320px" style={{ objectFit: "cover" }} />
+              <Reveal key={t.name} className="reveal-cell" delay={i * 90}>
+                <div className="cw-testi__card">
+                  <div className="cw-testi__photo">
+                    <Image src={t.img} alt={t.name} fill sizes="(max-width: 768px) 100vw, 320px" style={{ objectFit: "cover" }} />
+                  </div>
+                  <p className="cw-testi__quote">&ldquo;{t.quote}&rdquo;</p>
+                  <div className="cw-testi__person">
+                    <span className="cw-testi__name">{t.name}</span>
+                    <span className="cw-testi__role">{t.role}</span>
+                  </div>
                 </div>
-                <p className="cw-testi__quote">&ldquo;{t.quote}&rdquo;</p>
-                <div className="cw-testi__person">
-                  <span className="cw-testi__name">{t.name}</span>
-                  <span className="cw-testi__role">{t.role}</span>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

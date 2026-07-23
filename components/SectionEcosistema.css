@@ -110,16 +110,10 @@
 }
 
 @media (max-width: 768px) {
-  /* Niente animazione di comparsa su mobile: il reveal si basa su una
-     soglia di scroll che puo' anche disattivarsi di nuovo (non e' "una
-     volta sola"), rischiando di lasciare il testo invisibile. Testo
-     sempre visibile da subito, piu' semplice e senza questo rischio. */
-  .eco-anim {
-    opacity: 1;
-    filter: blur();
-    transform: translateY(0);
-  }
-
+  /* Animazione di comparsa ATTIVA anche su mobile: ora il reveal e' "una
+     volta sola" (IntersectionObserver con disconnect), quindi non c'e' piu'
+     il rischio "testo invisibile" che aveva motivato la disattivazione
+     precedente. Stesso effetto di SectionSpazio/Reveal. */
   .section-ecosistema {
     padding: 5.25rem 1.5rem;
   }

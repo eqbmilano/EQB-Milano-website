@@ -32,3 +32,11 @@ Aggiornata 2026-07-21, verificata sul codice reale (branch v2).
 ---
 
 **In sintesi**: i punti 1-4 sono gli unici veri bloccanti. Di questi, il 2 e il 3 sono raccolta contenuti (azione tua), l'1 e il 4 richiedono un allineamento con Mattia. I punti 5-9 valgono la pena chiuderli prima del lancio ma non fermano il lavoro. Il resto è rifinitura da fare con calma.
+
+---
+
+## Dopo il go-live — debito tecnico da recuperare (con Mattia)
+
+| # | Cosa | Owner | Note |
+|---|------|-------|------|
+| T1 | Consolidare le animazioni di comparsa: **un solo hook condiviso + una sola CSS** al posto delle ~8 copie attuali (stesso `useVisible`/`useReveal` duplicato in 8 componenti, stessa CSS in 6 file) | Mattia + io | Deciso il 23/07 di rimandare qui: rischio inutile toccare 8 componenti a ridosso del lancio. **Momento naturale: migrazione Vercel → Hetzner.** L'uniformazione visibile (trigger, "once", buchi /contatti + griglie Coworking, eccezioni Coworking, blur mobile) è già stata fatta pre-lancio. |

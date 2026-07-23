@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import Link from "next/link";
+import { Reveal } from "./Reveal";
 import "./Hero.css";
 
 // px di "sforzo" scroll per andare da hero puro a bivio completamente a riposo
@@ -240,18 +241,22 @@ export const Hero: React.FC = () => {
     {/* Bivio statico per mobile: stesso contenuto, ma in flusso normale,
         niente crossfade JS. Nascosto su desktop (vedi Hero.css). */}
     <section className="bivio-mobile">
-      <span className="bivio-mobile__eyebrow">A chi è dedicato EQB?</span>
+      <Reveal as="span" className="bivio-mobile__eyebrow">A chi è dedicato EQB?</Reveal>
       <div className="bivio-mobile__cards">
-        <a href="#ecosistema" onClick={continua} className="bivio-mobile__card">
-          <span className="bivio-mobile__kicker">Sei un professionista?</span>
-          <p className="bivio-mobile__text">Scopri come EQB può diventare il tuo spazio di lavoro.</p>
-          <span className="bivio-mobile__cta">Continua a scoprire ↓</span>
-        </a>
-        <Link href="/benessere" className="bivio-mobile__card">
-          <span className="bivio-mobile__kicker">Cerchi un professionista?</span>
-          <p className="bivio-mobile__text">Trova il percorso, l&apos;attività e la persona più adatta a te.</p>
-          <span className="bivio-mobile__cta">Scopri i servizi →</span>
-        </Link>
+        <Reveal delay={100}>
+          <a href="#ecosistema" onClick={continua} className="bivio-mobile__card">
+            <span className="bivio-mobile__kicker">Sei un professionista?</span>
+            <p className="bivio-mobile__text">Scopri come EQB può diventare il tuo spazio di lavoro.</p>
+            <span className="bivio-mobile__cta">Continua a scoprire ↓</span>
+          </a>
+        </Reveal>
+        <Reveal delay={180}>
+          <Link href="/benessere" className="bivio-mobile__card">
+            <span className="bivio-mobile__kicker">Cerchi un professionista?</span>
+            <p className="bivio-mobile__text">Trova il percorso, l&apos;attività e la persona più adatta a te.</p>
+            <span className="bivio-mobile__cta">Scopri i servizi →</span>
+          </Link>
+        </Reveal>
       </div>
     </section>
     </>
