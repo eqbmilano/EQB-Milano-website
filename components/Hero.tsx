@@ -22,6 +22,7 @@ export const Hero: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const scrimRef = useRef<HTMLDivElement>(null);
   const scrollLineRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Finché "engaged" è true, lo scroll nativo è intercettato e prevenuto: tutta
   // l'animazione hero->bivio è guidata a mano dal progresso accumulato in JS,
@@ -60,6 +61,27 @@ export const Hero: React.FC = () => {
     bivio.style.pointerEvents = tB > 0.5 ? "auto" : "none";
     if (scrimRef.current) scrimRef.current.style.opacity = String(tB * 0.38);
   };
+
+  // Autoplay video hero robusto: iOS in Risparmio Energetico (o con la
+  // Riproduzione automatica disattivata in Safari) blocca l'autoplay muted e
+  // mostra il tasto play. Fallback: tentiamo play() al mount e, se ancora
+  // fermo, al PRIMO gesto dell'utente (tocco/scroll/click), quando iOS lo
+  // consente. I listener sono "once", si rimuovono da soli.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const kick = () => { v.play().catch(() => {}); };
+    kick();
+    const opts = { once: true, passive: true } as AddEventListenerOptions;
+    window.addEventListener("touchstart", kick, opts);
+    window.addEventListener("scroll", kick, opts);
+    window.addEventListener("click", kick, opts);
+    return () => {
+      window.removeEventListener("touchstart", kick);
+      window.removeEventListener("scroll", kick);
+      window.removeEventListener("click", kick);
+    };
+  }, []);
 
   useEffect(() => {
     // Su mobile lo scroll-hijack non si attiva affatto: il gesto touch nativo
@@ -195,7 +217,7 @@ export const Hero: React.FC = () => {
     <div className="phh-stage" ref={stageRef}>
       <div className="phh-pin">
         <section className="hero" data-navbar-hero>
-          <video className="hero__video" autoPlay loop muted playsInline preload="auto" poster="/assets/Hero-Poster.jpg">
+          <video ref={videoRef} className="hero__video" autoPlay loop muted playsInline preload="auto" poster="/assets/Hero-Poster.jpg">
             <source src="/assets/Video-Home.mp4" type="video/mp4" />
           </video>
           <div className="hero__overlay" />
