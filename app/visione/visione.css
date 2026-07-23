@@ -414,4 +414,18 @@
   .vis-team__title {
     margin-bottom: 1.5rem;
   }
+
+  /* Allineamento titoli a sinistra su mobile (deciso 22/07): coerenza con
+     /spazio e /aziende, gia' a sinistra. L'hero (vis-hero) resta centrato. */
+  .vis-missione {
+    text-align: left;
+  }
+
+  .vis-missione__inner {
+    align-items: flex-start;
+  }
+
+  .vis-team__title {
+    text-align: left;
+  }
 }

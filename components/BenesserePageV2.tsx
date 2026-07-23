@@ -503,6 +503,22 @@ export const BenesserePageV2: React.FC = () => {
             style={{ objectFit: "cover", objectPosition: "center 25%" }}
           />
         </div>
+        <div className="ben-closing__mosaic">
+          <div className="ben-closing__mosaic-grid">
+            <div className="ben-closing__mosaic-item ben-closing__mosaic-item--tall">
+              <Image src="/assets/Federico-osteopatia-closing.jpg" alt="" fill style={{ objectFit: "cover" }} />
+            </div>
+            <div className="ben-closing__mosaic-item">
+              <Image src="/assets/Pilates.jpg" alt="" fill style={{ objectFit: "cover" }} />
+            </div>
+            <div className="ben-closing__mosaic-item">
+              <Image src="/assets/Massaggi-Rilassanti-v2.jpg" alt="" fill style={{ objectFit: "cover" }} />
+            </div>
+            <div className="ben-closing__mosaic-item">
+              <Image src="/assets/Nutrizione-BIA-v3.jpg" alt="" fill style={{ objectFit: "cover" }} />
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ── Sticky CTA generale ── */}

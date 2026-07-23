@@ -310,6 +310,25 @@
     padding: .35rem 1.15rem;
     font-size: .72rem;
   }
+
+  /* Dropdown UNISCITI centrato in viewport (invece di right:0, che lo
+     allinea al bordo del bottone e lo spinge fuori schermo). */
+  .navbar__join-pop {
+    position: fixed;
+    top: 5rem;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: calc(100vw - 2rem);
+    max-width: 380px;
+    min-width: 0;
+    animation: joinPopInMobile .3s cubic-bezier(.22, 1, .36, 1);
+  }
+}
+
+@keyframes joinPopInMobile {
+  from { transform: translate(-50%, 10px); }
+  to { transform: translate(-50%, 0); }
 }
 
 /*# sourceMappingURL=components_Navbar_css_bad6b30c._.single.css.map*/

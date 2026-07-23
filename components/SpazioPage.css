@@ -1017,4 +1017,93 @@
   .sp-sticky__text { display: none; }
 }
 
+/* ════════ Ordine unico mobile: Titolo → Foto → Descrizione → Caratteristiche → Tag ════════
+   display:contents promuove i figli dei blocchi testo/immagine dentro il grid del
+   contenitore genitore; nth-child assegna ordine + reveal, senza toccare DOM/desktop. */
+@media (max-width: 768px) {
+  .spazio-v4__inner, .spazio-comuni__inner, .spazio-sala__inner,
+  .spazio-terra__inner, .spazio-sole__inner, .spazio-luna__inner { gap: 0; row-gap: 0; }
+
+  .spazio-v4__text, .spazio-comuni__text, .spazio-sala__text, .spazio-sala__image,
+  .spazio-terra__text, .spazio-terra__image, .spazio-sole__text, .spazio-sole__image,
+  .spazio-luna__text, .spazio-luna__image { display: contents; }
+
+  /* reveal fade replicato per ogni figlio promosso (era sul contenitore, ora dissolto) */
+  .spazio-v4__text > *, .spazio-comuni__text > *, .spazio-sala__text > *,
+  .spazio-terra__text > *, .spazio-sole__text > *, .spazio-luna__text > *,
+  .spazio-sala__image > *, .spazio-terra__image > *, .spazio-sole__image > *, .spazio-luna__image > * {
+    opacity: 0; filter: blur(8px); transform: translateY(24px);
+    transition: opacity .5s cubic-bezier(.22,1,.36,1), filter .5s cubic-bezier(.22,1,.36,1), transform .5s cubic-bezier(.22,1,.36,1);
+  }
+  .is-on .spazio-v4__text > *, .is-on .spazio-comuni__text > *, .is-on .spazio-sala__text > *,
+  .is-on .spazio-terra__text > *, .is-on .spazio-sole__text > *, .is-on .spazio-luna__text > *,
+  .is-on .spazio-sala__image > *, .is-on .spazio-terra__image > *, .is-on .spazio-sole__image > *, .is-on .spazio-luna__image > * {
+    opacity: 1; filter: none; transform: none;
+  }
+  /* tier di ritardo: 1=titolo, 2=foto, 3=descrizione, 4=caratteristiche/tag */
+  .spazio-v4__text > :nth-child(-n+2), .spazio-comuni__text > :nth-child(-n+2),
+  .spazio-sala__text > :nth-child(-n+2), .spazio-terra__text > :nth-child(-n+2),
+  .spazio-sole__text > :nth-child(-n+2), .spazio-luna__text > :nth-child(-n+2) { transition-delay: 0s; }
+
+  .spazio-v4__main, .spazio-comuni__gallery,
+  .spazio-sala__image .spazio-photo-frame, .spazio-terra__image .spazio-photo-frame,
+  .spazio-sole__image .spazio-photo-frame, .spazio-luna__image .spazio-photo-frame {
+    opacity: 0; filter: blur(8px); transform: translateY(24px);
+    transition: opacity .5s cubic-bezier(.22,1,.36,1) .08s, filter .5s cubic-bezier(.22,1,.36,1) .08s, transform .5s cubic-bezier(.22,1,.36,1) .08s;
+  }
+  .is-on .spazio-v4__main, .is-on .spazio-comuni__gallery,
+  .is-on .spazio-sala__image .spazio-photo-frame, .is-on .spazio-terra__image .spazio-photo-frame,
+  .is-on .spazio-sole__image .spazio-photo-frame, .is-on .spazio-luna__image .spazio-photo-frame {
+    opacity: 1; filter: none; transform: none;
+  }
+
+  .spazio-v4__text > :nth-child(n+3), .spazio-comuni__text > :nth-child(3),
+  .spazio-comuni__text > :nth-child(4),
+  .spazio-sala__text > :nth-child(3), .spazio-terra__text > :nth-child(3),
+  .spazio-sole__text > :nth-child(3), .spazio-luna__text > :nth-child(3) { transition-delay: .16s; }
+
+  .spazio-comuni__text > :nth-child(5), .spazio-sala__text > :nth-child(4),
+  .spazio-terra__text > :nth-child(4), .spazio-sole__text > :nth-child(4), .spazio-luna__text > :nth-child(4),
+  .spazio-sala__image .spazio-tags, .spazio-terra__image .spazio-tags,
+  .spazio-sole__image .spazio-tags, .spazio-luna__image .spazio-tags { transition-delay: .24s; }
+
+  /* — Accoglienza (Reception): label+titolo, foto, tagline+body — */
+  .spazio-v4__text > :nth-child(1) { order: 1; margin: 0; }
+  .spazio-v4__text > :nth-child(2) { order: 1; margin: .4rem 0 0; }
+  .spazio-v4__main { order: 2; margin: 1.75rem 0 0; }
+  .spazio-v4__text > :nth-child(3) { order: 3; margin: 1.75rem 0 0; }
+  .spazio-v4__text > :nth-child(4) { order: 3; margin: .6rem 0 0; }
+
+  /* — Aree Comuni: label+titolo, galleria foto, tagline+body, caratteristiche —
+     (5 figli: label, h2, tagline, body, TiltCard — a differenza delle altre
+     sezioni che non hanno la tagline) */
+  .spazio-comuni__text > :nth-child(1) { order: 1; margin: 0; }
+  .spazio-comuni__text > :nth-child(2) { order: 1; margin: .4rem 0 0; }
+  .spazio-comuni__gallery { order: 2; margin: 1.75rem 0 0; }
+  .spazio-comuni__text > :nth-child(3) { order: 3; margin: 1.75rem 0 0; }
+  .spazio-comuni__text > :nth-child(4) { order: 3; margin: .75rem 0 0; }
+  .spazio-comuni__text > :nth-child(5) { order: 4; margin: 1.75rem 0 0; }
+
+  /* — Sala Allenamento: label+titolo, foto, body, caratteristiche, tag — */
+  .spazio-sala__text > :nth-child(1) { order: 1; margin: 0; }
+  .spazio-sala__text > :nth-child(2) { order: 1; margin: .4rem 0 0; }
+  .spazio-sala__image .spazio-photo-frame { order: 2; margin: 1.75rem 0 0; }
+  .spazio-sala__text > :nth-child(3) { order: 3; margin: 1.75rem 0 0; }
+  .spazio-sala__text > :nth-child(4) { order: 4; margin: 1.75rem 0 0; }
+  .spazio-sala__image .spazio-tags { order: 5; margin: 1.5rem 0 0; }
+
+  /* — Stanza Terra / Sole / Luna: stesso schema — */
+  .spazio-terra__text > :nth-child(1), .spazio-sole__text > :nth-child(1), .spazio-luna__text > :nth-child(1) { order: 1; margin: 0; }
+  .spazio-terra__text > :nth-child(2), .spazio-sole__text > :nth-child(2), .spazio-luna__text > :nth-child(2) { order: 1; margin: .4rem 0 0; }
+  .spazio-terra__image .spazio-photo-frame, .spazio-sole__image .spazio-photo-frame, .spazio-luna__image .spazio-photo-frame { order: 2; margin: 1.75rem 0 0; }
+  .spazio-terra__text > :nth-child(3), .spazio-sole__text > :nth-child(3), .spazio-luna__text > :nth-child(3) { order: 3; margin: 1.75rem 0 0; }
+  .spazio-terra__text > :nth-child(4), .spazio-sole__text > :nth-child(4), .spazio-luna__text > :nth-child(4) { order: 4; margin: 1.75rem 0 0; }
+  .spazio-terra__image .spazio-tags, .spazio-sole__image .spazio-tags, .spazio-luna__image .spazio-tags { order: 5; margin: 1.5rem 0 0; }
+}
+
+/* ════════ Font sotto i 12px alzati su mobile (standard 22/07) ════════ */
+@media (max-width: 768px) {
+  .spazio-photo-caption { font-size: .75rem; }
+}
+
 /*# sourceMappingURL=components_SpazioPage_css_bad6b30c._.single.css.map*/

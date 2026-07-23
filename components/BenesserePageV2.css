@@ -1086,4 +1086,81 @@
   }
 }
 
+/* ════════ Ordine unico mobile: Titolo → Video/Foto → Descrizione → Caratteristiche ════════
+   display:contents dissolve i contenitori testo, i figli (gia' classi ben-up--N
+   individuali) vengono riordinati con order. Va DOPO le regole ben-feature--reverse
+   esistenti cosi' l'ordine dell'immagine vince sempre (stessa specificita', ultima in cascata). */
+@media (max-width: 900px) {
+  .ben-ad-section__inner { row-gap: 0; }
+  .ben-ad-section__content { display: contents; }
+  .ben-ad-section__content .ben-up--1,
+  .ben-ad-section__content .ben-up--2 { order: 1; }
+  .ben-ad-section__content .ben-up--1 { margin: 0; }
+  .ben-ad-section__content .ben-up--2 { margin: .4rem 0 0; }
+  .ben-ad-section__video { order: 2; margin: 1.75rem 0 0; }
+  .ben-ad-section__content .ben-up--3 { order: 3; margin: 1.75rem 0 0; }
+  .ben-ad-section__content .ben-up--4 { order: 3; margin: 1rem 0 0; }
+  .ben-ad-section__content .ben-tilt-card { order: 4; margin: 1.5rem 0 0; }
+
+  .ben-feature__inner { row-gap: 0; }
+  .ben-feature__content { display: contents; }
+  .ben-feature__content .ben-up--1,
+  .ben-feature__content .ben-up--2 { order: 1; }
+  .ben-feature__content .ben-up--1 { margin: 0; }
+  .ben-feature__content .ben-up--2 { margin: .4rem 0 0; }
+  .ben-feature__image,
+  .ben-feature--reverse .ben-feature__image { order: 2; margin: 1.75rem 0 0; }
+  .ben-feature__content .ben-up--3 { order: 3; margin: 1.75rem 0 0; }
+  .ben-feature__content .ben-up--4 { order: 4; margin: 1.25rem 0 0; }
+}
+
+/* ════════ CTA finale Benessere: mosaico foto come vis-cta/spazio-cta (solo mobile) ════════ */
+.ben-closing__mosaic { display: none; }
+@media (max-width: 900px) {
+  .ben-closing__photo { display: none; }
+  .ben-closing__mosaic {
+    display: block;
+    height: 360px;
+  }
+  .ben-closing__mosaic-grid {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+    height: 100%;
+    display: grid;
+  }
+  .ben-closing__mosaic-item {
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ben-closing__mosaic-item--tall { grid-row: span 2; }
+}
+
+/* ════════ Font sotto i 12px alzati su mobile (standard 22/07) ════════ */
+@media (max-width: 900px) {
+  .hc-front__cat, .hc-back__cat { font-size: .75rem; }
+  .ben-feature__tag { font-size: .75rem; }
+  .ben-closing__label { font-size: .75rem; }
+}
+
+/* ════════ Slideshow orizzontale servizi (solo mobile) ════════ */
+@media (max-width: 900px) {
+  .vb-group__cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: .85rem;
+    margin: 0 -1.5rem;
+    padding: .25rem 1.5rem .5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .vb-group__cards::-webkit-scrollbar { display: none; }
+  .vb-group__cards > .reveal-cell {
+    flex: 0 0 62%;
+    scroll-snap-align: center;
+  }
+}
+
 /*# sourceMappingURL=components_BenesserePage_css_bad6b30c._.single.css.map*/

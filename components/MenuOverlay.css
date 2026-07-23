@@ -255,7 +255,7 @@
 
   .menu-overlay__reveal-label {
     font-family: var(--font-manrope);
-    font-size: .62rem;
+    font-size: .75rem;
     font-weight: 600;
     letter-spacing: .22em;
     text-transform: uppercase;
