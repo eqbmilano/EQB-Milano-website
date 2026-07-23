@@ -13,17 +13,15 @@
    sopra il menu, z-index 1002). Vive dentro il menu: sparisce con lui. */
 .menu-overlay__lang-btn {
   position: absolute;
-  top: 1.6rem;
-  right: 5.4rem;
+  top: 1.55rem;
+  right: 4.4rem;
   z-index: 3;
   display: inline-flex;
   align-items: center;
-  gap: .35rem;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
   color: #fff;
-  font-family: var(--font-manrope);
-  font-size: .8rem;
-  font-weight: 600;
-  letter-spacing: .04em;
   text-decoration: none;
   transition: opacity .3s;
 }
@@ -33,14 +31,14 @@
 }
 
 .menu-overlay__lang-btn svg {
-  width: 20px;
-  height: 20px;
+  width: 21px;
+  height: 21px;
 }
 
 @media (max-width: 767px) {
   .menu-overlay__lang-btn {
     top: 1.35rem;
-    right: 4.4rem;
+    right: 3.6rem;
   }
 }
 

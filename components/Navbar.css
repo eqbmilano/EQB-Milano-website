@@ -220,17 +220,14 @@
   color: #30262499;
 }
 
-/* Icona lingua — minimal, stessa altezza dell'hamburger, a fianco suo */
+/* Icona lingua — solo mappamondo, stessa dimensione dell'hamburger, a fianco suo */
 .navbar__lang-btn {
   display: inline-flex;
   align-items: center;
-  gap: .35rem;
+  justify-content: center;
+  width: 36px;
   height: 36px;
   color: var(--color-white);
-  font-family: var(--font-manrope);
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .04em;
   text-decoration: none;
   transition: color .4s, opacity .4s;
 }
@@ -240,8 +237,8 @@
 }
 
 .navbar__lang-btn svg {
-  width: 19px;
-  height: 19px;
+  width: 21px;
+  height: 21px;
   flex-shrink: 0;
 }
 

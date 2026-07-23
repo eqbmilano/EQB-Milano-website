@@ -3,10 +3,13 @@ import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Mousewheel } from "swiper/modules";
 import { ParallaxDivider } from "./ParallaxDivider";
 import LazyVideo from "./LazyVideo";
 import { Reveal } from "./Reveal";
 import { Multiline } from "./Multiline";
+import "swiper/css";
 import "./BenesserePageV2.css";
 
 const WA = "https://wa.me/393755153273?text=";
@@ -54,6 +57,63 @@ function HoverCard({ name, img, desc, cat, msg, prenotaLabel, prenotaWa }: {
         >
           {prenotaWa}
         </a>
+      </div>
+    </div>
+  );
+}
+
+// Stesso linguaggio del carosello "All'interno di EQB" in home (SectionInterno):
+// header con frecce prev/next + slide numerate. Un'istanza per gruppo di servizi.
+function ServiceGroup({ group, images, prenotaLabel, prenotaWa, serviziCountLabel }: {
+  group: Group; images: string[]; prenotaLabel: string; prenotaWa: string; serviziCountLabel: string;
+}) {
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
+  const { label, services } = group;
+
+  return (
+    <div>
+      <div className="vb-group__header">
+        <div className="vb-group__heading">
+          <h3 className="vb-group__title">{label}</h3>
+          <span className="vb-group__count">{services.length} {serviziCountLabel}</span>
+        </div>
+        <div className="vb-carousel-nav">
+          <button ref={prevRef} className="vb-nav-btn vb-nav-btn--prev" aria-label="Precedente">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2.19571 8.57143L8.81543 15.1911L8 16L0 8L8 0L8.81543 0.808857L2.19571 7.42857L16 7.42857V8.57143L2.19571 8.57143Z" fill="currentColor"/></svg>
+          </button>
+          <button ref={nextRef} className="vb-nav-btn vb-nav-btn--next" aria-label="Successivo">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.8043 7.42857L7.18457 0.808857L8 0L16 8L8 16L7.18457 15.1911L13.8043 8.57143H0V7.42857L13.8043 7.42857Z" fill="currentColor"/></svg>
+          </button>
+        </div>
+      </div>
+      <div className="vb-carousel-wrap">
+        <Swiper
+          modules={[Navigation, Mousewheel]}
+          navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
+          onBeforeInit={(swiper) => {
+            if (typeof swiper.params.navigation === "object" && swiper.params.navigation) {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+            }
+          }}
+          slidesPerView={1.3}
+          spaceBetween={16}
+          breakpoints={{
+            640: { slidesPerView: 2.3, spaceBetween: 16 },
+            1024: { slidesPerView: Math.min(services.length, 4) + 0.15, spaceBetween: 20 },
+          }}
+          mousewheel={{ forceToAxis: true }}
+          grabCursor
+          className="vb-swiper"
+        >
+          {services.map((s, i) => (
+            <SwiperSlide key={s.name} className="vb-slide">
+              <span className="vb-slide__number">{String(i + 1).padStart(2, "0")}</span>
+              <HoverCard {...s} img={images[i] ?? images[0]} cat={label} prenotaLabel={prenotaLabel} prenotaWa={prenotaWa} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
@@ -434,25 +494,14 @@ export const BenesserePageV2: React.FC = () => {
           </div>
           <div className="vb-groups">
             {groups.map((g) => (
-              <div key={g.label}>
-                <div className="vb-group__header">
-                  <h3 className="vb-group__title">{g.label}</h3>
-                  <span className="vb-group__count">{g.services.length} {t("serviziCount")}</span>
-                </div>
-                <div className="vb-group__cards">
-                  {g.services.map((s, i) => (
-                    <Reveal key={s.name} className="reveal-cell" delay={i * 70}>
-                      <HoverCard
-                        {...s}
-                        img={GROUP_IMAGES[g.label]?.[i] ?? "/assets/Pilates.jpg"}
-                        cat={g.label}
-                        prenotaLabel={t("prenotaCta")}
-                        prenotaWa={t("prenotaWhatsapp")}
-                      />
-                    </Reveal>
-                  ))}
-                </div>
-              </div>
+              <ServiceGroup
+                key={g.label}
+                group={g}
+                images={GROUP_IMAGES[g.label] ?? ["/assets/Pilates.jpg"]}
+                prenotaLabel={t("prenotaCta")}
+                prenotaWa={t("prenotaWhatsapp")}
+                serviziCountLabel={t("serviziCount")}
+              />
             ))}
           </div>
         </div>
