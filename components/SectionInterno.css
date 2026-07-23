@@ -229,14 +229,12 @@
   display: none;
   z-index: 4;
   place-items: center;
-  width: 46px;
-  height: 46px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: #ffffff1a;
-  border: 1px solid #ffffff66;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: 0 2px 14px #00000026;
+  background: #ffffff14;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   transition: opacity .35s;
   position: absolute;
   top: 50%;
@@ -247,24 +245,25 @@
 
 .interno-tap-hint__ring {
   background: #fff;
+  opacity: .85;
   border-radius: 50%;
-  width: 7px;
-  height: 7px;
+  width: 5px;
+  height: 5px;
   position: relative;
 }
 
 .interno-tap-hint__ring:before {
   content: "";
-  border: 1px solid #ffffffb3;
+  border: 1px solid #ffffff85;
   border-radius: 50%;
   position: absolute;
   inset: -1px;
-  animation: internoTapRipple 2.6s cubic-bezier(.22, 1, .36, 1) infinite;
+  animation: internoTapRipple 2.8s cubic-bezier(.22, 1, .36, 1) infinite;
 }
 
 @keyframes internoTapRipple {
-  0% { transform: scale(1); opacity: .7; }
-  100% { transform: scale(2.6); opacity: 0; }
+  0% { transform: scale(1); opacity: .55; }
+  100% { transform: scale(2.2); opacity: 0; }
 }
 
 .interno-slide.is-flipped .interno-tap-hint {

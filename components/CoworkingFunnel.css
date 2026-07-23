@@ -990,6 +990,7 @@
   gap: 1.25rem;
   padding: .6rem .6rem .6rem 1.6rem;
   border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, .14);
   background: var(--color-brown-primary);
   box-shadow: 0 12px 40px rgba(8, 5, 3, .35);
   opacity: 0;
@@ -1141,7 +1142,9 @@
   }
   .cw-testi__grid::-webkit-scrollbar { display: none; }
   .cw-testi__grid > .reveal-cell {
-    flex: 0 0 82%;
+    /* 82% non lasciava intuire che ci fossero altre card: ridotto per
+       mostrare un pezzo visibile della prossima gia' dal primo sguardo. */
+    flex: 0 0 72%;
     scroll-snap-align: center;
   }
 }

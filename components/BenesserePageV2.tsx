@@ -26,34 +26,25 @@ type Group = { label: string; services: Service[] };
 type Feature = { num: string; label: string; title: string; micro: string; tags: string[] };
 type AccPillar = { t: string; d: string };
 
-function HoverCard({ name, img, desc, cat, msg, prenotaLabel, prenotaWa }: {
-  name: string; img: string; desc: string; cat: string; msg: string; prenotaLabel: string; prenotaWa: string;
+// Card statica (niente flip): il tap-per-girare si scontrava col drag del
+// carosello, e la descrizione corta lasciava un vuoto scomodo prima del
+// bottone. Foto, nome e descrizione sono sempre visibili — piu' minimal.
+function ServiceCard({ name, img, desc, cat, msg, prenotaWa }: {
+  name: string; img: string; desc: string; cat: string; msg: string; prenotaWa: string;
 }) {
-  const [flipped, setFlipped] = useState(false);
   return (
-    <div
-      className={`hc-wrapper${flipped ? " is-flipped" : ""}`}
-      onClick={() => setFlipped((f) => !f)}
-    >
-      <div className="hc-front">
-        <div className="hc-front__img">
-          <Image src={img} alt={name} fill sizes="(max-width: 768px) 50vw, 25vw" style={{ objectFit: "cover" }} />
-        </div>
-        <div className="hc-front__overlay" />
-        <div className="hc-front__body">
-          <span className="hc-front__name">{name}</span>
-          <span className="hc-front__btn">{prenotaLabel}</span>
-        </div>
+    <div className="vb-card">
+      <div className="vb-card__media">
+        <Image src={img} alt={name} fill sizes="(max-width: 768px) 60vw, 25vw" style={{ objectFit: "cover" }} />
       </div>
-      <div className="hc-back">
-        <span className="hc-back__cat">{cat}</span>
-        <span className="hc-back__name">{name}</span>
-        <p className="hc-back__desc">{desc}</p>
+      <div className="vb-card__body">
+        <span className="vb-card__cat">{cat}</span>
+        <span className="vb-card__name">{name}</span>
+        <p className="vb-card__desc">{desc}</p>
         <a
           href={`${WA}${encodeURIComponent(msg)}`}
           target="_blank" rel="noopener noreferrer"
-          className="hc-back__btn"
-          onClick={(e) => e.stopPropagation()}
+          className="vb-card__btn"
         >
           {prenotaWa}
         </a>
@@ -64,8 +55,8 @@ function HoverCard({ name, img, desc, cat, msg, prenotaLabel, prenotaWa }: {
 
 // Stesso linguaggio del carosello "All'interno di EQB" in home (SectionInterno):
 // header con frecce prev/next + slide numerate. Un'istanza per gruppo di servizi.
-function ServiceGroup({ group, images, prenotaLabel, prenotaWa, serviziCountLabel }: {
-  group: Group; images: string[]; prenotaLabel: string; prenotaWa: string; serviziCountLabel: string;
+function ServiceGroup({ group, images, prenotaWa, serviziCountLabel }: {
+  group: Group; images: string[]; prenotaWa: string; serviziCountLabel: string;
 }) {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -110,7 +101,7 @@ function ServiceGroup({ group, images, prenotaLabel, prenotaWa, serviziCountLabe
           {services.map((s, i) => (
             <SwiperSlide key={s.name} className="vb-slide">
               <span className="vb-slide__number">{String(i + 1).padStart(2, "0")}</span>
-              <HoverCard {...s} img={images[i] ?? images[0]} cat={label} prenotaLabel={prenotaLabel} prenotaWa={prenotaWa} />
+              <ServiceCard {...s} img={images[i] ?? images[0]} cat={label} prenotaWa={prenotaWa} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -498,7 +489,6 @@ export const BenesserePageV2: React.FC = () => {
                 key={g.label}
                 group={g}
                 images={GROUP_IMAGES[g.label] ?? ["/assets/Pilates.jpg"]}
-                prenotaLabel={t("prenotaCta")}
                 prenotaWa={t("prenotaWhatsapp")}
                 serviziCountLabel={t("serviziCount")}
               />
