@@ -3,37 +3,40 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Reveal } from "./Reveal";
 import { SocialLinks } from "./SocialIcons";
+import { Multiline } from "./Multiline";
 import "./Footer.css";
-
-const ALL_PAGES = [
-  { label: "Home",      href: "/" },
-  { label: "Spazio",    href: "/spazio" },
-  { label: "Coworking", href: "/coworking" },
-  { label: "Benessere", href: "/benessere" },
-  { label: "Visione",   href: "/visione" },
-  { label: "Contatti",  href: "/contatti" },
-];
 
 export const Footer: React.FC = () => {
   const pathname = usePathname();
+  const locale = pathname.split("/")[1] || "it";
+  const t = useTranslations("footer");
+
+  const ALL_PAGES = [
+    { label: t("home"),      href: `/${locale}` },
+    { label: t("spazio"),    href: `/${locale}/spazio` },
+    { label: t("coworking"), href: `/${locale}/coworking` },
+    { label: t("benessere"), href: `/${locale}/benessere` },
+    { label: t("visione"),   href: `/${locale}/visione` },
+    { label: t("contatti"),  href: `/${locale}/contatti` },
+  ];
   const navItems = ALL_PAGES.filter((p) => p.href !== pathname);
+  const isHome = pathname === `/${locale}`;
 
   return (
-    <footer className={`footer${pathname === "/" ? " footer--dark" : ""}`}>
+    <footer className={`footer${isHome ? " footer--dark" : ""}`}>
       <div className="footer__grid">
         <Reveal className="footer__col footer__col--brand" delay={0}>
-          <Link href="/">
+          <Link href={`/${locale}`}>
             <Image src="/assets/Logo-Bianco.svg" alt="EQB Milano" width={70} height={35} />
           </Link>
-          <p className="footer__tagline">
-            Wellness &amp; Fitness Coworking<br />Milano
-          </p>
+          <p className="footer__tagline"><Multiline text={t("tagline")} /></p>
         </Reveal>
 
         <Reveal className="footer__col" delay={80}>
-          <span className="footer__col-label">Navigazione</span>
+          <span className="footer__col-label">{t("navLabel")}</span>
           <ul className="footer__nav">
             {navItems.map((item) => (
               <li key={item.href}>
@@ -44,7 +47,7 @@ export const Footer: React.FC = () => {
         </Reveal>
 
         <Reveal className="footer__col" delay={160}>
-          <span className="footer__col-label">Contatti</span>
+          <span className="footer__col-label">{t("contattiLabel")}</span>
           <div className="footer__contacts">
             <p>
               <a href="tel:+393755153273">
@@ -78,12 +81,10 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className="footer__bottom">
-        <p className="footer__legal">
-          EQB Milano di Adinolfi Marco · Impresa individuale · P.IVA 14601140966 · C.F. DNLMRC02A11F205W · REA MI-2794459 (CCIAA Milano MB Lodi) · Sede operativa: Viale Regina Margherita 43, 20122 Milano
-        </p>
+        <p className="footer__legal">{t("legal")}</p>
         <p>
-          © 2026 EQB Milano · Tutti i diritti riservati ·{" "}
-          <Link href="/privacy" className="footer__privacy-link">Privacy</Link>
+          {t("copyright")}{" "}
+          <Link href={`/${locale}/privacy`} className="footer__privacy-link">{t("privacyLink")}</Link>
         </p>
       </div>
     </footer>

@@ -1,8 +1,10 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import "./SectionEcosistema.css";
 
 export const SectionEcosistema: React.FC = () => {
+  const t = useTranslations("home.ecosistema");
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -21,12 +23,11 @@ export const SectionEcosistema: React.FC = () => {
     <section id="ecosistema" ref={ref} className={`section-ecosistema${visible ? " is-visible" : ""}`}>
       <div className="section-ecosistema__content">
         <h2 className="section-ecosistema__claim">
-          <span className="eco-anim eco-anim--1">Non è uno studio.</span>
-          <span className="eco-anim eco-anim--2 section-ecosistema__claim-accent">È un ecosistema.</span>
+          <span className="eco-anim eco-anim--1">{t("claim1")}</span>
+          <span className="eco-anim eco-anim--2 section-ecosistema__claim-accent">{t("claim2")}</span>
         </h2>
         <p className="section-ecosistema__subtext eco-anim eco-anim--3">
-          Pensato per professionisti che cercano qualità, continuità e visione,
-          all&rsquo;interno di uno spazio che supporta lavoro, crescita e relazioni.
+          {t("subtext")}
         </p>
       </div>
     </section>

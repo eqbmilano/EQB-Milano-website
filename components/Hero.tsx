@@ -1,6 +1,8 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Reveal } from "./Reveal";
 import "./Hero.css";
 
@@ -23,6 +25,8 @@ export const Hero: React.FC = () => {
   const scrimRef = useRef<HTMLDivElement>(null);
   const scrollLineRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const t = useTranslations("home.hero");
+  const locale = usePathname().split("/")[1] || "it";
 
   // Finché "engaged" è true, lo scroll nativo è intercettato e prevenuto: tutta
   // l'animazione hero->bivio è guidata a mano dal progresso accumulato in JS,
@@ -225,30 +229,30 @@ export const Hero: React.FC = () => {
 
           {/* Testo hero */}
           <div className="hero__content" ref={heroRef}>
-            <span className="hero__label hero__anim hero__anim--1">MILANO</span>
-            <h1 className="hero__title hero__anim hero__anim--2">Wellness &amp; Fitness Coworking</h1>
+            <span className="hero__label hero__anim hero__anim--1">{t("label")}</span>
+            <h1 className="hero__title hero__anim hero__anim--2">{t("title")}</h1>
             <p className="hero__vision">
-              <span className="hero__vision-word hero__vision-word--1">Spazio</span>
+              <span className="hero__vision-word hero__vision-word--1">{t("vision1")}</span>
               <span className="hero__vision-sep hero__vision-sep--1" />
-              <span className="hero__vision-word hero__vision-word--2">Relazioni</span>
+              <span className="hero__vision-word hero__vision-word--2">{t("vision2")}</span>
               <span className="hero__vision-sep hero__vision-sep--2" />
-              <span className="hero__vision-word hero__vision-word--3">Crescita</span>
+              <span className="hero__vision-word hero__vision-word--3">{t("vision3")}</span>
             </p>
           </div>
 
           {/* Bivio glassy — compare nella stessa posizione del testo */}
           <div className="phh-bivio" ref={bivioRef}>
-            <span className="phh-bivio__eyebrow">A chi è dedicato EQB?</span>
+            <span className="phh-bivio__eyebrow">{t("eyebrow")}</span>
             <div className="phh-bivio__cards">
               <a href="#ecosistema" onClick={continua} className="phh-card">
-                <span className="phh-card__kicker">Sei un professionista?</span>
-                <p className="phh-card__text">Scopri come EQB può diventare il tuo spazio di lavoro.</p>
-                <span className="phh-card__cta">Continua a scoprire ↓</span>
+                <span className="phh-card__kicker">{t("profKicker")}</span>
+                <p className="phh-card__text">{t("profText")}</p>
+                <span className="phh-card__cta">{t("profCta")}</span>
               </a>
-              <Link href="/benessere" className="phh-card">
-                <span className="phh-card__kicker">Cerchi un professionista?</span>
-                <p className="phh-card__text">Trova il percorso, l'attività e la persona più adatta a te.</p>
-                <span className="phh-card__cta">Scopri i servizi →</span>
+              <Link href={`/${locale}/benessere`} className="phh-card">
+                <span className="phh-card__kicker">{t("cercaKicker")}</span>
+                <p className="phh-card__text">{t("cercaText")}</p>
+                <span className="phh-card__cta">{t("cercaCta")}</span>
               </Link>
             </div>
           </div>
@@ -263,20 +267,20 @@ export const Hero: React.FC = () => {
     {/* Bivio statico per mobile: stesso contenuto, ma in flusso normale,
         niente crossfade JS. Nascosto su desktop (vedi Hero.css). */}
     <section className="bivio-mobile">
-      <Reveal as="span" className="bivio-mobile__eyebrow">A chi è dedicato EQB?</Reveal>
+      <Reveal as="span" className="bivio-mobile__eyebrow">{t("eyebrow")}</Reveal>
       <div className="bivio-mobile__cards">
         <Reveal delay={100}>
           <a href="#ecosistema" onClick={continua} className="bivio-mobile__card">
-            <span className="bivio-mobile__kicker">Sei un professionista?</span>
-            <p className="bivio-mobile__text">Scopri come EQB può diventare il tuo spazio di lavoro.</p>
-            <span className="bivio-mobile__cta">Continua a scoprire ↓</span>
+            <span className="bivio-mobile__kicker">{t("profKicker")}</span>
+            <p className="bivio-mobile__text">{t("profText")}</p>
+            <span className="bivio-mobile__cta">{t("profCta")}</span>
           </a>
         </Reveal>
         <Reveal delay={180}>
-          <Link href="/benessere" className="bivio-mobile__card">
-            <span className="bivio-mobile__kicker">Cerchi un professionista?</span>
-            <p className="bivio-mobile__text">Trova il percorso, l&apos;attività e la persona più adatta a te.</p>
-            <span className="bivio-mobile__cta">Scopri i servizi →</span>
+          <Link href={`/${locale}/benessere`} className="bivio-mobile__card">
+            <span className="bivio-mobile__kicker">{t("cercaKicker")}</span>
+            <p className="bivio-mobile__text">{t("cercaText")}</p>
+            <span className="bivio-mobile__cta">{t("cercaCta")}</span>
           </Link>
         </Reveal>
       </div>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Manrope, Poppins } from "next/font/google";
 import { ORG, SERVICE_CATALOG, SITE_NAME, SITE_URL } from "@/lib/site";
+import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -32,11 +34,15 @@ export const metadata: Metadata = {
   },
 };
 
+const IN_LANGUAGE: Record<string, string> = { it: "it-IT", en: "en-US" };
+
 /**
  * Organization + WebSite JSON-LD, una volta sola nel root layout (vale per tutte le pagine).
  * Catalogo servizi B2C/B2B alla pari — nessuno dei due ordinato prima per priorità.
+ * Il testo del catalogo resta in italiano anche in /en per ora (semplificazione nota):
+ * solo inLanguage e url del nodo WebSite sono già corretti per lingua.
  */
-function OrganizationJsonLd() {
+function OrganizationJsonLd({ locale }: { locale: string }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -84,7 +90,7 @@ function OrganizationJsonLd() {
         name: SITE_NAME,
         url: SITE_URL,
         publisher: { "@id": `${SITE_URL}/#organization` },
-        inLanguage: "it-IT",
+        inLanguage: IN_LANGUAGE[locale] ?? IN_LANGUAGE[DEFAULT_LOCALE],
       },
     ],
   };
@@ -97,16 +103,19 @@ function OrganizationJsonLd() {
   );
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const localeHeader = (await headers()).get("x-locale");
+  const locale = localeHeader && isLocale(localeHeader) ? localeHeader : DEFAULT_LOCALE;
+
   return (
-    <html lang="it">
+    <html lang={locale}>
       <head>
         <meta name="color-scheme" content="light" />
-        <OrganizationJsonLd />
+        <OrganizationJsonLd locale={locale} />
       </head>
       <body className={`${manrope.variable} ${poppins.variable} antialiased`}>
         {children}

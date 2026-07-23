@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useLanguageSwitch } from "@/lib/use-language-switch";
 import { MenuOverlay } from "./MenuOverlay";
 import "./Navbar.css";
 
@@ -12,6 +14,9 @@ export const Navbar: React.FC = () => {
   const [isDark, setIsDark] = useState(false);
   const [showScrim, setShowScrim] = useState(false);
   const pathname = usePathname();
+  const t = useTranslations("nav");
+  const locale = pathname.split("/")[1] || "it";
+  const { targetLocale, targetHref, setCookie } = useLanguageSwitch();
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
@@ -90,7 +95,7 @@ export const Navbar: React.FC = () => {
     <>
       <nav className={`navbar${menuOpen ? " menu-open" : ""}${darkMode ? " navbar--dark" : ""}${showScrim ? " navbar--scrim" : ""}`}>
         <div className={`navbar__logo${menuOpen ? " navbar__logo--hidden" : ""}`}>
-          <Link href="/">
+          <Link href={`/${locale}`}>
             <Image
               src={darkMode ? "/assets/Logo-Marrone.svg" : "/assets/Logo-Bianco.svg"}
               alt="EQB Milano"
@@ -109,32 +114,45 @@ export const Navbar: React.FC = () => {
               aria-expanded={joinOpen}
               aria-haspopup="true"
             >
-              UNISCITI
+              {t("unisciti")}
             </button>
             {joinOpen && (
               <div className="navbar__join-pop">
-                <Link href="/candidatura" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
-                  <span className="navbar__join-kicker">Sei un professionista?</span>
-                  <span className="navbar__join-label">Candidati &#8594;</span>
-                  <span className="navbar__join-desc">Spazio a ore, community e supporto.</span>
+                <Link href={`/${locale}/candidatura`} className="navbar__join-item" onClick={() => setJoinOpen(false)}>
+                  <span className="navbar__join-kicker">{t("profSei")}</span>
+                  <span className="navbar__join-label">{t("profLabel")} &#8594;</span>
+                  <span className="navbar__join-desc">{t("profDesc")}</span>
                 </Link>
-                <Link href="/contatti" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
-                  <span className="navbar__join-kicker">Sei un cliente?</span>
-                  <span className="navbar__join-label">Scrivici &#8594;</span>
-                  <span className="navbar__join-desc">Raccontaci di cosa hai bisogno.</span>
+                <Link href={`/${locale}/contatti`} className="navbar__join-item" onClick={() => setJoinOpen(false)}>
+                  <span className="navbar__join-kicker">{t("clienteSei")}</span>
+                  <span className="navbar__join-label">{t("clienteLabel")} &#8594;</span>
+                  <span className="navbar__join-desc">{t("clienteDesc")}</span>
                 </Link>
-                <Link href="/aziende" className="navbar__join-item" onClick={() => setJoinOpen(false)}>
-                  <span className="navbar__join-kicker">Azienda o evento?</span>
-                  <span className="navbar__join-label">Scopri di più &#8594;</span>
-                  <span className="navbar__join-desc">Spazio per workshop, eventi e collaborazioni.</span>
+                <Link href={`/${locale}/aziende`} className="navbar__join-item" onClick={() => setJoinOpen(false)}>
+                  <span className="navbar__join-kicker">{t("aziendaSei")}</span>
+                  <span className="navbar__join-label">{t("aziendaLabel")} &#8594;</span>
+                  <span className="navbar__join-desc">{t("aziendaDesc")}</span>
                 </Link>
               </div>
             )}
           </div>
+          <a
+            href={targetHref}
+            onClick={setCookie}
+            className={`navbar__lang-btn${menuOpen ? " navbar__lang-btn--hidden" : ""}`}
+            aria-label={`${t("switchLanguage")} (${targetLocale.toUpperCase()})`}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18" />
+              <path d="M12 3c2.5 2.5 4 5.5 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.5-4-9s1.5-6.5 4-9z" />
+            </svg>
+            <span>{targetLocale.toUpperCase()}</span>
+          </a>
           <button
             className={`navbar__hamburger${menuOpen ? " navbar__hamburger--open" : ""}`}
             onClick={toggleMenu}
-            aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
+            aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
             aria-expanded={menuOpen}
           >
             <span className="navbar__hamburger-line" />

@@ -220,6 +220,40 @@
   color: #30262499;
 }
 
+/* Icona lingua — minimal, stessa altezza dell'hamburger, a fianco suo */
+.navbar__lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  height: 36px;
+  color: var(--color-white);
+  font-family: var(--font-manrope);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-decoration: none;
+  transition: color .4s, opacity .4s;
+}
+
+.navbar__lang-btn:hover {
+  opacity: .75;
+}
+
+.navbar__lang-btn svg {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+}
+
+.navbar--dark .navbar__lang-btn {
+  color: var(--color-brown-primary);
+}
+
+.navbar__lang-btn--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .navbar__hamburger {
   z-index: 1002;
   cursor: pointer;

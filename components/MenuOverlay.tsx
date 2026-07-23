@@ -3,6 +3,8 @@ import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useLanguageSwitch } from "@/lib/use-language-switch";
 import { SocialLinks } from "./SocialIcons";
 import "./MenuOverlay.css";
 
@@ -11,22 +13,26 @@ interface MenuOverlayProps {
   onClose: () => void;
 }
 
-const NAV_GROUPS = [
-  { label: "Per i professionisti", items: [
-    { label: "Coworking", href: "/coworking" },
-    { label: "Spazio", href: "/spazio" },
-    { label: "Visione", href: "/visione" },
-  ] },
-  { label: "Per te", items: [
-    { label: "Benessere", href: "/benessere" },
-  ] },
-  { label: "Info", items: [
-    { label: "Contatti", href: "/contatti" },
-  ] },
-];
-
 export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname();
+  const t = useTranslations("menu");
+  const tNav = useTranslations("nav");
+  const locale = pathname.split("/")[1] || "it";
+  const { targetLocale, targetHref, setCookie } = useLanguageSwitch();
+
+  const NAV_GROUPS = [
+    { label: t("groupProfessionisti"), items: [
+      { label: t("coworking"), href: `/${locale}/coworking` },
+      { label: t("spazio"), href: `/${locale}/spazio` },
+      { label: t("visione"), href: `/${locale}/visione` },
+    ] },
+    { label: t("groupTe"), items: [
+      { label: t("benessere"), href: `/${locale}/benessere` },
+    ] },
+    { label: t("groupInfo"), items: [
+      { label: t("contatti"), href: `/${locale}/contatti` },
+    ] },
+  ];
   const groups = NAV_GROUPS
     .map((g) => ({ ...g, items: g.items.filter((it) => it.href !== pathname) }))
     .filter((g) => g.items.length > 0);
@@ -83,13 +89,28 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
       {/* Sfondo */}
       <div className="menu-overlay__bg" />
 
+      {/* Icona lingua — in alto, a fianco della X (hamburger trasformato, in Navbar) */}
+      <a
+        href={targetHref}
+        onClick={setCookie}
+        className="menu-overlay__lang-btn"
+        aria-label={`${tNav("switchLanguage")} (${targetLocale.toUpperCase()})`}
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18" />
+          <path d="M12 3c2.5 2.5 4 5.5 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.5-4-9s1.5-6.5 4-9z" />
+        </svg>
+        <span>{targetLocale.toUpperCase()}</span>
+      </a>
+
       <div className="menu-overlay__grid">
 
         {/* Colonna sinistra: logo → social → contatti */}
         <div className="menu-overlay__left">
 
           <div className="menu-overlay__logo">
-            <Link href="/" onClick={onClose} aria-label="Home">
+            <Link href={`/${locale}`} onClick={onClose} aria-label={t("home")}>
               <Image
                 src="/assets/Logo-Bianco.svg"
                 alt="EQB Milano"
@@ -167,9 +188,9 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => 
           type="button"
           className="menu-overlay__reveal"
           onClick={scrollToContacts}
-          aria-label="Vai a social e contatti"
+          aria-label={t("socialReveal")}
         >
-          <span className="menu-overlay__reveal-label">Social e contatti</span>
+          <span className="menu-overlay__reveal-label">{t("socialReveal")}</span>
           <svg className="menu-overlay__reveal-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M6 9l6 6 6-6" />
           </svg>

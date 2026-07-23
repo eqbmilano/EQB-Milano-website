@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { professionisti } from "@/app/[slug]/data";
+import { DEFAULT_LOCALE, isLocale, type Locale } from "@/lib/i18n";
 
 // Host di produzione: finché SITE_GATED non passa a "false" (env, ok esplicito di Marco
 // al lancio) il sito completo resta bloccato qui — restano raggiungibili solo le pagine
@@ -9,9 +10,25 @@ const GATED_HOSTS = new Set(["eqbmilano.it", "www.eqbmilano.it"]);
 const SLUGS = new Set(professionisti.map((p) => p.slug));
 const SITE_GATED = process.env.SITE_GATED !== "false";
 
+const LOCALE_COOKIE = "NEXT_LOCALE";
+
 function isLinktreeOrTracker(pathname: string): boolean {
   if (pathname.startsWith("/r/")) return true;
   return SLUGS.has(pathname.slice(1));
+}
+
+// Il linktree (/[slug]) resta solo IT per scelta esplicita del 21/07: non ha bisogno
+// di rilevamento lingua, quindi va escluso anche qui prima di controllare "/".
+function detectLocale(request: NextRequest): Locale {
+  const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value;
+  if (cookieLocale && isLocale(cookieLocale)) return cookieLocale;
+
+  const acceptLanguage = request.headers.get("accept-language") ?? "";
+  for (const part of acceptLanguage.split(",")) {
+    const tag = part.trim().split(";")[0].split("-")[0].toLowerCase();
+    if (isLocale(tag)) return tag;
+  }
+  return DEFAULT_LOCALE;
 }
 
 export function proxy(request: NextRequest) {
@@ -22,7 +39,51 @@ export function proxy(request: NextRequest) {
     return new NextResponse(null, { status: 404 });
   }
 
-  const res = NextResponse.next();
+  if (pathname === "/") {
+    const locale = detectLocale(request);
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}`;
+    const redirectRes = NextResponse.redirect(url);
+    if (SITE_GATED) {
+      redirectRes.headers.set("X-Robots-Tag", "noindex, nofollow");
+    }
+    return redirectRes;
+  }
+
+  // Vecchi indirizzi senza prefisso lingua (es. /spazio, /candidatura): non 404,
+  // redirect al percorso equivalente nella lingua rilevata. Esclusi linktree/tracker,
+  // /api/* (route server, non pagine), asset statici (/assets/*, o qualsiasi path
+  // con estensione file, es. .svg/.jpg/.mp4) e ciò che ha già un prefisso locale valido.
+  const [, firstSegment] = pathname.split("/");
+  const alreadyLocalized = isLocale(firstSegment);
+  const isApi = pathname.startsWith("/api/");
+  const lastSegment = pathname.slice(pathname.lastIndexOf("/") + 1);
+  const isStaticAsset = pathname.startsWith("/assets/") || lastSegment.includes(".");
+  if (!alreadyLocalized && !isApi && !isStaticAsset && !isLinktreeOrTracker(pathname)) {
+    const locale = detectLocale(request);
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}${pathname}`;
+    const redirectRes = NextResponse.redirect(url);
+    if (SITE_GATED) {
+      redirectRes.headers.set("X-Robots-Tag", "noindex, nofollow");
+    }
+    return redirectRes;
+  }
+
+  const res = alreadyLocalized
+    ? (() => {
+        // Header interno, letto da app/layout.tsx per <html lang> senza duplicare
+        // il parsing del pathname lato Server Component.
+        const requestHeaders = new Headers(request.headers);
+        requestHeaders.set("x-locale", firstSegment);
+        return NextResponse.next({ request: { headers: requestHeaders } });
+      })()
+    : NextResponse.next();
+
+  if (alreadyLocalized) {
+    res.cookies.set(LOCALE_COOKIE, firstSegment, { path: "/", maxAge: 60 * 60 * 24 * 365 });
+  }
+
   if (SITE_GATED) {
     res.headers.set("X-Robots-Tag", "noindex, nofollow");
   }

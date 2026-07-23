@@ -1,16 +1,13 @@
 "use client";
 import React, { useRef, useCallback } from "react";
+import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Reveal, useReveal } from "./Reveal";
 import "./SectionPercheScegliere.css";
 
-const cards = [
-  { value: "0",    title: "Costi fissi",    desc: "Nessun contratto. Nessun affitto mensile. Paghi solo le ore che usi." },
-  { value: "20+",  title: "Professionisti", desc: "Una community di trainer e terapisti che collabora, cresce e costruisce percorsi integrati per i clienti." },
-  { value: "1 km",  title: "Dal Duomo",     desc: "Piazza Cinque Giornate. Un quartiere vivo, centrale, circondato da una Milano che si muove." },
-  { value: "1°",   title: "In Italia",      desc: "Un modello che non esisteva. Abbiamo costruito da zero qualcosa che il settore non aveva mai visto." },
-];
+type Card = { value: string; title: string; desc: string };
 
-function TiltCard({ card }: { card: typeof cards[0] }) {
+function TiltCard({ card }: { card: Card }) {
   const ref = useRef<HTMLDivElement>(null);
 
   const onMove = useCallback((e: React.MouseEvent) => {
@@ -39,14 +36,14 @@ function TiltCard({ card }: { card: typeof cards[0] }) {
   );
 }
 
-function VeroWord() {
+function VeroWord({ word }: { word: string }) {
   // Self-triggered: la sottolineatura si disegna quando la parola entra in
   // vista (stesso principio di <Reveal>), senza dipendere da un observer di
   // sezione.
   const { ref, visible } = useReveal();
   return (
     <span ref={ref as React.RefObject<HTMLSpanElement>} className={`perche__vero${visible ? " perche__vero--on" : ""}`}>
-      vero
+      {word}
       <svg className="perche__vero-line" viewBox="0 0 60 8" preserveAspectRatio="none" aria-hidden="true">
         <path d="M1 5 Q10 1 20 5 Q30 9 40 5 Q50 1 59 5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       </svg>
@@ -55,6 +52,10 @@ function VeroWord() {
 }
 
 export const SectionPercheScegliere: React.FC = () => {
+  const t = useTranslations("home.percheScegliere");
+  const cards = t.raw("cards") as Card[];
+  const locale = usePathname().split("/")[1] || "it";
+
   // Linea guida animazioni: NIENTE observer unico di sezione con stagger CSS
   // (faceva partire tutto insieme, cosi' card e statement erano gia' fermi
   // quando li scrollavi). Ogni elemento e ogni card e' avvolto nel suo
@@ -65,10 +66,10 @@ export const SectionPercheScegliere: React.FC = () => {
       <div className="perche__inner">
 
         <div className="perche__header">
-          <Reveal as="span" className="perche__label">COWORKING</Reveal>
-          <Reveal as="h2" delay={80} className="perche__title">Nessuno lo fa<br />come noi.</Reveal>
+          <Reveal as="span" className="perche__label">{t("label")}</Reveal>
+          <Reveal as="h2" delay={80} className="perche__title">{t("title").split("\n")[0]}<br />{t("title").split("\n")[1]}</Reveal>
           <Reveal as="p" delay={160} className="perche__subtitle">
-            Il primo,&nbsp;<VeroWord />,&nbsp;coworking polifunzionale ad ore per trainer e terapisti.
+            {t("subtitlePre")}&nbsp;<VeroWord word={t("subtitleVero")} />,&nbsp;{t("subtitlePost")}
           </Reveal>
         </div>
 
@@ -82,14 +83,14 @@ export const SectionPercheScegliere: React.FC = () => {
 
         <div className="perche__statement">
           <Reveal className="statement__lines">
-            <p className="statement__line">Non è una palestra.</p>
-            <p className="statement__line">Non è uno studio tradizionale.</p>
-            <p className="statement__line">Non è un coworking generico.</p>
+            <p className="statement__line">{t("statement1")}</p>
+            <p className="statement__line">{t("statement2")}</p>
+            <p className="statement__line">{t("statement3")}</p>
           </Reveal>
           <Reveal delay={80}><div className="statement__divider" /></Reveal>
-          <Reveal as="p" delay={140} className="statement__coda">EQB.</Reveal>
+          <Reveal as="p" delay={140} className="statement__coda">{t("coda")}</Reveal>
           <Reveal delay={200}>
-            <a href="/coworking" className="statement__cta">UNISCITI AL TEAM</a>
+            <a href={`/${locale}/coworking`} className="statement__cta">{t("cta")}</a>
           </Reveal>
         </div>
 

@@ -9,6 +9,41 @@
   transform: translateY(-100%);
 }
 
+/* Icona lingua in alto, a fianco della X (hamburger trasformato, resta in Navbar
+   sopra il menu, z-index 1002). Vive dentro il menu: sparisce con lui. */
+.menu-overlay__lang-btn {
+  position: absolute;
+  top: 1.6rem;
+  right: 5.4rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  color: #fff;
+  font-family: var(--font-manrope);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+
+.menu-overlay__lang-btn:hover {
+  opacity: .75;
+}
+
+.menu-overlay__lang-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 767px) {
+  .menu-overlay__lang-btn {
+    top: 1.35rem;
+    right: 4.4rem;
+  }
+}
+
 .menu-overlay__bg {
   z-index: 0;
   position: absolute;

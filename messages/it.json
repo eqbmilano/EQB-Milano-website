@@ -1,0 +1,874 @@
+{
+  "nav": {
+    "unisciti": "UNISCITI",
+    "profSei": "Sei un professionista?",
+    "profLabel": "Candidati",
+    "profDesc": "Spazio a ore, community e supporto.",
+    "clienteSei": "Sei un cliente?",
+    "clienteLabel": "Scrivici",
+    "clienteDesc": "Raccontaci di cosa hai bisogno.",
+    "aziendaSei": "Azienda o evento?",
+    "aziendaLabel": "Scopri di più",
+    "aziendaDesc": "Spazio per workshop, eventi e collaborazioni.",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu",
+    "switchLanguage": "Cambia lingua"
+  },
+  "menu": {
+    "groupProfessionisti": "Per i professionisti",
+    "groupTe": "Per te",
+    "groupInfo": "Info",
+    "coworking": "Coworking",
+    "spazio": "Spazio",
+    "visione": "Visione",
+    "benessere": "Benessere",
+    "contatti": "Contatti",
+    "home": "Home",
+    "orari": "Su appuntamento — scrivici per fissare il tuo.",
+    "socialReveal": "Social e contatti"
+  },
+  "footer": {
+    "tagline": "Wellness & Fitness Coworking\nMilano",
+    "navLabel": "Navigazione",
+    "contattiLabel": "Contatti",
+    "home": "Home",
+    "spazio": "Spazio",
+    "coworking": "Coworking",
+    "benessere": "Benessere",
+    "visione": "Visione",
+    "contatti": "Contatti",
+    "legal": "EQB Milano di Adinolfi Marco · Impresa individuale · P.IVA 14601140966 · C.F. DNLMRC02A11F205W · REA MI-2794459 (CCIAA Milano MB Lodi) · Sede operativa: Viale Regina Margherita 43, 20122 Milano",
+    "copyright": "© 2026 EQB Milano · Tutti i diritti riservati ·",
+    "privacyLink": "Privacy"
+  },
+  "joinUs": {
+    "close": "Chiudi",
+    "professionista": {
+      "title": "Sei un\nprofessionista?",
+      "body": "Spazi pronti all'uso, senza costi fissi, in un ecosistema che favorisce collaborazione e crescita.",
+      "cta": "Scopri di più"
+    },
+    "benessere": {
+      "title": "Cerchi\nbenessere?",
+      "body": "Trattamenti, allenamenti e professionisti selezionati in un ambiente curato e accogliente.",
+      "cta": "Scopri di più"
+    }
+  },
+  "home": {
+    "hero": {
+      "label": "MILANO",
+      "title": "Wellness & Fitness Coworking",
+      "vision1": "Spazio",
+      "vision2": "Relazioni",
+      "vision3": "Crescita",
+      "eyebrow": "A chi è dedicato EQB?",
+      "profKicker": "Sei un professionista?",
+      "profText": "Scopri come EQB può diventare il tuo spazio di lavoro.",
+      "profCta": "Continua a scoprire ↓",
+      "cercaKicker": "Cerchi un professionista?",
+      "cercaText": "Trova il percorso, l'attività e la persona più adatta a te.",
+      "cercaCta": "Scopri i servizi →"
+    },
+    "ecosistema": {
+      "claim1": "Non è uno studio.",
+      "claim2": "È un ecosistema.",
+      "subtext": "Pensato per professionisti che cercano qualità, continuità e visione, all'interno di uno spazio che supporta lavoro, crescita e relazioni."
+    },
+    "spazio": {
+      "label": "SPAZIO",
+      "title": "Il tuo spazio,\ngià pronto.",
+      "description": "Ambientazioni curate, luce naturale e spazi progettati per il lavoro professionale.",
+      "cta": "Scopri gli spazi"
+    },
+    "percheScegliere": {
+      "label": "COWORKING",
+      "title": "Nessuno lo fa\ncome noi.",
+      "subtitlePre": "Il primo,",
+      "subtitleVero": "vero",
+      "subtitlePost": "coworking polifunzionale ad ore per trainer e terapisti.",
+      "cards": [
+        {
+          "value": "0",
+          "title": "Costi fissi",
+          "desc": "Nessun contratto. Nessun affitto mensile. Paghi solo le ore che usi."
+        },
+        {
+          "value": "20+",
+          "title": "Professionisti",
+          "desc": "Una community di trainer e terapisti che collabora, cresce e costruisce percorsi integrati per i clienti."
+        },
+        {
+          "value": "1 km",
+          "title": "Dal Duomo",
+          "desc": "Piazza Cinque Giornate. Un quartiere vivo, centrale, circondato da una Milano che si muove."
+        },
+        {
+          "value": "1°",
+          "title": "In Italia",
+          "desc": "Un modello che non esisteva. Abbiamo costruito da zero qualcosa che il settore non aveva mai visto."
+        }
+      ],
+      "statement1": "Non è una palestra.",
+      "statement2": "Non è uno studio tradizionale.",
+      "statement3": "Non è un coworking generico.",
+      "coda": "EQB.",
+      "cta": "UNISCITI AL TEAM"
+    },
+    "interno": {
+      "label": "BENESSERE",
+      "title": "All'interno di EQB",
+      "body": "Un unico luogo dove trattamento, movimento e recupero non si alternano, ma si incontrano — perché il benessere vero nasce quando tutto lavora insieme.",
+      "cta": "Scopri i nostri servizi",
+      "prevSlide": "Slide precedente",
+      "nextSlide": "Slide successiva",
+      "trascina": "Trascina",
+      "slides": [
+        {
+          "label": "Terapia Manuale",
+          "items": [
+            "OSTEOPATIA",
+            "FISIOTERAPIA",
+            "MASSOTERAPIA"
+          ]
+        },
+        {
+          "label": "Pilates e Yoga",
+          "items": [
+            "INDIVIDUALI",
+            "DUETTI",
+            "GRUPPI"
+          ]
+        },
+        {
+          "label": "Personal Training",
+          "items": [
+            "ALL. POSTURALE",
+            "ALL. FUNZIONALE",
+            "CALISTHENICS"
+          ]
+        },
+        {
+          "label": "Relax",
+          "items": [
+            "MASSAGGI",
+            "RIFLESSOLOGIA",
+            "AROMATOUCH"
+          ]
+        },
+        {
+          "label": "Consulenza",
+          "items": [
+            "NUTRIZIONE",
+            "PSICOTERAPIA",
+            "MENTAL COACH"
+          ]
+        }
+      ]
+    },
+    "recensioni": {
+      "label": "COSA DICONO DI NOI",
+      "title": "Due punti di vista,\nuna sola certezza.",
+      "colProfessionisti": "Professionisti",
+      "colClienti": "Clienti",
+      "professionisti": [
+        {
+          "quote": "Ho finalmente uno spazio professionale senza il peso di un affitto fisso. EQB mi ha permesso di concentrarmi sui miei clienti invece che sui costi.",
+          "name": "Marco R.",
+          "role": "Osteopata"
+        },
+        {
+          "quote": "La community è il vero valore aggiunto. Ho trovato colleghi con cui collaborare e i clienti iniziano ad arrivare anche per passaparola interno.",
+          "name": "Sara M.",
+          "role": "Personal Trainer"
+        },
+        {
+          "quote": "Lavoro meglio, guadagno di più, senza l'ansia del canone mensile. EQB è il modello che cercavo da anni.",
+          "name": "Luca P.",
+          "role": "Fisioterapista"
+        }
+      ],
+      "clienti": [
+        {
+          "quote": "Ambiente curato, professionisti competenti. Ho trovato in un unico posto il trainer, l'osteopata e il nutrizionista. Non cercherò altro.",
+          "name": "Giulia F.",
+          "role": "Cliente"
+        },
+        {
+          "quote": "Ho iniziato con il pilates e poi ho scoperto la fisioterapia. Un percorso integrato che non avevo mai trovato altrove, in un posto bello e accogliente.",
+          "name": "Andrea B.",
+          "role": "Cliente"
+        },
+        {
+          "quote": "La qualità dei professionisti è evidente già al primo appuntamento. Spazio pulito, organizzato, e si respira un'atmosfera diversa.",
+          "name": "Valentina C.",
+          "role": "Cliente"
+        }
+      ]
+    },
+    "visioneCta": {
+      "pre": "I professionisti del benessere",
+      "title": "meritano di più.",
+      "sub": "Scopri i volti del cambiamento.",
+      "cta": "La nostra storia →"
+    }
+  },
+  "aziende": {
+    "eyebrow": "Aziende & eventi",
+    "heroTitle": "Il tuo evento,\nil nostro spazio.",
+    "heroSub": "Se cerchi un ambiente diverso per un workshop, un evento o una collaborazione continuativa, raccontaci cosa hai in mente.",
+    "eventiTitle": "Eventi e Workshop",
+    "eventiTagline": "Il posto giusto per farlo bene.",
+    "eventiBody": "Ospitiamo esperienze costruite attorno al benessere: workshop, incontri, format dedicati a chi lavora con il corpo e con le persone. Mettiamo a disposizione l'ambiente, la rete di professionisti che vive lo spazio ogni giorno e la cura per ogni dettaglio.",
+    "partnershipTitle": "Partnership e Collaborazioni",
+    "partnershipTagline": "Una casa per chi lavora con continuità.",
+    "partnershipBody": "Lavoriamo con realtà che condividono il nostro modo di intendere il benessere. Brand, professionisti e progetti che vogliono crescere in un contesto costruito sulla qualità e sulla fiducia.",
+    "formEyebrow": "Parliamone",
+    "formTitle": "Raccontaci la tua idea.",
+    "formSub": "Rispondiamo noi, di persona.",
+    "fieldNome": "Il tuo nome",
+    "fieldNomePlaceholder": "Come ti chiami?",
+    "fieldTipo": "Di cosa si tratta",
+    "tipoEvento": "Evento o workshop",
+    "tipoCollaborazione": "Collaborazione stabile",
+    "fieldMsg": "Il tuo messaggio",
+    "fieldMsgPlaceholder": "Di cosa hai bisogno? Quando vorresti fare tutto questo?",
+    "btnWhatsapp": "Scrivici su WhatsApp →",
+    "altMail": "Preferisci la mail?",
+    "tipoLabelEvento": "un evento o un workshop",
+    "tipoLabelCollaborazione": "una collaborazione stabile",
+    "waSono": "Ciao! Sono",
+    "waScrivo": "Vi scrivo per",
+    "mailOggetto": "Aziende & eventi"
+  },
+  "benessere": {
+    "openingLabel": "Benessere",
+    "openingTitle": "Cura.\nMovimento.\nEquilibrio.",
+    "openingSub": "Trova il professionista, il percorso o l'attività più adatta alle tue esigenze.",
+    "accEyebrow": "Il nostro modo di accompagnarti",
+    "accTitle": "Non esiste un percorso uguale per tutti.",
+    "accIntro": "In EQB trovi professionisti, percorsi e attività che lavorano insieme per accompagnarti nel modo più adatto alle tue esigenze. Che tu abbia un obiettivo preciso o non sappia ancora da dove partire, troviamo insieme la direzione giusta.",
+    "accPillars": [
+      {
+        "t": "Ascoltare",
+        "d": "Ascoltare le tue esigenze e individuare il punto di partenza."
+      },
+      {
+        "t": "Accompagnare",
+        "d": "Disegnare un percorso personalizzato intorno a te."
+      },
+      {
+        "t": "Evolvere",
+        "d": "Rendere la cura di sé una parte della tua quotidianità."
+      }
+    ],
+    "postura": {
+      "eyebrow": "Hai un obiettivo ma non sai da dove partire?",
+      "title": "Valutazione\nPosturale",
+      "body1": "Un primo incontro per capire da dove nasce il tuo problema — non solo dove fa male.",
+      "body2": "Se il dolore continua a tornare, spesso non è sfortuna: finora si è agito sul sintomo, non sulla causa. Insieme analizziamo la tua situazione e ne usciamo con una direzione chiara su cosa fare — non con l'ennesimo trattamento da provare.",
+      "firmaName": "Federico Mondin",
+      "firmaRole": "Osteopata · Co-fondatore EQB Milano",
+      "tiltSub": "Dalla prima visita capisci perché finora non ha funzionato.",
+      "tiltBtn": "Prenota subito"
+    },
+    "features": [
+      {
+        "num": "01",
+        "label": "Comprendere",
+        "title": "Percorso\nPosturale",
+        "micro": "Per chi è stanco di ripartire da capo ogni volta. Andiamo alla causa del dolore che torna — non al sintomo — fino a renderti autonomo nel gestirlo.",
+        "tags": [
+          "Osteopatia",
+          "Fisioterapia",
+          "Riabilitazione Posturale"
+        ]
+      },
+      {
+        "num": "02",
+        "label": "Muoversi",
+        "title": "Pilates\nReformer",
+        "micro": "Per chi vuole migliorare forza, mobilità e controllo del movimento con un percorso costruito intorno a sé.",
+        "tags": [
+          "One to One",
+          "Duetto",
+          "Chair Pilates"
+        ]
+      },
+      {
+        "num": "03",
+        "label": "Recuperare",
+        "title": "Recupero\n& Benessere",
+        "micro": "Per chi si allena, lavora intensamente o sente il bisogno di rallentare e ritrovare energie.",
+        "tags": [
+          "Massoterapia",
+          "Linfodrenante",
+          "Riflessologia"
+        ]
+      },
+      {
+        "num": "04",
+        "label": "Costruire",
+        "title": "Nutrizione\n& Forma",
+        "micro": "Per chi vuole costruire abitudini sostenibili e rimettersi in forma con una direzione chiara.",
+        "tags": [
+          "Nutrizione",
+          "Allenamento Funzionale",
+          "Linfodrenante"
+        ]
+      }
+    ],
+    "divider": "Ogni percorso nasce dall'incontro tra le tue esigenze e le competenze del professionista più adatto a te.",
+    "offertaLabel": "Professionisti, percorsi e attività",
+    "offertaTitle": "Tutto quello che trovi in EQB",
+    "serviziCount": "servizi",
+    "prenotaCta": "Prenota →",
+    "prenotaWhatsapp": "Prenota su WhatsApp",
+    "groups": [
+      {
+        "label": "Trattamenti",
+        "services": [
+          {
+            "name": "Osteopatia",
+            "desc": "Un approccio globale per migliorare movimento, funzionalità ed equilibrio nella vita quotidiana.",
+            "msg": "Ciao! Vorrei info sull'osteopatia"
+          },
+          {
+            "name": "Osteopatia Pediatrica",
+            "desc": "Un approccio delicato dedicato a neonati e bambini, per accompagnarne la crescita in modo armonioso.",
+            "msg": "Ciao! Vorrei info sull'osteopatia pediatrica"
+          },
+          {
+            "name": "Fisioterapia",
+            "desc": "Un percorso personalizzato per recuperare funzionalità e tornare alle attività quotidiane con serenità.",
+            "msg": "Ciao! Vorrei info sulla fisioterapia"
+          },
+          {
+            "name": "Massoterapia Sportiva",
+            "desc": "Per favorire il recupero muscolare, sciogliere le tensioni e ritrovare energia e libertà di movimento.",
+            "msg": "Ciao! Vorrei info sulla massoterapia sportiva"
+          }
+        ]
+      },
+      {
+        "label": "Movimento",
+        "services": [
+          {
+            "name": "Pilates",
+            "desc": "Un metodo che migliora forza, mobilità e controllo del movimento, con un approccio personalizzato.",
+            "msg": "Ciao! Vorrei info sul Pilates"
+          },
+          {
+            "name": "Rinforzo Posturale",
+            "desc": "Esercizi mirati per migliorare la postura, ridurre i compensi e muoversi con più libertà.",
+            "msg": "Ciao! Vorrei info sul rinforzo posturale"
+          },
+          {
+            "name": "Functional Training",
+            "desc": "Un allenamento costruito intorno a te per sviluppare forza, mobilità e resistenza.",
+            "msg": "Ciao! Vorrei info sul Functional Training"
+          }
+        ]
+      },
+      {
+        "label": "Recupero & Benessere",
+        "services": [
+          {
+            "name": "Massaggio Rilassante",
+            "desc": "Un momento dedicato a rallentare, recuperare energie e concedersi uno spazio per sé.",
+            "msg": "Ciao! Vorrei prenotare un massaggio rilassante"
+          },
+          {
+            "name": "Massaggio Linfodrenante",
+            "desc": "Per alleggerire il corpo, ridurre gonfiore e favorire una piacevole sensazione di leggerezza.",
+            "msg": "Ciao! Vorrei info sul linfodrenante"
+          },
+          {
+            "name": "Riflessologia Plantare",
+            "desc": "Una pratica che favorisce il rilassamento profondo e aiuta il corpo a ritrovare equilibrio.",
+            "msg": "Ciao! Vorrei info sulla riflessologia plantare"
+          },
+          {
+            "name": "Coppettazione",
+            "desc": "Per sciogliere le tensioni, migliorare la circolazione e favorire il recupero dei tessuti.",
+            "msg": "Ciao! Vorrei info sulla coppettazione"
+          }
+        ]
+      },
+      {
+        "label": "Consulenza",
+        "services": [
+          {
+            "name": "Nutrizione e Analisi BIA",
+            "desc": "Analisi della composizione corporea con BIA e un percorso personalizzato per costruire abitudini sostenibili nel tempo.",
+            "msg": "Ciao! Vorrei info su Nutrizione e Analisi BIA"
+          },
+          {
+            "name": "Mental Coach",
+            "desc": "Per acquisire maggiore consapevolezza, definire obiettivi e sviluppare nuove risorse personali.",
+            "msg": "Ciao! Vorrei info sul mental coaching"
+          }
+        ]
+      }
+    ],
+    "closingLabel": "Inizia da qui",
+    "closingTitle": "Il tuo percorso\ninizia con una\nconversazione.",
+    "closingBody": "Raccontaci di cosa hai bisogno\ne troviamo insieme da dove partire.",
+    "closingCta": "Scrivici su WhatsApp",
+    "stickyText": "Vuoi iniziare?",
+    "stickyCta": "Scrivici su WhatsApp →",
+    "waGenerico": "Ciao! Vorrei sapere di più su EQB Milano"
+  },
+  "contatti": {
+    "eyebrow": "Contatti",
+    "heroTitle": "Parliamone.",
+    "heroSub": "Scrivici, chiamaci o passa a trovarci.\nTi rispondiamo in fretta e troviamo insieme da dove partire.",
+    "telefonoLabel": "Telefono",
+    "telefonoCta": "Chiama →",
+    "whatsappLabel": "WhatsApp",
+    "whatsappCta": "Scrivici →",
+    "emailLabel": "Email",
+    "emailCta": "Invia →",
+    "seguiciLabel": "Seguici",
+    "doveSiamoEyebrow": "Dove siamo",
+    "doveSiamoTitle": "Vieni a trovarci\nin studio.",
+    "indirizzoLabel": "Indirizzo",
+    "orariLabel": "Orari",
+    "orariValue": "Su appuntamento — scrivici per fissare il tuo.",
+    "mapsBtn": "Apri in Google Maps →",
+    "mapGateTitle": "Mostra la mappa",
+    "mapGateNote": "La mappa è di Google Maps: caricandola accetti i suoi cookie.",
+    "mapGateDettagli": "Più dettagli",
+    "formEyebrow": "Scrivici",
+    "formTitle": "Raccontaci di cosa hai bisogno.",
+    "formSub": "Ti rispondiamo noi, di persona.",
+    "fieldNome": "Il tuo nome",
+    "fieldNomePlaceholder": "Come ti chiami?",
+    "fieldMsg": "Il tuo messaggio",
+    "fieldMsgPlaceholder": "Cosa cerchi? Un percorso, un trattamento, uno spazio di lavoro…",
+    "btnWhatsapp": "Invia su WhatsApp →",
+    "altMail": "Preferisci la mail?",
+    "waGenerico": "Ciao! Vorrei avere informazioni su EQB Milano",
+    "waSono": "Ciao! Sono",
+    "waDefaultMsg": "Vorrei avere informazioni.",
+    "mailOggetto": "Richiesta informazioni"
+  },
+  "coworking": {
+    "openingTitle": "Hai costruito la tua\nprofessionalità per anni.",
+    "openingEm": "Ma non è ancora davvero tua.",
+    "painLabel": "Il problema",
+    "painTitle": "Lo sai già.",
+    "painIntro": "Chi vuole lavorare in proprio, nel benessere, finisce sempre nelle stesse quattro trappole. Ogni giorno.",
+    "pains": [
+      {
+        "n": "01",
+        "title": "I clienti non sono mai davvero tuoi.",
+        "body": "Lavori nello studio di qualcun altro, e i suoi clienti restano suoi. Il giorno che cambi, riparti da zero. Stai costruendo il pacchetto di un altro, non il tuo."
+      },
+      {
+        "n": "02",
+        "title": "Lavori tanto, ti resta poco.",
+        "body": "Percentuali sullo studio, trattenute su ogni seduta, condizioni decise da qualcun altro. Più clienti porti, più grande è la fetta che lasci sul tavolo."
+      },
+      {
+        "n": "03",
+        "title": "Rincorri spazi, non costruisci una base.",
+        "body": "Un po' a domicilio, un po' in una stanzina, un po' in un centro freddo. Nessun posto che senti tuo, nessuna identità professionale stabile."
+      },
+      {
+        "n": "04",
+        "title": "Da solo, resti invisibile.",
+        "body": "Niente colleghi con cui confrontarti, niente referral spontanei, niente collaborazioni. Il professionista più bravo, isolato, non cresce."
+      }
+    ],
+    "painClose": "Non è colpa tua. È un sistema che ti tiene dipendente.",
+    "solutionLabel": "La soluzione",
+    "solutionTitle": "C'è un altro modo.",
+    "solutionIntro": "EQB è un ecosistema pensato per renderti autonomo, non per ospitarti. Una risposta precisa per ognuno dei tuoi problemi.",
+    "pillars": [
+      {
+        "n": "01",
+        "title": "I clienti sono tuoi. Punto.",
+        "body": "Costruisci il tuo pacchetto, sotto il tuo nome. Ti diamo spazio e strumenti per farlo crescere — non ci prendiamo i tuoi clienti."
+      },
+      {
+        "n": "02",
+        "title": "Quello che guadagni, resta tuo.",
+        "body": "Niente percentuali sulle tue sedute: ogni cliente vale per intero, per te. E il modello premia chi lavora — più ore fai, meno paghi l'ora."
+      },
+      {
+        "n": "03",
+        "title": "Una base, finalmente tua.",
+        "body": "Spazio professionale e curato, sempre pronto: reception che accoglie i tuoi clienti, zero utenze, zero pulizie. Un indirizzo vero, non una stanza a ore."
+      },
+      {
+        "n": "04",
+        "title": "Visibile, dal primo giorno.",
+        "body": "Uno spazio riconoscibile nel cuore di Milano e un nome che ti dà credibilità prima ancora di parlare. Chi entra qui si fida di te dal primo istante."
+      }
+    ],
+    "practiceLabel": "E in pratica funziona così",
+    "steps": [
+      {
+        "n": "01",
+        "title": "Prenota",
+        "body": "Scegli gli spazi e gli orari che ti servono, con un giorno di anticipo o in tempo reale."
+      },
+      {
+        "n": "02",
+        "title": "Lavori",
+        "body": "Trovi tutto pronto. Spazio attrezzato, ambienti curati. Tu pensi solo ai tuoi clienti."
+      },
+      {
+        "n": "03",
+        "title": "Paghi",
+        "body": "A fine mese, solo le ore che hai usato. Nessun anticipo: prima lavori e incassi, poi paghi."
+      }
+    ],
+    "diffLabel": "Il nostro tratto distintivo",
+    "diffTitle": "Non ti diamo solo uno spazio.\nTi aiutiamo a riempirlo.",
+    "diffBody": "Personal brand, contenuti, campagne: mettiamo le nostre competenze di marketing al servizio della tua crescita, per farti trovare dai clienti giusti. Tu porti il talento, noi l'amplificatore.",
+    "diffProof": "Chi è entrato in questo percorso è cresciuto. È così che nasce un nome.",
+    "testiLabel": "Chi è già dentro",
+    "testiTitle": "Nomi, non numeri.",
+    "testimonials": [
+      {
+        "name": "Cristiana Curioni",
+        "role": "Istruttrice di Pilates e ChinesioPilates",
+        "quote": "Qui non affitto una stanza: ho costruito il mio nome. I clienti sono miei, e per la prima volta lo sento davvero."
+      },
+      {
+        "name": "Roberta Boara",
+        "role": "Riflessologa Plantare",
+        "quote": "Sono entrata che lavoravo da sola. Oggi collaboro, ricevo referral, e il mio lavoro è cresciuto insieme allo spazio."
+      },
+      {
+        "name": "Loris Bonacina",
+        "role": "Chinesiologo",
+        "quote": "Alleno i miei clienti in uno spazio curato, e le collaborazioni con gli altri professionisti nascono da sole."
+      }
+    ],
+    "communityLabel": "La rete",
+    "communityTitle": "Non sei un ospite.\nSei parte di qualcosa.",
+    "communityBody1": "In EQB lavorano fisioterapisti, trainer, osteopati, nutrizionisti, psicologi. Professionisti che si conoscono, si referenziano, costruiscono percorsi integrati per i propri clienti.",
+    "communityBody2": "Non è un vantaggio secondario. È il cuore del modello. Il cliente del tuo collega è il tuo cliente potenziale — e viceversa. La rete vale quanto lo spazio.",
+    "objTitle": "Ci siamo già sentiti dire:",
+    "objections": [
+      {
+        "q": "«E se non riesco a portarmi i clienti?»",
+        "a": "È proprio qui che ti aiutiamo: personal brand, contenuti e campagne per farti trovare. E intanto sei in uno spazio dove i clienti già girano, tra colleghi che si scambiano referral."
+      },
+      {
+        "q": "«Ho paura a lasciare lo studio dove lavoro ora.»",
+        "a": "Non devi lasciare tutto di colpo. Paghi solo le ore che usi: inizi con poche, tieni il resto, e sposti il tuo lavoro qui con il tuo ritmo."
+      },
+      {
+        "q": "«Adesso non ho il budget per un altro spazio.»",
+        "a": "Non è un altro costo fisso: paghi solo quando lavori, e più cresci meno paghi l'ora. Si parte piccoli — l'investimento segue i tuoi clienti, non li precede."
+      }
+    ],
+    "ctaLabel": "Il prossimo passo",
+    "ctaTitle": "Vieni a vederlo\ndi persona.",
+    "ctaSub": "Trenta minuti. Zero presentazioni. Lo spazio parla da solo.\nNessun impegno — solo una visita.",
+    "ctaUrgency": "Lo spazio è fisico: i posti non sono infiniti.",
+    "ctaCandidati": "Candidati per lavorare da EQB →",
+    "ctaChiama": "Chiama ora — +39 375 515 3273",
+    "ctaScrivi": "Scrivi per prenotare una visita",
+    "ctaNote": "Rispondiamo entro poche ore. Di persona, non con un bot.",
+    "stickyText": "Pronto a renderlo tuo?",
+    "stickyCta": "Candidati →"
+  },
+  "candidatura": {
+    "categorie": [
+      "Osteopatia",
+      "Fisioterapia",
+      "Pilates",
+      "All. Funzionale",
+      "All. Posturale",
+      "Massoterapia",
+      "Massaggi",
+      "Terapie Olistiche",
+      "Nutrizione"
+    ],
+    "portabili": [
+      "Sto partendo da zero",
+      "Alcuni mi seguirebbero",
+      "Una base solida che mi segue"
+    ],
+    "appuntamenti": [
+      "Fino a 5 a settimana",
+      "6 - 10 a settimana",
+      "11 - 20 a settimana",
+      "+20 a settimana"
+    ],
+    "aspettative": [
+      "Solo uno spazio flessibile",
+      "Spazio + collaborazioni",
+      "Spazio + collaborazioni + supporto clienti"
+    ],
+    "inizio": [
+      "Anche subito",
+      "Nei prossimi mesi",
+      "Più avanti: sto ancora valutando"
+    ],
+    "back": "Torna indietro",
+    "fwd": "Avanti",
+    "exit": "Esci",
+    "exitTitle": "Torna al coworking",
+    "intro": {
+      "eyebrow": "Candidatura",
+      "title": "Raccontaci di te.",
+      "sub": "Non è un modulo da compilare. Leggiamo ogni candidatura di persona: se il tuo profilo è in linea con EQB, ti chiamiamo noi.",
+      "cta": "Inizia",
+      "foot": "Tieni a portata di mano il tuo CV."
+    },
+    "categoria": {
+      "eyebrow": "1 di 7",
+      "title": "Di cosa ti occupi?",
+      "sub": "Puoi selezionare più opzioni.",
+      "altroLabel": "Altro",
+      "altroPlaceholder": "Fai altro? Scrivilo qui",
+      "cta": "Continua"
+    },
+    "portabiliStep": {
+      "eyebrow": "2 di 7",
+      "title": "Hai già clienti tuoi che porteresti da EQB?",
+      "sub": "Ci interessa il tuo punto di partenza, non un numero perfetto."
+    },
+    "appuntamentiStep": {
+      "eyebrow": "3 di 7",
+      "title": "Quanti appuntamenti seguiresti da noi?",
+      "sub": "Una stima a settimana: ci serve per capire quanto spazio dedicarti."
+    },
+    "aspettativeStep": {
+      "eyebrow": "4 di 7",
+      "title": "Cosa ti aspetti da EQB?",
+      "sub": "Non c'è una risposta giusta: ci aiuta a capirci."
+    },
+    "inizioStep": {
+      "eyebrow": "5 di 7",
+      "title": "Quando ti immagini da EQB?",
+      "sub": "Così capiamo con che tempi muoverci insieme."
+    },
+    "perche": {
+      "eyebrow": "6 di 7",
+      "title": "Perché EQB?",
+      "sub": "Bastano due righe, se dicono la cosa giusta.",
+      "placeholder": "Es. Cerco un ambiente dove crescere insieme ad altri professionisti seri, non solo una stanza in affitto.",
+      "cta": "Continua"
+    },
+    "contatto": {
+      "eyebrow": "7 di 7",
+      "title": "Come ti troviamo?",
+      "nome": "Nome",
+      "nomePlaceholder": "Il tuo nome",
+      "cognome": "Cognome",
+      "cognomePlaceholder": "Il tuo cognome",
+      "numero": "Numero di telefono",
+      "numeroPlaceholder": "Il tuo numero",
+      "email": "Email",
+      "emailPlaceholder": "La tua email",
+      "instagram": "Instagram",
+      "instagramPlaceholder": "@tuoprofilo",
+      "sito": "Sito",
+      "sitoPlaceholder": "Il tuo sito",
+      "facoltativo": "(facoltativo)",
+      "cv": "Il tuo CV",
+      "cvPlaceholder": "Carica il tuo CV (PDF)",
+      "cvCambia": "Cambia file",
+      "cvSfoglia": "Sfoglia",
+      "inviando": "Invio in corso…",
+      "invia": "Invia candidatura",
+      "erroreGenerico": "Invio non riuscito, riprova."
+    },
+    "done": {
+      "eyebrow": "Fatto",
+      "title": "La tua candidatura è arrivata.",
+      "sub": "Leggiamo ogni candidatura di persona. Se il tuo profilo è in linea con EQB, ti chiamiamo noi entro pochi giorni.",
+      "torna": "Torna al coworking"
+    }
+  },
+  "spazio": {
+    "openingLabel": "Lo spazio",
+    "openingTitle": "Un appartamento\ndel '900 milanese.",
+    "openingSub": "Pensato per chi lavora sul corpo.",
+    "reception": {
+      "captionTitle": "Accoglienza e Reception",
+      "label": "L'ingresso",
+      "title": "Reception",
+      "tagline": "L'accoglienza che il tuo cliente si merita.",
+      "body": "La reception accoglie i tuoi clienti, la sala d'attesa li mette a proprio agio. Il biglietto da visita perfetto, prima ancora che entrino nella tua stanza."
+    },
+    "comuni": {
+      "label": "Spazi comuni",
+      "title": "Aree Comuni",
+      "tagline": "Tutto quello che serve, a portata di mano.",
+      "body": "Un angolo snack per una pausa tra un cliente e l'altro. Bagni con doccia per chi arriva di corsa o si allena prima di lavorare.",
+      "caratteristicheLabel": "Caratteristiche",
+      "features": [
+        "Area snack e relax",
+        "2 spogliatoi",
+        "2 bagni con doccia"
+      ],
+      "snackCaption": "Area Snack"
+    },
+    "serviziLabel": "Servizi inclusi",
+    "servizi": [
+      "Pulizie incluse",
+      "Asciugamani brandizzati (grandi, medi, piccoli)",
+      "Rotolo lettino incluso"
+    ],
+    "dividerPianoNobile": "Piano nobile · Terapia e allenamento",
+    "dividerPianoInferiore": "Piano inferiore · Relax & Recovery",
+    "sala": {
+      "label": "Piano nobile",
+      "title": "Sala Allenamento",
+      "body": "Rack a muro in ferro, 2 Reformer Merrithew con spalliera, 2 Chair, dischi e manubri liberi, panca in legno. Luce naturale da tre finestre, parquet a lisca di pesce.",
+      "caratteristicheLabel": "Caratteristiche",
+      "features": [
+        "Sala da 45 mq",
+        "Rack a muro in ferro",
+        "2 Reformer + 2 Chair Merrithew",
+        "Dischi e manubri liberi, panca",
+        "Attrezzatura pilates e corpo libero"
+      ],
+      "tags": [
+        "Pilates",
+        "Personal Training",
+        "Functional Training"
+      ],
+      "caption": "Sala Allenamento"
+    },
+    "terra": {
+      "label": "Piano nobile",
+      "title": "Stanza Terra",
+      "body": "20 mq luminosi con lettino regolabile, spalliera a muro e ampia scrivania. Lo spazio giusto per chi lavora con metodo, seduta dopo seduta.",
+      "caratteristicheLabel": "Caratteristiche",
+      "features": [
+        "Stanza da 20 mq",
+        "Lettino regolabile + spalliera a muro",
+        "Scrivania, sedie, sgabelli"
+      ],
+      "tags": [
+        "Osteopatia",
+        "Fisioterapia",
+        "Nutrizione",
+        "Psicoterapia"
+      ],
+      "caption": "Stanza Terra"
+    },
+    "sole": {
+      "label": "Piano inferiore · Relax & Recovery",
+      "title": "Stanza Sole",
+      "body": "15 mq luminosi con la propria carta da parati originale, lettino regolabile e scrivania. Pensata per chi lavora con calma e continuità.",
+      "caratteristicheLabel": "Caratteristiche",
+      "features": [
+        "Stanza da 15 mq",
+        "Lettino regolabile",
+        "Scrivania con sgabelli"
+      ],
+      "tags": [
+        "Massaggi",
+        "Olistica",
+        "Terapie rilassanti",
+        "Recovery"
+      ],
+      "caption": "Stanza Sole"
+    },
+    "luna": {
+      "label": "Piano inferiore · Relax & Recovery",
+      "title": "Stanza Luna",
+      "body": "15 mq con la propria carta da parati originale, lettino regolabile e scrivania. Il rifugio ideale per chi ha bisogno di riservatezza.",
+      "caratteristicheLabel": "Caratteristiche",
+      "features": [
+        "Stanza da 15 mq",
+        "Lettino regolabile",
+        "Scrivania con sgabelli"
+      ],
+      "tags": [
+        "Massaggi",
+        "Olistica",
+        "Terapie rilassanti",
+        "Recovery"
+      ],
+      "caption": "Stanza Luna"
+    },
+    "ctaTitle": "Scopri come rendere tuo\nquesto spazio.",
+    "ctaBody": "Zero costi fissi e un ambiente pensato per farti lavorare al meglio, ogni giorno.",
+    "ctaBtn": "Scopri il coworking →",
+    "stickyText": "Vuoi lavorare in questo spazio?",
+    "stickyBtn": "Scopri il coworking →"
+  },
+  "visione": {
+    "heroLabel": "Visione",
+    "heroTitle": "La nostra storia",
+    "heroSub": "Conosci il team e scopri la nostra missione.",
+    "chiSiamoLabel": "Chi siamo",
+    "chiSiamoTitle": "EQB non è solo\nuno spazio fisico.",
+    "chiSiamoBody": "È una realtà innovativa nel settore del benessere psicofisico, dedicata a professionisti del benessere e del movimento. Un ecosistema che unisce spazi, persone e opportunità.",
+    "missioneLabel": "La nostra visione",
+    "missioneTitle": "Abbiamo una missione...",
+    "missioneBody": "...creare la prima, vera, catena di studi polifunzionali in coworking per la terapia, il movimento e il benessere in Italia. Uno spazio curato, selezionato, dove crescere davvero — non solo affittare una stanza.",
+    "pillars": [
+      {
+        "title": "Flessibilità reale",
+        "body": "Modello ad ore, senza affitti né contratti rigidi."
+      },
+      {
+        "title": "Qualità degli spazi",
+        "body": "Ambienti curati, reception e servizi inclusi."
+      },
+      {
+        "title": "Collaborazione",
+        "body": "Percorsi integrati e rete reale tra specialisti."
+      },
+      {
+        "title": "Crescita",
+        "body": "Supporto strategico e accesso a nuovi clienti."
+      }
+    ],
+    "teamLabel": "Team",
+    "teamTitle": "Conosci i fondatori",
+    "marco": {
+      "name": "Marco Adinolfi",
+      "role": "Co-fondatore · Direzione Strategica & Sviluppo Attività",
+      "bio": "Marco si occupa dello sviluppo imprenditoriale e della gestione strategica di EQB. Coordina l'organizzazione dello studio, il posizionamento del brand e la crescita del progetto, con l'obiettivo di creare uno spazio in cui i professionisti del movimento e della salute possano lavorare al meglio."
+    },
+    "federico": {
+      "name": "Federico Mondin",
+      "role": "Co-fondatore · Direzione Clinica & Coordinamento Professionisti",
+      "bio": "Federico, Osteopata e studente di Fisioterapia, rappresenta il riferimento clinico di EQB. Supervisiona la qualità dei trattamenti e coordina la collaborazione tra i professionisti che operano nello studio, con l'obiettivo di costruire percorsi personalizzati e integrati per ogni cliente."
+    },
+    "ctaTitle": "Entra nel\nnostro team.",
+    "ctaBody": "Inizia a lavorare in uno spazio curato, senza vincoli, all'interno di un ecosistema che supporta la tua crescita.",
+    "ctaBtn": "Richiedi un incontro in studio →"
+  },
+  "privacy": {
+    "label": "Privacy",
+    "heroTitle": "Informativa sulla privacy",
+    "heroSub": "Come trattiamo i dati di chi visita eqbmilano.it. In breve: questo sito non usa cookie di profilazione e non conserva i dati che scrivi nel form.",
+    "titolareH2": "Titolare del trattamento",
+    "titolareBody": "EQB Milano di Adinolfi Marco — impresa individuale\nSede legale: Via Caravaggio 2, 20054 Segrate (MI)\nSede operativa: Viale Regina Margherita 43, 20122 Milano\nP.IVA 14601140966 · C.F. DNLMRC02A11F205W · REA MI-2794459\nEmail:",
+    "datiH2": "Quali dati trattiamo e perché",
+    "dati1H3": "1. Dati di navigazione",
+    "dati1Body": "Il sito è ospitato su Vercel Inc. (Stati Uniti). Come ogni servizio di hosting, Vercel registra log tecnici (indirizzo IP, orario della richiesta, pagina visitata) necessari al funzionamento e alla sicurezza del servizio. Base giuridica: legittimo interesse del Titolare al corretto funzionamento del sito (art. 6.1.f GDPR). I trasferimenti extra-UE avvengono sulla base delle garanzie previste dal GDPR (clausole contrattuali standard).",
+    "dati2H3": "2. Statistiche di utilizzo",
+    "dati2BodyPre": "Usiamo Vercel Analytics, un servizio di statistica",
+    "dati2BodyStrong": "senza cookie",
+    "dati2BodyPost": ": i dati raccolti sono aggregati e anonimi, non consentono di identificare i singoli visitatori e non vengono utilizzati per profilazione o pubblicità. Per questo motivo il sito non richiede un banner di consenso.",
+    "dati3H3": "3. Dati che ci comunichi tu",
+    "dati3Body": "Il form nella pagina Contatti non invia nulla ai nostri server: prepara un messaggio WhatsApp sul tuo dispositivo, che decidi tu se inviare. Se ci contatti via telefono, email o WhatsApp, i dati che ci fornisci (nome, recapito, contenuto del messaggio) vengono usati solo per risponderti e gestire la tua richiesta. Base giuridica: esecuzione di misure precontrattuali richieste dall'interessato (art. 6.1.b GDPR). Conserviamo queste comunicazioni per il tempo necessario a gestire la richiesta e gli eventuali obblighi che ne derivano.",
+    "dati4H3": "4. Mappa di Google",
+    "dati4BodyPre": "Nella pagina Contatti la mappa di Google Maps non si carica automaticamente: compare solo se scegli di attivarla. Attivandola, Google può installare propri cookie e trattare dati secondo la sua",
+    "dati4Link": "informativa privacy",
+    "cookieH2": "Cookie",
+    "cookieBody": "Il sito non utilizza cookie di profilazione né cookie analitici di terze parti. Gli unici cookie eventualmente presenti sono tecnici, necessari al funzionamento, oppure quelli di Google Maps se decidi di attivare la mappa (vedi sopra).",
+    "comunicazioneH2": "Comunicazione dei dati",
+    "comunicazioneBody": "I dati non vengono venduti né ceduti a terzi. Possono venirne a conoscenza solo i soggetti che collaborano con il Titolare alla gestione del sito e dell'attività (fornitori tecnici, consulenti), nominati responsabili del trattamento ove necessario.",
+    "dirittiH2": "I tuoi diritti",
+    "dirittiBodyPre": "Ai sensi degli artt. 15-22 GDPR puoi chiedere in ogni momento l'accesso ai tuoi dati, la rettifica, la cancellazione, la limitazione del trattamento, la portabilità, oppure opporti al trattamento. Basta scrivere a",
+    "dirittiBodyMid": ". Se ritieni che il trattamento violi la normativa, puoi proporre reclamo al",
+    "dirittiLink": "Garante per la protezione dei dati personali",
+    "aggiornamentiH2": "Aggiornamenti",
+    "aggiornamentiBody": "Questa informativa può essere aggiornata: la versione pubblicata su questa pagina è quella vigente.\nUltimo aggiornamento: 13 luglio 2026."
+  }
+}
