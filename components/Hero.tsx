@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import { Reveal } from "./Reveal";
 import "./Hero.css";
@@ -23,7 +23,6 @@ export const Hero: React.FC = () => {
   const scrimRef = useRef<HTMLDivElement>(null);
   const scrollLineRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [needsPlayButton, setNeedsPlayButton] = useState(false);
 
   // Finché "engaged" è true, lo scroll nativo è intercettato e prevenuto: tutta
   // l'animazione hero->bivio è guidata a mano dal progresso accumulato in JS,
@@ -63,34 +62,26 @@ export const Hero: React.FC = () => {
     if (scrimRef.current) scrimRef.current.style.opacity = String(tB * 0.38);
   };
 
-  // Autoplay video hero: iOS in Risparmio Energetico (o con la Riproduzione
-  // automatica disattivata in Safari) blocca l'autoplay muted e non c'è modo
-  // di aggirarlo da JS in quel caso. Decisione 23/07: non fingere un
-  // autoplay universale — si tenta play() al mount, e se dopo un attimo
-  // risulta ancora fermo si mostra un bottone play esplicito sopra il poster
-  // (Hero-Poster.jpg, già impostato come poster del video). Un click diretto
-  // sul bottone è un vero gesto utente: iOS lo consente sempre.
+  // Autoplay video hero robusto: iOS in Risparmio Energetico (o con la
+  // Riproduzione automatica disattivata in Safari) blocca l'autoplay muted e
+  // mostra il tasto play. Fallback: tentiamo play() al mount e, se ancora
+  // fermo, al PRIMO gesto dell'utente (tocco/scroll/click), quando iOS lo
+  // consente. I listener sono "once", si rimuovono da soli.
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    let settled = false;
-    const onPlaying = () => { settled = true; setNeedsPlayButton(false); };
-    v.addEventListener("playing", onPlaying);
-    v.play().catch(() => {});
-    const t = window.setTimeout(() => {
-      if (!settled && v.paused) setNeedsPlayButton(true);
-    }, 600);
+    const kick = () => { v.play().catch(() => {}); };
+    kick();
+    const opts = { once: true, passive: true } as AddEventListenerOptions;
+    window.addEventListener("touchstart", kick, opts);
+    window.addEventListener("scroll", kick, opts);
+    window.addEventListener("click", kick, opts);
     return () => {
-      v.removeEventListener("playing", onPlaying);
-      window.clearTimeout(t);
+      window.removeEventListener("touchstart", kick);
+      window.removeEventListener("scroll", kick);
+      window.removeEventListener("click", kick);
     };
   }, []);
-
-  const handlePlayClick = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.play().then(() => setNeedsPlayButton(false)).catch(() => {});
-  };
 
   useEffect(() => {
     // Su mobile lo scroll-hijack non si attiva affatto: il gesto touch nativo
@@ -231,18 +222,6 @@ export const Hero: React.FC = () => {
           </video>
           <div className="hero__overlay" />
           <div className="phh-scrim" ref={scrimRef} />
-
-          {needsPlayButton && (
-            <button
-              className="hero__play-btn"
-              onClick={handlePlayClick}
-              aria-label="Riproduci il video"
-            >
-              <svg width="28" height="28" viewBox="0 0 16 16" fill="none">
-                <path d="M4 2l11 6-11 6V2z" fill="currentColor" />
-              </svg>
-            </button>
-          )}
 
           {/* Testo hero */}
           <div className="hero__content" ref={heroRef}>
