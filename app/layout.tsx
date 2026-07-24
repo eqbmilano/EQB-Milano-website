@@ -112,7 +112,7 @@ export default async function RootLayout({
   const locale = localeHeader && isLocale(localeHeader) ? localeHeader : DEFAULT_LOCALE;
 
   return (
-    <html lang={locale}>
+    <html lang={locale} data-scroll-behavior="smooth">
       <head>
         <meta name="color-scheme" content="light" />
         <OrganizationJsonLd locale={locale} />

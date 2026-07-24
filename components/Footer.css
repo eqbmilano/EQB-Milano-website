@@ -26,6 +26,11 @@
   gap: 1.25rem;
 }
 
+.footer__col--brand img {
+  width: 70px;
+  height: 35px;
+}
+
 .footer__tagline {
   color: #ffffff80;
   font-size: .95rem;

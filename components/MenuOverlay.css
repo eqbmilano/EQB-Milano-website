@@ -91,6 +91,11 @@
   display: block;
 }
 
+.menu-overlay__logo img {
+  width: 80px;
+  height: 40px;
+}
+
 .menu-overlay__logo a:hover {
   opacity: 1;
 }
@@ -299,18 +304,21 @@
     50% { transform: translateY(5px); }
   }
 
-  /* Sezione rivelata: social (stile Contatti) + contatti */
+  /* Sezione rivelata: social (stile Contatti) + contatti.
+     Allineati a sinistra come le voci di navigazione sopra (stesso inset
+     2rem di .menu-overlay__right) - centrarli qui creava un disallineamento
+     evidente rispetto a "Coworking"/"Spazio"/"Visione". */
   .menu-overlay__socials {
     order: 4;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 1.5rem 2rem .5rem;
   }
 
   .menu-overlay__contacts {
     order: 5;
     white-space: normal;
-    text-align: center;
+    text-align: left;
     font-size: .82rem;
     line-height: 2.3;
     padding: .5rem 2rem 3rem;
@@ -318,7 +326,7 @@
   }
 
   .menu-overlay__contacts a {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .menu-contact-arrow {

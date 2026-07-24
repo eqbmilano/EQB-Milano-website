@@ -281,6 +281,11 @@
 }
 
 .navbar__logo img {
+  /* Il reset globale di Tailwind (img,video{height:auto}) sovrascriveva solo
+     l'altezza lasciando la larghezza fissa (props width=80 height=40) -
+     Next.js segnala il mismatch aspect-ratio. Ripristinate entrambe esplicite. */
+  width: 80px;
+  height: 40px;
   transition: opacity .3s;
 }
 

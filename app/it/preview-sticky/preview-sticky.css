@@ -1,0 +1,127 @@
+.ps-page {
+  font-family: var(--font-manrope);
+  background: var(--color-bg-light);
+  color: var(--color-brown-primary);
+  min-height: 100vh;
+  padding: 3rem 1.5rem 6rem;
+}
+
+.ps-header {
+  max-width: 640px;
+  margin: 0 auto 3rem;
+}
+.ps-header h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0 0 .75rem; font-weight: 700; letter-spacing: -.02em; }
+.ps-header p { color: #555; line-height: 1.6; margin: 0; }
+
+.ps-section {
+  max-width: 640px;
+  margin: 0 auto 4rem;
+}
+.ps-section h2 { font-size: 1.3rem; font-weight: 700; margin: 0 0 .4rem; }
+.ps-note { color: #777; font-size: .92rem; line-height: 1.6; margin: 0 0 1.5rem; }
+
+.ps-demo {
+  position: relative;
+  background: #faf8f5;
+  border-radius: 16px;
+  padding: 2.5rem 1.5rem 5.5rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.ps-demo--dark {
+  background: #302624;
+}
+.ps-demo__label {
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #30262459;
+}
+.ps-demo--dark .ps-demo__label { color: #ffffff59; }
+.ps-demo__filler {
+  font-size: .9rem;
+  color: #30262485;
+  margin: 1.5rem 0 0;
+}
+.ps-demo--dark .ps-demo__filler { color: #ffffff73; }
+
+.ps-sticky {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.ps-sticky-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* A — pillola minimal, shrink-to-fit */
+.ps-a__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--color-brown-primary);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 100px;
+  padding: .85rem 1.5rem;
+  font-weight: 700;
+  font-size: .92rem;
+  box-shadow: 0 12px 30px rgba(8,5,3,.3);
+  cursor: pointer;
+}
+
+/* B — barra intera */
+.ps-b {
+  background: var(--color-brown-primary);
+  padding: 1rem 1.5rem;
+}
+.ps-b__text { color: #ffffffcc; font-size: .88rem; font-weight: 500; }
+.ps-b__btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: #fff; color: var(--color-brown-primary);
+  border-radius: 100px; padding: .65rem 1.3rem; font-weight: 700; font-size: .88rem;
+  cursor: pointer;
+}
+
+/* C — FAB rotondo */
+.ps-c { justify-content: flex-end; }
+.ps-c__btn {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--color-brown-primary); color: #fff;
+  border: 1px solid rgba(255,255,255,.14);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 30px rgba(8,5,3,.3);
+  cursor: pointer;
+}
+
+/* D — pillola chiara invertita */
+.ps-d {
+  background: #fff;
+  border-radius: 100px;
+  padding: .6rem .6rem .6rem 1.4rem;
+  display: flex; align-items: center; gap: 1.1rem;
+  box-shadow: 0 12px 30px rgba(8,5,3,.18);
+  border: 1px solid #30262414;
+}
+.ps-d__text { color: #302624; font-size: .88rem; font-weight: 500; white-space: nowrap; }
+.ps-d__btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--color-brown-primary); color: #fff;
+  border-radius: 100px; padding: .65rem 1.3rem; font-weight: 700; font-size: .88rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
