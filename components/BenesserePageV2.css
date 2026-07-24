@@ -641,9 +641,22 @@
 .ben-sticky__btn:hover { background: #ffffffe0; transform: translateY(-1px); }
 @media (max-width: 768px) {
   .ben-opening__scroll { display: none; }
-  .ben-sticky { left: 1rem; right: 1rem; bottom: 1rem; max-width: none; justify-content: space-between; gap: .75rem; padding-left: 1.2rem; transform: translateY(200%); }
+  .ben-sticky {
+    left: 1rem; right: 1rem; bottom: 1rem; max-width: none;
+    justify-content: space-between; gap: .75rem; padding-left: 1.2rem;
+    transform: translateY(200%);
+    background: #fff; border-color: #30262414;
+    box-shadow: 0 12px 30px rgba(8, 5, 3, .18);
+  }
   .ben-sticky.is-shown { transform: translateY(0); }
-  .ben-sticky__text { display: none; }
+  .ben-sticky__text {
+    display: block; color: var(--color-brown-primary);
+    flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis;
+  }
+  .ben-sticky__btn,
+  .ben-sticky__btn:hover {
+    background: var(--color-brown-primary); color: #fff; flex: 0 0 auto;
+  }
 }
 
 .ben-feature__tags {

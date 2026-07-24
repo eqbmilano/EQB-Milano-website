@@ -1013,9 +1013,25 @@
     gap: .75rem;
     padding-left: 1.2rem;
     transform: translateY(200%);
+    background: #fff;
+    border-color: #30262414;
+    box-shadow: 0 12px 30px rgba(8, 5, 3, .18);
   }
   .sp-sticky.is-shown { transform: translateY(0); }
-  .sp-sticky__text { display: none; }
+  .sp-sticky__text {
+    display: block;
+    color: var(--color-brown-primary);
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sp-sticky__btn,
+  .sp-sticky__btn:hover {
+    background: var(--color-brown-primary);
+    color: #fff;
+    flex: 0 0 auto;
+  }
 }
 
 /* ════════ Ordine unico mobile: Titolo → Foto → Descrizione → Caratteristiche → Tag ════════
