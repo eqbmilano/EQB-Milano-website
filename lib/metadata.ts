@@ -25,6 +25,10 @@ export function buildPageMetadata(
   description?: string
 ): Metadata {
   const alternates = buildAlternates(locale, path);
+  // Le pagine figlie non ereditano l'opengraph-image del proprio segmento locale
+  // (verificato: solo /it e /en la ereditano, non /it/aziende ecc.), quindi va
+  // referenziata esplicitamente qui invece di contare sulla cascata di Next.
+  const ogImage = `${SITE_URL}/${locale}/opengraph-image`;
   return {
     title,
     description,
@@ -33,6 +37,13 @@ export function buildPageMetadata(
       title,
       description,
       url: alternates.canonical,
+      images: [{ url: ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
     },
   };
 }

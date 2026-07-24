@@ -25,6 +25,11 @@ export const metadata: Metadata = {
     title: "EQB Milano",
     description: "Uno spazio di coworking dedicato al benessere e al movimento.",
     url: "https://eqbmilano.it",
+    images: [{ url: `${SITE_URL}/it/opengraph-image`, width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [`${SITE_URL}/it/opengraph-image`],
   },
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
