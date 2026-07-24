@@ -39,19 +39,28 @@ export function PrivacyPageContent() {
 
           <h3>{t("dati2H3")}</h3>
           <p>
-            {t("dati2BodyPre")} <strong>{t("dati2BodyStrong")}</strong>{t("dati2BodyPost")}
+            {t("dati2Body")}
           </p>
 
           <h3>{t("dati3H3")}</h3>
           <p>
-            {t("dati3Body")}
+            {t("dati3BodyPre")}{" "}
+            <a href="mailto:info@eqbmilano.it">info@eqbmilano.it</a>
+            {t("dati3BodyPost")}
           </p>
 
           <h3>{t("dati4H3")}</h3>
           <p>
             {t("dati4BodyPre")}{" "}
+            <a href="mailto:info@eqbmilano.it">info@eqbmilano.it</a>
+            {t("dati4BodyPost")}
+          </p>
+
+          <h3>{t("dati5H3")}</h3>
+          <p>
+            {t("dati5BodyPre")}{" "}
             <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-              {t("dati4Link")}
+              {t("dati5Link")}
             </a>.
           </p>
 
@@ -62,7 +71,9 @@ export function PrivacyPageContent() {
 
           <h2>{t("comunicazioneH2")}</h2>
           <p>
-            {t("comunicazioneBody")}
+            {t("comunicazioneBodyPre")}{" "}
+            <a href="mailto:info@eqbmilano.it">info@eqbmilano.it</a>
+            {t("comunicazioneBodyPost")}
           </p>
 
           <h2>{t("dirittiH2")}</h2>

@@ -239,7 +239,10 @@
     "waSono": "Ciao! Sono",
     "waScrivo": "Vi scrivo per",
     "mailOggetto": "Richiesta EQB",
-    "btnMail": "Scrivici via mail"
+    "btnMail": "Scrivici via mail",
+    "formLegalPre": "Inviando il modulo accetti la nostra ",
+    "formLegalLink": "informativa privacy",
+    "formLegalPost": "."
   },
   "benessere": {
     "openingLabel": "Benessere",
@@ -452,7 +455,10 @@
     "waSono": "Ciao! Sono",
     "waDefaultMsg": "Vorrei avere informazioni.",
     "mailOggetto": "Richiesta EQB Milano",
-    "btnMail": "Scrivici via mail"
+    "btnMail": "Scrivici via mail",
+    "formLegalPre": "Inviando il modulo accetti la nostra ",
+    "formLegalLink": "informativa privacy",
+    "formLegalPost": "."
   },
   "coworking": {
     "openingTitle": "Hai costruito la tua\nprofessionalità per anni.",
@@ -678,7 +684,10 @@
       "cvSfoglia": "Sfoglia",
       "inviando": "Invio in corso…",
       "invia": "Invia candidatura",
-      "erroreGenerico": "Invio non riuscito, riprova."
+      "erroreGenerico": "Invio non riuscito, riprova.",
+      "legalFootPre": "Inviando la candidatura accetti la nostra ",
+      "legalFootLink": "informativa privacy",
+      "legalFootPost": "."
     },
     "done": {
       "eyebrow": "Fatto",
@@ -846,31 +855,34 @@
   "privacy": {
     "label": "Privacy",
     "heroTitle": "Informativa sulla privacy",
-    "heroSub": "Come trattiamo i dati di chi visita eqbmilano.it. In breve: questo sito non usa cookie di profilazione e non conserva i dati che scrivi nel form.",
+    "heroSub": "Come trattiamo i dati di chi visita eqbmilano.it. In breve: questo sito non usa cookie di profilazione né strumenti di analisi statistica; i messaggi e le candidature che ci mandi arrivano via email e WhatsApp interno al nostro team.",
     "titolareH2": "Titolare del trattamento",
     "titolareBody": "EQB Milano di Adinolfi Marco — impresa individuale\nSede legale: Via Caravaggio 2, 20054 Segrate (MI)\nSede operativa: Viale Regina Margherita 43, 20122 Milano\nP.IVA 14601140966 · C.F. DNLMRC02A11F205W · REA MI-2794459\nEmail:",
     "datiH2": "Quali dati trattiamo e perché",
     "dati1H3": "1. Dati di navigazione",
-    "dati1Body": "Il sito è ospitato su Vercel Inc. (Stati Uniti). Come ogni servizio di hosting, Vercel registra log tecnici (indirizzo IP, orario della richiesta, pagina visitata) necessari al funzionamento e alla sicurezza del servizio. Base giuridica: legittimo interesse del Titolare al corretto funzionamento del sito (art. 6.1.f GDPR). I trasferimenti extra-UE avvengono sulla base delle garanzie previste dal GDPR (clausole contrattuali standard).",
+    "dati1Body": "Il sito gira su un server in Unione Europea (infrastruttura Hetzner, Germania) protetto da Cloudflare, che agisce da proxy e rete di distribuzione dei contenuti: entrambi registrano log tecnici (indirizzo IP, orario della richiesta, pagina visitata) necessari al funzionamento e alla sicurezza del servizio. Base giuridica: legittimo interesse del Titolare al corretto funzionamento del sito (art. 6.1.f GDPR). Cloudflare opera una rete globale: eventuali trattamenti extra-UE avvengono sulla base delle garanzie previste dal GDPR (clausole contrattuali standard).",
     "dati2H3": "2. Statistiche di utilizzo",
-    "dati2BodyPre": "Usiamo Vercel Analytics, un servizio di statistica",
-    "dati2BodyStrong": "senza cookie",
-    "dati2BodyPost": ": i dati raccolti sono aggregati e anonimi, non consentono di identificare i singoli visitatori e non vengono utilizzati per profilazione o pubblicità. Per questo motivo il sito non richiede un banner di consenso.",
-    "dati3H3": "3. Dati che ci comunichi tu",
-    "dati3Body": "Il form nella pagina Contatti non invia nulla ai nostri server: prepara un messaggio WhatsApp sul tuo dispositivo, che decidi tu se inviare. Se ci contatti via telefono, email o WhatsApp, i dati che ci fornisci (nome, recapito, contenuto del messaggio) vengono usati solo per risponderti e gestire la tua richiesta. Base giuridica: esecuzione di misure precontrattuali richieste dall'interessato (art. 6.1.b GDPR). Conserviamo queste comunicazioni per il tempo necessario a gestire la richiesta e gli eventuali obblighi che ne derivano.",
-    "dati4H3": "4. Mappa di Google",
-    "dati4BodyPre": "Nella pagina Contatti è presente una mappa di Google Maps che si carica insieme alla pagina. Tramite questa mappa Google può installare propri cookie e trattare dati secondo la sua",
-    "dati4Link": "informativa privacy",
+    "dati2Body": "Il sito non utilizza alcun servizio di analisi o statistica (né Google Analytics, né Vercel Analytics, né altri): non misuriamo il traffico e non profiliamo chi visita il sito.",
+    "dati3H3": "3. Contatti e Aziende",
+    "dati3BodyPre": "I form nelle pagine Contatti e Aziende preparano un messaggio WhatsApp o email pronto sul tuo dispositivo: decidi tu se inviarlo. Allo stesso tempo, il nome e il messaggio che scrivi vengono inviati come copia anche ai nostri server, per farci arrivare la richiesta anche se poi non completi l'invio dal tuo WhatsApp o dalla tua email: questa copia viene inoltrata alla nostra casella email",
+    "dati3BodyPost": " e al gruppo WhatsApp interno del nostro team. Se ci contatti direttamente via telefono, email o WhatsApp, i dati che ci fornisci (nome, recapito, contenuto del messaggio) vengono usati solo per risponderti e gestire la tua richiesta. Base giuridica: esecuzione di misure precontrattuali richieste dall'interessato (art. 6.1.b GDPR). Conserviamo queste comunicazioni per il tempo necessario a gestire la richiesta e gli eventuali obblighi che ne derivano.",
+    "dati4H3": "4. Candidatura per lavorare in EQB",
+    "dati4BodyPre": "Il form di Candidatura raccoglie categoria professionale, clienti già seguiti, appuntamenti previsti a settimana, aspettative, tempistica, una breve presentazione, nome, cognome, telefono e/o email, e facoltativamente Instagram, sito personale e un curriculum in PDF (max 8MB). A differenza dei form di Contatti e Aziende, qui l'invio è unico e diretto: i dati (compreso il CV, se allegato) arrivano alla nostra casella email",
+    "dati4BodyPost": " e una notifica sintetica (nome e recapito) viene inviata al gruppo WhatsApp interno del nostro team, per permetterci di valutare la candidatura. Base giuridica: esecuzione di misure precontrattuali richieste dall'interessato (art. 6.1.b GDPR). Conserviamo la candidatura e il CV per il tempo necessario a valutarla; se non porta a una collaborazione, li cancelliamo entro 12 mesi dall'invio.",
+    "dati5H3": "5. Mappa di Google",
+    "dati5BodyPre": "Nella pagina Contatti è presente una mappa di Google Maps che si carica insieme alla pagina. Tramite questa mappa Google può installare propri cookie e trattare dati secondo la sua",
+    "dati5Link": "informativa privacy",
     "cookieH2": "Cookie",
     "cookieBody": "Il sito non utilizza cookie di profilazione né cookie analitici di terze parti. Gli unici cookie presenti sono tecnici, necessari al funzionamento, e quelli di Google Maps, caricati insieme alla mappa nella pagina Contatti (vedi sopra).",
     "comunicazioneH2": "Comunicazione dei dati",
-    "comunicazioneBody": "I dati non vengono venduti né ceduti a terzi. Possono venirne a conoscenza solo i soggetti che collaborano con il Titolare alla gestione del sito e dell'attività (fornitori tecnici, consulenti), nominati responsabili del trattamento ove necessario.",
+    "comunicazioneBodyPre": "I dati non vengono venduti né ceduti a terzi con finalità commerciali. Chi ne viene a conoscenza sono: il team interno EQB (nel gruppo WhatsApp dedicato, per gestire in tempo reale le richieste), la casella email amministrativa",
+    "comunicazioneBodyPost": " e i fornitori tecnici che erogano l'infrastruttura (hosting Hetzner, Cloudflare come proxy/CDN), nominati responsabili del trattamento ove necessario.",
     "dirittiH2": "I tuoi diritti",
     "dirittiBodyPre": "Ai sensi degli artt. 15-22 GDPR puoi chiedere in ogni momento l'accesso ai tuoi dati, la rettifica, la cancellazione, la limitazione del trattamento, la portabilità, oppure opporti al trattamento. Basta scrivere a",
     "dirittiBodyMid": ". Se ritieni che il trattamento violi la normativa, puoi proporre reclamo al",
     "dirittiLink": "Garante per la protezione dei dati personali",
     "aggiornamentiH2": "Aggiornamenti",
-    "aggiornamentiBody": "Questa informativa può essere aggiornata: la versione pubblicata su questa pagina è quella vigente.\nUltimo aggiornamento: 13 luglio 2026."
+    "aggiornamentiBody": "Questa informativa può essere aggiornata: la versione pubblicata su questa pagina è quella vigente.\nUltimo aggiornamento: 24 luglio 2026."
   },
   "scrivici": {
     "eyebrow": "Scrivici",

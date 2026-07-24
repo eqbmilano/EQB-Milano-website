@@ -239,7 +239,10 @@
     "waSono": "Hi! I'm",
     "waScrivo": "I'm writing about",
     "mailOggetto": "EQB request",
-    "btnMail": "Write to us by email"
+    "btnMail": "Write to us by email",
+    "formLegalPre": "By submitting the form you accept our ",
+    "formLegalLink": "privacy policy",
+    "formLegalPost": "."
   },
   "benessere": {
     "openingLabel": "Wellness",
@@ -452,7 +455,10 @@
     "waSono": "Hi! I'm",
     "waDefaultMsg": "I'd like some information.",
     "mailOggetto": "EQB Milano request",
-    "btnMail": "Write to us by email"
+    "btnMail": "Write to us by email",
+    "formLegalPre": "By submitting the form you accept our ",
+    "formLegalLink": "privacy policy",
+    "formLegalPost": "."
   },
   "coworking": {
     "openingTitle": "You've built your\nprofessional skills for years.",
@@ -678,7 +684,10 @@
       "cvSfoglia": "Browse",
       "inviando": "Sending…",
       "invia": "Submit application",
-      "erroreGenerico": "Something went wrong, please try again."
+      "erroreGenerico": "Something went wrong, please try again.",
+      "legalFootPre": "By submitting your application you accept our ",
+      "legalFootLink": "privacy policy",
+      "legalFootPost": "."
     },
     "done": {
       "eyebrow": "Done",
@@ -846,31 +855,34 @@
   "privacy": {
     "label": "Privacy",
     "heroTitle": "Privacy policy",
-    "heroSub": "How we handle the data of visitors to eqbmilano.it. In short: this site doesn't use profiling cookies and doesn't store the data you enter in the form.",
+    "heroSub": "How we handle the data of visitors to eqbmilano.it. In short: this site doesn't use profiling cookies or analytics tools; the messages and applications you send us arrive by email and our team's internal WhatsApp.",
     "titolareH2": "Data controller",
     "titolareBody": "EQB Milano di Adinolfi Marco — sole proprietorship\nRegistered office: Via Caravaggio 2, 20054 Segrate (MI), Italy\nOperating address: Viale Regina Margherita 43, 20122 Milan, Italy\nVAT 14601140966 · Tax code DNLMRC02A11F205W · REA MI-2794459\nEmail:",
     "datiH2": "What data we process and why",
     "dati1H3": "1. Browsing data",
-    "dati1Body": "The site is hosted on Vercel Inc. (United States). Like any hosting service, Vercel logs technical data (IP address, request time, page visited) necessary for the operation and security of the service. Legal basis: the Data Controller's legitimate interest in the site's correct operation (Art. 6.1.f GDPR). Transfers outside the EU take place based on the safeguards required by the GDPR (standard contractual clauses).",
+    "dati1Body": "The site runs on a server in the European Union (Hetzner infrastructure, Germany) behind Cloudflare, which acts as a proxy and content delivery network: both log technical data (IP address, request time, page visited) necessary for the operation and security of the service. Legal basis: the Data Controller's legitimate interest in the site's correct operation (Art. 6.1.f GDPR). Cloudflare operates a global network: any transfers outside the EU take place based on the safeguards required by the GDPR (standard contractual clauses).",
     "dati2H3": "2. Usage statistics",
-    "dati2BodyPre": "We use Vercel Analytics, a",
-    "dati2BodyStrong": "cookie-free",
-    "dati2BodyPost": "statistics service: the data collected is aggregated and anonymous, doesn't allow individual visitors to be identified, and isn't used for profiling or advertising. For this reason, the site doesn't require a consent banner.",
-    "dati3H3": "3. Data you provide us",
-    "dati3Body": "The form on the Contact page doesn't send anything to our servers: it prepares a WhatsApp message on your device, which you decide whether to send. If you contact us by phone, email or WhatsApp, the data you provide (name, contact details, message content) is used only to reply to you and handle your request. Legal basis: performance of pre-contractual measures requested by the data subject (Art. 6.1.b GDPR). We keep these communications for as long as necessary to handle the request and any resulting obligations.",
-    "dati4H3": "4. Google Maps",
-    "dati4BodyPre": "The Contact page includes a Google Maps map that loads together with the page. Through this map, Google may set its own cookies and process data according to its",
-    "dati4Link": "privacy policy",
+    "dati2Body": "The site doesn't use any analytics or statistics service (not Google Analytics, not Vercel Analytics, nor any other): we don't measure traffic and we don't profile site visitors.",
+    "dati3H3": "3. Contact and Companies",
+    "dati3BodyPre": "The forms on the Contact and Companies pages prepare a WhatsApp or email message ready on your device: you decide whether to send it. At the same time, the name and message you write are also sent as a copy to our servers, so the request reaches us even if you don't complete sending it from your WhatsApp or email: this copy is forwarded to our email address",
+    "dati3BodyPost": " and to our team's internal WhatsApp group. If you contact us directly by phone, email or WhatsApp, the data you provide (name, contact details, message content) is used only to reply to you and handle your request. Legal basis: performance of pre-contractual measures requested by the data subject (Art. 6.1.b GDPR). We keep these communications for as long as necessary to handle the request and any resulting obligations.",
+    "dati4H3": "4. Applying to work with EQB",
+    "dati4BodyPre": "The Application form collects professional category, clients you already work with, expected weekly appointments, expectations, timing, a short introduction, first and last name, phone and/or email, and optionally Instagram, personal website and a résumé in PDF (max 8MB). Unlike the Contact and Companies forms, here submission is single and direct: the data (including the résumé, if attached) is sent to our email address",
+    "dati4BodyPost": " and a brief notification (name and contact details) is sent to our team's internal WhatsApp group, so we can review the application. Legal basis: performance of pre-contractual measures requested by the data subject (Art. 6.1.b GDPR). We keep the application and résumé for as long as necessary to review it; if it doesn't lead to a collaboration, we delete them within 12 months of submission.",
+    "dati5H3": "5. Google Maps",
+    "dati5BodyPre": "The Contact page includes a Google Maps map that loads together with the page. Through this map, Google may set its own cookies and process data according to its",
+    "dati5Link": "privacy policy",
     "cookieH2": "Cookies",
     "cookieBody": "The site doesn't use profiling cookies or third-party analytics cookies. The only cookies present are technical ones, necessary for operation, and those from Google Maps, loaded together with the map on the Contact page (see above).",
     "comunicazioneH2": "Data disclosure",
-    "comunicazioneBody": "Data is never sold or transferred to third parties. It may only be accessed by parties who collaborate with the Data Controller in managing the site and the business (technical providers, consultants), appointed as data processors where necessary.",
+    "comunicazioneBodyPre": "Data is never sold or transferred to third parties for commercial purposes. It may be accessed by: our internal EQB team (in the dedicated WhatsApp group, to handle requests in real time), our administrative email address",
+    "comunicazioneBodyPost": " and the technical providers that supply our infrastructure (Hetzner hosting, Cloudflare as proxy/CDN), appointed as data processors where necessary.",
     "dirittiH2": "Your rights",
     "dirittiBodyPre": "Under Articles 15-22 GDPR, you may at any time request access to your data, rectification, erasure, restriction of processing, portability, or object to processing. Just write to",
     "dirittiBodyMid": ". If you believe the processing violates the regulation, you can file a complaint with the",
     "dirittiLink": "Italian Data Protection Authority",
     "aggiornamentiH2": "Updates",
-    "aggiornamentiBody": "This policy may be updated: the version published on this page is the current one.\nLast updated: 13 July 2026."
+    "aggiornamentiBody": "This policy may be updated: the version published on this page is the current one.\nLast updated: 24 July 2026."
   },
   "scrivici": {
     "eyebrow": "Get in touch",

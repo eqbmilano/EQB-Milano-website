@@ -34,5 +34,8 @@ export async function GET(
   // Hook tracking (proposta attribuzione approvata da Marco/Fede):
   // quando il tracker sarà attivo, loggare qui il click (slug, canale,
   // ref/utm/fbclid dalla query string) prima del redirect.
+  // ATTENZIONE: quel giorno va aggiornata anche la privacy (chiavi
+  // privacy.dati2* in messages/it.json + en.json, sezione "Statistiche
+  // di utilizzo": oggi dice che non c'è alcun tracciamento).
   return NextResponse.redirect(target, 302);
 }

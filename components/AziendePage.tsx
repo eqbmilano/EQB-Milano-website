@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Reveal } from "./Reveal";
 import { Multiline } from "./Multiline";
@@ -14,6 +15,7 @@ type Tipo = "evento" | "collaborazione";
 
 export const AziendePage: React.FC = () => {
   const t = useTranslations("aziende");
+  const locale = usePathname().split("/")[1] || "it";
   const [nome, setNome] = useState("");
   const [tipo, setTipo] = useState<Tipo>("evento");
   const [msg, setMsg] = useState("");
@@ -138,6 +140,11 @@ export const AziendePage: React.FC = () => {
                 {t("btnMail")}
               </a>
             </div>
+            <p className="az-form__legal">
+              {t("formLegalPre")}
+              <a href={`/${locale}/privacy`}>{t("formLegalLink")}</a>
+              {t("formLegalPost")}
+            </p>
           </div>
         </div>
       </section>

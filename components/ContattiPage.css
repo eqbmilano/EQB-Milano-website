@@ -83,6 +83,8 @@
 .cnt-field input::placeholder, .cnt-field textarea::placeholder { color: #f4efe966; }
 .cnt-field input:focus, .cnt-field textarea:focus { outline: none; border-color: #d8c3ad; background: #ffffff1f; }
 .cnt-form__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem; margin-top: .5rem; }
+.cnt-form__legal { color: #f4efe966; font-size: .82rem; margin: .8rem 0 0; }
+.cnt-form__legal a { color: #f4efe9cc; text-decoration: underline; }
 .cnt-form__btn {
   align-self: flex-start; background: #fff; color: var(--color-brown-primary); border-radius: 100px;
   padding: .95rem 2rem; font-size: .92rem; font-weight: 700;

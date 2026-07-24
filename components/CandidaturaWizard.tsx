@@ -379,6 +379,11 @@ export const CandidaturaWizard: React.FC = () => {
             {sending ? t("contatto.inviando") : <>{t("contatto.invia")} <span aria-hidden="true">&#8594;</span></>}
           </button>
           {sendError && <p className="cand-step__error">{sendError}</p>}
+          <p className="cand-step__legal">
+            {t("contatto.legalFootPre")}
+            <a href={`/${locale}/privacy`}>{t("contatto.legalFootLink")}</a>
+            {t("contatto.legalFootPost")}
+          </p>
         </section>
 
         <section className={`cand-step cand-step--done${key === "done" ? " is-active" : ""}`}>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { SocialLinks } from "./SocialIcons";
 import { Multiline } from "./Multiline";
@@ -25,6 +26,7 @@ function Ico({ name }: { name: "phone" | "wa" | "mail" | "pin" | "clock" }) {
 
 export const ContattiPage: React.FC = () => {
   const t = useTranslations("contatti");
+  const locale = usePathname().split("/")[1] || "it";
   const [nome, setNome] = useState("");
   const [msg, setMsg] = useState("");
   const composed = `${t("waSono")} ${nome.trim() || "[nome]"}. ${msg.trim() || t("waDefaultMsg")}`;
@@ -140,6 +142,11 @@ export const ContattiPage: React.FC = () => {
                 {t("btnMail")}
               </a>
             </div>
+            <p className="cnt-form__legal">
+              {t("formLegalPre")}
+              <a href={`/${locale}/privacy`}>{t("formLegalLink")}</a>
+              {t("formLegalPost")}
+            </p>
           </div>
         </div>
       </section>
