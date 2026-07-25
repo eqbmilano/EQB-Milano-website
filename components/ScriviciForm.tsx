@@ -69,7 +69,7 @@ export const ScriviciForm: React.FC = () => {
               />
             </div>
           </div>
-          <div className="cand-fields--inline">
+          <div className="cand-fields cand-fields--inline">
             <a
               className="cand-btn"
               href={formWa}
@@ -83,7 +83,7 @@ export const ScriviciForm: React.FC = () => {
             <a
               href={formMail}
               onClick={notifyServer}
-              className="cand-link-quiet"
+              className="cand-btn--outline"
             >
               {t("btnMail")}
             </a>

@@ -70,16 +70,17 @@
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 50%;
-  color: #30262459;
-  font-size: 1.25rem;
+  border: 1px solid var(--color-separator);
+  color: var(--color-brown-primary);
+  font-size: 1.1rem;
   text-decoration: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background .2s, color .2s;
+  transition: background .2s, color .2s, border-color .2s;
 }
-.cand-chrome__exit:hover { background: #fff; color: var(--color-brown-primary); }
+.cand-chrome__exit:hover { background: #fff; border-color: var(--color-brown-primary); }
 
 .cand-stage {
   position: relative;
@@ -397,6 +398,23 @@
 }
 .cand-link-quiet:hover { border-color: var(--color-brown-primary); }
 
+.cand-btn--outline {
+  font-family: var(--font-manrope);
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--color-brown-primary);
+  background: transparent;
+  border: 1px solid var(--color-separator);
+  border-radius: 9999px;
+  padding: .85rem 1.8rem;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color .2s, background .2s, transform .2s;
+}
+.cand-btn--outline:hover { border-color: var(--color-brown-primary); background: #3025240d; transform: translateY(-2px); }
+
 @media (max-width: 640px) {
   .cand-chrome { gap: 1rem; }
   .cand-step { padding: clamp(1rem, 5dvh, 1.5rem) 1.25rem clamp(1.25rem, 6dvh, 2.5rem); }
@@ -428,8 +446,8 @@
 .cand-app--dark .cand-chrome__back:hover:not(:disabled) { border-color: #fff; background: rgba(255, 255, 255, .08); }
 .cand-app--dark .cand-chrome__progress { background: rgba(255, 255, 255, .2); }
 .cand-app--dark .cand-chrome__progress-fill { background: #fff; }
-.cand-app--dark .cand-chrome__exit { color: rgba(255, 255, 255, .55); }
-.cand-app--dark .cand-chrome__exit:hover { background: rgba(255, 255, 255, .08); color: #fff; }
+.cand-app--dark .cand-chrome__exit { color: rgba(255, 255, 255, .75); border-color: rgba(255, 255, 255, .3); }
+.cand-app--dark .cand-chrome__exit:hover { background: rgba(255, 255, 255, .08); color: #fff; border-color: #fff; }
 
 .cand-app--dark .cand-step__eyebrow { color: rgba(255, 255, 255, .55); }
 .cand-app--dark .cand-step__title { color: #fff; }
@@ -462,6 +480,8 @@
 
 .cand-app--dark .cand-btn { background: #fff; color: var(--color-brown-primary); }
 .cand-app--dark .cand-btn:disabled { background: rgba(255, 255, 255, .18); color: rgba(255, 255, 255, .5); }
+.cand-app--dark .cand-btn--outline { color: #fff; border-color: rgba(255, 255, 255, .3); }
+.cand-app--dark .cand-btn--outline:hover { border-color: #fff; background: rgba(255, 255, 255, .08); }
 
 .cand-app--dark .cand-field label { color: rgba(255, 255, 255, .55); }
 .cand-app--dark .cand-field input,
