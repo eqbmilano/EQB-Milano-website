@@ -401,6 +401,11 @@
 
   .vis-founder__photo {
     height: 340px;
+    order: 1;
+  }
+
+  .vis-founder__text {
+    order: 2;
   }
 
   .vis-cta__mosaic {
