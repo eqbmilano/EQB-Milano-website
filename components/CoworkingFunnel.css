@@ -832,6 +832,7 @@
 
 .cw-diff__title {
   font-family: var(--font-manrope);
+  font-style: italic;
   color: #fff;
   letter-spacing: -.02em;
   margin: 0;
