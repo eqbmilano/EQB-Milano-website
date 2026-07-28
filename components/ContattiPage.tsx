@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { SocialLinks } from "./SocialIcons";
@@ -14,6 +14,41 @@ const EMAIL = "info@eqbmilano.it";
 const ADDRESS = "Viale Regina Margherita 43, 20122 Milano";
 const MAPS_LINK = "https://share.google/bu1nHJ6pAM3LBYwkU";
 const MAPS_EMBED = "https://www.google.com/maps?q=Viale%20Regina%20Margherita%2043%2C%2020122%20Milano&output=embed";
+
+function TiltCard({ href, target, rel, className, children }: { href: string; target?: string; rel?: string; className?: string; children: React.ReactNode }) {
+  const ref = useRef<HTMLAnchorElement>(null);
+
+  const onMove = useCallback((e: React.MouseEvent) => {
+    const el = ref.current!;
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    el.style.transition = "transform 0.08s, box-shadow 0.08s";
+    el.style.transform = `perspective(700px) rotateX(${-y * 18}deg) rotateY(${x * 18}deg) scale(1.04)`;
+    el.style.boxShadow = `${x * -24}px ${y * -24}px 50px rgba(50,37,35,0.18), 0 6px 28px rgba(50,37,35,0.08)`;
+  }, []);
+
+  const onLeave = useCallback(() => {
+    const el = ref.current!;
+    el.style.transition = "transform 0.55s cubic-bezier(0.22,1,0.36,1), box-shadow 0.55s cubic-bezier(0.22,1,0.36,1)";
+    el.style.transform = "";
+    el.style.boxShadow = "";
+  }, []);
+
+  return (
+    <a
+      ref={ref}
+      href={href}
+      target={target}
+      rel={rel}
+      className={className}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
+      {children}
+    </a>
+  );
+}
 
 function Ico({ name }: { name: "phone" | "wa" | "mail" | "pin" | "clock" }) {
   const c = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
@@ -57,24 +92,24 @@ export const ContattiPage: React.FC = () => {
 
       {/* Contatti rapidi */}
       <section className="cnt-quick">
-        <a className="cnt-card" href={`tel:${PHONE_TEL}`}>
+        <TiltCard className="cnt-card" href={`tel:${PHONE_TEL}`}>
           <span className="cnt-card__ico"><Ico name="phone" /></span>
           <span className="cnt-card__label">{t("telefonoLabel")}</span>
           <span className="cnt-card__value">{PHONE_DISPLAY}</span>
           <span className="cnt-card__cta">{t("telefonoCta")}</span>
-        </a>
-        <a className="cnt-card cnt-card--wa" href={`${WA}${encodeURIComponent(t("waGenerico"))}`} target="_blank" rel="noopener noreferrer">
+        </TiltCard>
+        <TiltCard className="cnt-card cnt-card--wa" href={`${WA}${encodeURIComponent(t("waGenerico"))}`} target="_blank" rel="noopener noreferrer">
           <span className="cnt-card__ico"><Ico name="wa" /></span>
           <span className="cnt-card__label">{t("whatsappLabel")}</span>
           <span className="cnt-card__value">{PHONE_DISPLAY}</span>
           <span className="cnt-card__cta">{t("whatsappCta")}</span>
-        </a>
-        <a className="cnt-card" href={`mailto:${EMAIL}`}>
+        </TiltCard>
+        <TiltCard className="cnt-card" href={`mailto:${EMAIL}`}>
           <span className="cnt-card__ico"><Ico name="mail" /></span>
           <span className="cnt-card__label">{t("emailLabel")}</span>
           <span className="cnt-card__value">{EMAIL}</span>
           <span className="cnt-card__cta">{t("emailCta")}</span>
-        </a>
+        </TiltCard>
       </section>
 
       {/* Seguici */}

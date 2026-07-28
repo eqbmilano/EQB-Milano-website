@@ -1,7 +1,7 @@
 /* Pagina Aziende & eventi — skin crema + marrone, Manrope */
 .az-page {
   background: var(--color-bg-light, #f8f7f4);
-  color: var(--color-brown-primary, #302624);
+  color: var(--color-brown-primary, #342622);
   font-family: var(--font-manrope, system-ui, sans-serif);
 }
 
@@ -39,7 +39,7 @@
 }
 .az-tagline {
   font-family: var(--font-manrope);
-  color: #302624b0;
+  color: #342622b0;
   margin: -1.2rem 0 1.6rem;
   font-size: 1.2rem;
   font-weight: 500;

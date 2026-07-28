@@ -29,7 +29,7 @@
   overflow: hidden;
 }
 .ps-demo--dark {
-  background: #302624;
+  background: #342622;
 }
 .ps-demo__label {
   position: absolute;
@@ -39,12 +39,12 @@
   font-weight: 700;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: #30262459;
+  color: #34262259;
 }
 .ps-demo--dark .ps-demo__label { color: #ffffff59; }
 .ps-demo__filler {
   font-size: .9rem;
-  color: #30262485;
+  color: #34262285;
   margin: 1.5rem 0 0;
 }
 .ps-demo--dark .ps-demo__filler { color: #ffffff73; }
@@ -115,9 +115,9 @@
   padding: .6rem .6rem .6rem 1.4rem;
   display: flex; align-items: center; gap: 1.1rem;
   box-shadow: 0 12px 30px rgba(8,5,3,.18);
-  border: 1px solid #30262414;
+  border: 1px solid #34262214;
 }
-.ps-d__text { color: #302624; font-size: .88rem; font-weight: 500; white-space: nowrap; }
+.ps-d__text { color: #342622; font-size: .88rem; font-weight: 500; white-space: nowrap; }
 .ps-d__btn {
   display: inline-flex; align-items: center; gap: .5rem;
   background: var(--color-brown-primary); color: #fff;

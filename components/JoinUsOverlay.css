@@ -147,7 +147,7 @@
   font-family: var(--font-manrope);
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: #30262499;
+  color: #34262299;
   font-size: .7rem;
   font-weight: 600;
   display: block;
@@ -165,7 +165,7 @@
 
 .joinus-card__body {
   font-family: var(--font-manrope);
-  color: #302624ad;
+  color: #342622ad;
   flex: 1;
   margin: 0;
   font-size: .9rem;
