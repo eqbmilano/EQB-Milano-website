@@ -463,7 +463,7 @@
 }
 
 .ben-feature--shade {
-  background: #3426220e;
+  background: #3026240e;
 }
 
 .ben-feature__inner {
@@ -564,7 +564,7 @@
 .ben-acc__head { max-width: 880px; margin: 0 auto; text-align: center; }
 .ben-acc__eyebrow {
   display: block; font-family: var(--font-manrope); text-transform: uppercase;
-  letter-spacing: .28em; font-size: .78rem; font-weight: 600; color: #34262266; margin-bottom: 1.6rem;
+  letter-spacing: .28em; font-size: .78rem; font-weight: 600; color: #30262466; margin-bottom: 1.6rem;
 }
 .ben-acc__title {
   font-family: var(--font-manrope);
@@ -645,7 +645,7 @@
     left: 1rem; right: 1rem; bottom: 1rem; max-width: none;
     justify-content: space-between; gap: .75rem; padding-left: 1.2rem;
     transform: translateY(200%);
-    background: #fff; border-color: #34262214;
+    background: #fff; border-color: #30262414;
     box-shadow: 0 12px 30px rgba(8, 5, 3, .18);
   }
   .ben-sticky.is-shown { transform: translateY(0); }
@@ -672,7 +672,7 @@
   text-transform: uppercase;
   color: var(--color-brown-primary);
   opacity: .75;
-  border: 1px solid #34262233;
+  border: 1px solid #30262433;
   border-radius: 100px;
   padding: .3rem .85rem;
   font-size: .68rem;
@@ -685,7 +685,7 @@
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--color-brown-primary);
-  border-bottom: 1px solid #34262240;
+  border-bottom: 1px solid #30262440;
   align-items: center;
   gap: .5rem;
   width: fit-content;
@@ -704,7 +704,7 @@
 }
 
 .ben-offerta {
-  background: #34262206;
+  background: #30262406;
   padding: 11rem 7rem;
 }
 
@@ -740,7 +740,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 2px 16px #3426220f;
+  box-shadow: 0 2px 16px #3026240f;
 }
 
 .vb-card__media {
@@ -811,7 +811,7 @@
 .vb-card__btn {
   font-family: var(--font-manrope);
   color: var(--color-brown-primary);
-  border: 1px solid #34262233;
+  border: 1px solid #30262433;
   border-radius: 9999px;
   align-self: flex-start;
   margin-top: .75rem;
@@ -823,7 +823,7 @@
 }
 
 .vb-card__btn:hover {
-  background: #3426220d;
+  background: #3026240d;
   border-color: var(--color-brown-primary);
 }
 
@@ -834,7 +834,7 @@
 }
 
 .vb-group__header {
-  border-bottom: 1px solid #3426221a;
+  border-bottom: 1px solid #3026241a;
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
@@ -877,7 +877,7 @@
   color: var(--color-brown-primary);
   cursor: pointer;
   background: none;
-  border: 1.5px solid #34262240;
+  border: 1.5px solid #30262440;
   border-radius: 50%;
   justify-content: center;
   align-items: center;
@@ -888,7 +888,7 @@
 }
 
 .vb-nav-btn:hover {
-  background: #3426220d;
+  background: #3026240d;
   border-color: var(--color-brown-primary);
 }
 
@@ -913,7 +913,7 @@
 .vb-slide__number {
   font-family: var(--font-manrope);
   letter-spacing: .1em;
-  color: #34262259;
+  color: #30262459;
   padding-bottom: .5rem;
   font-size: .7rem;
   font-weight: 600;
@@ -921,7 +921,7 @@
 }
 
 .ben-closing {
-  background: #342622;
+  background: #302624;
   grid-template-columns: 1fr 1fr;
   min-height: 80vh;
   display: grid;
@@ -966,7 +966,7 @@
 }
 
 .ben-closing__cta {
-  color: #342622;
+  color: #302624;
   font-family: var(--font-manrope);
   background: #fff;
   border-radius: 100px;

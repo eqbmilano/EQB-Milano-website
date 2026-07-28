@@ -21,7 +21,7 @@ const LOGO_DATA_URI = `data:image/svg+xml;base64,${Buffer.from(logoSvg).toString
 
 export const OG_SIZE = { width: 1200, height: 630 };
 
-const BG = "linear-gradient(135deg, #342622 0%, #4b3631 65%, #5c443e 100%)";
+const BG = "linear-gradient(135deg, #302624 0%, #4B3531 65%, #5c443e 100%)";
 const CREAM = "#F8F7F4";
 const MUTED = "#c9beb7";
 
