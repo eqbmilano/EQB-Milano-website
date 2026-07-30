@@ -732,18 +732,19 @@
 
 /* Card statica (mobile e touch) — foto, nome, descrizione e bottone sempre
    visibili: qui il tap-per-girare si scontrava col drag del carosello.
-   Fondo marrone come il retro della flip card desktop (scelta di Marco
-   30/07): era bianca, ma sul crema della pagina non staccava e si allontanava
-   dal marrone del brand. Su desktop questo blocco viene sovrascritto piu'
-   sotto dal comportamento flip. */
+   Fondo #ede9e4, lo stesso delle card di /visione (.vis-pillar): il bianco
+   non staccava dal crema della pagina, il marrone provato prima stonava.
+   Su desktop questo blocco viene sovrascritto piu' sotto dal flip. */
 .vb-card {
-  background: #2a1e1b;
+  background: #ede9e4;
   border-radius: 16px;
-  height: 100%;
+  /* flex:1 dentro la slide, non height:100%: la percentuale su un wrapper di
+     altezza auto non si risolve e le card restavano di altezze diverse. */
+  flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 2px 16px #30262414;
+  box-shadow: 0 2px 16px #3026240d;
 }
 
 .vb-card__media {
@@ -772,50 +773,40 @@
   font-family: var(--font-manrope);
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: #ffffff73;
+  color: var(--color-brown-primary);
+  opacity: .55;
   font-size: .68rem;
   font-weight: 700;
 }
 
 .vb-card__name {
   font-family: var(--font-manrope);
-  color: #ffffffe6;
+  color: var(--color-brown-primary);
   letter-spacing: -.015em;
   font-size: 1.15rem;
   font-weight: 700;
   line-height: 1.2;
   overflow-wrap: break-word;
-  /* riserva sempre lo spazio per 2 righe: un nome più lungo (es. "Osteopatia
-     Pediatrica") che va a capo non deve rendere la sua card più alta delle
-     altre nella stessa riga del carosello. */
-  min-height: 2.4em;
 }
 
 .vb-card__desc {
   font-family: var(--font-manrope);
-  /* piu' acceso del #ffffff85 del retro desktop: li' e' testo che compare in
-     hover, qui e' testo permanente da leggere sul telefono */
-  color: #ffffffb8;
+  /* piu' scuro del #777 di /visione: li' e' una riga sola, qui e' un
+     paragrafo da leggere sul telefono */
+  color: #5a4f48;
+  /* si prende lo spazio che avanza e spinge il bottone in fondo: cosi' le
+     CTA restano allineate tra card con descrizioni di lunghezza diversa. */
   flex: 1;
   margin: 0;
   font-size: .88rem;
   font-weight: 400;
   line-height: 1.55;
-  /* altezza fissa a 3 righe (non solo min-height): senza un contenitore
-     genitore di altezza fissa, flex:1 da solo non equalizza le card nello
-     stesso carosello - una descrizione un po' piu' lunga bastava a rendere
-     la sua card visibilmente piu' alta delle vicine. */
-  height: 4.65em;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .vb-card__btn {
   font-family: var(--font-manrope);
-  color: #ffffffd9;
-  border: 1px solid #ffffff40;
+  color: var(--color-brown-primary);
+  border: 1px solid #30262440;
   border-radius: 9999px;
   align-self: flex-start;
   margin-top: .75rem;
@@ -827,8 +818,8 @@
 }
 
 .vb-card__btn:hover {
-  background: #ffffff14;
-  border-color: #ffffff73;
+  background: #30262414;
+  border-color: var(--color-brown-primary);
 }
 
 /* Il fronte della flip card esiste solo su desktop: su mobile la card e'
@@ -843,6 +834,9 @@
    ────────────────────────────────────────────────────────────────────── */
 @media (min-width: 901px) and (hover: hover) {
   .vb-card {
+    /* flex:0 0 auto annulla il flex:1 del blocco statico: dentro una slide
+       stretch, flex-basis:0 avrebbe vinto sull'altezza fissa. */
+    flex: 0 0 auto;
     height: 420px;
     position: relative;
     overflow: hidden;
@@ -925,6 +919,9 @@
 
   .vb-card__cat {
     color: #ffffff4d;
+    /* il blocco statico smorza il marrone con opacity: qui il colore e' gia'
+       la trasparenza voluta, l'opacity va riportata a 1 */
+    opacity: 1;
     letter-spacing: .22em;
     font-size: .58rem;
   }
@@ -934,18 +931,13 @@
     letter-spacing: -.02em;
     font-size: 1.25rem;
     line-height: 1.15;
-    /* card ad altezza fissa: non serve piu' riservare 2 righe per pareggiare */
-    min-height: 0;
   }
 
   .vb-card__desc {
     color: #ffffff85;
     flex: 1;
-    height: auto;
     font-size: .9rem;
     line-height: 1.65;
-    /* il retro ha spazio: nessun taglio a 3 righe, solo una sicurezza */
-    -webkit-line-clamp: 6;
   }
 
   .vb-card__btn {
@@ -1049,7 +1041,19 @@
   overflow: visible !important;
 }
 
+/* Altezza uniforme delle card nel carosello.
+   Swiper assegna height:100% alle slide, ma il wrapper ha altezza auto: la
+   percentuale non si risolve, ogni slide restava alta quanto il suo contenuto
+   e le card risultavano di altezze diverse. Il 24/07 il sintomo era stato
+   coperto tagliando il testo (min-height sul nome + clamp a 3 righe sulla
+   descrizione); qui invece si pareggia il contenitore, cosi' le card sono
+   uguali senza troncare niente. */
+.vb-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
 .vb-slide {
+  height: auto;
   flex-direction: column;
   display: flex;
 }
@@ -1271,19 +1275,6 @@
 }
 
 @media (max-width: 640px) {
-  /* Sotto i 640px si vede poco piu' di una card per volta: le altezze non
-     vanno pareggiate, quindi cadono i due vincoli aggiunti il 24/07 per il
-     carosello a piu' colonne. Erano diventati due difetti visibili:
-     una riga vuota sotto i nomi corti e le descrizioni tagliate coi puntini. */
-  .vb-card__name { min-height: 0; }
-
-  .vb-card__desc {
-    display: block;
-    height: auto;
-    overflow: visible;
-    -webkit-line-clamp: none;
-  }
-
   .vb-group__header {
     align-items: flex-end;
   }
