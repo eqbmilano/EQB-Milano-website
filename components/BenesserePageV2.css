@@ -738,11 +738,13 @@
 
 /* Card statica (mobile e touch) — foto, nome, descrizione e bottone sempre
    visibili: qui il tap-per-girare si scontrava col drag del carosello.
-   Fondo #ede9e4, lo stesso delle card di /visione (.vis-pillar): il bianco
-   non staccava dal crema della pagina, il marrone provato prima stonava.
+   Fondo #edece9: e' il grigio caldo delle sezioni feature di questa stessa
+   pagina (.ben-feature--shade, rgba(48,38,36,.055) sopra il crema, che
+   compositato da rgb(237,236,233)). Stessa luminosita' del crema #ede9e4 di
+   /visione provato prima, ma senza la componente gialla che stonava.
    Su desktop questo blocco viene sovrascritto piu' sotto dal flip. */
 .vb-card {
-  background: #ede9e4;
+  background: #edece9;
   border-radius: 16px;
   /* flex:1 dentro la slide, non height:100%: la percentuale su un wrapper di
      altezza auto non si risolve e le card restavano di altezze diverse. */
