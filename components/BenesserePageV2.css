@@ -645,7 +645,9 @@
     left: 1rem; right: 1rem; bottom: 1rem; max-width: none;
     justify-content: space-between; gap: .75rem; padding-left: 1.2rem;
     transform: translateY(200%);
-    background: #fff; border-color: #30262414;
+    /* bordo un filo piu' marcato di #30262414: ora che la sezione offerta ha
+       fondo bianco, la pillola chiara ci si appoggiava sopra senza contorno */
+    background: #fff; border-color: #30262429;
     box-shadow: 0 12px 30px rgba(8, 5, 3, .18);
   }
   .ben-sticky.is-shown { transform: translateY(0); }
@@ -704,7 +706,11 @@
 }
 
 .ben-offerta {
-  background: #30262406;
+  /* Bianco pieno, non il velo marrone di prima (#30262406 sopra il crema):
+     quel fondo era piu' scuro delle card e le faceva sparire. Invertendo i
+     ruoli — fondo bianco, card crema #ede9e4 — il contrasto torna netto e
+     la sezione si legge come un capitolo a se'. */
+  background: #fff;
   padding: 11rem 7rem;
 }
 
