@@ -93,7 +93,7 @@ EQB_SYSTEM/
 - 2 Chair Pilates
 - Power Rack, pesi, manubri, elastici, rulli, palline
 - WiFi, sala d'attesa, distributore acqua, asciugamani, TNT
-- Desk reception + sistema prenotazione online
+- Desk ingresso + sistema prenotazione online
 
 ### Modello di business
 1. **Sessioni con i professionisti del team** (Federico, Irene, ecc.) — clienti pagano EQB
@@ -606,14 +606,13 @@ I path di output negli script Python sono ancora Windows (`C:\Users\luana\...`).
 
 Lo studio non gestisce più i clienti dei collaboratori direttamente. Ogni professionista:
 - Gestisce i propri clienti in autonomia
-- Prenota lo spazio tramite reception
+- Prenota lo spazio in autonomia (Acuity / gestionale)
 - Emette fattura propria al cliente
 - Paga EQB per le ore di spazio usate (fattura da organizziamoeventi.it)
 
 **Riferimenti operativi studio:**
 - **Roberto Catalano** — gestione amministrativa e organizzativa
-- **Carolina** — reception
-- **Marco** — supporto in reception nel primo periodo di transizione
+- **Marco, Federico e Mattia** — accoglienza e supporto ai professionisti, senza orari fissi. Non esiste un addetto alla reception
 
 **Clienti con pacchetti già aperti (transizione):**
 - Vengono ricontattati da EQB
@@ -726,7 +725,6 @@ Lo studio non gestisce più i clienti dei collaboratori direttamente. Ogni profe
 | **Giuseppe Cocivera** | Amministratore Organizziamoeventi.it srl | Subentro polizza n. 450457280 — deve controfirmare |
 | **Dina Kildeeva** | Ex gestore EQB Studio | Controlla scheda Google My Business da trasferire |
 | **Roberto Catalano** | Gestione amministrativa e organizzativa studio | Operativo quotidiano |
-| **Carolina** | Reception | Prenotazioni e accoglienza |
 | **Stella Passalacqua** | Coworker con contratto speciale | Art.14 garanzia EQB |
 
 ---
@@ -999,7 +997,7 @@ git push origin main
   □ Liberatoria_FotoVideo_EQB.docx
 
 □ Comunicare:
-  □ Come prenotare lo spazio (reception / online)
+  □ Come prenotare lo spazio (online, in autonomia)
   □ Regola cancellazione 24h
   □ Procedura invio liberatorie clienti (scan WhatsApp a EQB)
   □ Fasce orarie preferite
