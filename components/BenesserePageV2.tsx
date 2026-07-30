@@ -3,13 +3,10 @@ import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Mousewheel } from "swiper/modules";
 import { ParallaxDivider } from "./ParallaxDivider";
 import LazyVideo from "./LazyVideo";
 import { Reveal } from "./Reveal";
 import { Multiline } from "./Multiline";
-import "swiper/css";
 import "./BenesserePageV2.css";
 
 const WA = "https://wa.me/393755153273?text=";
@@ -63,14 +60,56 @@ function ServiceCard({ name, img, desc, cat, msg, prenotaLabel, prenotaWa }: {
   );
 }
 
-// Stesso linguaggio del carosello "All'interno di EQB" in home (SectionInterno):
-// header con frecce prev/next + slide numerate. Un'istanza per gruppo di servizi.
+// Carosello a scorrimento nativo: una riga in overflow-x con scroll-snap e
+// due frecce che spostano di una card.
+//
+// Prima girava su Swiper con slidesPerView frazionario (4.15 su desktop). Con
+// quel valore Swiper calcola un ultimo snap oltre la fine delle card e si
+// finiva su una schermata di solo sfondo (segnalato da Marco 30/07). Qui il
+// limite dello scroll lo impone il browser: oltre scrollWidth non si va, per
+// definizione, quindi quel bug non puo' ripresentarsi. Niente libreria,
+// niente calcoli di larghezza in JS, e su touch resta lo scroll di sistema.
 function ServiceGroup({ group, images, prenotaLabel, prenotaWa, serviziCountLabel }: {
   group: Group; images: string[]; prenotaLabel: string; prenotaWa: string; serviziCountLabel: string;
 }) {
-  const prevRef = useRef<HTMLButtonElement>(null);
-  const nextRef = useRef<HTMLButtonElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(false);
   const { label, services } = group;
+
+  // Stato delle frecce ricalcolato dalla posizione reale dello scroll, non da
+  // un indice tenuto a parte: cosi' resta giusto anche dopo uno swipe a dito,
+  // un resize o un cambio di zoom.
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+
+    const sync = () => {
+      const max = el.scrollWidth - el.clientWidth;
+      setCanPrev(el.scrollLeft > 1);
+      // tolleranza di 1px: gli arrotondamenti sub-pixel impedivano allo stato
+      // "fine corsa" di scattare, lasciando la freccia destra sempre attiva
+      setCanNext(el.scrollLeft < max - 1);
+    };
+
+    sync();
+    el.addEventListener("scroll", sync, { passive: true });
+    const ro = new ResizeObserver(sync);
+    ro.observe(el);
+    return () => {
+      el.removeEventListener("scroll", sync);
+      ro.disconnect();
+    };
+  }, []);
+
+  const step = (dir: 1 | -1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const card = el.firstElementChild as HTMLElement | null;
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 0;
+    const amount = card ? card.getBoundingClientRect().width + gap : el.clientWidth * 0.8;
+    el.scrollBy({ left: dir * amount, behavior: "smooth" });
+  };
 
   return (
     <div>
@@ -80,41 +119,39 @@ function ServiceGroup({ group, images, prenotaLabel, prenotaWa, serviziCountLabe
           <span className="vb-group__count">{services.length} {serviziCountLabel}</span>
         </div>
         <div className="vb-carousel-nav">
-          <button ref={prevRef} className="vb-nav-btn vb-nav-btn--prev" aria-label="Precedente">
+          <button
+            type="button"
+            className="vb-nav-btn vb-nav-btn--prev"
+            aria-label="Precedente"
+            onClick={() => step(-1)}
+            disabled={!canPrev}
+          >
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2.19571 8.57143L8.81543 15.1911L8 16L0 8L8 0L8.81543 0.808857L2.19571 7.42857L16 7.42857V8.57143L2.19571 8.57143Z" fill="currentColor"/></svg>
           </button>
-          <button ref={nextRef} className="vb-nav-btn vb-nav-btn--next" aria-label="Successivo">
+          <button
+            type="button"
+            className="vb-nav-btn vb-nav-btn--next"
+            aria-label="Successivo"
+            onClick={() => step(1)}
+            disabled={!canNext}
+          >
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.8043 7.42857L7.18457 0.808857L8 0L16 8L8 16L7.18457 15.1911L13.8043 8.57143H0V7.42857L13.8043 7.42857Z" fill="currentColor"/></svg>
           </button>
         </div>
       </div>
-      <div className="vb-carousel-wrap">
-        <Swiper
-          modules={[Navigation, Mousewheel]}
-          navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
-          onBeforeInit={(swiper) => {
-            if (typeof swiper.params.navigation === "object" && swiper.params.navigation) {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-            }
-          }}
-          slidesPerView={1.3}
-          spaceBetween={16}
-          breakpoints={{
-            640: { slidesPerView: 2.3, spaceBetween: 16 },
-            1024: { slidesPerView: Math.min(services.length, 4) + 0.15, spaceBetween: 20 },
-          }}
-          mousewheel={{ forceToAxis: true }}
-          grabCursor
-          className="vb-swiper"
-        >
-          {services.map((s, i) => (
-            <SwiperSlide key={s.name} className="vb-slide">
-              <span className="vb-slide__number">{String(i + 1).padStart(2, "0")}</span>
-              <ServiceCard {...s} img={images[i] ?? images[0]} cat={label} prenotaLabel={prenotaLabel} prenotaWa={prenotaWa} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      {/* --vb-cols: quante card stanno in riga su desktop. Con 4 servizi
+          riempiono la larghezza e non c'e' nulla da scorrere. */}
+      <div
+        ref={trackRef}
+        className={`vb-track${services.length <= 2 ? " vb-track--fit" : ""}`}
+        style={{ "--vb-cols": Math.min(services.length, 4) } as React.CSSProperties}
+      >
+        {services.map((s, i) => (
+          <div key={s.name} className="vb-slide">
+            <span className="vb-slide__number">{String(i + 1).padStart(2, "0")}</span>
+            <ServiceCard {...s} img={images[i] ?? images[0]} cat={label} prenotaLabel={prenotaLabel} prenotaWa={prenotaWa} />
+          </div>
+        ))}
       </div>
     </div>
   );

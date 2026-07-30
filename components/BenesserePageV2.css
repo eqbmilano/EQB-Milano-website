@@ -1036,34 +1036,61 @@
   border-color: var(--color-brown-primary);
 }
 
-.vb-nav-btn:disabled, .vb-nav-btn.swiper-button-disabled {
+.vb-nav-btn:disabled {
   opacity: .25;
   cursor: default;
 }
 
-.vb-carousel-wrap {
-  position: relative;
-}
-
-.vb-swiper {
-  overflow: visible !important;
-}
-
-/* Altezza uniforme delle card nel carosello.
-   Swiper assegna height:100% alle slide, ma il wrapper ha altezza auto: la
-   percentuale non si risolve, ogni slide restava alta quanto il suo contenuto
-   e le card risultavano di altezze diverse. Il 24/07 il sintomo era stato
-   coperto tagliando il testo (min-height sul nome + clamp a 3 righe sulla
-   descrizione); qui invece si pareggia il contenitore, cosi' le card sono
-   uguali senza troncare niente. */
-.vb-swiper .swiper-wrapper {
+/* Pista a scorrimento nativo (era uno Swiper).
+   align-items: stretch pareggia le card sulla piu' alta del gruppo, senza
+   dover tagliare nome e descrizione come si faceva prima del 30/07. */
+.vb-track {
+  display: flex;
   align-items: stretch;
+  gap: 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* le card hanno un'ombra morbida: senza questo spazio verrebbe tagliata
+     dal bordo dell'area scrollabile */
+  padding-bottom: .75rem;
+  /* barra di scorrimento nascosta: la navigazione sono le frecce e lo swipe */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.vb-track::-webkit-scrollbar {
+  display: none;
 }
 
 .vb-slide {
-  height: auto;
+  /* 78% -> si intravede la card successiva, cosi' si capisce che si scorre */
+  flex: 0 0 78%;
+  scroll-snap-align: start;
   flex-direction: column;
   display: flex;
+}
+
+@media (min-width: 640px) {
+  /* 44% -> due card piene e un pezzo della terza, che segnala lo scorrimento */
+  .vb-slide { flex-basis: calc(44% - .5rem); }
+
+  /* Gruppi da 2 servizi (es. Consulenza): niente da scorrere, quindi le card
+     riempiono la riga invece di lasciare un buco a destra. */
+  .vb-track--fit .vb-slide { flex-basis: calc((100% - 1rem) / 2); }
+}
+
+@media (min-width: 1024px) {
+  /* --vb-cols arriva dal componente (numero di card, max 4): con 4 servizi
+     riempiono esattamente la riga e non resta niente da scorrere. */
+  .vb-slide {
+    flex-basis: calc((100% - (var(--vb-cols, 4) - 1) * 1rem) / var(--vb-cols, 4));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vb-track { scroll-behavior: auto; }
 }
 
 .vb-slide__number {
