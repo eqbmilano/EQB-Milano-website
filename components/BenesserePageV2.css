@@ -730,17 +730,20 @@
   line-height: 1.1;
 }
 
-/* Card statica — foto, nome, descrizione e bottone sempre visibili.
-   Niente flip: dentro un carosello a drag, il tap-per-girare creava
-   conflitti e la descrizione corta lasciava un vuoto prima del bottone. */
+/* Card statica (mobile e touch) — foto, nome, descrizione e bottone sempre
+   visibili: qui il tap-per-girare si scontrava col drag del carosello.
+   Fondo marrone come il retro della flip card desktop (scelta di Marco
+   30/07): era bianca, ma sul crema della pagina non staccava e si allontanava
+   dal marrone del brand. Su desktop questo blocco viene sovrascritto piu'
+   sotto dal comportamento flip. */
 .vb-card {
-  background: #fff;
+  background: #2a1e1b;
   border-radius: 16px;
   height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 2px 16px #3026240f;
+  box-shadow: 0 2px 16px #30262414;
 }
 
 .vb-card__media {
@@ -769,15 +772,14 @@
   font-family: var(--font-manrope);
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--color-brown-primary);
-  opacity: .5;
+  color: #ffffff73;
   font-size: .68rem;
   font-weight: 700;
 }
 
 .vb-card__name {
   font-family: var(--font-manrope);
-  color: var(--color-brown-primary);
+  color: #ffffffe6;
   letter-spacing: -.015em;
   font-size: 1.15rem;
   font-weight: 700;
@@ -791,7 +793,9 @@
 
 .vb-card__desc {
   font-family: var(--font-manrope);
-  color: #5a4f48;
+  /* piu' acceso del #ffffff85 del retro desktop: li' e' testo che compare in
+     hover, qui e' testo permanente da leggere sul telefono */
+  color: #ffffffb8;
   flex: 1;
   margin: 0;
   font-size: .88rem;
@@ -810,8 +814,8 @@
 
 .vb-card__btn {
   font-family: var(--font-manrope);
-  color: var(--color-brown-primary);
-  border: 1px solid #30262433;
+  color: #ffffffd9;
+  border: 1px solid #ffffff40;
   border-radius: 9999px;
   align-self: flex-start;
   margin-top: .75rem;
@@ -823,8 +827,8 @@
 }
 
 .vb-card__btn:hover {
-  background: #3026240d;
-  border-color: var(--color-brown-primary);
+  background: #ffffff14;
+  border-color: #ffffff73;
 }
 
 /* Il fronte della flip card esiste solo su desktop: su mobile la card e'
@@ -921,7 +925,6 @@
 
   .vb-card__cat {
     color: #ffffff4d;
-    opacity: 1;
     letter-spacing: .22em;
     font-size: .58rem;
   }
@@ -1268,6 +1271,19 @@
 }
 
 @media (max-width: 640px) {
+  /* Sotto i 640px si vede poco piu' di una card per volta: le altezze non
+     vanno pareggiate, quindi cadono i due vincoli aggiunti il 24/07 per il
+     carosello a piu' colonne. Erano diventati due difetti visibili:
+     una riga vuota sotto i nomi corti e le descrizioni tagliate coi puntini. */
+  .vb-card__name { min-height: 0; }
+
+  .vb-card__desc {
+    display: block;
+    height: auto;
+    overflow: visible;
+    -webkit-line-clamp: none;
+  }
+
   .vb-group__header {
     align-items: flex-end;
   }
