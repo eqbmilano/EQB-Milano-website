@@ -93,7 +93,7 @@ EQB_SYSTEM/
 - 2 Chair Pilates
 - Power Rack, pesi, manubri, elastici, rulli, palline
 - WiFi, sala d'attesa, distributore acqua, asciugamani, TNT
-- Desk ingresso + sistema prenotazione online
+- Desk reception + sistema prenotazione online
 
 ### Modello di business
 1. **Sessioni con i professionisti del team** (Federico, Irene, ecc.) — clienti pagano EQB
@@ -612,7 +612,7 @@ Lo studio non gestisce più i clienti dei collaboratori direttamente. Ogni profe
 
 **Riferimenti operativi studio:**
 - **Roberto Catalano** — gestione amministrativa e organizzativa
-- **Marco, Federico e Mattia** — accoglienza e supporto ai professionisti, senza orari fissi. Non esiste un addetto alla reception
+- **Marco, Federico e Mattia** — reception, accoglienza clienti e supporto ai professionisti. In studio dalla mattina alla sera, spesso anche nel weekend. Nessun dipendente dedicato alla reception
 
 **Clienti con pacchetti già aperti (transizione):**
 - Vengono ricontattati da EQB
