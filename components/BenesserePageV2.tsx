@@ -26,16 +26,26 @@ type Group = { label: string; services: Service[] };
 type Feature = { num: string; label: string; title: string; micro: string; tags: string[] };
 type AccPillar = { t: string; d: string };
 
-// Card statica (niente flip): il tap-per-girare si scontrava col drag del
-// carosello, e la descrizione corta lasciava un vuoto scomodo prima del
-// bottone. Foto, nome e descrizione sono sempre visibili — piu' minimal.
-function ServiceCard({ name, img, desc, cat, msg, prenotaWa }: {
-  name: string; img: string; desc: string; cat: string; msg: string; prenotaWa: string;
+// Card ibrida, un solo DOM per due comportamenti (scelta di Marco 30/07):
+// - desktop con hover reale: torna la flip card originale — foto a tutto
+//   riquadro con nome e "Prenota →", al passaggio del mouse compare il retro
+//   marrone con descrizione e bottone WhatsApp.
+// - mobile e touch: card statica, tutto sempre visibile. Il tap-per-girare
+//   qui si scontrava col drag del carosello, per questo era stato tolto.
+// Il salto tra i due layout e' tutto in CSS (@media hover + min-width), cosi'
+// non serve JS di rilevamento e non c'e' mismatch di hydration.
+function ServiceCard({ name, img, desc, cat, msg, prenotaLabel, prenotaWa }: {
+  name: string; img: string; desc: string; cat: string; msg: string; prenotaLabel: string; prenotaWa: string;
 }) {
   return (
     <div className="vb-card">
       <div className="vb-card__media">
-        <Image src={img} alt={name} fill sizes="(max-width: 768px) 60vw, 25vw" style={{ objectFit: "cover" }} />
+        <Image src={img} alt={name} fill sizes="(max-width: 900px) 60vw, 25vw" style={{ objectFit: "cover" }} />
+        {/* Fronte della flip card: reso solo su desktop via CSS */}
+        <div className="vb-card__front" aria-hidden="true">
+          <span className="vb-card__front-name">{name}</span>
+          <span className="vb-card__front-btn">{prenotaLabel}</span>
+        </div>
       </div>
       <div className="vb-card__body">
         <span className="vb-card__cat">{cat}</span>
@@ -55,8 +65,8 @@ function ServiceCard({ name, img, desc, cat, msg, prenotaWa }: {
 
 // Stesso linguaggio del carosello "All'interno di EQB" in home (SectionInterno):
 // header con frecce prev/next + slide numerate. Un'istanza per gruppo di servizi.
-function ServiceGroup({ group, images, prenotaWa, serviziCountLabel }: {
-  group: Group; images: string[]; prenotaWa: string; serviziCountLabel: string;
+function ServiceGroup({ group, images, prenotaLabel, prenotaWa, serviziCountLabel }: {
+  group: Group; images: string[]; prenotaLabel: string; prenotaWa: string; serviziCountLabel: string;
 }) {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -101,7 +111,7 @@ function ServiceGroup({ group, images, prenotaWa, serviziCountLabel }: {
           {services.map((s, i) => (
             <SwiperSlide key={s.name} className="vb-slide">
               <span className="vb-slide__number">{String(i + 1).padStart(2, "0")}</span>
-              <ServiceCard {...s} img={images[i] ?? images[0]} cat={label} prenotaWa={prenotaWa} />
+              <ServiceCard {...s} img={images[i] ?? images[0]} cat={label} prenotaLabel={prenotaLabel} prenotaWa={prenotaWa} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -489,6 +499,7 @@ export const BenesserePageV2: React.FC = () => {
                 key={g.label}
                 group={g}
                 images={GROUP_IMAGES[g.label] ?? ["/assets/Pilates.jpg"]}
+                prenotaLabel={t("prenotaCta")}
                 prenotaWa={t("prenotaWhatsapp")}
                 serviziCountLabel={t("serviziCount")}
               />
