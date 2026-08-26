@@ -86,21 +86,19 @@ export const SERVICE_CATALOG: {
  * geografica commerciale confermata.
  */
 export const FEDERICO_SEO = {
-  title: "Federico Mondin — Osteopata e Fisioterapista a Milano | EQB Milano",
+  title: "Federico Mondin — Osteopata a Milano | EQB Milano",
   description:
-    "Federico Mondin, osteopata e fisioterapista a Milano: trattamento del dolore muscoloscheletrico e recupero funzionale, con prima visita gratuita, presso EQB Wellness Coworking.",
+    "Federico Mondin, osteopata a Milano: trattamento del dolore muscoloscheletrico e recupero funzionale, presso EQB Wellness Coworking.",
   keywords: [
     "osteopata Milano",
-    "fisioterapista Milano",
-    "osteopata e fisioterapista Milano",
+    "osteopata dolore muscoloscheletrico Milano",
     "dolore muscoloscheletrico Milano trattamento",
-    "recupero funzionale Milano fisioterapista",
-    "osteopata Milano valutazione posturale gratuita",
+    "recupero funzionale Milano osteopata",
+    "osteopata Milano valutazione posturale",
     "mal di schiena osteopata Milano",
   ],
   knowsAbout: [
     "Osteopatia",
-    "Fisioterapia",
     "Dolore muscoloscheletrico",
     "Recupero funzionale",
     "Valutazione posturale",
