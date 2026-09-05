@@ -70,11 +70,6 @@ export const professionisti: Professionista[] = [
     specializzazione: "Riflessologa Plantare",
     bio: "Riflessologa plantare certificata. Attraverso la riflessologia lavoro sull'equilibrio energetico del corpo, favorendo il rilassamento profondo e il benessere naturale.",
     foto: undefined,
-    promo: {
-      label: "Prima Visita Gratuita",
-      descrizione: "Scopri la riflessologia plantare con una sessione esplorativa gratuita.",
-      link: "https://wa.me/393755153273?text=Ciao%20Roberta%2C%20vorrei%20prenotare%20la%20visita%20gratuita!",
-    },
     prenotaLink: "https://wa.me/393755153273?text=Ciao%20Roberta%2C%20vorrei%20prenotare%20una%20seduta!",
     prenotaCanale: "whatsapp",
     sitoWeb: undefined,
