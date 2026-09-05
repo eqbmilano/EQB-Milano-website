@@ -33,11 +33,6 @@ export const professionisti: Professionista[] = [
     specializzazione: "Specialista in ChinesioPilates",
     bio: "Percorsi di riequilibrio posturale per donne che vogliono tornare a muoversi bene — davvero, non solo in palestra.",
     foto: "/assets/professionisti/cristiana-curioni.jpg",
-    promo: {
-      label: "Valutazione Posturale",
-      descrizione: "Prima sessione in studio: 30 minuti per analizzare il tuo corpo e capire da dove partire.",
-      link: "https://eqbstudiocoworking.as.me/?calendarID=11601280",
-    },
     prenotaLink: "https://eqbstudiocoworking.as.me/?calendarID=11601280",
     prenotaCanale: "calendario",
     sitoWeb: undefined,
