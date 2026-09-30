@@ -589,26 +589,38 @@
       "Olistica",
       "Nutrizione"
     ],
-    "portabili": [
-      "Sto partendo da zero",
-      "Alcuni mi seguirebbero",
-      "Una base solida che mi segue"
+    "dove": [
+      "In uno studio, un centro o una palestra, come collaboratore",
+      "Da dipendente, e seguo anche clienti privati",
+      "In una stanza che affitto a mese",
+      "In uno studio tutto mio",
+      "A domicilio o all'aperto",
+      "In un coworking a ore",
+      "Online",
+      "Sto iniziando adesso"
     ],
     "appuntamenti": [
-      "Fino a 5 a settimana",
-      "6 - 10 a settimana",
-      "11 - 20 a settimana",
-      "+20 a settimana"
+      "Nessuno per ora",
+      "Da 1 a 5",
+      "Da 6 a 10",
+      "Da 11 a 20",
+      "Più di 20"
     ],
-    "aspettative": [
-      "Solo uno spazio flessibile",
-      "Spazio + collaborazioni",
-      "Spazio + collaborazioni + supporto clienti"
+    "portabili": [
+      "Quasi tutti",
+      "Circa la metà",
+      "Pochi",
+      "Non lo so ancora"
     ],
     "inizio": [
-      "Anche subito",
-      "Nei prossimi mesi",
-      "Più avanti: sto ancora valutando"
+      "Subito",
+      "Nei prossimi tre mesi",
+      "Più avanti, sto ancora valutando"
+    ],
+    "piva": [
+      "Sì",
+      "La sto aprendo",
+      "No"
     ],
     "back": "Torna indietro",
     "fwd": "Avanti",
@@ -617,49 +629,44 @@
     "intro": {
       "eyebrow": "Candidatura",
       "title": "Raccontaci di te.",
-      "sub": "Non è un modulo da compilare. Leggiamo ogni candidatura di persona: se il tuo profilo è in linea con EQB, ti chiamiamo noi.",
+      "sub": "Cerchiamo professionisti del benessere e del movimento con partita IVA e una clientela propria, che vogliono lavorare in un posto all'altezza del loro lavoro. Leggiamo ogni candidatura di persona: se sei in linea, ti chiamiamo noi.",
       "cta": "Inizia",
       "foot": "Tieni a portata di mano il tuo CV.",
       "scarcity": "Lo spazio è fisico: i posti non sono infiniti."
     },
     "categoria": {
       "eyebrow": "1 di 7",
-      "title": "Di cosa ti occupi?",
+      "title": "Che lavoro fai?",
       "sub": "Puoi selezionare più opzioni.",
       "altroLabel": "Altro",
       "altroPlaceholder": "Fai altro? Scrivilo qui",
       "cta": "Continua"
     },
     "portabiliStep": {
-      "eyebrow": "2 di 7",
-      "title": "Hai già clienti tuoi che porteresti da EQB?",
-      "sub": "Ci interessa il tuo punto di partenza, non un numero perfetto."
+      "eyebrow": "4 di 7",
+      "title": "Quanti di questi clienti porteresti da EQB?",
+      "sub": "Se lavori in palestra o in un centro, non contare i clienti della struttura."
     },
     "appuntamentiStep": {
       "eyebrow": "3 di 7",
-      "title": "Quanti appuntamenti seguiresti da noi?",
-      "sub": "Una stima a settimana: ci serve per capire quanto spazio dedicarti."
-    },
-    "aspettativeStep": {
-      "eyebrow": "4 di 7",
-      "title": "Cosa ti aspetti da EQB?",
-      "sub": "Non c'è una risposta giusta: ci aiuta a capirci."
+      "title": "Quanti appuntamenti fai a settimana con clienti tuoi?",
+      "sub": "Cerchiamo professionisti che hanno già una clientela propria, o che la stanno costruendo."
     },
     "inizioStep": {
       "eyebrow": "5 di 7",
-      "title": "Quando ti immagini da EQB?",
-      "sub": "Così capiamo con che tempi muoverci insieme."
+      "title": "Quando vorresti iniziare?",
+      "sub": ""
     },
     "perche": {
       "eyebrow": "6 di 7",
-      "title": "Perché EQB?",
-      "sub": "Bastano due righe, se dicono la cosa giusta.",
+      "title": "Perché vuoi lavorare da EQB?",
+      "sub": "Bastano due righe.",
       "placeholder": "Es. Cerco un ambiente dove crescere insieme ad altri professionisti seri, non solo una stanza in affitto.",
       "cta": "Continua"
     },
     "contatto": {
       "eyebrow": "7 di 7",
-      "title": "Come ti troviamo?",
+      "title": "Come ti contattiamo?",
       "nome": "Nome",
       "nomePlaceholder": "Il tuo nome",
       "cognome": "Cognome",
@@ -682,13 +689,23 @@
       "erroreGenerico": "Invio non riuscito, riprova.",
       "legalFootPre": "Inviando la candidatura accetti la nostra ",
       "legalFootLink": "informativa privacy",
-      "legalFootPost": "."
+      "legalFootPost": ".",
+      "sub": "Instagram e sito sono facoltativi, ma è da lì che vediamo il tuo lavoro.",
+      "piva": "Hai la partita IVA?"
     },
     "done": {
       "eyebrow": "Fatto",
       "title": "La tua candidatura è arrivata.",
       "sub": "Leggiamo ogni candidatura di persona. Se il tuo profilo è in linea con EQB, ti chiamiamo noi entro pochi giorni.",
       "torna": "Torna al coworking"
+    },
+    "doveStep": {
+      "eyebrow": "2 di 7",
+      "title": "Dove lavori oggi?",
+      "sub": "Puoi scegliere più risposte.",
+      "altroLabel": "Altro",
+      "altroPlaceholder": "Lavori altrove? Scrivilo qui",
+      "cta": "Continua"
     }
   },
   "spazio": {

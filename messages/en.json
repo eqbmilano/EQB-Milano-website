@@ -589,26 +589,38 @@
       "Holistic",
       "Nutrition"
     ],
-    "portabili": [
-      "I'm starting from scratch",
-      "Some clients would follow me",
-      "A solid base that follows me"
+    "dove": [
+      "In a studio, centre or gym, as a collaborator",
+      "As an employee, plus some private clients",
+      "In a room I rent monthly",
+      "In my own studio",
+      "At clients' homes or outdoors",
+      "In an hourly coworking space",
+      "Online",
+      "I'm just starting out"
     ],
     "appuntamenti": [
-      "Up to 5 per week",
-      "6 - 10 per week",
-      "11 - 20 per week",
-      "+20 per week"
+      "None yet",
+      "1 to 5",
+      "6 to 10",
+      "11 to 20",
+      "More than 20"
     ],
-    "aspettative": [
-      "Just a flexible space",
-      "Space + collaborations",
-      "Space + collaborations + client support"
+    "portabili": [
+      "Almost all",
+      "About half",
+      "A few",
+      "I don't know yet"
     ],
     "inizio": [
       "Right away",
-      "In the next few months",
-      "Later on: still evaluating"
+      "In the next three months",
+      "Later on, still evaluating"
+    ],
+    "piva": [
+      "Yes",
+      "I'm opening it",
+      "No"
     ],
     "back": "Go back",
     "fwd": "Next",
@@ -617,43 +629,38 @@
     "intro": {
       "eyebrow": "Application",
       "title": "Tell us about yourself.",
-      "sub": "This isn't a form to fill in. We read every application in person: if your profile fits EQB, we'll call you.",
+      "sub": "We're looking for wellness and movement professionals with a VAT number and their own clients, who want to work in a place that matches the quality of their work. We read every application in person: if you're a fit, we'll call you.",
       "cta": "Start",
       "foot": "Keep your CV handy.",
       "scarcity": "The space is physical: spots are not unlimited."
     },
     "categoria": {
       "eyebrow": "1 of 7",
-      "title": "What do you do?",
+      "title": "What's your job?",
       "sub": "You can select more than one option.",
       "altroLabel": "Other",
       "altroPlaceholder": "Do something else? Write it here",
       "cta": "Continue"
     },
     "portabiliStep": {
-      "eyebrow": "2 of 7",
-      "title": "Do you already have clients you'd bring to EQB?",
-      "sub": "We care about your starting point, not a perfect number."
+      "eyebrow": "4 of 7",
+      "title": "How many of these clients would you bring to EQB?",
+      "sub": "If you work in a gym or a centre, don't count the venue's clients."
     },
     "appuntamentiStep": {
       "eyebrow": "3 of 7",
-      "title": "How many appointments would you take with us?",
-      "sub": "A weekly estimate: it helps us understand how much space to dedicate to you."
-    },
-    "aspettativeStep": {
-      "eyebrow": "4 of 7",
-      "title": "What do you expect from EQB?",
-      "sub": "There's no right answer: it just helps us understand each other."
+      "title": "How many appointments a week do you have with your own clients?",
+      "sub": "We're looking for professionals who already have their own clients, or are building them."
     },
     "inizioStep": {
       "eyebrow": "5 of 7",
-      "title": "When do you picture yourself at EQB?",
-      "sub": "So we understand what timing to work with together."
+      "title": "When would you like to start?",
+      "sub": ""
     },
     "perche": {
       "eyebrow": "6 of 7",
-      "title": "Why EQB?",
-      "sub": "A couple of lines are enough, if they say the right thing.",
+      "title": "Why do you want to work at EQB?",
+      "sub": "A couple of lines are enough.",
       "placeholder": "E.g. I'm looking for an environment to grow in alongside other serious professionals, not just a room for rent.",
       "cta": "Continue"
     },
@@ -682,13 +689,23 @@
       "erroreGenerico": "Something went wrong, please try again.",
       "legalFootPre": "By submitting your application you accept our ",
       "legalFootLink": "privacy policy",
-      "legalFootPost": "."
+      "legalFootPost": ".",
+      "sub": "Instagram and website are optional, but that's where we see your work.",
+      "piva": "Do you have a VAT number?"
     },
     "done": {
       "eyebrow": "Done",
       "title": "Your application has arrived.",
       "sub": "We read every application in person. If your profile fits EQB, we'll call you within a few days.",
       "torna": "Back to coworking"
+    },
+    "doveStep": {
+      "eyebrow": "2 of 7",
+      "title": "Where do you work today?",
+      "sub": "You can pick more than one answer.",
+      "altroLabel": "Other",
+      "altroPlaceholder": "Work somewhere else? Write it here",
+      "cta": "Continue"
     }
   },
   "spazio": {
