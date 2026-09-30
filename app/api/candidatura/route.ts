@@ -11,11 +11,12 @@ const schema = z
   .object({
     categorie: z.string().optional().default(""),
     categoriaAltro: z.string().optional().default(""),
-    portabili: z.string().optional().default(""),
+    dove: z.string().optional().default(""),
+    doveAltro: z.string().optional().default(""),
     appuntamenti: z.string().optional().default(""),
-    aspettative: z.string().optional().default(""),
+    portabili: z.string().optional().default(""),
     inizio: z.string().optional().default(""),
-    perche: z.string().trim().min(1, "Raccontaci perché EQB"),
+    perche: z.string().trim().min(1, "Raccontaci cosa stai cercando"),
     nome: z.string().trim().min(1, "Il nome è obbligatorio"),
     cognome: z.string().trim().min(1, "Il cognome è obbligatorio"),
     numero: z.string().optional().default(""),
@@ -23,8 +24,8 @@ const schema = z
     ig: z.string().optional().default(""),
     sito: z.string().optional().default(""),
   })
-  .refine((d) => d.numero.trim().length > 0 || d.email.trim().length > 0, {
-    message: "Serve almeno un numero di telefono o una email",
+  .refine((d) => d.numero.trim().length > 0, {
+    message: "Il numero di telefono è obbligatorio",
     path: ["numero"],
   });
 
@@ -42,9 +43,10 @@ export async function POST(req: NextRequest) {
     const parsed = schema.safeParse({
       categorie: field("categorie"),
       categoriaAltro: field("categoriaAltro"),
-      portabili: field("portabili"),
+      dove: field("dove"),
+      doveAltro: field("doveAltro"),
       appuntamenti: field("appuntamenti"),
-      aspettative: field("aspettative"),
+      portabili: field("portabili"),
       inizio: field("inizio"),
       perche: field("perche"),
       nome: field("nome"),
@@ -90,12 +92,12 @@ export async function POST(req: NextRequest) {
       `Sito: ${d.sito || "-"}`,
       "",
       `Categoria: ${d.categorie || "-"}${d.categoriaAltro ? ` / Altro: ${d.categoriaAltro}` : ""}`,
-      `Clienti portabili: ${d.portabili || "-"}`,
+      `Dove lavora oggi: ${d.dove || "-"}${d.doveAltro ? ` / Altro: ${d.doveAltro}` : ""}`,
       `Appuntamenti/settimana: ${d.appuntamenti || "-"}`,
-      `Aspettative: ${d.aspettative || "-"}`,
+      `Clienti portabili: ${d.portabili || "-"}`,
       `Quando: ${d.inizio || "-"}`,
       "",
-      "Perché EQB:",
+      "Cosa cerca che oggi gli manca:",
       d.perche,
     ].join("\n");
 
