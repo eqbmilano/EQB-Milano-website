@@ -590,14 +590,14 @@
       "Nutrition"
     ],
     "dove": [
-      "In a studio, centre or gym, as a collaborator",
-      "As an employee, plus some private clients",
-      "In a room I rent monthly",
-      "In my own studio",
-      "At clients' homes or outdoors",
-      "In an hourly coworking space",
+      "Collaborator in a studio or gym",
+      "Employee, with private clients",
+      "Room rented monthly",
+      "My own studio",
+      "At home visits or outdoors",
+      "Hourly coworking",
       "Online",
-      "I'm just starting out"
+      "Just starting out"
     ],
     "appuntamenti": [
       "None yet",
@@ -608,19 +608,16 @@
     ],
     "portabili": [
       "Almost all",
+      "More than half",
       "About half",
-      "A few",
+      "Less than half",
       "I don't know yet"
     ],
     "inizio": [
-      "Right away",
-      "In the next three months",
+      "As soon as possible",
+      "Within a month",
+      "Within three months",
       "Later on, still evaluating"
-    ],
-    "piva": [
-      "Yes",
-      "I'm opening it",
-      "No"
     ],
     "back": "Go back",
     "fwd": "Next",
@@ -628,11 +625,11 @@
     "exitTitle": "Back to coworking",
     "intro": {
       "eyebrow": "Application",
-      "title": "Tell us about yourself.",
-      "sub": "We're looking for wellness and movement professionals with a VAT number and their own clients, who want to work in a place that matches the quality of their work. We read every application in person: if you're a fit, we'll call you.",
+      "title": "Apply to work at EQB",
+      "sub": "We're looking for wellness and movement professionals with their own clients, who want to work in a place that matches the quality of their work.",
       "cta": "Start",
       "foot": "Keep your CV handy.",
-      "scarcity": "The space is physical: spots are not unlimited."
+      "scarcity": "Places are limited: that's why we review every application personally."
     },
     "categoria": {
       "eyebrow": "1 of 7",
@@ -644,7 +641,7 @@
     },
     "portabiliStep": {
       "eyebrow": "4 of 7",
-      "title": "How many of these clients would you bring to EQB?",
+      "title": "How many of these appointments do you think you could do at EQB?",
       "sub": "If you work in a gym or a centre, don't count the venue's clients."
     },
     "appuntamentiStep": {
@@ -659,9 +656,9 @@
     },
     "perche": {
       "eyebrow": "6 of 7",
-      "title": "Why do you want to work at EQB?",
+      "title": "What are you looking for that you're missing today?",
       "sub": "A couple of lines are enough.",
-      "placeholder": "E.g. I'm looking for an environment to grow in alongside other serious professionals, not just a room for rent.",
+      "placeholder": "Tell us what you'd like to improve about how you work today.",
       "cta": "Continue"
     },
     "contatto": {
@@ -690,13 +687,12 @@
       "legalFootPre": "By submitting your application you accept our ",
       "legalFootLink": "privacy policy",
       "legalFootPost": ".",
-      "sub": "Instagram and website are optional, but that's where we see your work.",
-      "piva": "Do you have a VAT number?"
+      "sub": "Instagram and website are optional, but that's where we see your work."
     },
     "done": {
       "eyebrow": "Done",
       "title": "Your application has arrived.",
-      "sub": "We read every application in person. If your profile fits EQB, we'll call you within a few days.",
+      "sub": "We read every application personally. If your profile fits EQB, we'll get in touch to get to know you better.",
       "torna": "Back to coworking"
     },
     "doveStep": {

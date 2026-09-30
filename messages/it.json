@@ -582,22 +582,22 @@
       "Osteopatia",
       "Fisioterapia",
       "Pilates",
-      "All. Funzionale",
-      "All. Posturale",
+      "Allenamento funzionale",
+      "Allenamento posturale",
       "Massoterapia",
       "Massaggi",
       "Olistica",
       "Nutrizione"
     ],
     "dove": [
-      "In uno studio, un centro o una palestra, come collaboratore",
-      "Da dipendente, e seguo anche clienti privati",
-      "In una stanza che affitto a mese",
-      "In uno studio tutto mio",
+      "Collaboratore in studio o palestra",
+      "Dipendente, con clienti privati",
+      "Stanza in affitto mensile",
+      "Studio mio",
       "A domicilio o all'aperto",
-      "In un coworking a ore",
+      "Coworking a ore",
       "Online",
-      "Sto iniziando adesso"
+      "Sto iniziando"
     ],
     "appuntamenti": [
       "Nessuno per ora",
@@ -608,19 +608,16 @@
     ],
     "portabili": [
       "Quasi tutti",
+      "Più della metà",
       "Circa la metà",
-      "Pochi",
+      "Meno della metà",
       "Non lo so ancora"
     ],
     "inizio": [
-      "Subito",
-      "Nei prossimi tre mesi",
+      "Appena possibile",
+      "Entro un mese",
+      "Entro tre mesi",
       "Più avanti, sto ancora valutando"
-    ],
-    "piva": [
-      "Sì",
-      "La sto aprendo",
-      "No"
     ],
     "back": "Torna indietro",
     "fwd": "Avanti",
@@ -628,11 +625,11 @@
     "exitTitle": "Torna al coworking",
     "intro": {
       "eyebrow": "Candidatura",
-      "title": "Raccontaci di te.",
-      "sub": "Cerchiamo professionisti del benessere e del movimento con partita IVA e una clientela propria, che vogliono lavorare in un posto all'altezza del loro lavoro. Leggiamo ogni candidatura di persona: se sei in linea, ti chiamiamo noi.",
+      "title": "Candidati per lavorare da EQB",
+      "sub": "Cerchiamo professionisti del benessere e del movimento con una clientela propria, che vogliono lavorare in un posto all'altezza del loro lavoro.",
       "cta": "Inizia",
       "foot": "Tieni a portata di mano il tuo CV.",
-      "scarcity": "Lo spazio è fisico: i posti non sono infiniti."
+      "scarcity": "I posti disponibili sono limitati: per questo valutiamo ogni candidatura personalmente."
     },
     "categoria": {
       "eyebrow": "1 di 7",
@@ -644,7 +641,7 @@
     },
     "portabiliStep": {
       "eyebrow": "4 di 7",
-      "title": "Quanti di questi clienti porteresti da EQB?",
+      "title": "Quanti di questi appuntamenti pensi di poter fare da EQB?",
       "sub": "Se lavori in palestra o in un centro, non contare i clienti della struttura."
     },
     "appuntamentiStep": {
@@ -659,9 +656,9 @@
     },
     "perche": {
       "eyebrow": "6 di 7",
-      "title": "Perché vuoi lavorare da EQB?",
+      "title": "Cosa stai cercando che oggi ti manca?",
       "sub": "Bastano due righe.",
-      "placeholder": "Es. Cerco un ambiente dove crescere insieme ad altri professionisti seri, non solo una stanza in affitto.",
+      "placeholder": "Raccontaci cosa vorresti migliorare rispetto a come lavori oggi.",
       "cta": "Continua"
     },
     "contatto": {
@@ -690,13 +687,12 @@
       "legalFootPre": "Inviando la candidatura accetti la nostra ",
       "legalFootLink": "informativa privacy",
       "legalFootPost": ".",
-      "sub": "Instagram e sito sono facoltativi, ma è da lì che vediamo il tuo lavoro.",
-      "piva": "Hai la partita IVA?"
+      "sub": "Instagram e sito sono facoltativi, ma è da lì che vediamo il tuo lavoro."
     },
     "done": {
       "eyebrow": "Fatto",
       "title": "La tua candidatura è arrivata.",
-      "sub": "Leggiamo ogni candidatura di persona. Se il tuo profilo è in linea con EQB, ti chiamiamo noi entro pochi giorni.",
+      "sub": "Leggiamo ogni candidatura personalmente. Se il tuo profilo è in linea con EQB, ti contatteremo per conoscerci meglio.",
       "torna": "Torna al coworking"
     },
     "doveStep": {

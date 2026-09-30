@@ -38,6 +38,10 @@ export const EqbLogo: React.FC = () => (
   </svg>
 );
 
+const PlusIcon = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+);
+
 const CheckIcon: React.FC = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
 );
@@ -48,7 +52,7 @@ function OptionGroup({
   selected,
   onSelect,
 }: {
-  options: { value: string; icon?: React.ReactNode }[];
+  options: { value: string; label?: string; icon?: React.ReactNode }[];
   narrow?: boolean;
   selected?: string | string[];
   onSelect: (value: string) => void;
@@ -64,7 +68,7 @@ function OptionGroup({
           onClick={() => onSelect(o.value)}
         >
           {o.icon}
-          {o.value}
+          {o.label ?? o.value}
         </button>
       ))}
     </div>
@@ -79,15 +83,15 @@ export const CandidaturaWizard: React.FC = () => {
   const appuntamentiOptions = t.raw("appuntamenti") as string[];
   const portabiliOptions = t.raw("portabili") as string[];
   const inizioOptions = t.raw("inizio") as string[];
-  const pivaOptions = t.raw("piva") as string[];
 
   const [idx, setIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [categorie, setCategorie] = useState<string[]>([]);
   const [categoriaAltro, setCategoriaAltro] = useState("");
+  const [categoriaAltroOpen, setCategoriaAltroOpen] = useState(false);
   const [dove, setDove] = useState<string[]>([]);
   const [doveAltro, setDoveAltro] = useState("");
-  const [piva, setPiva] = useState("");
+  const [doveAltroOpen, setDoveAltroOpen] = useState(false);
   const [why, setWhy] = useState("");
   const [nome, setNome] = useState("");
   const [cognome, setCognome] = useState("");
@@ -120,12 +124,18 @@ export const CandidaturaWizard: React.FC = () => {
   };
 
   // domande 1 e 2: selezione multipla, si avanza col bottone, non in automatico
+  // "Altro" e' un riquadro come gli altri: selezionarlo apre il campo di testo
+  const ALTRO = "__altro__";
   const toggleCategoria = (value: string) => {
+    if (value === ALTRO) return setCategoriaAltroOpen((o) => !o);
     setCategorie((c) => (c.includes(value) ? c.filter((v) => v !== value) : [...c, value]));
   };
   const toggleDove = (value: string) => {
+    if (value === ALTRO) return setDoveAltroOpen((o) => !o);
     setDove((d) => (d.includes(value) ? d.filter((v) => v !== value) : [...d, value]));
   };
+  const categoriaAltroText = categoriaAltroOpen ? categoriaAltro.trim() : "";
+  const doveAltroText = doveAltroOpen ? doveAltro.trim() : "";
 
   const submitCandidatura = async () => {
     setSending(true);
@@ -133,12 +143,11 @@ export const CandidaturaWizard: React.FC = () => {
     try {
       const fd = new FormData();
       fd.append("categorie", categorie.join(", "));
-      fd.append("categoriaAltro", categoriaAltro);
+      fd.append("categoriaAltro", categoriaAltroText);
       fd.append("dove", dove.join(", "));
-      fd.append("doveAltro", doveAltro);
+      fd.append("doveAltro", doveAltroText);
       fd.append("appuntamenti", answers.appuntamenti ?? "");
       fd.append("portabili", answers.portabili ?? "");
-      fd.append("piva", piva);
       fd.append("inizio", answers.inizio ?? "");
       fd.append("perche", why);
       fd.append("nome", nome);
@@ -172,8 +181,8 @@ export const CandidaturaWizard: React.FC = () => {
   // "Invia candidatura", per rendere l'invio un gesto esplicito.
   const canAdvance = (() => {
     switch (key) {
-      case "categoria": return categorie.length > 0 || categoriaAltro.trim().length > 0;
-      case "dove": return dove.length > 0 || doveAltro.trim().length > 0;
+      case "categoria": return categorie.length > 0 || categoriaAltroText.length > 0;
+      case "dove": return dove.length > 0 || doveAltroText.length > 0;
       case "appuntamenti": return !!answers.appuntamenti;
       case "portabili": return !!answers.portabili;
       case "inizio": return !!answers.inizio;
@@ -226,15 +235,19 @@ export const CandidaturaWizard: React.FC = () => {
           <p className="cand-step__foot">{t("intro.foot")}</p>
         </section>
 
-        <section className={`cand-step cand-step--categoria${key === "categoria" ? " is-active" : ""}`}>
+        <section className={`cand-step cand-step--categoria cand-step--multi${key === "categoria" ? " is-active" : ""}`}>
           <p className="cand-step__eyebrow">{t("categoria.eyebrow")}</p>
           <h2 className="cand-step__title">{t("categoria.title")}</h2>
           <p className="cand-step__sub">{t("categoria.sub")}</p>
-          <OptionGroup options={categorieOptions} selected={categorie} onSelect={toggleCategoria} />
-          <div className="cand-fields" style={{ marginTop: "1.1rem" }}>
+          <OptionGroup
+            options={[...categorieOptions, { value: ALTRO, label: t("categoria.altroLabel"), icon: PlusIcon }]}
+            selected={categoriaAltroOpen ? [...categorie, ALTRO] : categorie}
+            onSelect={toggleCategoria}
+          />
+          <div className="cand-fields" style={{ marginTop: "1.1rem" }} hidden={!categoriaAltroOpen}>
             <div className="cand-field" style={{ maxWidth: "420px" }}>
-              <label htmlFor="cand-categoria-altro">{t("categoria.altroLabel")}</label>
               <input
+                aria-label={t("categoria.altroLabel")}
                 id="cand-categoria-altro"
                 type="text"
                 value={categoriaAltro}
@@ -245,22 +258,26 @@ export const CandidaturaWizard: React.FC = () => {
           </div>
           <button
             className="cand-btn"
-            disabled={categorie.length === 0 && categoriaAltro.trim().length === 0}
+            disabled={categorie.length === 0 && categoriaAltroText.length === 0}
             onClick={next}
           >
             {t("categoria.cta")} <span aria-hidden="true">&#8594;</span>
           </button>
         </section>
 
-        <section className={`cand-step${key === "dove" ? " is-active" : ""}`}>
+        <section className={`cand-step cand-step--multi${key === "dove" ? " is-active" : ""}`}>
           <p className="cand-step__eyebrow">{t("doveStep.eyebrow")}</p>
           <h2 className="cand-step__title">{t("doveStep.title")}</h2>
           <p className="cand-step__sub">{t("doveStep.sub")}</p>
-          <OptionGroup options={doveOptions.map((v) => ({ value: v }))} selected={dove} onSelect={toggleDove} />
-          <div className="cand-fields" style={{ marginTop: "1.1rem" }}>
+          <OptionGroup
+            options={[...doveOptions.map((v) => ({ value: v })), { value: ALTRO, label: t("doveStep.altroLabel") }]}
+            selected={doveAltroOpen ? [...dove, ALTRO] : dove}
+            onSelect={toggleDove}
+          />
+          <div className="cand-fields" style={{ marginTop: "1.1rem" }} hidden={!doveAltroOpen}>
             <div className="cand-field" style={{ maxWidth: "420px" }}>
-              <label htmlFor="cand-dove-altro">{t("doveStep.altroLabel")}</label>
               <input
+                aria-label={t("doveStep.altroLabel")}
                 id="cand-dove-altro"
                 type="text"
                 value={doveAltro}
@@ -271,7 +288,7 @@ export const CandidaturaWizard: React.FC = () => {
           </div>
           <button
             className="cand-btn"
-            disabled={dove.length === 0 && doveAltro.trim().length === 0}
+            disabled={dove.length === 0 && doveAltroText.length === 0}
             onClick={next}
           >
             {t("doveStep.cta")} <span aria-hidden="true">&#8594;</span>
@@ -370,10 +387,6 @@ export const CandidaturaWizard: React.FC = () => {
               <input id="cand-sito" type="text" value={sito} onChange={(e) => setSito(e.target.value)} placeholder={t("contatto.sitoPlaceholder")} />
             </div>
             <div className="cand-field cand-field--full">
-              <label>{t("contatto.piva")}</label>
-              <OptionGroup narrow options={pivaOptions.map((v) => ({ value: v }))} selected={piva} onSelect={setPiva} />
-            </div>
-            <div className="cand-field cand-field--full">
               <label htmlFor="cand-cv">
                 {t("contatto.cv")} <span className="cand-field__optional">{t("contatto.facoltativo")}</span>
               </label>
@@ -402,7 +415,7 @@ export const CandidaturaWizard: React.FC = () => {
           />
           <button
             className="cand-btn"
-            disabled={!(nome.trim() && cognome.trim() && (numero.trim() || email.trim()) && piva) || sending}
+            disabled={!(nome.trim() && cognome.trim() && (numero.trim() || email.trim())) || sending}
             onClick={submitCandidatura}
           >
             {sending ? t("contatto.inviando") : <>{t("contatto.invia")} <span aria-hidden="true">&#8594;</span></>}
