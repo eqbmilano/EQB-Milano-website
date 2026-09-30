@@ -49,17 +49,19 @@ const CheckIcon: React.FC = () => (
 function OptionGroup({
   options,
   narrow,
+  scale,
   selected,
   onSelect,
 }: {
   options: { value: string; label?: string; icon?: React.ReactNode }[];
   narrow?: boolean;
+  scale?: boolean;
   selected?: string | string[];
   onSelect: (value: string) => void;
 }) {
   const isSelected = (v: string) => (Array.isArray(selected) ? selected.includes(v) : selected === v);
   return (
-    <div className={`cand-options${narrow ? " cand-options--narrow" : ""}`}>
+    <div className={`cand-options${narrow ? " cand-options--narrow" : ""}${scale ? " cand-options--scale" : ""}`}>
       {options.map((o) => (
         <button
           key={o.value}
@@ -114,13 +116,28 @@ export const CandidaturaWizard: React.FC = () => {
   const key = STEPS[idx];
   const questionNumber = idx; // categoria=1 ... contatto=7
 
-  const next = () => setIdx((i) => Math.min(i + 1, STEPS.length - 1));
-  const back = () => setIdx((i) => Math.max(i - 1, 0));
+  // Chi oggi non ha appuntamenti salta la domanda 4: non c'e' niente da portare.
+  const skipped = (step: Step, a: Record<string, string>) =>
+    step === "portabili" && a.appuntamenti === appuntamentiOptions[0];
+  const next = (a: Record<string, string> = answers) =>
+    setIdx((i) => {
+      let j = Math.min(i + 1, STEPS.length - 1);
+      while (skipped(STEPS[j], a)) j++;
+      return j;
+    });
+  const back = () =>
+    setIdx((i) => {
+      let j = Math.max(i - 1, 0);
+      while (skipped(STEPS[j], answers)) j--;
+      return j;
+    });
 
   const select = (group: string, value: string) => {
-    setAnswers((a) => ({ ...a, [group]: value }));
+    const a = { ...answers, [group]: value };
+    if (skipped("portabili", a)) delete a.portabili;
+    setAnswers(a);
     if (advanceTimer.current) clearTimeout(advanceTimer.current);
-    advanceTimer.current = setTimeout(next, 420);
+    advanceTimer.current = setTimeout(() => next(a), 420);
   };
 
   // domande 1 e 2: selezione multipla, si avanza col bottone, non in automatico
@@ -209,7 +226,7 @@ export const CandidaturaWizard: React.FC = () => {
           aria-label={t("fwd")}
           hidden={!showFwd}
           disabled={!canAdvance}
-          onClick={next}
+          onClick={() => next()}
         >
           &#8594;
         </button>
@@ -229,10 +246,9 @@ export const CandidaturaWizard: React.FC = () => {
             <span className="cand-scarcity__rule" aria-hidden="true" />
             <span>{t("intro.scarcity")}</span>
           </div>
-          <button className="cand-btn" onClick={next}>
+          <button className="cand-btn" onClick={() => next()}>
             {t("intro.cta")} <span aria-hidden="true">&#8594;</span>
           </button>
-          <p className="cand-step__foot">{t("intro.foot")}</p>
         </section>
 
         <section className={`cand-step cand-step--categoria cand-step--multi${key === "categoria" ? " is-active" : ""}`}>
@@ -259,7 +275,7 @@ export const CandidaturaWizard: React.FC = () => {
           <button
             className="cand-btn"
             disabled={categorie.length === 0 && categoriaAltroText.length === 0}
-            onClick={next}
+            onClick={() => next()}
           >
             {t("categoria.cta")} <span aria-hidden="true">&#8594;</span>
           </button>
@@ -289,7 +305,7 @@ export const CandidaturaWizard: React.FC = () => {
           <button
             className="cand-btn"
             disabled={dove.length === 0 && doveAltroText.length === 0}
-            onClick={next}
+            onClick={() => next()}
           >
             {t("doveStep.cta")} <span aria-hidden="true">&#8594;</span>
           </button>
@@ -302,7 +318,7 @@ export const CandidaturaWizard: React.FC = () => {
           </h2>
           <p className="cand-step__sub">{t("appuntamentiStep.sub")}</p>
           <OptionGroup
-            narrow
+            scale
             options={appuntamentiOptions.map((v) => ({ value: v }))}
             selected={answers.appuntamenti}
             onSelect={(v) => select("appuntamenti", v)}
@@ -316,7 +332,7 @@ export const CandidaturaWizard: React.FC = () => {
           </h2>
           <p className="cand-step__sub">{t("portabiliStep.sub")}</p>
           <OptionGroup
-            narrow
+            scale
             options={portabiliOptions.map((v) => ({ value: v }))}
             selected={answers.portabili}
             onSelect={(v) => select("portabili", v)}
@@ -328,7 +344,7 @@ export const CandidaturaWizard: React.FC = () => {
           <h2 className="cand-step__title">{t("inizioStep.title")}</h2>
           {t("inizioStep.sub") && <p className="cand-step__sub">{t("inizioStep.sub")}</p>}
           <OptionGroup
-            narrow
+            scale
             options={inizioOptions.map((v) => ({ value: v }))}
             selected={answers.inizio}
             onSelect={(v) => select("inizio", v)}
@@ -348,7 +364,7 @@ export const CandidaturaWizard: React.FC = () => {
               />
             </div>
           </div>
-          <button className="cand-btn" disabled={why.trim().length === 0} onClick={next}>
+          <button className="cand-btn" disabled={why.trim().length === 0} onClick={() => next()}>
             {t("perche.cta")} <span aria-hidden="true">&#8594;</span>
           </button>
         </section>
@@ -371,7 +387,9 @@ export const CandidaturaWizard: React.FC = () => {
               <input id="cand-numero" type="tel" value={numero} onChange={(e) => setNumero(e.target.value)} placeholder={t("contatto.numeroPlaceholder")} />
             </div>
             <div className="cand-field">
-              <label htmlFor="cand-email">{t("contatto.email")}</label>
+              <label htmlFor="cand-email">
+                {t("contatto.email")} <span className="cand-field__optional">{t("contatto.facoltativo")}</span>
+              </label>
               <input id="cand-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t("contatto.emailPlaceholder")} />
             </div>
             <div className="cand-field">
@@ -386,7 +404,7 @@ export const CandidaturaWizard: React.FC = () => {
               </label>
               <input id="cand-sito" type="text" value={sito} onChange={(e) => setSito(e.target.value)} placeholder={t("contatto.sitoPlaceholder")} />
             </div>
-            <div className="cand-field cand-field--full">
+            <div className="cand-field cand-field--full cand-field--cv">
               <label htmlFor="cand-cv">
                 {t("contatto.cv")} <span className="cand-field__optional">{t("contatto.facoltativo")}</span>
               </label>
@@ -415,7 +433,7 @@ export const CandidaturaWizard: React.FC = () => {
           />
           <button
             className="cand-btn"
-            disabled={!(nome.trim() && cognome.trim() && (numero.trim() || email.trim())) || sending}
+            disabled={!(nome.trim() && cognome.trim() && numero.trim()) || sending}
             onClick={submitCandidatura}
           >
             {sending ? t("contatto.inviando") : <>{t("contatto.invia")} <span aria-hidden="true">&#8594;</span></>}

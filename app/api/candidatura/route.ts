@@ -24,8 +24,8 @@ const schema = z
     ig: z.string().optional().default(""),
     sito: z.string().optional().default(""),
   })
-  .refine((d) => d.numero.trim().length > 0 || d.email.trim().length > 0, {
-    message: "Serve almeno un numero di telefono o una email",
+  .refine((d) => d.numero.trim().length > 0, {
+    message: "Il numero di telefono è obbligatorio",
     path: ["numero"],
   });
 
