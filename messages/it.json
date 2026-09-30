@@ -626,7 +626,7 @@
     "intro": {
       "eyebrow": "Candidatura",
       "title": "Candidati per lavorare da EQB",
-      "sub": "Cerchiamo professionisti del benessere e del movimento con una clientela propria, che vogliono lavorare in un posto all'altezza del loro lavoro.",
+      "sub": "Cerchiamo professionisti del benessere e del movimento con una clientela propria o già attivi online, che vogliono lavorare in un posto all'altezza del loro lavoro.",
       "cta": "Inizia",
       "scarcity": "I posti disponibili sono limitati: per questo valutiamo ogni candidatura personalmente."
     },
@@ -646,7 +646,7 @@
     "appuntamentiStep": {
       "eyebrow": "3 di 7",
       "title": "Quanti appuntamenti fai a settimana con clienti tuoi?",
-      "sub": "Cerchiamo professionisti che hanno già una clientela propria, o che la stanno costruendo."
+      "sub": "Cerchiamo professionisti che hanno già una clientela propria, o che la stanno costruendo anche online e sui social."
     },
     "inizioStep": {
       "eyebrow": "5 di 7",
@@ -686,7 +686,7 @@
       "legalFootPre": "Inviando la candidatura accetti la nostra ",
       "legalFootLink": "informativa privacy",
       "legalFootPost": ".",
-      "sub": "Instagram e sito sono facoltativi, ma è da lì che vediamo il tuo lavoro."
+      "sub": "Se hai un profilo Instagram o un sito, scrivilo: non contano i follower, conta come racconti il tuo lavoro."
     },
     "done": {
       "eyebrow": "Fatto",

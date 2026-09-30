@@ -626,7 +626,7 @@
     "intro": {
       "eyebrow": "Application",
       "title": "Apply to work at EQB",
-      "sub": "We're looking for wellness and movement professionals with their own clients, who want to work in a place that matches the quality of their work.",
+      "sub": "We're looking for wellness and movement professionals with their own clients or already active online, who want to work in a place that matches the quality of their work.",
       "cta": "Start",
       "scarcity": "Places are limited: that's why we review every application personally."
     },
@@ -646,7 +646,7 @@
     "appuntamentiStep": {
       "eyebrow": "3 of 7",
       "title": "How many appointments a week do you have with your own clients?",
-      "sub": "We're looking for professionals who already have their own clients, or are building them."
+      "sub": "We're looking for professionals who already have their own clients, or are building them, online and on social media too."
     },
     "inizioStep": {
       "eyebrow": "5 of 7",
@@ -686,7 +686,7 @@
       "legalFootPre": "By submitting your application you accept our ",
       "legalFootLink": "privacy policy",
       "legalFootPost": ".",
-      "sub": "Instagram and website are optional, but that's where we see your work."
+      "sub": "If you have an Instagram profile or a website, add it: followers don't matter, how you present your work does."
     },
     "done": {
       "eyebrow": "Done",
