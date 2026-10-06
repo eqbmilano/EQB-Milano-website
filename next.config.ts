@@ -18,6 +18,9 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/webp"],
     qualities: [75, 85],
+    // Le versioni ridimensionate si fermano a 1920 pixel, come le foto in public/assets
+    // (scripts/foto-per-il-web.mjs): prima arrivavano a 3840 (06/10/2026).
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
   },
   async headers() {
     return [

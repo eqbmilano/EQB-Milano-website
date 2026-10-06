@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { Manrope, Poppins } from "next/font/google";
 import { ORG, SERVICE_CATALOG, SITE_NAME, SITE_URL } from "@/lib/site";
 import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n";
+import ProteggiFoto from "@/components/ProteggiFoto";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -124,6 +125,7 @@ export default async function RootLayout({
       </head>
       <body className={`${manrope.variable} ${poppins.variable} antialiased`}>
         {children}
+        <ProteggiFoto />
       </body>
     </html>
   );
