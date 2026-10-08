@@ -12,6 +12,10 @@
 // invariato. Le versioni trattate stanno nello stesso registro delle foto, quindi rilanciarlo
 // non mette un secondo logo.
 //
+// TRANNE il video della home: e' a tutto schermo e il suo angolo in alto a destra finisce
+// sotto il menu, dove il logo si vedeva come un fantasma dietro l'hamburger. Marco, 08/10:
+// "rimuovilo subito". Il video della home resta senza logo.
+//
 // Serve ffmpeg: nel PATH, oppure FFMPEG=/percorso/ffmpeg node scripts/video-per-il-web.mjs
 
 import sharp from "sharp";
@@ -27,6 +31,7 @@ const REGISTRO = join(RADICE, ".foto-web.json");
 const registro = existsSync(REGISTRO) ? JSON.parse(readFileSync(REGISTRO, "utf8")) : {};
 const logo = readFileSync(join(RADICE, "Logo-Bianco.svg"), "utf8");
 const impronta = (buf) => createHash("sha256").update(buf).digest("hex").slice(0, 16);
+const SENZA_LOGO = new Set(["Video-Home.mp4"]);
 
 function dimensioni(file) {
   let info = "";
@@ -48,7 +53,7 @@ async function filigrana(larghezza) {
 }
 
 let trattati = 0, saltati = 0;
-for (const nome of readdirSync(RADICE).filter((n) => n.toLowerCase().endsWith(".mp4"))) {
+for (const nome of readdirSync(RADICE).filter((n) => n.toLowerCase().endsWith(".mp4") && !SENZA_LOGO.has(n))) {
   const file = join(RADICE, nome);
   const buf = readFileSync(file);
   if (registro[nome] === impronta(buf)) { saltati++; continue; }
