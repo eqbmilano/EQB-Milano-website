@@ -25,9 +25,11 @@ const escapeHtml = (s: string) =>
 
 // Il primo messaggio, nello stile di quello di Marco a Giuseppe del 10/10. Prima di
 // inviarlo Marco adatta la riga su cosa cerca e aggiunge l'orario.
+// 😊 e non ☺️: il ☺️ ha un carattere invisibile in piu' che WhatsApp Web, aperto da
+// wa.me, mostra come un punto interrogativo (Marco, 13/10).
 function primoMessaggio(nome: string, conCv: boolean): string {
   return [
-    `Ciao ${nome}, sono Marco di EQB ☺️`,
+    `Ciao ${nome}, sono Marco di EQB 😊`,
     `Grazie per la candidatura${conCv ? " e per il curriculum" : ""}.`,
     "",
     "Ci ha fatto piacere leggere cosa cerchi.",
