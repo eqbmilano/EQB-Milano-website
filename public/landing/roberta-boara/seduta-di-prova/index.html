@@ -208,13 +208,13 @@ h2 + .testo{margin-top:24px}
 .fissa.vista{transform:none;opacity:1;visibility:visible;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .3s}
 .fissa .btn{min-height:54px}.fissa .btn .ico{width:38px;height:38px}
 
-.cookie{position:fixed;z-index:60;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));max-width:440px;margin:0 auto;padding:10px 10px 10px 14px;
-  border-radius:18px;background:#fffffff7;border:1px solid var(--bordo);box-shadow:0 10px 34px #08050333;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+.cookie{position:fixed;z-index:60;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));max-width:520px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:7px 7px 7px 14px;
+  border-radius:9999px;background:#fffffff7;border:1px solid var(--bordo);box-shadow:0 10px 34px #08050333;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
   animation:sale .4s cubic-bezier(.22,1,.36,1)}
-.cookie p{font-size:.82rem;line-height:1.35;color:var(--testo2)}
+.cookie p{flex:1;min-width:0;font-size:.78rem;line-height:1.25;color:var(--testo2)}
 .cookie a{color:var(--accento);font-weight:700;text-underline-offset:2px}
-.cookie__scelte{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
-.cookie button{height:38px;border:1px solid #30262433;border-radius:9999px;background:#fff;color:var(--marrone);font:700 .95rem/1 "Manrope",sans-serif;cursor:pointer}
+.cookie__scelte{display:flex;gap:6px;flex:none}
+.cookie button{height:36px;padding:0 13px;border:1px solid #30262433;border-radius:9999px;background:#fff;color:var(--marrone);font:700 .82rem/1 "Manrope",sans-serif;cursor:pointer}
 .aperta .cookie{visibility:hidden}
 .piede a{color:inherit;text-underline-offset:2px}
 .piede button{padding:0;border:0;background:none;color:inherit;font:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
@@ -255,6 +255,26 @@ h2 + .testo{margin-top:24px}
   .piede{padding-bottom:48px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fissa,.fissa.vista{transition:none}.scuoti,.finestra[open]{animation:none}}
+
+.b1n{padding:0}
+.b1n .col{height:calc(100vh - var(--banner-h,0px));height:calc(100svh - var(--banner-h,0px));min-height:430px;display:flex;flex-direction:column;padding:clamp(14px,2.6svh,24px) var(--lato) clamp(14px,2.4svh,22px)}
+.b1n .sopra{flex:none;font-size:clamp(17px,2.6svh,19px)}
+.b1n h1{flex:none;margin-top:0;font-weight:800;font-size:clamp(32px,min(5.8svh,9.9vw),44px);line-height:1.04;letter-spacing:-.04em}
+.b1n .rafforza b{color:var(--marrone);font-weight:800}
+@media (max-width:370px){.b1n .rafforza{letter-spacing:-.02em;margin-right:-10px}.b1n .rafforza b{font-weight:700}.b1n .rafforza .ev{font-weight:600}}
+.b1n .rafforza .ev{color:var(--marrone);font-weight:700;background:linear-gradient(transparent 60%,#efd6cf 60%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.b1n h1 .k{color:var(--accento);font-style:italic;padding-right:.06em}
+.b1n .rafforza{flex:none;margin-top:clamp(8px,1.6svh,16px);font-size:clamp(17px,2.6svh,18.5px);letter-spacing:-.015em;margin-right:-8px;text-wrap:wrap}
+.b1n .foto{flex:1 1 0;min-height:0;margin:clamp(10px,2svh,18px) 0 clamp(12px,2svh,18px);aspect-ratio:auto}
+.b1n .foto{display:flex;justify-content:center;background:none;border-radius:0;overflow:visible}
+
+.b1n .foto img{width:auto;height:100%;max-width:100%;object-fit:contain;border-radius:20px;transform:none}
+.b1n .btn{flex:none;margin-top:0;white-space:nowrap}
+@media (max-width:370px){.b1n .btn{font-size:16.5px;padding-left:18px;gap:6px}.b1n .btn .ico{width:40px;height:40px}}
+@media (max-width:340px){.b1n .btn{font-size:15px;padding-left:14px}}
+.prova-n{flex:none;margin:clamp(8px,1.4svh,12px) -12px 0;text-align:center;white-space:nowrap;font-size:min(17px,calc((100vw - 24px) / 22.4));font-weight:700;color:var(--marrone);letter-spacing:-.01em}
+.prova-n .st{color:var(--stelle);font-size:1.15em}
+.prova-n .num{color:var(--accento);font-weight:800;background:linear-gradient(transparent 58%,#efd6cf 58%);padding:0 2px}
 </style>
 
 <script>
@@ -264,18 +284,12 @@ h2 + .testo{margin-top:24px}
 <body>
 <main>
 
-<header class="b1"><div class="col">
-  <div>
-    <p class="sopra">La mattina, al lavoro e la sera a letto:</p>
-    <h1><span class="riga">Dormi, ma ti svegli</span><span class="riga"><span class="segno-sotto">già stanca?</span></span></h1>
-    <p class="rafforza">Con la riflessologia plantare On&nbsp;Zon&nbsp;Su&nbsp;© ti aiuto a lasciar andare la tensione che ti porti dietro anche di notte.</p>
-    <div class="blocco-offerta">
-      <p class="offerta">Vieni a provare una seduta di prova. Dura <b>30 minuti</b>. Mi trovi da EQB Milano, in zona Cinque Giornate.</p>
-      <button class="btn" type="button" data-apri>Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button>
-      <p class="prova-breve"><img src="/landing/roberta-boara/seduta-di-prova/media/b1-bollino.webp" alt="Roberta" width="46" height="46"><span class="righe"><span class="intera">Oltre 260 donne seguite ·</span> <span class="intera"><span class="stelle" role="img" aria-label="5 stelle su 5">★★★★★</span> su Google</span></span></p>
-    </div>
-  </div>
-  <div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/b1-roberta.webp" alt="Roberta al lavoro sul piede di una cliente stesa sotto la coperta" width="900" height="1199" fetchpriority="high" decoding="async"></div>
+<header class="b1 b1n"><div class="col">
+    <h1>Ti svegli <span class="k">più stanca</span> di quando sei andata a dormire?</h1>
+    <p class="rafforza">Con la <b>riflessologia plantare On&nbsp;Zon&nbsp;Su&nbsp;©</b> ti aiuto a lasciar andare <span class="ev">la tensione che ti porti dietro anche di notte.</span></p>
+    <div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/b1-roberta-intera.webp" alt="Roberta al lavoro sul piede di una cliente stesa sotto la coperta" width="900" height="790" fetchpriority="high" decoding="async"></div>
+    <button class="btn" type="button" data-apri="">Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button>
+    <p class="prova-n"><span class="st">★</span> 5 stelle su Google · <span class="num">Oltre 260 donne seguite</span></p>
 </div></header>
 
 <section class="blocco b2"><div class="col">
@@ -496,7 +510,7 @@ h2 + .testo{margin-top:24px}
 </dialog>
 
 <div class="cookie" role="dialog" aria-label="Cookie" hidden>
-  <p>Questa pagina usa cookie e il pixel di Meta per misurare le inserzioni. <a href="/landing/roberta-boara/seduta-di-prova/privacy.html" target="_blank" rel="noopener">Informativa</a></p>
+  <p>Usiamo cookie e pixel di Meta. <a href="/landing/roberta-boara/seduta-di-prova/privacy.html" target="_blank" rel="noopener">Informativa</a></p>
   <div class="cookie__scelte"><button type="button" data-scelta="rifiuta">Rifiuta</button><button type="button" data-scelta="accetta">Accetta</button></div>
 </div>
 
