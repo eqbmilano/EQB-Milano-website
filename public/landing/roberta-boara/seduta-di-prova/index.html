@@ -267,6 +267,7 @@ h2 + .testo{margin-top:24px}
 .b1n .rafforza{flex:none;margin-top:clamp(8px,1.6svh,16px);font-size:clamp(17px,2.6svh,18.5px);letter-spacing:-.015em;margin-right:-8px;text-wrap:wrap}
 .b1n .foto{flex:1 1 0;min-height:0;margin:clamp(10px,2svh,18px) 0 clamp(12px,2svh,18px);aspect-ratio:auto}
 .b1n .foto{display:flex;justify-content:center;background:none;border-radius:0;overflow:visible}
+.fatto__poi b{white-space:nowrap}
 .b1n .foto picture{display:contents}.b1n .foto source{display:none}
 
 .b1n .foto img{width:auto;height:100%;max-width:100%;object-fit:contain;border-radius:20px;transform:none}
@@ -674,17 +675,15 @@ h2 + .testo{margin-top:24px}
     <div class="fatto" tabindex="-1" hidden>
       <p class="fatto__ok"><span aria-hidden="true">✓</span> Richiesta ricevuta</p>
       <h3 class="fatto__t">Perfetto<span class="fatto__nome"></span>. Ci sentiamo su WhatsApp.</h3>
-      <p class="fatto__poi">Il messaggio è già pronto, devi solo premere invio.</p>
-      <div class="fatto__anteprima" aria-hidden="true"><div class="fatto__bolla"><span class="fatto__testo"></span></div></div>
-      <div class="fatto__firma"><img src="/landing/roberta-boara/seduta-di-prova/media/viso.webp" alt="" width="46" height="46"><p>Ti rispondo io, Roberta.</p></div>
+      
+      <p class="fatto__poi">A breve ti arriva un mio messaggio al <b class="fatto__tel"></b>, così scegliamo insieme giorno e ora.</p>
+      <div class="fatto__firma"><img src="/landing/roberta-boara/seduta-di-prova/media/viso.webp" alt="" width="46" height="46"><p>Roberta</p></div>
       <div class="fatto__controlla">
-        <span class="fatto__numero">Numero di cellulare: <b class="fatto__tel"></b></span>
+        <span class="fatto__numero">Il numero è sbagliato?</span>
         <span class="fatto__cambia" hidden><input class="fatto__nuovo" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="done" aria-label="Numero di cellulare"><button type="button" class="fatto__conferma">OK</button></span>
         <button type="button" class="fatto__modifica"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/></svg>Cambia</button>
       </div>
       <p class="modulo__err fatto__err" role="alert" hidden>Controlla il numero, per esempio 347 123 4567 o, se è straniero, +41 79 123 4567.</p>
-      <a class="btn btn--wa fatto__wa" href="#" target="_blank" rel="noopener">Apri WhatsApp <span class="ico" aria-hidden="true">→</span></a>
-      <p class="fatto__riserva">Se WhatsApp non si apre, il mio numero è <a class="fatto__riserva-tel">[numero di Roberta]</a>.</p>
     </div>
   </div>
 </dialog>
@@ -742,16 +741,6 @@ h2 + .testo{margin-top:24px}
     if (SIMULA) return;
     try { fetch(CFG.indirizzo, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: corpo(), keepalive: true }).catch(function () {}); } catch (e) {   }
   }
-  var contattoMandato = false;
-  function toccoWa() {
-    dati.tocco = true;
-    aggiorna2();
-  }
-  function messaggio() { return 'Ciao Roberta, sono ' + dati.nome + '. Ho appena richiesto la seduta di prova dal sito. Vorrei sapere quando hai disponibilità.'; }
-  function collegamentoWa() {
-    var n = (CFG.numero || '').replace(/\D/g, '');
-    return n ? 'https://wa.me/' + n + '?text=' + encodeURIComponent(messaggio()) : '';
-  }
   function apri() {
     if (!fin.open) { fin.showModal(); d.classList.add('aperta'); }
     var f = inviato ? sez.querySelector('.fatto') : sez.querySelector('.modulo__t');
@@ -763,25 +752,14 @@ h2 + .testo{margin-top:24px}
   fin.addEventListener('click', function (e) { if (e.target === fin) chiudi(); });
   pulsanti.concat([fb]).forEach(function (b) {
     b.addEventListener('click', function (e) {
-      if (b === fb && inviato && collegamentoWa()) return;
       e.preventDefault(); apri();
     });
   });
   function mostraFatto() {
     inviato = true;
-    var wa = collegamentoWa(), num = (CFG.numero || '').trim();
     form.hidden = true; sez.querySelector('.fatto').hidden = false;
     sez.querySelector('.fatto__nome').textContent = dati.nome ? ', ' + dati.nome : '';
     sez.querySelector('.fatto__tel').textContent = dati.telefonoScritto;
-    sez.querySelector('.fatto__testo').textContent = messaggio();
-    sez.querySelector('.fatto__wa').href = wa || '#';
-    var r = sez.querySelector('.fatto__riserva-tel');
-    if (num) { r.textContent = num.replace(/^\+39\s*/, ''); r.href = 'tel:' + num.replace(/[^\d+]/g, ''); }
-    fb.classList.add('btn--wa'); fb.firstChild.textContent = 'Apri WhatsApp ';
-    if (wa) {
-      var a = document.createElement('a'); a.className = fb.className; a.innerHTML = fb.innerHTML; a.href = wa; a.target = '_blank'; a.rel = 'noopener'; a.addEventListener('click', toccoWa);
-      fb.replaceWith(a); fb = a;
-    }
     sez.scrollTop = 0; sez.querySelector('.fatto').focus({ preventScroll: true });
     aggiorna();
   }
@@ -824,11 +802,6 @@ h2 + .testo{margin-top:24px}
   [nomeIn, cognIn, telIn].forEach(function (i) { i.addEventListener('input', function () { i.classList.remove('errore'); fallita.hidden = true; }); });
   [nomeIn, cognIn].forEach(function (i) { i.addEventListener('input', function () { nomeErr.hidden = true; }); });
   telIn.addEventListener('input', function () { telErr.hidden = true; });
-  sez.querySelector('.fatto__wa').addEventListener('click', function (e) {
-    toccoWa();
-    if (collegamentoWa()) return;
-    e.preventDefault();
-  });
   var cambia = sez.querySelector('.fatto__cambia'), nuovo = sez.querySelector('.fatto__nuovo'), matita = sez.querySelector('.fatto__modifica'), fErr = sez.querySelector('.fatto__err'), numB = sez.querySelector('.fatto__numero');
   matita.addEventListener('click', function () { matita.hidden = true; numB.hidden = true; cambia.hidden = false; nuovo.value = dati.telefonoScritto || ''; nuovo.focus(); });
   function conferma() {
