@@ -276,22 +276,25 @@ h2 + .testo{margin-top:24px}
 .prova-n .st{color:var(--stelle);font-size:1.15em}
 .prova-n .num{color:var(--accento);font-weight:800;background:linear-gradient(transparent 58%,#efd6cf 58%);padding:0 2px}
 
-@media (min-width:900px){
+@media (min-width:720px){
+  :root{--lato:clamp(32px,4vw,48px)}
   .col{max-width:1120px}
+  .blocco > .col > .btn{width:auto;min-width:min(360px,100%);gap:28px}
+  .finale .btn{width:auto;min-width:min(420px,100%);gap:28px}
   .blocco h2{max-width:720px}
   .blocco > .col > .btn{justify-self:start}
-  
-  .b1n .col{max-width:1180px;height:calc(100svh - var(--banner-h,0px));max-height:760px;min-height:560px;display:grid;
-    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:1fr auto auto auto auto 1fr;
-    grid-template-areas:". foto" "h1 foto" "raf foto" "btn foto" "prova foto" ". foto";column-gap:72px;padding:40px var(--lato)}
+
+  .b1n .col{max-width:1180px;height:auto;max-height:none;min-height:0;display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:auto auto auto auto;align-content:center;
+    grid-template-areas:"h1 foto" "raf foto" "btn foto" "prova foto";column-gap:clamp(32px,5vw,72px);row-gap:0;padding:clamp(40px,7vw,96px) var(--lato) 0}
   .b1n h1{grid-area:h1;font-size:clamp(2.75rem,4.2vw,3.75rem);line-height:1.04}
   .b1n .rafforza{grid-area:raf;margin:24px 0 0;font-size:1.3rem;line-height:1.5;max-width:30em;text-wrap:pretty}
-  .b1n .btn{grid-area:btn;justify-self:start;width:auto;min-width:400px;gap:28px;margin-top:40px}
+  .b1n .btn{grid-area:btn;justify-self:start;width:auto;min-width:min(400px,100%);gap:28px;margin-top:40px}
   .b1n .prova-n{grid-area:prova;margin:16px 0 0;text-align:left;font-size:17px}
-  .b1n .foto{grid-area:foto;margin:0;height:100%;align-items:center}
-  .b1n .foto img{width:100%;height:auto;max-height:100%}
+  .b1n .foto{grid-area:foto;align-self:center;margin:0;height:auto;align-items:center}
+  .b1n .foto img{width:100%;height:auto;max-height:none}
   
-  .scene{gap:40px 40px}
+  .scene{grid-template-columns:1fr 1fr;gap:40px 40px}
   
   .b3 .col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:72px;align-items:start}
   .b3 .col > *{grid-column:1}
@@ -301,7 +304,7 @@ h2 + .testo{margin-top:24px}
   .strisce .foto{aspect-ratio:4/3}
   .strisce + .testo{max-width:720px}
   
-  .modi{gap:40px}
+  .modi{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,40px)}
   .modi .foto{aspect-ratio:4/4.2}
   
   .prove{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;align-items:start}
@@ -332,6 +335,17 @@ h2 + .testo{margin-top:24px}
   .b9 .col > *{grid-column:2}
   .b9 .col > h2{grid-column:1;grid-row:1 / span 4;font-size:3rem;line-height:1.06}
   .b9 .col > .testo:first-of-type{margin-top:0}
+}
+
+@media (min-width:720px) and (max-width:999px){
+  .strisce{grid-template-columns:1fr 1fr;gap:40px 24px}
+  .prove{grid-template-columns:1fr 1fr}
+  .b1n h1{font-size:clamp(2.2rem,5.2vw,2.75rem)}
+  .b1n .rafforza{font-size:1.125rem}
+  .b1n .btn{font-size:1rem;gap:12px}
+  .b3 .col,.b6 .col,.b9 .col{column-gap:40px}
+  .b8 .col{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);column-gap:40px}
+  .b6 .col > .btn,.b8 .col > .btn{min-width:0;width:100%;font-size:1rem;white-space:nowrap;gap:12px}
 }
 </style>
 
