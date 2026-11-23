@@ -22,6 +22,16 @@ const nextConfig: NextConfig = {
     // (scripts/foto-per-il-web.mjs): prima arrivavano a 3840 (06/10/2026).
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
   },
+  // Landing delle campagne dei professionisti (23/11/2026): l'indirizzo pubblico è sotto la pagina del
+  // professionista, i file statici in public/landing/. L'eccezione alla lingua è in proxy.ts (LANDING).
+  async rewrites() {
+    return [
+      {
+        source: "/Roberta-Boara/seduta-di-prova",
+        destination: "/landing/roberta-boara/seduta-di-prova/index.html",
+      },
+    ];
+  },
   async headers() {
     return [
       {

@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>Roberta Boara, riflessologia plantare</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preload" href="/landing/roberta-boara/seduta-di-prova/fonts/Manrope.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/landing/roberta-boara/seduta-di-prova/media/b1-roberta.webp" as="image">
+<style>
+
+@font-face{font-family:"Manrope";src:url(/landing/roberta-boara/seduta-di-prova/fonts/Manrope.woff2) format("woff2");font-weight:200 800;font-display:block}
+
+:root{--marrone:#302624;--testo:#2c2420;--testo2:#4a403c;--fondo:#f8f7f4;--ombra:#ede9e4;--bordo:#30262424;
+  --accento:#7c3f36;--ocra:#d9893a;--stelle:#e8a93b;--wa:#25d366;--errore:#c0392b;--ritmo:144px;--lato:21px}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html.aperta{overflow:hidden}
+body{margin:0;background:var(--fondo);color:var(--marrone);font-family:"Manrope",sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,figure,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+[hidden]{display:none!important}
+.col{max-width:600px;margin:0 auto;padding:0 var(--lato)}
+
+.segno-sotto{white-space:nowrap;padding-bottom:.06em;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9.5C42 4.5 86 3.5 128 6.2S184 10 197 5' fill='none' stroke='%23d9893a' stroke-width='3.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") left bottom/100% .32em no-repeat}
+.btn{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:60px;padding:8.8px 8.8px 8.8px 22px;border:0;border-radius:9999px;
+  background:var(--accento);color:#fff;font:700 1.05rem/1.2 "Manrope",sans-serif;text-align:left;text-decoration:none;cursor:pointer}
+.btn .ico{flex:none;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:9999px;background:#fff;color:var(--accento);font-size:18px}
+.btn--wa{background:var(--wa)}.btn--wa .ico{color:var(--wa)}
+.btn[disabled]{opacity:.7;cursor:progress}
+.btn:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #30262499;outline-offset:3px}
+.blocco{padding-top:var(--ritmo)}
+.blocco > .col > .btn{margin-top:40px}
+h2{font-size:clamp(1.7rem,7.5vw,1.95rem);line-height:1.12;font-weight:800;letter-spacing:-.03em;text-wrap:balance}
+.testo{margin-top:16px;font-size:1.125rem;line-height:1.6;color:var(--testo);text-wrap:pretty}
+h2 + .testo{margin-top:24px}
+.forte{font-size:1.2rem;line-height:1.4;font-weight:800;color:var(--marrone);letter-spacing:-.01em;text-wrap:balance}
+.testo b{color:var(--marrone);font-weight:800}
+.stelle{color:var(--stelle);letter-spacing:.06em}
+.foto{position:relative;border-radius:20px;overflow:hidden;background:var(--ombra)}
+.foto img{width:100%;height:100%;object-fit:cover}
+.fascia{margin-top:var(--ritmo);padding-bottom:var(--ritmo);background:var(--ombra)}
+
+.b1{padding:22px 0 0}
+.sopra{font-size:1.02rem;line-height:1.35;font-weight:700;color:var(--accento)}
+.b1 h1{margin-top:10px;font-size:clamp(2.1rem,10.4vw,2.55rem);line-height:1.04;font-weight:800;letter-spacing:-.03em}
+.b1 h1 .riga{display:block}
+.rafforza{margin-top:16px;font-size:1.08rem;line-height:1.45;font-weight:500;color:var(--testo2);text-wrap:pretty}
+.blocco-offerta{margin:20px -13px 0;padding:15px 13px 14px;border-radius:24px;background:var(--ombra)}
+.offerta{font-size:1rem;line-height:1.5;color:var(--testo)}
+.offerta b{color:var(--marrone);font-weight:800}
+.blocco-offerta .btn{margin-top:14px}
+.intera{white-space:nowrap}
+
+.prova-breve{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px;font-size:1rem;line-height:1.35;font-weight:700;color:var(--marrone)}
+.prova-breve img{flex:none;width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff}
+.prova-breve span.righe{display:flex;flex-wrap:wrap;column-gap:5px}
+.b1 .foto{margin-top:22px;aspect-ratio:4/4.3}
+.b1 .foto img{object-position:50% 70%;transform:scale(1.18);transform-origin:50% 78%}
+
+.scene{margin-top:24px;display:grid;gap:40px}
+.scena .foto{aspect-ratio:3/2}
+.scena .testo{margin-top:16px}
+.speranza{margin-top:40px}
+
+.b2 .foto img,.b3 .foto img{filter:grayscale(1) contrast(1.05)}
+.b3 .foto--larga{margin-top:24px;aspect-ratio:3/2}
+.b3 .foto--larga + .testo{margin-top:24px}
+
+.provato{margin-top:24px;display:grid;gap:14px}
+.provato li{display:grid;grid-template-columns:108px minmax(0,1fr);gap:14px;align-items:center;padding:10px 14px 10px 10px;border-radius:18px;background:#fff;border:1px solid #30262414}
+.provato .foto{aspect-ratio:1/1;border-radius:12px}
+.provato p{font-size:1.0625rem;line-height:1.5;color:var(--testo);text-wrap:pretty}
+.provato b{display:block;margin-bottom:2px;font-size:1.05rem;color:var(--marrone);font-weight:800}
+.provato + .testo{margin-top:40px}
+.strisce{margin-top:24px;display:grid;gap:40px}.strisce .foto{aspect-ratio:16/7}.b3 .strisce .foto img{filter:none}
+.strisce .testo{margin-top:16px}.strisce + .testo{margin-top:40px}
+
+.modi{margin-top:24px;display:grid;gap:40px}
+.modi .foto{aspect-ratio:4/4.4}
+.modi h3{margin-top:16px;font-size:1.25rem;line-height:1.25;font-weight:800;letter-spacing:-.02em}
+.modi .testo{margin-top:6px}
+.modi + .forte{margin-top:40px}
+
+.prove{margin-top:24px;display:grid;gap:40px}
+.prova-voce > .testo{margin-top:0}
+.chat{margin:16px auto 0;max-width:320px;padding:4px;border-radius:20px;background:#fff;box-shadow:0 8px 24px #3026241a}
+.chat img{width:100%;height:auto;border-radius:16px}
+.video{position:relative;margin:16px auto 0;width:min(100%,300px);aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:#241d1b;box-shadow:0 8px 24px #30262426}
+.video video{width:100%;height:100%;object-fit:cover}
+.video__play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border:0;padding:0;background:transparent;cursor:pointer}
+.video__play span{display:flex;align-items:center;justify-content:center;width:70px;height:70px;border-radius:50%;background:#fffffff0;box-shadow:0 6px 20px #0004}
+.video__play svg{margin-left:5px}
+.video.va .video__play{display:none}
+
+.video__sott{position:absolute;left:10px;right:10px;bottom:62px;text-align:center;pointer-events:none}
+.video__sott span{display:inline;padding:3px 7px;border-radius:6px;background:#000000b8;color:#fff;font:700 .95rem/1.55 "Manrope",sans-serif;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.video__sott:empty{display:none}
+
+.google{margin:4px calc(-1 * var(--lato)) 0;padding:34px var(--lato) 36px;background:var(--ombra)}
+.google > .testo{margin-top:0;font-weight:800;color:var(--marrone)}
+.rec{margin-top:12px;padding:18px 20px 16px;border-radius:20px;background:#fff;border:1px solid #30262414;box-shadow:0 8px 24px #3026240f}
+.rec blockquote{margin:0;font-size:1.125rem;line-height:1.5;color:var(--testo);text-wrap:pretty}
+.rec figcaption{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;margin-top:10px;font-size:.97rem;line-height:1.35;font-weight:700;color:var(--marrone)}
+.rec figcaption span{white-space:nowrap}
+
+.b6 .foto--ritratto{aspect-ratio:4/3.6}
+.b6 .foto--ritratto img{object-position:50% 30%}
+.b6 h2{margin-top:24px}
+.rivista{display:grid;grid-template-columns:132px minmax(0,1fr);gap:16px;align-items:center;margin-top:24px;padding:12px;border-radius:18px;background:#fff;border:1px solid #30262414}
+.rivista img{width:100%;height:auto;border-radius:10px}
+.rivista p{font-size:1.0625rem;line-height:1.5;color:var(--testo);text-wrap:pretty}
+
+.passi{margin-top:24px;display:grid;gap:24px;counter-reset:p}
+.passi li{position:relative;padding-left:50px;counter-increment:p}
+.passi li::before{content:counter(p);position:absolute;left:0;top:-3px;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--accento);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:var(--accento);background:var(--ombra)}
+.passi li:not(:last-child)::after{content:"";position:absolute;left:16.5px;top:35px;bottom:-23px;width:1.5px;background:#7c3f3640}
+.passi h3{font-size:1.15rem;line-height:1.3;font-weight:800}
+.passi .testo{margin-top:4px}
+.passi + .testo{margin-top:40px}
+
+.domande{margin-top:24px;border-top:1px solid #30262422}
+.domande details{border-bottom:1px solid #30262422}
+.domande summary{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 2px;font-size:1.08rem;line-height:1.35;font-weight:800;cursor:pointer;list-style:none}
+.domande summary::-webkit-details-marker{display:none}
+.domande summary::after{content:"+";flex:none;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--ombra);color:var(--accento);font-size:1.3rem;font-weight:700}
+.domande details[open] summary::after{content:"−"}
+
+.domande summary{padding-bottom:8px;cursor:default}
+.domande summary::after{display:none}
+.domande details .testo{margin-top:0}
+.domande details .testo{margin:0 2px 20px}
+
+.posti{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:24px}
+.posti__file{display:flex;gap:8px}
+.posti__file i{width:22px;height:22px;border-radius:50%;background:var(--accento)}
+.posti__file i.libero{background:transparent;box-shadow:inset 0 0 0 2.5px var(--accento)}
+.posti__nota{font-size:.95rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:var(--accento)}
+.btn--due{min-height:68px}
+.btn__righe{display:flex;flex-direction:column;gap:2px}
+.btn__righe small{font-size:.9rem;font-weight:600;opacity:.85}
+.finale{position:relative;margin-top:var(--ritmo);padding:72px 0 64px;overflow:hidden;color:#fff;text-align:center;background:var(--marrone)}
+.finale__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%;max-width:none}
+.finale::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,#7c3f36b3 0%,#302624cc 100%)}
+.finale__col{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.finale__t{font-size:3rem;line-height:1.05;font-weight:800;color:#fff}
+.finale__sub{margin-top:24px;font-size:1.375rem;line-height:1.3;font-weight:800;text-wrap:balance}
+.finale__riga{margin-top:16px;font-size:1.0625rem;line-height:1.5;opacity:.92;text-wrap:balance}
+.finale .btn{margin-top:40px}
+.btn--bianco{background:#fff;color:var(--accento)}
+.btn--bianco .ico{background:var(--accento);color:#fff}
+.firma{display:block;width:250px;height:auto;margin:16px 0 0 0}
+.firma--bianca{margin:24px auto 0;filter:brightness(0) invert(1)}
+.dove{margin-top:24px;font-size:1.0625rem;line-height:1.5;font-weight:600;color:var(--testo);text-align:center;text-wrap:balance}
+.piede{padding:44px 0 110px;font-size:.95rem;line-height:1.6;color:#6b625d}
+
+.finestra{width:100%;max-width:100%;height:auto;max-height:100%;margin:auto 0 0;padding:0;border:0;background:transparent;color:inherit;overflow:visible}
+.finestra::backdrop{background:#1d1513a6}
+.finestra[open]{animation:sale .32s cubic-bezier(.22,1,.36,1)}
+@keyframes sale{from{transform:translateY(40px);opacity:0}}
+.modulo{position:relative;max-height:calc(100dvh - 10px);overflow:auto;padding:26px 22px calc(26px + env(safe-area-inset-bottom,0px));border-radius:24px 24px 0 0;background:#fff;box-shadow:0 -10px 40px #30262433;overscroll-behavior:contain}
+.chiudi{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;border-radius:50%;background:var(--ombra);color:var(--marrone);font:700 1.3rem/1 "Manrope",sans-serif;cursor:pointer}
+.modulo__t{padding-right:48px;font-size:1.55rem;line-height:1.12;font-weight:800;letter-spacing:-.03em;text-wrap:balance;outline:0}
+.modulo__dati{margin-top:8px;font-size:1.02rem;line-height:1.3;font-weight:700;color:var(--accento)}
+.modulo label.campo{display:block;margin:16px 0 7px;font-size:1rem;font-weight:700}
+.modulo label.campo input{display:block;width:100%;height:54px;margin-top:7px;padding:0 16px;border:1.5px solid #968c84;border-radius:14px;background:#fff;color:var(--marrone);
+  font:600 1.1rem/1 "Manrope",sans-serif;-webkit-appearance:none;appearance:none;outline:none}
+.modulo label.campo input:focus{border-color:var(--accento);box-shadow:0 0 0 3px #7c3f3626}
+.modulo label.campo input.errore{border-color:var(--errore)}
+.modulo__err{margin:8px 0 0;font-size:.95rem;line-height:1.4;font-weight:600;color:var(--errore)}
+.scuoti{animation:scuoti .35s}
+@keyframes scuoti{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.consenso{display:flex;gap:12px;align-items:flex-start;margin-top:18px;font-size:.95rem;line-height:1.45;color:var(--testo2);cursor:pointer}
+.consenso input{flex:none;width:22px;height:22px;margin:1px 0 0;accent-color:var(--accento)}
+.modulo__info{margin-top:12px;font-size:.92rem;line-height:1.5;color:var(--testo2)}
+.modulo__info a{text-underline-offset:2px}
+.modulo form .btn{margin-top:18px}
+.modulo__poi{margin-top:12px;font-size:.98rem;line-height:1.45;color:var(--testo2);text-align:center;text-wrap:balance}
+
+.fatto:focus{outline:0}
+.fatto__ok{display:inline-flex;gap:8px;align-items:center;padding:8px 16px;border-radius:9999px;background:#e3f1e6;color:#1d5b2e;font-size:1rem;font-weight:800}
+.fatto__t{margin-top:18px;padding-right:40px;text-wrap:balance;font-size:1.45rem;line-height:1.25;font-weight:800;letter-spacing:-.02em}
+.fatto__poi{margin-top:8px;font-size:1.05rem;line-height:1.55;color:var(--testo2)}
+.fatto__anteprima{margin-top:12px;padding:14px;border-radius:18px;background:#e7ddd3}
+.fatto__bolla{margin-left:auto;max-width:90%;padding:11px 14px;border-radius:14px 14px 3px 14px;background:#d9fdd3;font-size:1rem;line-height:1.45;color:#111;box-shadow:0 1px 1px #0000001a}
+.fatto__firma{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:.95rem;line-height:1.45;font-weight:700}
+.fatto__firma img{flex:none;width:46px;height:46px;border-radius:50%;object-fit:cover;background:var(--ombra)}
+.fatto__controlla{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;margin-top:14px;font-size:1rem;color:#6b625d}
+.fatto__numero b{color:var(--marrone);white-space:nowrap}
+.fatto__modifica{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border:1px solid #d4cfc9;border-radius:9999px;background:#fff;color:var(--accento);font:700 1rem/1 "Manrope",sans-serif;cursor:pointer}
+.fatto__cambia{display:flex;align-items:center;gap:8px;flex:1 1 100%}
+.modulo .fatto__nuovo{flex:1 1 auto;min-width:0;height:48px;padding:0 14px;border:1.5px solid var(--accento);border-radius:12px;background:#fff;color:var(--marrone);
+  font:700 1.05rem "Manrope",sans-serif;outline:none;-webkit-appearance:none;appearance:none}
+.modulo .fatto__nuovo.errore{border-color:var(--errore)}
+.fatto__conferma{flex:none;min-width:64px;height:48px;padding:0 18px;border:0;border-radius:9999px;background:var(--accento);color:#fff;font:700 1rem/1 "Manrope",sans-serif;cursor:pointer}
+.fatto .btn{margin-top:18px;font-size:1.1rem}
+.fatto__riserva{margin-top:12px;font-size:.95rem;line-height:1.5;color:#6b625d}
+
+.fissa{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px) + var(--banner-h,0px));z-index:50;padding:6px;border-radius:9999px;background:#fffffff2;
+  border:1px solid var(--bordo);box-shadow:0 12px 30px #0805032e;transform:translateY(160%);opacity:0;visibility:hidden;
+  transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .3s,visibility 0s .5s}
+.fissa.vista{transform:none;opacity:1;visibility:visible;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .3s}
+.fissa .btn{min-height:54px}.fissa .btn .ico{width:38px;height:38px}
+
+@media (max-width:599px) and (max-height:720px){.b1{padding-top:14px}.b1 h1{margin-top:8px}.rafforza{margin-top:12px}
+  .blocco-offerta{margin-top:14px;padding-top:13px}.blocco-offerta .btn{margin-top:12px}}
+@media (max-width:359px){.provato li{grid-template-columns:88px minmax(0,1fr)}.rivista{grid-template-columns:110px minmax(0,1fr)}}
+
+@media (min-width:600px){
+  .blocco-offerta{margin-left:0;margin-right:0;padding:18px}
+  .finestra{max-width:520px;margin:auto}
+  .modulo{max-height:calc(100dvh - 40px);padding:34px 30px 30px;border-radius:24px}
+}
+@media (min-width:900px){
+  :root{--ritmo:240px;--lato:48px}
+  .col{max-width:760px}
+  h2{font-size:2.5rem;line-height:1.08}
+  .testo{font-size:1.1875rem}
+  .google{margin-left:0;margin-right:0;padding:40px 36px 44px;border-radius:24px}
+  .fissa{display:none}
+  .blocco > .col > .btn{width:auto;min-width:360px;gap:28px}
+  .finale{padding:120px 0}
+  .finale__t{font-size:4rem}
+  .finale .btn{width:auto;min-width:420px;gap:28px}
+  .b1{padding-top:48px}
+  .b1 .col{max-width:1180px;display:grid;grid-template-columns:minmax(0,1fr) 460px;column-gap:72px;align-items:center}
+  .b1 h1{font-size:3.5rem}
+  .rafforza{font-size:1.25rem;max-width:30em}
+  .blocco-offerta{max-width:540px}
+  .prova-breve{text-align:left}
+  .b1 .foto{margin-top:0;aspect-ratio:460/580}
+  .scene{grid-template-columns:1fr 1fr;gap:44px 36px}
+  .provato{grid-template-columns:1fr 1fr}
+  .modi{grid-template-columns:repeat(3,1fr);gap:28px}
+  .modi .foto{aspect-ratio:4/4.6}
+  .prove{gap:56px}
+  .piede{padding-bottom:48px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fissa,.fissa.vista{transition:none}.scuoti,.finestra[open]{animation:none}}
+</style>
+</head>
+<body>
+<main>
+
+<header class="b1"><div class="col">
+  <div>
+    <p class="sopra">La mattina, al lavoro e la sera a letto:</p>
+    <h1><span class="riga">Dormi, ma ti svegli</span><span class="riga"><span class="segno-sotto">già stanca?</span></span></h1>
+    <p class="rafforza">Con la riflessologia plantare On&nbsp;Zon&nbsp;Su&nbsp;© ti aiuto a lasciar andare la tensione che ti porti dietro anche di notte.</p>
+    <div class="blocco-offerta">
+      <p class="offerta">Vieni a provare una seduta di prova. Dura <b>30 minuti</b>. Mi trovi da EQB Milano, in zona Cinque Giornate.</p>
+      <button class="btn" type="button" data-apri>Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button>
+      <p class="prova-breve"><img src="/landing/roberta-boara/seduta-di-prova/media/b1-bollino.webp" alt="Roberta" width="46" height="46"><span class="righe"><span class="intera">Oltre 260 donne seguite ·</span> <span class="intera"><span class="stelle" role="img" aria-label="5 stelle su 5">★★★★★</span> su Google</span></span></p>
+    </div>
+  </div>
+  <div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/b1-roberta.webp" alt="Roberta al lavoro sul piede di una cliente stesa sotto la coperta" width="900" height="1199" fetchpriority="high" decoding="async"></div>
+</div></header>
+
+<section class="blocco b2"><div class="col">
+  <h2>Ti riconosci?</h2>
+  <div class="scene">
+    <div class="scena">
+      <div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/px-1028741.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></div>
+      <p class="testo"><b>La sveglia suona e ti sembra di aver appena chiuso gli occhi.</b> Eppure le tue ore le hai dormite. Ti alzi già pesante, e la giornata non è ancora cominciata.</p>
+    </div>
+    <div class="scena">
+      <div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/px-4491431.webp" alt="" width="900" height="1350" loading="lazy" decoding="async" style="object-position:50% 30%"></div>
+      <p class="testo"><b>A metà mattina sei già senza energie.</b> Vai avanti a caffè, rispondi a tutti, fai quello che c’è da fare. Ma ti senti spenta, e intorno a te nessuno se ne accorge. E un momento solo per te non riesci più a trovarlo.</p>
+    </div>
+    <div class="scena">
+      <div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/px-8533729.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></div>
+      <p class="testo"><b>Torni a casa e c’è ancora tutto da fare.</b> Quando finalmente ti stendi sei distrutta, eppure la testa continua a girare: quello che ti aspetta domani, quello che oggi è rimasto a metà.</p>
+    </div>
+    <div class="scena">
+      <div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/px-8527651.webp" alt="" width="900" height="1350" loading="lazy" decoding="async" style="object-position:50% 40%"></div>
+      <p class="testo"><b>Ti giri e ti rigiri, con le gambe pesanti e le spalle rigide.</b> Magari ti svegli alle tre e non riesci più a riaddormentarti. E la mattina dopo si ricomincia, uguale.</p>
+    </div>
+  </div>
+  <p class="forte speranza">Non deve per forza andare avanti così.</p>
+  <button class="btn" type="button" data-apri>Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button>
+</div></section>
+
+<section class="blocco b3"><div class="col">
+  <h2>Non è colpa tua</h2>
+  <p class="testo">Questa stanchezza è reale, e non dipende da te. Non è pigrizia, e non è che non ti impegni abbastanza. Ti avranno detto di andare a letto prima o di lasciare il telefono. Ma il punto non è questo.</p>
+  
+  <div class="foto foto--larga"><img src="/landing/roberta-boara/seduta-di-prova/media/px-6028685.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></div>
+  <p class="testo">Lo sai anche tu: le tue giornate sono piene, tra lavoro, casa e pensieri, e non ti fermi mai. Il tuo corpo si abitua a restare sempre in guardia, pronto a reagire. E la sera, anche quando tu ti fermi, lui non si spegne.</p>
+  <p class="testo">Ed è per questo che dormi le tue ore, ma al mattino ti svegli già stanca. Hai dormito, ma il tuo corpo non ha recuperato. È come un’auto lasciata accesa tutta la notte: è ferma, ma il motore gira e consuma.</p>
+  <p class="testo"><b>Per questo quello che hai provato finora non è bastato.</b></p>
+  
+  <ul class="strisce">
+    <li><div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/px-5867240.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></div><p class="testo"><b>La melatonina.</b> Ti aiuta a prendere sonno, ma la tensione che ti porti dietro resta lì. E al mattino sei stanca come prima.</p></li>
+    <li><div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/px-5888099.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></div><p class="testo"><b>Un massaggio.</b> Per un’ora stai bene, poi torni alla tua giornata e il corpo torna in guardia.</p></li>
+    <li><div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/px-5357341.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></div><p class="testo"><b>Dormire di più nel weekend.</b> Recuperi qualche ora, ma il lunedì sei già al punto di partenza.</p></li>
+    <li><div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/px-8829209.webp" alt="" width="900" height="600" loading="lazy" decoding="async"></div><p class="testo"><b>Qualche giorno di vacanza.</b> Speri di staccare, e ci metti metà del tempo solo a rilassarti. Poi torni, e ricomincia tutto.</p></li>
+  </ul>
+  <p class="testo">Non sono cose sbagliate: danno sollievo. Ma nessuna aiuta il tuo corpo a mollare la presa. <b>Ed è da qui che parto io.</b></p>
+  <button class="btn" type="button" data-apri>Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button>
+</div></section>
+
+<section class="blocco b4"><div class="col">
+  <h2>Non lavoro sul sonno. Lavoro sul corpo che resta in guardia.</h2>
+  <p class="testo">Ecco come lavoro, e perché è diverso da quello che hai provato finora.</p>
+  <div class="modi">
+    <div>
+      
+      <div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/b4-piede-pro.webp" alt="Roberta al lettino, con la mano sul piede di una cliente" width="800" height="888" loading="lazy" decoding="async" style="object-position:50% 45%"></div>
+      <h3>Parto dal piede.</h3>
+      <p class="testo">Nel metodo On&nbsp;Zon&nbsp;Su&nbsp;©, con cui lavoro, dal piede si arriva a tutto il corpo. Così non mi fermo al punto dove senti la tensione: lavoro su di te, tutta intera.</p>
+    </div>
+    <div>
+      <div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/b4-mani.webp" alt="Le mani di Roberta che premono sul piede" width="800" height="1200" loading="lazy" decoding="async" style="object-position:50% 40%"></div>
+      <h3>Lenta e profonda.</h3>
+      <p class="testo">Lavoro con le mani, su punti precisi, senza fretta. Poco alla volta il corpo smette di stare in guardia e molla la presa.</p>
+    </div>
+    <div>
+      <div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/b4-stesa.webp" alt="Una cliente stesa sotto la coperta, con gli occhi chiusi" width="800" height="1422" loading="lazy" decoding="async" style="object-position:50% 40%"></div>
+      <h3>Mezz’ora tutta per te.</h3>
+      <p class="testo">Ti stendi e non devi occuparti di niente. Molte delle donne che seguo si addormentano già sul lettino.</p>
+    </div>
+  </div>
+  <p class="forte">Così ho seguito oltre 260 donne. Ecco cosa raccontano.</p>
+  <button class="btn" type="button" data-apri>Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button>
+</div></section>
+
+<section class="blocco b5"><div class="col">
+  <h2>Oltre 260 donne seguite. Ecco cosa mi scrivono.</h2>
+  <div class="prove">
+    <div class="prova-voce">
+      <p class="testo">Camilla è arrivata da me un po’ per curiosità: faticava a dormire bene e a riposare. Dopo cinque sedute mi ha scritto così.</p>
+      <figure class="chat"><img src="/landing/roberta-boara/seduta-di-prova/img/camilla-whatsapp.webp" alt="Messaggio WhatsApp di una cliente a Roberta dopo cinque sedute" width="840" height="857" loading="lazy" decoding="async"></figure>
+    </div>
+    <div class="prova-voce">
+      <p class="testo">Daria viene da me da tre anni. Le ho chiesto se consiglierebbe le sedute.</p>
+      <div class="video" data-video>
+        <video src="/landing/roberta-boara/seduta-di-prova/media/b5-daria.mp4" poster="/landing/roberta-boara/seduta-di-prova/media/b5-daria.webp" preload="none" playsinline width="540" height="960"><track kind="subtitles" srclang="it" label="Italiano" src="/landing/roberta-boara/seduta-di-prova/media/b5-daria.vtt"></video>
+        <div class="video__sott" aria-hidden="true"></div>
+        <button class="video__play" type="button" aria-label="Guarda il video di Daria"><span><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M6 4l14 8-14 8z" fill="#7c3f36"/></svg></span></button>
+      </div>
+    </div>
+    <div class="prova-voce">
+      <p class="testo">Tatiana ha iniziato con tre sedute che le avevano regalato, poi ha scelto di continuare.</p>
+      <div class="video" data-video>
+        <video src="/landing/roberta-boara/seduta-di-prova/media/b5-tatiana.mp4" poster="/landing/roberta-boara/seduta-di-prova/media/b5-tatiana.webp" preload="none" playsinline width="540" height="960"><track kind="subtitles" srclang="it" label="Italiano" src="/landing/roberta-boara/seduta-di-prova/media/b5-tatiana.vtt"></video>
+        <div class="video__sott" aria-hidden="true"></div>
+        <button class="video__play" type="button" aria-label="Guarda il video di Tatiana"><span><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M6 4l14 8-14 8z" fill="#7c3f36"/></svg></span></button>
+      </div>
+    </div>
+    <div class="prova-voce">
+      <p class="testo">Carolina viene da me ogni settimana. Questo è il suo messaggio dopo una seduta.</p>
+      <figure class="chat"><img src="/landing/roberta-boara/seduta-di-prova/img/carolina-whatsapp.webp" alt="Messaggio WhatsApp di una cliente a Roberta dopo una seduta" width="840" height="766" loading="lazy" decoding="async"></figure>
+    </div>
+    <div class="prova-voce">
+      <p class="testo">Valeria mi ha scritto la sera stessa della sua seduta, senza che glielo chiedessi.</p>
+      <figure class="chat"><img src="/landing/roberta-boara/seduta-di-prova/img/valeria-whatsapp.webp" alt="Messaggio WhatsApp di una cliente a Roberta la sera di una seduta" width="840" height="502" loading="lazy" decoding="async"></figure>
+    </div>
+    
+    <div class="google">
+      <p class="testo">E su Google:</p>
+      <figure class="rec"><blockquote>«Ormai i miei momenti di relax sono firmati Roberta […]»</blockquote>
+        <figcaption><span>Camilla Contigiani</span><span><span class="stelle" role="img" aria-label="5 stelle su 5">★★★★★</span> su Google</span></figcaption></figure>
+      <figure class="rec"><blockquote>«Esperienza fantastica! Non conoscevo questa tecnica, ma da quando ho incontrato Roberta il mio appuntamento settimanale con la Riflessologia è un must! […]»</blockquote>
+        <figcaption><span>Vania Da Canal</span><span><span class="stelle" role="img" aria-label="5 stelle su 5">★★★★★</span> su Google</span></figcaption></figure>
+      <figure class="rec"><blockquote>«Sto facendo un ciclo di sedute settimanali, esperienza interessante […] Roberta è gentile e competente.»</blockquote>
+        <figcaption><span>Andrea</span><span><span class="stelle" role="img" aria-label="5 stelle su 5">★★★★★</span> su Google</span></figcaption></figure>
+    </div>
+  </div>
+  <button class="btn" type="button" data-apri>Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button>
+</div></section>
+
+<section class="blocco b6"><div class="col">
+  <div class="foto foto--ritratto"><img src="/landing/roberta-boara/seduta-di-prova/media/b6-roberta.webp" alt="Roberta in piedi accanto al lettino, sorride" width="1100" height="825" loading="lazy" decoding="async"></div>
+  
+  <h2>Piacere, sono Roberta</h2>
+  <p class="testo">Mi sono formata alla On&nbsp;Zon&nbsp;Su School, fondata dal Maestro Ming Wong. Da allora questo metodo è il mio modo di prendermi cura delle persone.</p>
+  <p class="testo">Le mie mani ascoltano prima di lavorare: sentono dove trattieni la tensione e quanto ci metti a lasciarti andare. Perché quello che vivi durante il giorno, il corpo se lo porta dietro.</p>
+  <figure class="rivista"><img src="/landing/roberta-boara/seduta-di-prova/media/b6-natural-style.webp" alt="La pagina della rivista Natural Style con la foto di Roberta e il titolo «Le mani, il mio strumento di ascolto e cura»" width="352" height="432" loading="lazy" decoding="async">
+    <p>A febbraio la rivista Natural Style mi ha intervistata: «Le mani, il mio strumento di ascolto e cura».</p></figure>
+  <button class="btn" type="button" data-apri>Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button>
+</div></section>
+
+<section class="fascia"><div class="blocco b7"><div class="col">
+  <h2>La tua prima mezz’ora</h2>
+  <p class="testo">Mezz’ora in cui non devi pensare a niente e a nessuno. Ti stendi, chiudi gli occhi, e per una volta qualcuno si prende cura di te.</p>
+  <ol class="passi">
+    <li><h3>Ti ascolto.</h3><p class="testo">All’inizio mi racconti come stai, così so da dove partire con te.</p></li>
+    <li><h3>Il tuo corpo molla la presa.</h3><p class="testo">Con la riflessologia plantare On&nbsp;Zon&nbsp;Su&nbsp;© lavoro sui tuoi piedi, lenta e profonda, e poco alla volta il corpo smette di stare in guardia.</p></li>
+    <li><h3>Esci sapendo cosa fare.</h3><p class="testo">Alla fine ne parliamo insieme: capisci se fa per te e, se vuoi continuare, ti spiego come.</p></li>
+  </ol>
+  <p class="testo">Può essere il primo passo per non trascinarti più fino a sera.</p>
+  <p class="forte" style="margin-top:16px">Tutto questo in 30 minuti.</p>
+  <button class="btn" type="button" data-apri>Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button>
+</div></div></section>
+
+<section class="blocco b8"><div class="col">
+  <h2>Le domande che mi fanno più spesso</h2>
+  <div class="domande">
+    <details open><summary>Non ho mai fatto riflessologia. Cosa devo aspettarmi?</summary>
+      <p class="testo">Ti stendi sul lettino e lavoro con le mani sui tuoi piedi, con una pressione lenta e profonda. Non devi fare niente: solo lasciarti andare. Molte si addormentano.</p></details>
+    <details open><summary>Come devo venire vestita?</summary><p class="testo">Vieni vestita comoda.</p></details>
+    <details open><summary>Devo impegnarmi per un percorso?</summary>
+      <p class="testo">No, è senza impegno. La seduta di prova è una sola. Alla fine ne parliamo, e se vuoi continuare ti spiego come funziona.</p></details>
+    <details open><summary>Dove sei?</summary><p class="testo">Da EQB Milano, in viale Regina Margherita 43, zona Cinque Giornate.</p></details>
+  </div>
+  <button class="btn" type="button" data-apri>Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button>
+</div></section>
+
+<section class="blocco b9"><div class="col">
+  
+  <div class="posti" role="img" aria-label="Quattro o cinque persone al giorno">
+    <span class="posti__file" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="libero"></i></span>
+    <span class="posti__nota">4 o 5 persone al giorno</span>
+  </div>
+  <h2>Ricevo poche persone al giorno</h2>
+  <p class="testo">Ho scelto di fare al massimo quattro o cinque sedute al giorno. Il lavoro con le mani è intenso, e se arrivassi all’ultimo appuntamento stanca non potrei darti la stessa presenza e la stessa cura della prima persona della giornata. <b>Per questo i posti per la seduta di prova sono pochi.</b></p>
+  <p class="testo">Puoi continuare così, a svegliarti stanca e a trascinarti fino a sera. Oppure puoi prenderti mezz’ora per te, e sentire cosa succede quando il tuo corpo molla la presa.</p>
+  <button class="btn btn--due" type="button" data-apri><span class="btn__righe">Richiedi la tua seduta di prova<small>e comincia a riposare davvero</small></span> <span class="ico" aria-hidden="true">→</span></button>
+</div></section>
+
+<section class="finale">
+  <img class="finale__foto" src="/landing/roberta-boara/seduta-di-prova/media/b9-roberta.webp" alt="" width="900" height="1200" loading="lazy" decoding="async">
+  <div class="col finale__col">
+    <h2 class="finale__t">Cosa aspetti?</h2>
+    <p class="finale__sub">Prenditi mezz’ora per te, come hanno già fatto oltre 260 donne di Milano.</p>
+    <p class="finale__riga">Lasciami nome e numero, poi ci sentiamo su WhatsApp e scegliamo insieme il giorno.</p>
+    <button class="btn btn--due btn--bianco" type="button" data-apri><span class="btn__righe">Richiedi la tua seduta di prova<small>e comincia a riposare davvero</small></span> <span class="ico" aria-hidden="true">→</span></button>
+    <img class="firma firma--bianca" src="/landing/roberta-boara/seduta-di-prova/media/b9-firma.webp" alt="Roberta Boara" width="501" height="143" loading="lazy" decoding="async">
+  </div>
+</section>
+<p class="col dove">Ricevo da EQB Milano, in viale Regina Margherita 43.</p>
+
+<footer class="piede"><div class="col"><p>Roberta Boara, riflessologia plantare · Informativa sulla privacy · Cookie</p></div></footer>
+</main>
+
+<dialog class="finestra" aria-labelledby="modulo-titolo">
+  <div class="modulo">
+    <button type="button" class="chiudi" aria-label="Chiudi">✕</button>
+    <form novalidate autocomplete="on">
+      <h3 class="modulo__t" id="modulo-titolo" tabindex="-1" autofocus>Richiedi la tua seduta di prova</h3>
+      <p class="modulo__dati">30 minuti · Cinque Giornate</p>
+      <label class="campo">Nome<input name="nome" type="text" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" required></label>
+      <label class="campo">Cognome<input name="cognome" type="text" autocomplete="family-name" autocapitalize="words" enterkeyhint="next" required></label>
+      <p class="modulo__err nome__errore" role="alert" hidden>Scrivi nome e cognome.</p>
+      <label class="campo">Numero di cellulare<input name="telefono" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="send" required></label>
+      <p class="modulo__err tel__errore" role="alert" hidden>Controlla il numero, per esempio 347 123 4567 o, se è straniero, +41 79 123 4567.</p>
+      
+      <label class="consenso"><input type="checkbox" name="consenso"><span>Acconsento al trattamento dei miei dati per essere ricontattata su questa richiesta.</span></label>
+      <p class="modulo__info">Uso i tuoi dati solo per questa richiesta. <a href="#" data-da-fare>Informativa sulla privacy</a></p>
+      <button class="btn modulo__invia" type="submit">Invia la richiesta <span class="ico" aria-hidden="true">→</span></button>
+      <p class="modulo__err modulo__fallita" role="alert" hidden></p>
+      <p class="modulo__poi">Dopo l’invio ci sentiamo su WhatsApp e scegliamo insieme giorno e ora.</p>
+    </form>
+    <div class="fatto" tabindex="-1" hidden>
+      <p class="fatto__ok"><span aria-hidden="true">✓</span> Richiesta ricevuta</p>
+      <h3 class="fatto__t">Perfetto<span class="fatto__nome"></span>. Ci sentiamo su WhatsApp.</h3>
+      <p class="fatto__poi">Il messaggio è già pronto, devi solo premere invio.</p>
+      <div class="fatto__anteprima" aria-hidden="true"><div class="fatto__bolla"><span class="fatto__testo"></span></div></div>
+      <div class="fatto__firma"><img src="/landing/roberta-boara/seduta-di-prova/media/viso.webp" alt="" width="46" height="46"><p>Ti rispondo io, Roberta.</p></div>
+      <div class="fatto__controlla">
+        <span class="fatto__numero">Numero di cellulare: <b class="fatto__tel"></b></span>
+        <span class="fatto__cambia" hidden><input class="fatto__nuovo" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="done" aria-label="Numero di cellulare"><button type="button" class="fatto__conferma">OK</button></span>
+        <button type="button" class="fatto__modifica"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/></svg>Cambia</button>
+      </div>
+      <p class="modulo__err fatto__err" role="alert" hidden>Controlla il numero, per esempio 347 123 4567 o, se è straniero, +41 79 123 4567.</p>
+      <a class="btn btn--wa fatto__wa" href="#" target="_blank" rel="noopener">Apri WhatsApp <span class="ico" aria-hidden="true">→</span></a>
+      <p class="fatto__riserva">Se WhatsApp non si apre, il mio numero è <a class="fatto__riserva-tel">[numero di Roberta]</a>.</p>
+    </div>
+  </div>
+</dialog>
+
+<div class="fissa"><button class="btn" type="button" data-apri data-fissa>Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button></div>
+
+<script>
+(function () {
+  'use strict';
+  var d = document.documentElement, q = new URLSearchParams(location.search);
+  var CFG = window.ROBERTA = { numero: '+39 348 394 9701' };
+  var PROVA = { errore: false, conferma: false, modulo: false, banner: false };
+  var fin = document.querySelector('.finestra'), sez = fin.querySelector('.modulo'), form = sez.querySelector('form');
+  var fissa = document.querySelector('.fissa'), fb = fissa.querySelector('.btn');
+  var primo = document.querySelector('.b1 .btn'), piede = document.querySelector('.piede');
+  var pulsanti = [].slice.call(document.querySelectorAll('main [data-apri]'));
+  var dati = {}, inviando = false, inviato = false, tentativi = 0, bannerH = 0;
+  [].forEach.call(document.images, function (im) {
+    function via() { im.style.visibility = 'hidden'; }
+    if (im.complete && !im.naturalWidth && im.loading !== 'lazy') via(); else im.addEventListener('error', via);
+  });
+  [].forEach.call(document.querySelectorAll('[data-da-fare]'), function (a) { a.addEventListener('click', function (e) { e.preventDefault(); }); });
+  function numeroBuono(v) {
+    var t = (v || '').replace(/[^\d+]/g, '');
+    if (t.indexOf('00') === 0) t = '+' + t.slice(2);
+    if (t.charAt(0) === '+') {
+      if (t.indexOf('+39') !== 0) return /^\+[1-9]\d{7,14}$/.test(t) ? t : '';
+      t = t.slice(3);
+    } else if (/^393\d{9}$/.test(t)) t = t.slice(2);
+    else if (!/^3\d{9}$/.test(t) && !/^3\d{8,10}$/.test(t) && /^[1-9]\d{10,14}$/.test(t)) return '+' + t;
+    return /^3\d{9}$/.test(t) ? '+39' + t : '';
+  }
+  function maiuscole(t) { return t.replace(/(^|[\s'’-])(\p{L})/gu, function (x, a, b) { return a + b.toUpperCase(); }); }
+  function scuoti(el) { el.classList.remove('scuoti'); void el.offsetWidth; el.classList.add('scuoti'); }
+  function salvaSimulato() {
+    tentativi++;
+    var riesce = !(PROVA.errore && tentativi === 1);
+    return new Promise(function (fine) { setTimeout(function () { fine(riesce); }, 600); });
+  }
+  function messaggio() { return 'Ciao Roberta, sono ' + dati.nome + '. Ho appena richiesto la seduta di prova dal sito. Vorrei sapere quando hai disponibilità.'; }
+  function collegamentoWa() {
+    var n = (CFG.numero || '').replace(/\D/g, '');
+    return n ? 'https://wa.me/' + n + '?text=' + encodeURIComponent(messaggio()) : '';
+  }
+  function apri() {
+    if (!fin.open) { fin.showModal(); d.classList.add('aperta'); }
+    var f = inviato ? sez.querySelector('.fatto') : sez.querySelector('.modulo__t');
+    f.focus({ preventScroll: true }); sez.scrollTop = 0; aggiorna();
+  }
+  function chiudi() { if (fin.open) fin.close(); }
+  fin.addEventListener('close', function () { d.classList.remove('aperta'); aggiorna(); });
+  sez.querySelector('.chiudi').addEventListener('click', chiudi);
+  fin.addEventListener('click', function (e) { if (e.target === fin) chiudi(); });
+  pulsanti.concat([fb]).forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      if (b === fb && inviato && collegamentoWa()) return;
+      e.preventDefault(); apri();
+    });
+  });
+  function mostraFatto() {
+    inviato = true;
+    var wa = collegamentoWa(), num = (CFG.numero || '').trim();
+    form.hidden = true; sez.querySelector('.fatto').hidden = false;
+    sez.querySelector('.fatto__nome').textContent = dati.nome ? ', ' + dati.nome : '';
+    sez.querySelector('.fatto__tel').textContent = dati.telefonoScritto;
+    sez.querySelector('.fatto__testo').textContent = messaggio();
+    sez.querySelector('.fatto__wa').href = wa || '#';
+    var r = sez.querySelector('.fatto__riserva-tel');
+    if (num) { r.textContent = num.replace(/^\+39\s*/, ''); r.href = 'tel:' + num.replace(/[^\d+]/g, ''); }
+    fb.classList.add('btn--wa'); fb.firstChild.textContent = 'Apri WhatsApp ';
+    if (wa) {
+      var a = document.createElement('a'); a.className = fb.className; a.innerHTML = fb.innerHTML; a.href = wa; a.target = '_blank'; a.rel = 'noopener';
+      fb.replaceWith(a); fb = a;
+    }
+    sez.scrollTop = 0; sez.querySelector('.fatto').focus({ preventScroll: true });
+    aggiorna();
+  }
+  var nomeIn = form.querySelector('[name=nome]'), cognIn = form.querySelector('[name=cognome]'), telIn = form.querySelector('[name=telefono]'), consIn = form.querySelector('[name=consenso]');
+  var invia = form.querySelector('.modulo__invia'), fallita = form.querySelector('.modulo__fallita'), telErr = form.querySelector('.tel__errore'), nomeErr = form.querySelector('.nome__errore');
+  var testoPulsante = invia.innerHTML;
+  function controlla() {
+    var nome = nomeIn.value.trim(), cognome = cognIn.value.trim(), tel = numeroBuono(telIn.value), ok = true;
+    if (nome.length < 2) { nomeIn.classList.add('errore'); scuoti(nomeIn); ok = false; }
+    if (cognome.length < 2) { cognIn.classList.add('errore'); scuoti(cognIn); ok = false; }
+    nomeErr.hidden = nome.length >= 2 && cognome.length >= 2;
+    if (!tel) { telIn.classList.add('errore'); telErr.hidden = false; scuoti(telIn); ok = false; }
+    if (!ok) return false;
+    dati.nome = maiuscole(nome); dati.cognome = maiuscole(cognome); dati.telefono = tel; dati.telefonoScritto = telIn.value.trim();
+    dati.consenso = consIn.checked;
+    return true;
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (inviando || inviato) return;
+    fallita.hidden = true;
+    if (!controlla()) return;
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    inviando = true; invia.disabled = true; invia.textContent = 'Invio in corso…';
+    salvaSimulato().then(function (ok) {
+      inviando = false; invia.disabled = false; invia.innerHTML = testoPulsante;
+      if (!ok) {
+        fallita.textContent = tentativi < 2
+          ? 'La richiesta non è partita. Controlla la connessione e tocca di nuovo «Invia la richiesta».'
+          : 'La richiesta non è partita di nuovo. Controlla la connessione e riprova tra poco.';
+        fallita.hidden = false; return;
+      }
+      mostraFatto();
+    });
+  });
+  nomeIn.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); cognIn.focus(); } });
+  cognIn.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); telIn.focus(); } });
+  [nomeIn, cognIn, telIn].forEach(function (i) { i.addEventListener('input', function () { i.classList.remove('errore'); fallita.hidden = true; }); });
+  [nomeIn, cognIn].forEach(function (i) { i.addEventListener('input', function () { nomeErr.hidden = true; }); });
+  telIn.addEventListener('input', function () { telErr.hidden = true; });
+  sez.querySelector('.fatto__wa').addEventListener('click', function (e) {
+    if (collegamentoWa()) return;
+    e.preventDefault();
+  });
+  var cambia = sez.querySelector('.fatto__cambia'), nuovo = sez.querySelector('.fatto__nuovo'), matita = sez.querySelector('.fatto__modifica'), fErr = sez.querySelector('.fatto__err'), numB = sez.querySelector('.fatto__numero');
+  matita.addEventListener('click', function () { matita.hidden = true; numB.hidden = true; cambia.hidden = false; nuovo.value = dati.telefonoScritto || ''; nuovo.focus(); });
+  function conferma() {
+    var t = numeroBuono(nuovo.value);
+    if (!t) { nuovo.classList.add('errore'); fErr.hidden = false; scuoti(nuovo); return; }
+    nuovo.classList.remove('errore'); fErr.hidden = true;
+    dati.telefono = t; dati.telefonoScritto = nuovo.value.trim();
+    sez.querySelector('.fatto__tel').textContent = dati.telefonoScritto; telIn.value = dati.telefonoScritto;
+    cambia.hidden = true; matita.hidden = false; numB.hidden = false; nuovo.blur();
+  }
+  sez.querySelector('.fatto__conferma').addEventListener('click', conferma);
+  nuovo.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); conferma(); } });
+  nuovo.addEventListener('input', function () { nuovo.classList.remove('errore'); fErr.hidden = true; });
+  [].forEach.call(document.querySelectorAll('[data-video]'), function (box) {
+    var v = box.querySelector('video'), sott = box.querySelector('.video__sott'), tr = v.textTracks[0];
+    if (tr) {
+      tr.mode = 'hidden';
+      tr.addEventListener('cuechange', function () {
+        var c = tr.activeCues && tr.activeCues[0];
+        sott.innerHTML = '';
+        if (c) { var s = document.createElement('span'); s.textContent = c.text; sott.appendChild(s); }
+      });
+    }
+    box.querySelector('.video__play').addEventListener('click', function () {
+      [].forEach.call(document.querySelectorAll('[data-video] video'), function (o) { if (o !== v) o.pause(); });
+      box.classList.add('va'); v.controls = true; v.play();
+    });
+    v.addEventListener('ended', function () { sott.innerHTML = ''; });
+  });
+  function aggiorna() {
+    fissa.classList.toggle('vista', primo.getBoundingClientRect().bottom < 0 && !fin.open);
+  }
+  addEventListener('scroll', aggiorna, { passive: true }); addEventListener('resize', aggiorna);
+  function banner(su) { bannerH = su ? 153 : 0; d.classList.toggle('con-banner', su); d.style.setProperty('--banner-h', bannerH + 'px'); aggiorna(); }
+  aggiorna();
+})();
+</script>
+</body>
+</html>

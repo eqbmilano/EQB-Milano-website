@@ -12,8 +12,14 @@ const SITE_GATED = process.env.SITE_GATED !== "false";
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
 
+// Landing delle campagne dei professionisti, sotto la loro pagina: /<Slug>/<offerta> (standard del 23/11/2026,
+// operativo/proposte/2026-11-23-standard-indirizzi-landing.md nell'ecosistema). I file stanno in
+// public/landing/<slug>/<offerta>/ e la riscrittura è in next.config.ts. Qui solo: niente redirect alla lingua.
+const LANDING = new Set(["/Roberta-Boara/seduta-di-prova"]);
+
 function isLinktreeOrTracker(pathname: string): boolean {
   if (pathname.startsWith("/r/")) return true;
+  if (LANDING.has(pathname)) return true;
   return SLUGS.has(pathname.slice(1));
 }
 
