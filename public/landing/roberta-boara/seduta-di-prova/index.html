@@ -275,11 +275,66 @@ h2 + .testo{margin-top:24px}
 .prova-n{flex:none;margin:clamp(8px,1.4svh,12px) -12px 0;text-align:center;white-space:nowrap;font-size:min(17px,calc((100vw - 24px) / 22.4));font-weight:700;color:var(--marrone);letter-spacing:-.01em}
 .prova-n .st{color:var(--stelle);font-size:1.15em}
 .prova-n .num{color:var(--accento);font-weight:800;background:linear-gradient(transparent 58%,#efd6cf 58%);padding:0 2px}
+
+@media (min-width:900px){
+  .col{max-width:1120px}
+  .blocco h2{max-width:720px}
+  .blocco > .col > .btn{justify-self:start}
+  
+  .b1n .col{max-width:1180px;height:calc(100svh - var(--banner-h,0px));max-height:760px;min-height:560px;display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:1fr auto auto auto auto 1fr;
+    grid-template-areas:". foto" "h1 foto" "raf foto" "btn foto" "prova foto" ". foto";column-gap:72px;padding:40px var(--lato)}
+  .b1n h1{grid-area:h1;font-size:clamp(2.75rem,4.2vw,3.75rem);line-height:1.04}
+  .b1n .rafforza{grid-area:raf;margin:24px 0 0;font-size:1.3rem;line-height:1.5;max-width:30em;text-wrap:pretty}
+  .b1n .btn{grid-area:btn;justify-self:start;width:auto;min-width:400px;gap:28px;margin-top:40px}
+  .b1n .prova-n{grid-area:prova;margin:16px 0 0;text-align:left;font-size:17px}
+  .b1n .foto{grid-area:foto;margin:0;height:100%;align-items:center}
+  .b1n .foto img{width:100%;height:auto;max-height:100%}
+  
+  .scene{gap:40px 40px}
+  
+  .b3 .col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:72px;align-items:start}
+  .b3 .col > *{grid-column:1}
+  .b3 .foto--larga{grid-column:2;grid-row:1 / span 5;align-self:center;margin-top:0;aspect-ratio:4/3.4}
+  .b3 .strisce,.b3 .strisce ~ *{grid-column:1 / -1}
+  .strisce{margin-top:40px;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+  .strisce .foto{aspect-ratio:4/3}
+  .strisce + .testo{max-width:720px}
+  
+  .modi{gap:40px}
+  .modi .foto{aspect-ratio:4/4.2}
+  
+  .prove{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;align-items:start}
+  .prova-voce{display:flex;flex-direction:column}
+  .prova-voce > .testo{min-height:3.2em}
+  .chat{margin-top:16px;max-width:100%}
+  .video{width:min(100%,300px)}
+  .google{padding:24px;border-radius:24px}
+  
+  .b6 .col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:72px;align-items:center}
+  .b6 .col > *{grid-column:2}
+  .b6 .foto--ritratto{grid-column:1;grid-row:1 / span 6;aspect-ratio:4/4.6}
+  .b6 h2{margin-top:0}
+  
+  .b7 h2,.b7 .testo{max-width:720px}
+  .passi{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:40px}
+  .passi li{padding:56px 0 0}
+  .passi li::before{top:0;left:0}
+  .passi li:not(:last-child)::after{top:17px;left:48px;right:-32px;bottom:auto;width:auto;height:1.5px}
+  .passi .testo{max-width:none}
+  
+  .b8 .col{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:72px;align-items:start}
+  .b8 h2{grid-row:1 / span 2}
+  .b8 .domande{margin-top:0;grid-column:2}
+  .b8 .col > .btn{grid-column:2}
+  
+  .b9 .col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:72px;align-items:start}
+  .b9 .col > *{grid-column:2}
+  .b9 .col > h2{grid-column:1;grid-row:1 / span 4;font-size:3rem;line-height:1.06}
+  .b9 .col > .testo:first-of-type{margin-top:0}
+}
 </style>
 
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1768533830955364');fbq('track','PageView');
-</script>
 </head>
 <body>
 <main>
@@ -467,7 +522,7 @@ h2 + .testo{margin-top:24px}
 <p class="col dove">Ricevo da EQB Milano, in viale Regina Margherita 43.</p>
 
 <footer class="piede"><div class="col">
-  <p>Roberta Boara, riflessologia plantare · <a href="/landing/roberta-boara/seduta-di-prova/privacy.html">Informativa sulla privacy</a> · <button type="button" data-cookie>Gestisci i cookie</button></p>
+  <p>Roberta Boara, riflessologia plantare · <a href="/landing/roberta-boara/seduta-di-prova/privacy.html">Informativa sulla privacy</a></p>
   
   <p class="piede__legge">Roberta Boara, riflessologa plantare, professionista di cui alla legge n. 4/2013. La riflessologia plantare non è una pratica medica e non sostituisce diagnosi né cure.</p>
 </div></footer>
@@ -486,7 +541,9 @@ h2 + .testo{margin-top:24px}
       <p class="modulo__err tel__errore" role="alert" hidden>Controlla il numero, per esempio 347 123 4567 o, se è straniero, +41 79 123 4567.</p>
       
       <label class="consenso"><input type="checkbox" name="consenso"><span>Acconsento a raccontare a Roberta, se lo vorrò, informazioni sulla mia salute utili alla seduta.</span></label>
-      <p class="modulo__info">Uso i tuoi dati per risponderti e per misurare le inserzioni di Meta. <a href="/landing/roberta-boara/seduta-di-prova/privacy.html" target="_blank" rel="noopener">Informativa sulla privacy</a></p>
+      
+      <label class="consenso consenso--meta"><input type="checkbox" name="consenso_meta" required><span>Ho letto l’<a href="/landing/roberta-boara/seduta-di-prova/privacy.html" target="_blank" rel="noopener">informativa</a> e acconsento alla condivisione dei miei dati con Meta.</span></label>
+      <p class="modulo__err meta__errore" role="alert" hidden>Spunta la casella per inviare la richiesta.</p>
       <button class="btn modulo__invia" type="submit">Invia la richiesta <span class="ico" aria-hidden="true">→</span></button>
       <p class="modulo__err modulo__fallita" role="alert" hidden></p>
       <p class="modulo__poi">Dopo l’invio ci sentiamo su WhatsApp e scegliamo insieme giorno e ora.</p>
@@ -509,18 +566,13 @@ h2 + .testo{margin-top:24px}
   </div>
 </dialog>
 
-<div class="cookie" role="dialog" aria-label="Cookie" hidden>
-  <p>Usiamo cookie e pixel di Meta. <a href="/landing/roberta-boara/seduta-di-prova/privacy.html" target="_blank" rel="noopener">Informativa</a></p>
-  <div class="cookie__scelte"><button type="button" data-scelta="rifiuta">Rifiuta</button><button type="button" data-scelta="accetta">Accetta</button></div>
-</div>
-
 <div class="fissa"><button class="btn" type="button" data-apri data-fissa>Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button></div>
 
 <script>
 (function () {
   'use strict';
   var d = document.documentElement, q = new URLSearchParams(location.search);
-  var CFG = window.ROBERTA = { numero: '+39 348 394 9701', indirizzo: 'https://gestionale.eqbmilano.it/api/webhooks/landing-roberta', informativa: '2026-11-23' };
+  var CFG = window.ROBERTA = { numero: '+39 348 394 9701', indirizzo: 'https://gestionale.eqbmilano.it/api/webhooks/landing-roberta', informativa: '2026-11-23-senza-pixel' };
   var PROVA = { errore: false, conferma: false, modulo: false, banner: false };
   var fin = document.querySelector('.finestra'), sez = fin.querySelector('.modulo'), form = sez.querySelector('form');
   var fissa = document.querySelector('.fissa'), fb = fissa.querySelector('.btn');
@@ -546,13 +598,14 @@ h2 + .testo{margin-top:24px}
   function scuoti(el) { el.classList.remove('scuoti'); void el.offsetWidth; el.classList.add('scuoti'); }
   var SIMULA = location.protocol === 'file:' || /^(localhost|127\.|\[::1\])/.test(location.hostname);
   var codice = 'lead-' + (function () { var a = '', c = window.crypto && crypto.getRandomValues ? crypto.getRandomValues(new Uint8Array(10)) : null; for (var i = 0; i < 10; i++) a += ((c ? c[i] : Math.floor(Math.random() * 256)) % 36).toString(36); return a; })();
-  function biscotto(n) { var m = document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)')); try { return m ? decodeURIComponent(m[1]) : ''; } catch (e) { return ''; } }
+  var fbclid = new URLSearchParams(location.search).get('fbclid'), arrivo = Date.now();
   function corpo() {
-    var t = form.querySelector('.consenso span');
+    var t = form.querySelector('.consenso:not(.consenso--meta) span'), tm = form.querySelector('.consenso--meta span');
     return JSON.stringify({ codice: codice, nome: dati.nome, cognome: dati.cognome, telefono: dati.telefono,
       consenso_salute: !!dati.consenso, testo_consenso: t ? t.textContent.trim() : '', informativa: CFG.informativa,
-      cookie: dati.cookie || '', tocco_whatsapp: !!dati.tocco, provenienza: location.search, pagina: location.href.split('#')[0],
-      fbp: biscotto('_fbp'), fbc: biscotto('_fbc') });
+      consenso_meta: !!dati.consensoMeta, testo_consenso_meta: tm ? tm.textContent.trim() : '',
+      cookie: '', tocco_whatsapp: !!dati.tocco, provenienza: location.search, pagina: location.href.split('#')[0],
+      fbp: '', fbc: fbclid ? 'fb.1.' + arrivo + '.' + fbclid : '' });
   }
   function salva() {
     tentativi++;
@@ -569,7 +622,6 @@ h2 + .testo{margin-top:24px}
   var contattoMandato = false;
   function toccoWa() {
     dati.tocco = true;
-    if (!contattoMandato) { contattoMandato = true; if (window.fbq) fbq('track', 'Contact'); }
     aggiorna2();
   }
   function messaggio() { return 'Ciao Roberta, sono ' + dati.nome + '. Ho appena richiesto la seduta di prova dal sito. Vorrei sapere quando hai disponibilità.'; }
@@ -610,7 +662,7 @@ h2 + .testo{margin-top:24px}
     sez.scrollTop = 0; sez.querySelector('.fatto').focus({ preventScroll: true });
     aggiorna();
   }
-  var nomeIn = form.querySelector('[name=nome]'), cognIn = form.querySelector('[name=cognome]'), telIn = form.querySelector('[name=telefono]'), consIn = form.querySelector('[name=consenso]');
+  var nomeIn = form.querySelector('[name=nome]'), cognIn = form.querySelector('[name=cognome]'), telIn = form.querySelector('[name=telefono]'), consIn = form.querySelector('[name=consenso]'), metaIn = form.querySelector('[name=consenso_meta]'), metaErr = form.querySelector('.meta__errore');
   var invia = form.querySelector('.modulo__invia'), fallita = form.querySelector('.modulo__fallita'), telErr = form.querySelector('.tel__errore'), nomeErr = form.querySelector('.nome__errore');
   var testoPulsante = invia.innerHTML;
   function controlla() {
@@ -619,9 +671,11 @@ h2 + .testo{margin-top:24px}
     if (cognome.length < 2) { cognIn.classList.add('errore'); scuoti(cognIn); ok = false; }
     nomeErr.hidden = nome.length >= 2 && cognome.length >= 2;
     if (!tel) { telIn.classList.add('errore'); telErr.hidden = false; scuoti(telIn); ok = false; }
+    metaErr.hidden = metaIn.checked;
+    if (!metaIn.checked) { scuoti(metaIn.parentNode); ok = false; }
     if (!ok) return false;
     dati.nome = maiuscole(nome); dati.cognome = maiuscole(cognome); dati.telefono = tel; dati.telefonoScritto = telIn.value.trim();
-    dati.consenso = consIn.checked;
+    dati.consenso = consIn.checked; dati.consensoMeta = metaIn.checked;
     return true;
   }
   form.addEventListener('submit', function (e) {
@@ -639,7 +693,6 @@ h2 + .testo{margin-top:24px}
           : 'La richiesta non è partita di nuovo. Controlla la connessione e riprova tra poco.';
         fallita.hidden = false; return;
       }
-      if (!leadMandato) { leadMandato = true; if (window.fbq) fbq('track', 'Lead', {}, { eventID: codice }); }
       mostraFatto();
     });
   });
@@ -687,22 +740,6 @@ h2 + .testo{margin-top:24px}
     fissa.classList.toggle('vista', primo.getBoundingClientRect().bottom < 0 && !fin.open);
   }
   addEventListener('scroll', aggiorna, { passive: true }); addEventListener('resize', aggiorna);
-  var ck = document.querySelector('.cookie'), CHIAVE = 'roberta-cookie';
-  function leggiScelta() { try { var x = JSON.parse(localStorage.getItem(CHIAVE)); return x && Date.now() - x.t < 183 * 864e5 ? x.s : ''; } catch (e) { return ''; } }
-  function banner(su) {
-    ck.hidden = !su; bannerH = su ? ck.offsetHeight + 10 : 0;
-    d.style.setProperty('--banner-h', bannerH + 'px'); aggiorna();
-  }
-  [].forEach.call(ck.querySelectorAll('[data-scelta]'), function (b) {
-    b.addEventListener('click', function () {
-      dati.cookie = b.getAttribute('data-scelta');
-      try { localStorage.setItem(CHIAVE, JSON.stringify({ s: dati.cookie, t: Date.now() })); } catch (e) {}
-      banner(false);
-    });
-  });
-  document.querySelector('[data-cookie]').addEventListener('click', function () { banner(true); });
-  dati.cookie = leggiScelta();
-  banner(PROVA.banner || !dati.cookie);
   aggiorna();
 })();
 </script>
