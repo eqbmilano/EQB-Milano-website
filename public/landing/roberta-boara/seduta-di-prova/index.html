@@ -267,6 +267,7 @@ h2 + .testo{margin-top:24px}
 .b1n .rafforza{flex:none;margin-top:clamp(8px,1.6svh,16px);font-size:clamp(17px,2.6svh,18.5px);letter-spacing:-.015em;margin-right:-8px;text-wrap:wrap}
 .b1n .foto{flex:1 1 0;min-height:0;margin:clamp(10px,2svh,18px) 0 clamp(12px,2svh,18px);aspect-ratio:auto}
 .b1n .foto{display:flex;justify-content:center;background:none;border-radius:0;overflow:visible}
+.b1n .foto picture{display:contents}.b1n .foto source{display:none}
 
 .b1n .foto img{width:auto;height:100%;max-width:100%;object-fit:contain;border-radius:20px;transform:none}
 .b1n .btn{flex:none;margin-top:0;white-space:nowrap}
@@ -347,6 +348,116 @@ h2 + .testo{margin-top:24px}
   .b8 .col{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);column-gap:40px}
   .b6 .col > .btn,.b8 .col > .btn{min-width:0;width:100%;font-size:1rem;white-space:nowrap;gap:12px}
 }
+
+@media (min-width:1000px){
+  :root{--lato:clamp(48px,4.9vw,70px);--ritmo:200px}
+  .col{max-width:1440px}
+  h2,.blocco h2{max-width:none;font-size:clamp(3rem,4.2vw,3.8rem);line-height:1.06;letter-spacing:-.035em}
+  .testo{font-size:1.25rem;line-height:1.6}
+  h2 + .testo{margin-top:24px}
+  .forte{font-size:clamp(1.6rem,2.1vw,2rem);line-height:1.25}
+  .btn,.blocco > .col > .btn{min-height:68px;font-size:1.2rem;min-width:min(440px,100%);padding:10px 10px 10px 30px;gap:32px}
+  .btn .ico{width:48px;height:48px;font-size:20px}
+
+  .b1n .col{max-width:1440px;min-height:min(100svh,980px);grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-rows:1fr auto auto auto auto 1fr;grid-template-areas:". foto" "h1 foto" "raf foto" "btn foto" "prova foto" ". foto";
+    column-gap:clamp(48px,5vw,96px);padding:40px var(--lato)}
+  .b1n h1{font-size:clamp(3.6rem,5.4vw,5.4rem);line-height:1.02}
+  .b1n .rafforza{margin-top:40px;font-size:clamp(1.4rem,1.8vw,1.75rem);line-height:1.45;max-width:24em}
+  .b1n .btn{margin-top:40px;min-width:min(480px,100%);font-size:1.25rem;min-height:72px}
+  .b1n .prova-n{margin-top:24px;font-size:1.25rem}
+  .b1n .foto{height:calc(min(100svh,980px) - 80px);justify-content:flex-end}
+  .b1n .foto img{width:auto;height:100%;max-width:100%;object-fit:cover;object-position:50% 70%;border-radius:24px;aspect-ratio:3/4}
+
+  .scene{margin-top:40px;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+  .scena .foto{aspect-ratio:4/5}
+  .scena .testo{margin-top:24px;font-size:1.1875rem}
+  .b2 .speranza{margin-top:80px}
+
+  .b3 .col{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto auto auto 1fr;column-gap:clamp(48px,5vw,96px)}
+  .b3 .foto--larga{grid-row:1 / span 5;aspect-ratio:4/4.4;align-self:start}
+  
+  .b3 .testo:has(+ .strisce){grid-column:1 / -1;margin-top:var(--ritmo);
+    font-size:clamp(2.2rem,3vw,2.8rem);line-height:1.12;letter-spacing:-.03em;max-width:18em;text-wrap:balance}
+  .b3 .testo:has(+ .strisce) b{font-weight:800}
+  .strisce{margin-top:40px;gap:32px}
+  .strisce .foto{aspect-ratio:4/3.4}
+  .strisce .testo{margin-top:24px;font-size:1.1875rem}
+  .strisce + .testo{margin-top:80px;font-size:1.5rem;line-height:1.45;max-width:36em}
+
+  .modi{margin-top:40px;gap:40px}
+  .modi .foto{aspect-ratio:4/4.6}
+  .modi h3{margin-top:24px;font-size:1.75rem}
+  .modi .testo{margin-top:16px}
+  .modi + .forte{margin-top:80px}
+
+  .prove{margin-top:40px;grid-template-columns:repeat(6,minmax(0,1fr));gap:80px 40px}
+  .prova-voce:nth-child(2),.prova-voce:nth-child(3){order:1;grid-column:span 3}
+  .prova-voce:nth-child(1){order:2}
+  .prova-voce:nth-child(4){order:3}
+  .prova-voce:nth-child(5){order:4}
+  .prova-voce:nth-child(1),.prova-voce:nth-child(4),.prova-voce:nth-child(5){grid-column:span 2}
+  .prova-voce > .testo{min-height:0;font-size:1.25rem}
+  .prova-voce:nth-child(2),.prova-voce:nth-child(3){align-items:center;text-align:center}
+  .prova-voce:nth-child(2) > .testo,.prova-voce:nth-child(3) > .testo{font-size:1.4rem;max-width:22em}
+  .video{width:min(100%,420px);margin:24px auto 0}
+  .chat{margin-top:24px;max-width:380px}
+  .google{order:5;grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:48px;border-radius:24px}
+  .google > .testo{grid-column:1 / -1;font-size:1.75rem;letter-spacing:-.02em}
+  .rec{margin-top:0;padding:28px}
+  .rec blockquote{font-size:1.25rem}
+  .rec figcaption{margin-top:16px;font-size:1.0625rem}
+
+  .b6 .col{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(48px,5vw,96px)}
+  .b6 .foto--ritratto{grid-row:1 / span 6;aspect-ratio:4/5}
+  .rivista{grid-template-columns:150px minmax(0,1fr);gap:24px;padding:16px;margin-top:40px}
+  .rivista p{font-size:1.1875rem}
+
+  .b7 .col{text-align:center}
+  .b7 h2,.b7 .testo{margin-left:auto;margin-right:auto}
+  .b7 > .col > .testo:first-of-type{max-width:34em;font-size:1.4rem}
+  .passi{margin-top:80px;gap:32px;text-align:left}
+  .passi li{padding:72px 40px 40px;border-radius:24px;background:#fff;box-shadow:0 8px 24px #3026240f}
+  .passi li::before{top:24px;left:40px;width:40px;height:40px;font-size:1.1rem}
+  .passi li:not(:last-child)::after{display:none}
+  .passi h3{font-size:1.5rem}
+  .passi .testo{margin-top:16px}
+  .passi + .testo{margin-top:80px;font-size:1.4rem}
+  .b7 .forte{margin-top:16px}
+  .b7 .col > .btn{margin-left:auto;margin-right:auto}
+
+  .b8 .col{display:block}
+  .b8 .domande{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:24px;border-top:0}
+  .domande details{padding:32px 40px;border:0;border-radius:24px;background:#fff;box-shadow:0 8px 24px #3026240f}
+  .domande summary{padding:0 0 16px;font-size:1.4rem;line-height:1.3}
+  .domande details .testo{margin:0}
+
+  .b9 .col{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .b9 .col > *{max-width:880px}
+  .b9 .col > h2{font-size:clamp(3.6rem,5vw,4.8rem);line-height:1.04;max-width:12em}
+  .posti{align-items:center;gap:16px;margin-bottom:40px}
+  .posti__file{gap:16px}
+  .posti__file i{width:44px;height:44px}
+  .posti__file i.libero{box-shadow:inset 0 0 0 4px var(--accento)}
+  .posti__nota{font-size:1.25rem}
+  .b9 .col > .testo{font-size:1.4rem;line-height:1.55}
+  .b9 .col > h2 + .testo:first-of-type{margin-top:40px}
+  .b9 .col > .testo + .testo{margin-top:24px}
+  .b9 .col > .btn{margin-top:80px}
+
+  .finale{padding:0;text-align:left;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;min-height:min(92svh,860px)}
+  .finale::before{display:none}
+  .finale__foto{position:static;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+  .finale__col{max-width:none;margin:0;align-items:flex-start;justify-content:center;padding:96px clamp(48px,6vw,120px)}
+  .finale__t{font-size:clamp(4rem,5.6vw,5.4rem)}
+  .finale__sub{margin-top:40px;font-size:1.9rem;line-height:1.3;text-wrap:pretty;max-width:18em}
+  .finale__riga{margin-top:24px;font-size:1.3rem;max-width:26em}
+  .finale .btn{margin-top:40px;min-width:min(480px,100%)}
+  .firma--bianca{margin:40px 0 0;width:280px}
+  .dove{margin-top:40px;font-size:1.25rem}
+  .btn__righe small{font-size:17px}
+  .piede{font-size:17px}.piede__legge{font-size:17px}
+}
 </style>
 
 </head>
@@ -356,7 +467,7 @@ h2 + .testo{margin-top:24px}
 <header class="b1 b1n"><div class="col">
     <h1>Ti svegli <span class="k">più stanca</span> di quando sei andata a dormire?</h1>
     <p class="rafforza">Con la <b>riflessologia plantare On&nbsp;Zon&nbsp;Su&nbsp;©</b> ti aiuto a lasciar andare <span class="ev">la tensione che ti porti dietro anche di notte.</span></p>
-    <div class="foto"><img src="/landing/roberta-boara/seduta-di-prova/media/b1-roberta-intera.webp" alt="Roberta al lavoro sul piede di una cliente stesa sotto la coperta" width="900" height="790" fetchpriority="high" decoding="async"></div>
+    <div class="foto"><picture><source media="(min-width:1000px)" srcset="/landing/roberta-boara/seduta-di-prova/media/b1-roberta.webp" width="900" height="1200"><img src="/landing/roberta-boara/seduta-di-prova/media/b1-roberta-intera.webp" alt="Roberta al lavoro sul piede di una cliente stesa sotto la coperta" width="900" height="790" fetchpriority="high" decoding="async"></picture></div>
     <button class="btn" type="button" data-apri="">Richiedi la tua seduta di prova <span class="ico" aria-hidden="true">→</span></button>
     <p class="prova-n"><span class="st">★</span> 5 stelle su Google · <span class="num">Oltre 260 donne seguite</span></p>
 </div></header>
