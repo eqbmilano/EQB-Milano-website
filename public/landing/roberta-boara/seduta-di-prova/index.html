@@ -553,9 +553,7 @@ h2 + .testo{margin-top:24px}
       <p class="modulo__err nome__errore" role="alert" hidden>Scrivi nome e cognome.</p>
       <label class="campo">Numero di cellulare<input name="telefono" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="send" required></label>
       <p class="modulo__err tel__errore" role="alert" hidden>Controlla il numero, per esempio 347 123 4567 o, se è straniero, +41 79 123 4567.</p>
-      
-      <label class="consenso"><input type="checkbox" name="consenso"><span>Acconsento a raccontare a Roberta, se lo vorrò, informazioni sulla mia salute utili alla seduta.</span></label>
-      
+
       <label class="consenso consenso--meta"><input type="checkbox" name="consenso_meta" required><span>Ho letto l’<a href="/landing/roberta-boara/seduta-di-prova/privacy.html" target="_blank" rel="noopener">informativa</a> e acconsento alla condivisione dei miei dati con Meta.</span></label>
       <p class="modulo__err meta__errore" role="alert" hidden>Spunta la casella per inviare la richiesta.</p>
       <button class="btn modulo__invia" type="submit">Invia la richiesta <span class="ico" aria-hidden="true">→</span></button>
@@ -676,7 +674,7 @@ h2 + .testo{margin-top:24px}
     sez.scrollTop = 0; sez.querySelector('.fatto').focus({ preventScroll: true });
     aggiorna();
   }
-  var nomeIn = form.querySelector('[name=nome]'), cognIn = form.querySelector('[name=cognome]'), telIn = form.querySelector('[name=telefono]'), consIn = form.querySelector('[name=consenso]'), metaIn = form.querySelector('[name=consenso_meta]'), metaErr = form.querySelector('.meta__errore');
+  var nomeIn = form.querySelector('[name=nome]'), cognIn = form.querySelector('[name=cognome]'), telIn = form.querySelector('[name=telefono]'), metaIn = form.querySelector('[name=consenso_meta]'), metaErr = form.querySelector('.meta__errore');
   var invia = form.querySelector('.modulo__invia'), fallita = form.querySelector('.modulo__fallita'), telErr = form.querySelector('.tel__errore'), nomeErr = form.querySelector('.nome__errore');
   var testoPulsante = invia.innerHTML;
   function controlla() {
@@ -689,7 +687,7 @@ h2 + .testo{margin-top:24px}
     if (!metaIn.checked) { scuoti(metaIn.parentNode); ok = false; }
     if (!ok) return false;
     dati.nome = maiuscole(nome); dati.cognome = maiuscole(cognome); dati.telefono = tel; dati.telefonoScritto = telIn.value.trim();
-    dati.consenso = consIn.checked; dati.consensoMeta = metaIn.checked;
+    dati.consenso = false; dati.consensoMeta = metaIn.checked;
     return true;
   }
   form.addEventListener('submit', function (e) {
