@@ -256,6 +256,10 @@ h2 + .testo{margin-top:24px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fissa,.fissa.vista{transition:none}.scuoti,.finestra[open]{animation:none}}
 </style>
+
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1768533830955364');fbq('track','PageView');
+</script>
 </head>
 <body>
 <main>
@@ -502,13 +506,13 @@ h2 + .testo{margin-top:24px}
 (function () {
   'use strict';
   var d = document.documentElement, q = new URLSearchParams(location.search);
-  var CFG = window.ROBERTA = { numero: '+39 348 394 9701' };
+  var CFG = window.ROBERTA = { numero: '+39 348 394 9701', indirizzo: 'https://gestionale.eqbmilano.it/api/webhooks/landing-roberta', informativa: '2026-11-23' };
   var PROVA = { errore: false, conferma: false, modulo: false, banner: false };
   var fin = document.querySelector('.finestra'), sez = fin.querySelector('.modulo'), form = sez.querySelector('form');
   var fissa = document.querySelector('.fissa'), fb = fissa.querySelector('.btn');
   var primo = document.querySelector('.b1 .btn'), piede = document.querySelector('.piede');
   var pulsanti = [].slice.call(document.querySelectorAll('main [data-apri]'));
-  var dati = {}, inviando = false, inviato = false, tentativi = 0, bannerH = 0;
+  var dati = {}, inviando = false, inviato = false, tentativi = 0, bannerH = 0, leadMandato = false;
   [].forEach.call(document.images, function (im) {
     function via() { im.style.visibility = 'hidden'; }
     if (im.complete && !im.naturalWidth && im.loading !== 'lazy') via(); else im.addEventListener('error', via);
@@ -526,10 +530,33 @@ h2 + .testo{margin-top:24px}
   }
   function maiuscole(t) { return t.replace(/(^|[\s'’-])(\p{L})/gu, function (x, a, b) { return a + b.toUpperCase(); }); }
   function scuoti(el) { el.classList.remove('scuoti'); void el.offsetWidth; el.classList.add('scuoti'); }
-  function salvaSimulato() {
+  var SIMULA = location.protocol === 'file:' || /^(localhost|127\.|\[::1\])/.test(location.hostname);
+  var codice = 'lead-' + (function () { var a = '', c = window.crypto && crypto.getRandomValues ? crypto.getRandomValues(new Uint8Array(10)) : null; for (var i = 0; i < 10; i++) a += ((c ? c[i] : Math.floor(Math.random() * 256)) % 36).toString(36); return a; })();
+  function biscotto(n) { var m = document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)')); try { return m ? decodeURIComponent(m[1]) : ''; } catch (e) { return ''; } }
+  function corpo() {
+    var t = form.querySelector('.consenso span');
+    return JSON.stringify({ codice: codice, nome: dati.nome, cognome: dati.cognome, telefono: dati.telefono,
+      consenso_salute: !!dati.consenso, testo_consenso: t ? t.textContent.trim() : '', informativa: CFG.informativa,
+      cookie: dati.cookie || '', tocco_whatsapp: !!dati.tocco, provenienza: location.search, pagina: location.href.split('#')[0],
+      fbp: biscotto('_fbp'), fbc: biscotto('_fbc') });
+  }
+  function salva() {
     tentativi++;
-    var riesce = !(PROVA.errore && tentativi === 1);
-    return new Promise(function (fine) { setTimeout(function () { fine(riesce); }, 600); });
+    if (SIMULA) { var riesce = !(PROVA.errore && tentativi === 1); return new Promise(function (fine) { setTimeout(function () { fine(riesce); }, 600); }); }
+    var ctrl = 'AbortController' in window ? new AbortController() : null, t = ctrl ? setTimeout(function () { ctrl.abort(); }, 15000) : null;
+    return fetch(CFG.indirizzo, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: corpo(), signal: ctrl ? ctrl.signal : undefined })
+      .then(function (r) { return r.ok ? r.json() : { ok: false }; })
+      .then(function (j) { if (t) clearTimeout(t); return !!(j && j.ok); }, function () { if (t) clearTimeout(t); return false; });
+  }
+  function aggiorna2() {
+    if (SIMULA) return;
+    try { fetch(CFG.indirizzo, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: corpo(), keepalive: true }).catch(function () {}); } catch (e) {   }
+  }
+  var contattoMandato = false;
+  function toccoWa() {
+    dati.tocco = true;
+    if (!contattoMandato) { contattoMandato = true; if (window.fbq) fbq('track', 'Contact'); }
+    aggiorna2();
   }
   function messaggio() { return 'Ciao Roberta, sono ' + dati.nome + '. Ho appena richiesto la seduta di prova dal sito. Vorrei sapere quando hai disponibilità.'; }
   function collegamentoWa() {
@@ -563,7 +590,7 @@ h2 + .testo{margin-top:24px}
     if (num) { r.textContent = num.replace(/^\+39\s*/, ''); r.href = 'tel:' + num.replace(/[^\d+]/g, ''); }
     fb.classList.add('btn--wa'); fb.firstChild.textContent = 'Apri WhatsApp ';
     if (wa) {
-      var a = document.createElement('a'); a.className = fb.className; a.innerHTML = fb.innerHTML; a.href = wa; a.target = '_blank'; a.rel = 'noopener';
+      var a = document.createElement('a'); a.className = fb.className; a.innerHTML = fb.innerHTML; a.href = wa; a.target = '_blank'; a.rel = 'noopener'; a.addEventListener('click', toccoWa);
       fb.replaceWith(a); fb = a;
     }
     sez.scrollTop = 0; sez.querySelector('.fatto').focus({ preventScroll: true });
@@ -590,7 +617,7 @@ h2 + .testo{margin-top:24px}
     if (!controlla()) return;
     if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
     inviando = true; invia.disabled = true; invia.textContent = 'Invio in corso…';
-    salvaSimulato().then(function (ok) {
+    salva().then(function (ok) {
       inviando = false; invia.disabled = false; invia.innerHTML = testoPulsante;
       if (!ok) {
         fallita.textContent = tentativi < 2
@@ -598,6 +625,7 @@ h2 + .testo{margin-top:24px}
           : 'La richiesta non è partita di nuovo. Controlla la connessione e riprova tra poco.';
         fallita.hidden = false; return;
       }
+      if (!leadMandato) { leadMandato = true; if (window.fbq) fbq('track', 'Lead', {}, { eventID: codice }); }
       mostraFatto();
     });
   });
@@ -607,6 +635,7 @@ h2 + .testo{margin-top:24px}
   [nomeIn, cognIn].forEach(function (i) { i.addEventListener('input', function () { nomeErr.hidden = true; }); });
   telIn.addEventListener('input', function () { telErr.hidden = true; });
   sez.querySelector('.fatto__wa').addEventListener('click', function (e) {
+    toccoWa();
     if (collegamentoWa()) return;
     e.preventDefault();
   });
@@ -619,6 +648,7 @@ h2 + .testo{margin-top:24px}
     dati.telefono = t; dati.telefonoScritto = nuovo.value.trim();
     sez.querySelector('.fatto__tel').textContent = dati.telefonoScritto; telIn.value = dati.telefonoScritto;
     cambia.hidden = true; matita.hidden = false; numB.hidden = false; nuovo.blur();
+    aggiorna2();
   }
   sez.querySelector('.fatto__conferma').addEventListener('click', conferma);
   nuovo.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); conferma(); } });
