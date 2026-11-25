@@ -702,7 +702,7 @@ h2 + .testo{margin-top:24px}
   var CFG = window.ROBERTA = { numero: '+39 348 394 9701', indirizzo: 'https://gestionale.eqbmilano.it/api/webhooks/landing-roberta', informativa: '2026-11-23-senza-pixel' };
   var PROVA = { errore: false, conferma: false, modulo: false, banner: false };
   var fin = document.querySelector('.finestra'), sez = fin.querySelector('.modulo'), form = sez.querySelector('form');
-  var haDialog = typeof fin.showModal === 'function'; // senza <dialog> (iOS prima della 15.4, WebView vecchie) si apre come un velo a tutto schermo
+  var haDialog = typeof fin.showModal === 'function';
   if (!haDialog) fin.className += ' senza-dialog';
   function aperta() { return haDialog ? fin.open : fin.hasAttribute('open'); }
   var fissa = document.querySelector('.fissa'), fb = fissa.querySelector('.btn');
@@ -729,13 +729,23 @@ h2 + .testo{margin-top:24px}
   var SIMULA = location.protocol === 'file:' || /^(localhost|127\.|\[::1\])/.test(location.hostname);
   var codice = 'lead-' + (function () { var a = '', c = window.crypto && crypto.getRandomValues ? crypto.getRandomValues(new Uint8Array(10)) : null; for (var i = 0; i < 10; i++) a += ((c ? c[i] : Math.floor(Math.random() * 256)) % 36).toString(36); return a; })();
   var fbclid = new URLSearchParams(location.search).get('fbclid'), arrivo = Date.now();
+  var CHIAVI = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'ad_id', 'adset_id', 'campaign_id', 'placement', 'site_source_name'];
+  function cuci(o, max) { var s = []; for (var i = 0; i < o.length; i++) s.push(encodeURIComponent(o[i][0]) + '=' + encodeURIComponent(o[i][1].slice(0, max).replace(/[\ud800-\udbff]$/, ''))); return s.length ? '?' + s.join('&') : ''; }
+  function provenienza() {
+    var o = [];
+    try { var p = new URLSearchParams(location.search); for (var i = 0; i < CHIAVI.length; i++) { var v = p.get(CHIAVI[i]); if (v) o.push([CHIAVI[i], v]); } } catch (e) { return ''; }
+    var senza = o.filter(function (x) { return x[0] !== 'fbclid'; }), prove = [[o, 400], [o, 200], [senza, 200], [senza, 120], [senza, 60]];
+    for (var j = 0; j < prove.length; j++) { var s = cuci(prove[j][0], prove[j][1]); if (s.length <= 1400) return s; }
+    return '';
+  }
+  var fbc = fbclid && fbclid.length <= 580 ? 'fb.1.' + arrivo + '.' + fbclid : '';
   function corpo() {
     var t = form.querySelector('.consenso:not(.consenso--meta) span'), tm = form.querySelector('.consenso--meta span');
     return JSON.stringify({ codice: codice, nome: dati.nome, cognome: dati.cognome, telefono: dati.telefono,
       consenso_salute: !!dati.consenso, testo_consenso: t ? t.textContent.trim() : '', informativa: CFG.informativa,
       consenso_meta: !!dati.consensoMeta, testo_consenso_meta: tm ? tm.textContent.trim() : '',
-      cookie: '', tocco_whatsapp: !!dati.tocco, provenienza: location.search, pagina: location.href.split('#')[0],
-      fbp: '', fbc: fbclid ? 'fb.1.' + arrivo + '.' + fbclid : '' });
+      cookie: '', tocco_whatsapp: !!dati.tocco, provenienza: provenienza(), pagina: location.protocol + '//' + location.host + location.pathname,
+      fbp: '', fbc: fbc });
   }
   function salva() {
     tentativi++;
